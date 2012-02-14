@@ -1,7 +1,13 @@
 Githubbug::Application.routes.draw do
-  get "home/index"
 
-  root to: "home/index"
+  resources :projects do
+    get 'issue/:issue_id', controller: "issues", action: "show", as: "issue"
+  end
+
+  devise_for :users
+
+  root to: "projects#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

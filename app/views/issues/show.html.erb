@@ -1,0 +1,14 @@
+<div> 
+	<h1><%= @issue.title %></h1>
+</div>
+<div id="issue_body" class="issue_body">
+	<%= simple_format(@issue.body) %>
+</div><!-- / -->
+<div id="comments" class="comments">
+	<% @comments.each do |comment| %>
+		<h2> <%= image_tag(comment.user.avatar_url) %> <%= comment.user.login %> commented:</h2>
+		<div> <%= simple_format(comment.body) %> </div>
+	<% end %>
+</div><!-- /comments -->
+ 
+ <%= render "projects/issues" %> 

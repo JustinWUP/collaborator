@@ -17,6 +17,7 @@ end
 
 module Githubbug
   class Application < Rails::Application
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -61,5 +62,8 @@ module Githubbug
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Enable (per Devise) when deploying to Heroku 
+    # config.assets.initialize_on_precompile = false
   end
 end
