@@ -1,8 +1,14 @@
 Githubbug::Application.routes.draw do
 
+
+    scope '/admin' do
+      resources :settings
+    end
+
   resources :projects do
     get 'issue/:issue_id', controller: "issues", action: "show", as: "issue"
   end
+
 
   devise_for :users
 

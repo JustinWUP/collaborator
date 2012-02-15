@@ -1,9 +1,7 @@
 class ProjectsController < ApplicationController
   
-
-  before_filter except: [:index, :new, :create] { |c| 
-      find_project
-  }
+  before_filter :find_project, except: [:index, :new, :create] 
+  before_filter :refresh_labels, only: :edit
 
   load_and_authorize_resource :through => :current_user
 
@@ -69,11 +67,18 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     
-
     respond_to do |format|
       # If all set to zero..
       params[:project][:user_ids] ||= []
-      if @project.update_attributes(params[:project])
+      params[:enable_label] ||= []
+
+      all_labels = @project.labels.find(:all)
+
+      for label in all_labels
+        label.update_attribute(:enabled, !!params[:enable_label].include?(label.id.to_s))
+      end
+
+      if @project.update_attributes(params[:project]) 
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
@@ -100,10 +105,37 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    id = params[:id]
+    id = params[:id] || params[:project_id]
     @project = Project.find(id)
+    authorize! :read, @project
+    
+    enabled_labels = @project.labels.find_all_by_enabled(true) || []
 
-    @issues = Octokit.issues(@project.repo)
+    label_list = enabled_labels.reduce("") { |string, ele| 
+      string << ele.name + ", "
+    }
+
+    logger.debug(label_list)
+
+    if label_list.empty?
+      @issues = []
+    else
+      @issues = @octokit.issues('quicksnap/githubbug', {:labels => "one, two"} )
+    end
+
+    logger.debug @issues
+  end
+
+  def refresh_labels
+    external_labels = @octokit.labels(@project.repo)
+
+    external_labels.each do |label|
+      unless @project.labels.find_by_name(label.name) 
+        @label = @project.labels.build ({name: label.name, color: label.color})
+        @label.save
+      end
+    end
+
   end
 
 end

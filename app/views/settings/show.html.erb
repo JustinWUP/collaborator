@@ -1,0 +1,23 @@
+
+<p>
+  <b>Name:</b>
+  <%= @setting.name %>
+</p>
+<p>
+  <b>Key:</b>
+  <%= @setting.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @setting.value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @setting.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>
