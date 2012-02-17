@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-## Settings need to be updated 
+## Settings need to be updated. Navigate to /admin/settings to change.
 Setting.new(key: 'robot_login', value: 'login_name', 
 	description: 'GitHub login name for authenticated requests')
 Setting.new(key: 'robot_password', value: 'SUPER_SECRET_PASSWORD', 

@@ -6,7 +6,7 @@ A rails project that filters GitHub's Issues via v3 API (through Octokit). Featu
 * Assigning project visibility to users
 * Some other stuff.
 
-##Setting up 
+## Setting up 
 
 
 To set up, do the following:
