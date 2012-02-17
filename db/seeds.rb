@@ -10,3 +10,22 @@
 
 # first_user.roles.create(name: "Admin")
 
+
+admin = User.new(email: 'admin@admin.com', password: 'password')
+admin.save
+admin.roles = [Role.new(name: 'admin')]
+
+(1..10).each do |x|
+	User.new(email: "user#{x}@example.com", password: 'password').save
+end
+
+repos = ['rails/rails', 'bartaz/impress.js', 'quicksnap/githubbug', 'twitter/bootstrap']
+
+(1..30).each do |x|
+	Project.new(name: "Test Project #{x}", repo: repos[x%4], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris \n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris" ).save
+end
+
