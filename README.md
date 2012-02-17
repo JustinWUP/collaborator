@@ -5,5 +5,5 @@ To set up, do the following:
 
 * `bundle`
 * `rake db:setup` - This will seed the environment per db/seeds.rb
-* rails s
+* `rails s`
 * Tada!
