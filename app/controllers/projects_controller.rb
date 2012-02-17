@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
   end
 
   def refresh_labels
-    external_labels = @octokit.labels(@project.repo)
+    external_labels = @project.get_labels
 
     external_labels.each do |label|
       unless @project.labels.find_by_name(label.name) 

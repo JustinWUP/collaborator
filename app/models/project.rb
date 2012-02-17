@@ -48,6 +48,10 @@ class Project < ActiveRecord::Base
 	def get_comments(issue)
 		@octokit.issue_comments(repo, issue.number)
 	end
+
+	def get_labels
+		@octokit.labels(repo)
+	end
 	
 	def update_labels(updated_labels)
       all_labels = labels.find(:all)
