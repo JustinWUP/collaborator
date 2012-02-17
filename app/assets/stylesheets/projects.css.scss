@@ -1,3 +1,19 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.project {
+	border-bottom: 2px dashed #353535;
+	width: 400px;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+}
+
+.project-admin {
+	background: #ffdbc6;
+	padding: 2px; margin: 5px;
+	border: 2px dotted #fff;
+	font-weight: bold;
+}

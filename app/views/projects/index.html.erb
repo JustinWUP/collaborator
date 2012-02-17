@@ -1,29 +1,20 @@
-<h1>Listing projects</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Repo</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div id="projects" class="">
+	<% @projects.each do |project| %>
+		<div id="project<%= project.id %>" class="project">
+		    <div><%= link_to project.name, project %></div>
+		    <% if can? :manage, project %>
+				<div class="project-admin">	    
+					<div>Admin zone:</div> 
+					<span>Repository:<%= project.repo %></span>
+				    <div>
+					    <span><%= link_to 'Edit', edit_project_path(project) %></span>
+					    <span><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
+    				</div>
+				</div>
+			<% end %>
 
-<% @projects.each do |project| %>
-
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.repo %></td>
-    <td><%= project.description %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-  
-<% end %>
-</table>
-
-<br />
-
+		</div>
+	<% end %>
+</div><!-- /projects -->
 <%= link_to 'New Project', new_project_path %>
