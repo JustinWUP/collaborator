@@ -13,6 +13,8 @@ gem 'octokit'
 
 gem 'cancan'
 
+gem 'rails_autolink'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +29,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do
+	gem 'ruby-debug19', :require => 'ruby-debug'
+end
 
 group :development, :test do
   gem 'rspec-rails'

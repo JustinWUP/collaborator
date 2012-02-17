@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
       @projects = Project.all
     end
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -24,7 +23,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -66,17 +64,13 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    
     respond_to do |format|
       # If all set to zero..
       params[:project][:user_ids] ||= []
       params[:enable_label] ||= []
 
-      all_labels = @project.labels.find(:all)
-
-      for label in all_labels
-        label.update_attribute(:enabled, !!params[:enable_label].include?(label.id.to_s))
-      end
+      # no validation check needed. Boolean.
+      @project.update_labels(params[:enable_label])
 
       if @project.update_attributes(params[:project]) 
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -100,30 +94,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-
-
   private
 
   def find_project
     id = params[:id] || params[:project_id]
     @project = Project.find(id)
     authorize! :read, @project
-    
-    enabled_labels = @project.labels.find_all_by_enabled(true) || []
-
-    label_list = enabled_labels.reduce("") { |string, ele| 
-      string << ele.name + ", "
-    }
-
-    logger.debug(label_list)
-
-    if label_list.empty?
-      @issues = []
-    else
-      @issues = @octokit.issues('quicksnap/githubbug', {:labels => "one, two"} )
-    end
-
-    logger.debug @issues
   end
 
   def refresh_labels

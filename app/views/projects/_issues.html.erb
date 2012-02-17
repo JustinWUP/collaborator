@@ -1,8 +1,9 @@
 <b>Issue list: </b>
 <ul>
-	<% @issues.each do |issue| %> 
+	<% @project.issues.each do |k,issue| %> 
 		<li>
-			<%= link_to issue.title, project_issue_path(@project.id, issue.number) %>
+			<%= link_to issue.title, project_issue_path(@project.id, issue.number) %> 
+			(Labels: <% issue.labels.each do |label| %> <%= label.name %> <% end %> )
 		</li>
 	<% end %>
 </ul>

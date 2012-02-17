@@ -6,7 +6,7 @@ Githubbug::Application.routes.draw do
     end
 
   resources :projects do
-    get 'issue/:issue_id', controller: "issues", action: "show", as: "issue"
+    get 'issues/:issue_id', controller: "issues", action: "show", as: "issue"
   end
 
 
