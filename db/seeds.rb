@@ -1,15 +1,11 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# first_user = User.find(1)
-
-# first_user.roles.create(name: "Admin")
-
+## Settings need to be updated 
+Setting.new(key: 'robot_login', value: 'login_name', 
+	description: 'GitHub login name for authenticated requests')
+Setting.new(key: 'robot_password', value: 'SUPER_SECRET_PASSWORD', 
+	description: 'Password for GitHub authenticated requests')
 
 admin = User.new(email: 'admin@admin.com', password: 'password')
 admin.save
