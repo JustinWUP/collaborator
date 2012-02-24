@@ -8,7 +8,9 @@
 		<div id="project<%= project.id %>" class="project shadow round stroke inset">
 		    
 		    <div><%= link_to project.name, project %>
-		    	<div class="project-updated">Last updated <%= distance_of_time_in_words_to_now( project.edit_date ) %> ago.</div>
+		    	<% if project.edit_date %>
+		    		<div class="project-updated">Last updated <%= distance_of_time_in_words_to_now( project.edit_date ) %> ago.</div>
+		    	<% end  %>
 		    </div>
 		    
 		    <% if can? :manage, project %>
