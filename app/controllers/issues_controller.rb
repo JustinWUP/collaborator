@@ -1,9 +1,10 @@
 class IssuesController <  ApplicationController
 	before_filter :find_project
+  before_filter :find_all_projects
 	before_filter :find_issue
 	before_filter :find_comments
 
-  load_and_authorize_resource :project, :through => :current_user
+  # load_and_authorize_resource :project, :through => :current_user
 
   def show
      
@@ -24,6 +25,10 @@ class IssuesController <  ApplicationController
     id = params[:project_id]
     @project = Project.find(id)
     authorize! :read, @project
+  end
+
+  def find_all_projects
+    @projects = Project.accessible_by(current_ability)
   end
 
 end

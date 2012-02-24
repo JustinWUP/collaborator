@@ -1,9 +1,13 @@
-<b>Issue list: </b>
-<ul>
-	<% @project.issues.each do |k,issue| %> 
-		<li>
-			<%= link_to issue.title, project_issue_path(@project.id, issue.number) %> 
-			(Labels: <% issue.labels.each do |label| %> <%= label.name %> <% end %> )
-		</li>
-	<% end %>
-</ul>
+<div id="project-issues" class="">
+	<span class="issues-heading">Project Items: </span>
+	<ul>
+		<% @project.issues.each do |k,issue| %> 
+			<li>
+				<%= link_to issue.title, project_issue_path(@project.id, issue.number) %> 
+				<ul class="issue-list">
+					<% issue.labels.each do |label| %> <li style="background-color: <%= "#" + label.color %>" ><%= label.name %> </li><% end %>
+				</ul>
+			</li>
+		<% end %>
+	</ul>
+</div><!-- /project-issues -->

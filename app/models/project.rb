@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
 	      label_list << label.name
 	    end
 
-	    # debugger
+	
 	    if label_list.empty?
 	      issues = []
 	    else
@@ -49,8 +49,28 @@ class Project < ActiveRecord::Base
 		@octokit.issue_comments(repo, issue.number)
 	end
 
+	def update_edit_date
+		# date_updated_on is a poor form of 
+		# caching that uses the DB
+		self.date_updated_on ||= Time.new(0)
+
+		# Change the time to avoid swamping github
+		if date_updated_on <= 10.minutes.ago
+			self.edit_date = Time.parse(@octokit.repo(repo).pushed_at) 
+			self.date_updated_on = Time.now
+
+		end
+		self.save!
+	end
+
 	def get_labels
-		@octokit.labels(repo)
+		begin
+			labels = @octokit.labels(repo)
+		rescue Octokit::Error => e 
+			logger.error "Error!! #{e.message}"
+			labels = []
+		end
+		return labels
 	end
 	
 	def update_labels(updated_labels)
@@ -60,4 +80,8 @@ class Project < ActiveRecord::Base
         label.update_attribute(:enabled, !!updated_labels.include?(label.id.to_s))
       end
 	end
+
+	private 
+
+
 end

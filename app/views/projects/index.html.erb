@@ -1,20 +1,31 @@
 
+<% content_for :admin_links do %>
+	<%= link_to 'New Project', new_project_path %>
+<% end %>
+
 <div id="projects" class="">
 	<% @projects.each do |project| %>
-		<div id="project<%= project.id %>" class="project">
-		    <div><%= link_to project.name, project %></div>
+		<div id="project<%= project.id %>" class="project shadow round stroke inset">
+		    
+		    <div><%= link_to project.name, project %>
+		    	<div class="project-updated">Last updated <%= distance_of_time_in_words_to_now( project.edit_date ) %> ago.</div>
+		    </div>
+		    
 		    <% if can? :manage, project %>
 				<div class="project-admin">	    
+					
 					<div>Admin zone:</div> 
+					
 					<span>Repository:<%= project.repo %></span>
+				    
 				    <div>
 					    <span><%= link_to 'Edit', edit_project_path(project) %></span>
 					    <span><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
     				</div>
+
 				</div>
 			<% end %>
 
 		</div>
 	<% end %>
 </div><!-- /projects -->
-<%= link_to 'New Project', new_project_path %>

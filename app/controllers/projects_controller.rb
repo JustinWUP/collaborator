@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
   
   before_filter :find_project, except: [:index, :new, :create] 
   before_filter :refresh_labels, only: :edit
+  after_filter :delay_update_edit_date, only: :index
+  
 
   load_and_authorize_resource :through => :current_user
 
@@ -91,6 +93,8 @@ class ProjectsController < ApplicationController
     # end
   end
 
+  
+
   private
 
   def find_project
@@ -100,6 +104,7 @@ class ProjectsController < ApplicationController
   end
 
   def refresh_labels
+
     external_labels = @project.get_labels
 
     external_labels.each do |label|
@@ -109,6 +114,10 @@ class ProjectsController < ApplicationController
       end
     end
 
+  end
+
+  def delay_update_edit_date
+    @projects.each { |project| project.delay.update_edit_date }
   end
 
 end

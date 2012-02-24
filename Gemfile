@@ -5,7 +5,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+# gem 'pg'
 gem 'sqlite3'
 
 gem 'devise'
@@ -15,7 +15,10 @@ gem 'octokit'
 gem 'cancan'
 
 gem 'rails_autolink'
-
+# gem "delayed_job", '3.0.1',  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'bluecloth'
 
 # Gems used only for assets and not required
 # in production environments by default.

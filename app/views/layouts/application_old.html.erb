@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<% content_for(:nav_links) do  %>
+	<% unless current_page?(controller: 'projects', action: 'index') %>
+		<%= link_to "Back Home", projects_path %>
+	<% end %>
+<% end  %>
+
+<head>
+  <title>Githubbug</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	
+	<div id="header" class="">
+		<h1> <%= link_to "Wind Up Pixel", root_path %></h1>
+		<h2>Project Hub</h2>
+	</div><!-- /header -->
+
+	<% unless current_page?(action: 'new', controller: 'sessions') %>
+		<div id="user-nav" class="round shadow inset stroke">
+			<% if user_signed_in? %>
+				<%= current_user.email %>. <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%# Really, this should never appear since we've locked down the app %>
+				<%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+			<% end %>
+		</div><!-- /user-nav -->
+
+		<% if content_for?( :admin_links ) && can?( :manage, :all )  %>
+			<div id="admin-links" class="">
+				<span id="admin-links-stub">Admin Links:</span> <%= yield :admin_links %>	
+			</div><!-- /admin-links -->
+		<% end %>
+
+	<% end %>
+	
+	<div id="flash" class="">
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+	</div><!-- /flash -->
+	
+	<div id="top-nav" class="back-home round stroke inset shadow">
+		<%= page_title %>
+	</div><!-- /top-nav -->
+
+
+
+	<%= yield %>
+	<% if content_for? :nav_links  %>
+		<div id="bottom-nav" class="back-home round stroke inset shadow">
+			<%= yield :nav_links %>
+		</div><!-- /bottom-nav -->
+	<% end %>
+
+</body>
+</html>

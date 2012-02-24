@@ -1,29 +1,107 @@
 <!DOCTYPE html>
+
+<% 
+	unless current_page?(controller: 'projects', action: 'index') 
+		add_nav_link( link_to "Home", projects_path ) 
+	end 	
+%>
+
 <html>
 <head>
-  <title>Githubbug</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wind Up Pixel - Project Hub</title>
+  <%= stylesheet_link_tag "application" %>
+  <%# stylesheet_link_tag "screen", :media => "screen" %>
+  <%# stylesheet_link_tag "mobile", :media => "only screen and (max-device-width: 550px)" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="favicon.gif">
+  	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
 </head>
-
 <body>
-	<% unless current_page?(action: 'new', controller: 'sessions') %>
-		<div id="user-nav" class="">
-			<% if user_signed_in? %>
-				Signed in as: <%= current_user.email %>. <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<div id="wrap" class="wrap">
+	<header id="header" class="">
+		<div id="top-box" class="top-box">
+			
+		</div><!-- /top-box -->
+
+		<div id="wup-name" class="wup-name">
+		<div id="logo">
+<%= link_to image_tag("logo.png", :size => "121x103"), root_path %>
+
+	</div>
+		<%= link_to "WIND UP PIXEL", root_path %>
+		</div><!-- /wup-name -->	
+
+		<nav>	
+				<div class="web-strategy">
+			<%= link_to "PROJECT HUB", root_path %>
+		</div>
+			<div id="nav-wrap" class="nav-wrap">
+
+				<%= nav_links_menu %>
+			</div><!-- /nav-wrap -->
+			
+		</nav>
+
+		
+	</header><!-- /header -->
+
+		<section id="main" class="">
+
+			<div id="content">
+			<aside id="page-image">
+			<% if content_for? :page_image %>
+				<%= yield :page_image %>
 			<% else %>
-				<%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+				<%# image_tag 'wup-bot.png' %>
 			<% end %>
-		</div><!-- /user-nav -->
-	<% end %>
-	<div id="flash" class="">
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-	</div><!-- /flash -->
+			</aside>
+				<div id="content-wrap">
+					<% unless current_page?(action: 'new', controller: 'sessions') %>
+						<div id="user-nav" class="round shadow inset stroke">
+							<% if user_signed_in? %>
+								<%= current_user.email %>. <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+							<% else %>
+								<%# Really, this should never appear since we've locked down the app %>
+								<% link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+							<% end %>
+						</div><!-- /user-nav -->
 
+						<% if content_for?( :admin_links ) && can?( :manage, :all )  %>
+							<div id="admin-links" class="">
+								<span id="admin-links-stub">Admin Links:</span> <%= yield :admin_links %>	
+							</div><!-- /admin-links -->
+						<% end %>
 
-<%= yield %>
-
+					<% end %>
+					<div id="flash-box" class="flash-box">
+						<% flash.each do |key, value| %>
+							<div id='<%= key %>' class="flash">
+								<%= value %>
+							</div><!-- /<%= key %> -->
+						<% end %>
+					</div><!-- /flash-box -->
+					
+					<% if content_for?( :page_title ) %>
+						<h1><%= yield :page_title %></h1>
+					<% end  %>
+					
+					<%= yield %>
+				</div>
+			</div>
+			
+	</section><!-- /main -->
+	<div style="clear:both"></div>
+	<footer>
+		<div >
+			<span class="first">WIND UP PIXEL &#169; 2012</span><span class="middle">PH: <a href="tel:+1-312.554.5095">312.554.5095</a></span><span class="last">E: <a href="mailto:info@winduppixel.com">CONTACT@WINDUPPIXEL.COM</a></span>
+		</div>
+	</footer>
+</div><!-- /wrap -->
+<%= image_tag "beta.png", :class => "beta" %>
 </body>
 </html>
