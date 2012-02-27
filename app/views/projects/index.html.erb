@@ -30,4 +30,9 @@
 
 		</div>
 	<% end %>
+
+	<% if @projects.count < 1 %>
+		You currently have no projects. Please contact Wind Up Pixel to enable project visibility.
+	<% end %>
+	
 </div><!-- /projects -->
