@@ -3,16 +3,20 @@
 
 ## Settings need to be updated. Navigate to /admin/settings to change.
 Setting.new(key: 'robot_login', value: 'login_name', 
-	description: 'GitHub login name for authenticated requests')
+	description: 'GitHub login name for authenticated requests').save
 Setting.new(key: 'robot_password', value: 'SUPER_SECRET_PASSWORD', 
-	description: 'Password for GitHub authenticated requests')
+	description: 'Password for GitHub authenticated requests').save
 
-admin = User.new(email: 'admin@admin.com', password: 'password')
+Organization.new(name: "Real Decoy", org_id: 872872872 ).save
+
+admin = User.new(email: 'admin@admin.com', password: 'password', registration_org_id: 872872872 )
 admin.save
 admin.roles = [Role.new(name: 'admin')]
+admin.save
+
 
 (1..10).each do |x|
-	User.new(email: "user#{x}@example.com", password: 'password').save
+	User.new(email: "user#{x}@example.com", password: 'password', registration_org_id: 872872872 ).save
 end
 
 repos = ['rails/rails', 'bartaz/impress.js', 'quicksnap/githubbug', 'twitter/bootstrap']

@@ -1,8 +1,11 @@
 Githubbug::Application.routes.draw do
 
 
+  
+
     scope '/admin' do
       resources :settings
+      resources :organizations
     end
 
   resources :projects do
@@ -10,7 +13,7 @@ Githubbug::Application.routes.draw do
   end
 
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   root to: redirect('/projects')
   
