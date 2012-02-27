@@ -37,7 +37,7 @@ class Project < ActiveRecord::Base
 	      end
 	      issues_hash[issue.number] = issue
 	    end
-
+	    
 	    self.issues = issues_hash
 	end
 
