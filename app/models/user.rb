@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
       #this is associating the two records. There are similar fields "org_id" and "id" for Organization model.
       self.organization_id = organization.id
     else
-      errors.add(:registration_org_id, "Invalid Organization ID")
+      errors.add(:registration_org_id, "is invalid")
     end
   end
  

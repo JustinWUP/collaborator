@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        registration_org_id: "Organization ID"
