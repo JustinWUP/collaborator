@@ -357,3 +357,17 @@ code {
   width: 50px;
   height: 50px;
 }
+
+#error_explanation h2 {
+padding: 4px 0 2px 0;
+}
+
+#error_explanation ul {
+color: red;
+padding-bottom: 15px;
+}
+
+.field_with_errors {
+color: red;
+display: inline;
+}
