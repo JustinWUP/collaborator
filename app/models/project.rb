@@ -14,11 +14,11 @@ class Project < ActiveRecord::Base
 	# after_find :populate_issues
 
 	def populate_issues
-		self.issues = Issue.all(self)
+		self.issues = Issue.find_by_project(self)
 	end
 
 	def find_issue(id)
-		raise "Method deprecated!"
+		raise "Method disabled!"
 		self.issues[id.to_i]
 	end
 
@@ -43,12 +43,7 @@ class Project < ActiveRecord::Base
 
 	def get_labels
 		raise "Method disabled!"
-		begin
-			labels = octokit.labels(repo)
-		rescue Octokit::Error => e 
-			logger.error "Error!! #{e.message}"
-			labels = []
-		end
+
 		return labels
 	end
 	
