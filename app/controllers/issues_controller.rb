@@ -18,7 +18,7 @@ class IssuesController <  ApplicationController
   end
 
   def find_comments
-  	@comments = [] # You may.. want.. to .. change.. this
+  	@comments = Comment.find_by_issue(@issue)
   end
 
    def find_project
