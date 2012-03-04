@@ -14,16 +14,13 @@ class Github::Issue < ActiveResource::Base
 
 		apply_issues_methods(issues)
 
-		issues.each do |issue|
-			issue.project = project # round and round the circle goes..
-		end
+		# issues.filter_by_project(project)
 
 		return issues
 	end
 
 	###############
 	private 
-	##############
 
 	# This applies methods to Issue collection returned from retrieval
 	def self.apply_issues_methods(issues)
@@ -31,6 +28,43 @@ class Github::Issue < ActiveResource::Base
 			def find(id)
 				id = Integer(id) # We want an error if bad value
 				found = self.detect {|issue| issue.number == id}
+			end
+
+			def filter_by_project(project)
+				enabled_labels = project.labels.find_all_by_enabled(true) || []
+
+		   		label_list = []
+			    
+			    for label in enabled_labels
+			      label_list << label.name
+			    end
+
+			
+			    if label_list.empty?
+			      issues = []
+			    else
+			      issues = @octokit.issues(repo, {:labels => label_list.join(",")} )
+			    end
+
+			    issues_hash = {}
+			    
+			    issues.each do |issue| 
+			      
+			      issue.labels.each do |label|
+			        if not label_list.include?(label.name)
+			          issue.labels.delete(label) 
+			        end
+			      end
+			      
+			      issues_hash[issue.number] = issue
+			    end
+			    
+			 #    self.issues = issues_hash
+
+				issues.each do |issue|
+
+					issue.project = project # round and round the circle goes..
+				end
 			end
 		end
 

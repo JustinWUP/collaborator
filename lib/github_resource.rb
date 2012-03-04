@@ -34,19 +34,4 @@ module GithubResource
 		"#{prefix(prefix_options)}#{collection_name}#{query_string(query_options)}"
 	end
 
-	####
-	# Github has a field on resources called 'user' which conflicts with 
-	# ActiveResource's split_options. This works around that problem.
-	##########################
-	# def split_options(options = {})
-		
-	#   prefix_options, query_options = {}, {}
-
-	#   (options || {}).each do |key, value|
-	#     next if key.blank? || !key.respond_to?(:to_sym)
-	#     (prefix_parameters.include?(key.to_sym) ? prefix_options : query_options)[key.to_sym] = value
-	#   end
-
-	#   [ prefix_options, query_options ]
-	# end
 end

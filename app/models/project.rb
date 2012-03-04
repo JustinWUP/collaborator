@@ -3,8 +3,6 @@ class Project < ActiveRecord::Base
 
 	# Issues model is ActiveResource. Virtual attriburte 
 	# simulates nested resource
-	attr_accessor :issues
-	after_find :populate_issues
 
 	has_many :assignments
 	has_many :users, :through => :assignments
@@ -13,8 +11,8 @@ class Project < ActiveRecord::Base
 	# after_find :auth_octokit
 	# after_find :populate_issues
 
-	def populate_issues
-		self.issues = Issue.find_by_project(self)
+	def issues
+		Issue.find_by_project(self)
 	end
 
 	def find_issue(id)
@@ -41,29 +39,34 @@ class Project < ActiveRecord::Base
 		self.save!
 	end
 
-	def get_labels
-		raise "Method disabled!"
+	# def get_labels
+	# 	raise "Method disabled!"
 
-		return labels
-	end
-	
-	def update_labels(updated_labels)
-      all_labels = labels.find(:all)
+	# 	return labels
+	# end
 
-      for label in all_labels
-        label.update_attribute(:enabled, !!updated_labels.include?(label.id.to_s))
-      end
-	end
 
 	def refresh_labels
-		external_labels = get_labels
+		external_labels = Github::Label.find_by_project(self)
 
    		external_labels.each do |label|
-			unless labels.find_by_name(label.name) 
+			if found = labels.find_by_name(label.name) 
+				found.update_attributes({name: label.name, color: label.color})
+			else
 				labels.build({name: label.name, color: label.color}).save
 			end
 	    end
 
 	    return labels
+	end
+
+	def update_labels(updated_labels)
+		all_labels = labels.find(:all)
+
+		for label in all_labels
+			label.update_attribute(:enabled, !!updated_labels.include?(label.id.to_s))
+		end
+
+		all_labels
 	end
 end
