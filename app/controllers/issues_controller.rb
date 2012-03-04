@@ -13,12 +13,12 @@ class IssuesController <  ApplicationController
   private 
 
   def find_issue
-  	@issue = @project.find_issue(params[:issue_id])	
+  	@issue = @project.issues.find(params[:issue_id])	
     if not @issue then redirect_to @project, alert: "Issue not found" end
   end
 
   def find_comments
-  	@comments = @project.get_comments(@issue)
+  	@comments = Github::Comment.find_by_issue(@issue)
   end
 
    def find_project

@@ -98,22 +98,13 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    id = params[:id] || params[:project_id]
+    id = params[:id]
     @project = Project.find(id)
     authorize! :read, @project
   end
 
   def refresh_labels
-
-    external_labels = @project.get_labels
-
-    external_labels.each do |label|
-      unless @project.labels.find_by_name(label.name) 
-        @label = @project.labels.build ({name: label.name, color: label.color})
-        @label.save
-      end
-    end
-
+    @labels = @project.refresh_labels
   end
 
   def delay_update_edit_date

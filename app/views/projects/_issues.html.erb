@@ -1,7 +1,7 @@
 <div id="project-issues" class="">
 	<span class="issues-heading">Project Items: </span>
 	<ul>
-		<% @project.issues.each do |k,issue| %> 
+		<% @project.issues.each do |issue| %> 
 			<li>
 				<%= link_to issue.title, project_issue_path(@project.id, issue.number) %> 
 				<ul class="issue-list">
