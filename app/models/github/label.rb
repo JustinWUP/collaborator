@@ -1,5 +1,4 @@
-class Github::Label < ActiveResource::Base
-	extend GithubResource
+class Github::Label <  Github::AbstractResource
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo'
 

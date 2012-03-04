@@ -18,7 +18,7 @@ class IssuesController <  ApplicationController
   end
 
   def find_comments
-  	@comments = Comment.find_by_issue(@issue)
+  	@comments = Github::Comment.find_by_issue(@issue)
   end
 
    def find_project

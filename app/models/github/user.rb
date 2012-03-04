@@ -1,5 +1,4 @@
-class Github::User < ActiveResource::Base
-	extend GithubResource
+class Github::User < Github::AbstractResource
 	
 	self.site = "https://api.github.com/users"
 end

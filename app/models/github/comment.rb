@@ -1,5 +1,5 @@
-class Github::Comment < ActiveResource::Base
-	extend GithubResource
+class Github::Comment < Github::AbstractResource
+	
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo/issues'
 
@@ -9,6 +9,4 @@ class Github::Comment < ActiveResource::Base
 		id = issue.number
 	 	find(:all, from: "/repos/#{user}/#{repo}/issues/#{id}/comments")
 	end
-
-
 end

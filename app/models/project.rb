@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 	# after_find :populate_issues
 
 	def issues
-		Issue.find_by_project(self)
+		Github::Issue.find_by_project(self)
 	end
 
 	def find_issue(id)

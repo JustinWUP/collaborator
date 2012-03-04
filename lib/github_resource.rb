@@ -34,4 +34,5 @@ module GithubResource
 		"#{prefix(prefix_options)}#{collection_name}#{query_string(query_options)}"
 	end
 
+
 end
