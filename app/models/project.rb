@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
 	has_many :labels
 
 	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 }
-	
+
 	# after_find :auth_octokit
 	# after_find :populate_issues
 
@@ -20,6 +20,10 @@ class Project < ActiveRecord::Base
 	def find_issue(id)
 		raise "Method disabled!"
 		self.issues[id.to_i]
+	end
+
+	def retainer_hours
+		read_attribute(:retainer_hours) || 0
 	end
 
 	def get_comments
