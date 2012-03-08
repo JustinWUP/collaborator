@@ -27,7 +27,7 @@ class IssuesController <  ApplicationController
     @issue.body = params[:github_issue][:body]
     @issue.save
 
-    respond_with(@issue, location: project_issue_path(@project, @isssue))
+    respond_with(@issue, location: project_issue_path(@project, @isssue.number))
   end
 
   private 

@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
 	has_many :users, :through => :assignments
 	has_many :labels
 
+	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 }
+	
 	# after_find :auth_octokit
 	# after_find :populate_issues
 
