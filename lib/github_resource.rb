@@ -1,6 +1,5 @@
 # extend, don't include, for class methods.
 module GithubResource 
-	format = :json
 
 	def user
 		if username = Setting.find_by_key('robot_login') 
@@ -18,7 +17,7 @@ module GithubResource
 	# GitHub's Issues API (v3) does not use format extensions for resources
 	# This overrides element/collection strings, removing extention. Also, 
 	# for retrieving all collections, GitHub uses GET /repos/:user/:repo/:collection 
-	# instead of GET /repos/:user/:repo/issues/all.json. 
+	# instead of GET /repos/:user/:repo/:collection/all.json. 
 	########################################################################
 	def element_path(id, prefix_options = {}, query_options = nil)
 		check_prefix_options(prefix_options)
@@ -34,5 +33,5 @@ module GithubResource
 		"#{prefix(prefix_options)}#{collection_name}#{query_string(query_options)}"
 	end
 
-
 end
+

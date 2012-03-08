@@ -35,20 +35,7 @@ GEM
     bluecloth (2.2.0)
     builder (3.0.0)
     cancan (1.6.7)
-    coffee-rails (3.2.2)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.2.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.2.0)
     columnize (0.3.6)
-    daemons (1.1.8)
-    delayed_job (3.0.1)
-      activesupport (~> 3.0)
-    delayed_job_active_record (0.3.2)
-      activerecord (> 2.1.0)
-      delayed_job (~> 3.0.0)
     devise (2.0.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -167,9 +154,6 @@ PLATFORMS
 DEPENDENCIES
   bluecloth
   cancan
-  coffee-rails (~> 3.2.1)
-  daemons
-  delayed_job_active_record
   devise
   jquery-rails
   octokit
