@@ -1,6 +1,7 @@
 class Github::Issue <  Github::AbstractResource
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo'
+	self.schema = {'title' => :string, 'body' => :string}
 
 	attr_accessor :project
 

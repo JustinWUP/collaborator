@@ -1,0 +1,13 @@
+<%= form_for @issue, url: project_issues_path(@project) do |f| %> 
+	<div id="" class="">
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div><!-- / -->
+	<div id="" class="">
+		<%= f.label :body %>
+		<%= f.text_area :body %>
+	</div><!-- / -->
+	<div id="" class="">
+		<%= f.submit %>
+	</div><!-- / -->
+<% end %> 
