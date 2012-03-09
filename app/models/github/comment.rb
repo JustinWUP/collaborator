@@ -2,6 +2,7 @@ class Github::Comment < Github::AbstractResource
 	
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo/issues'
+	self.schema = {'body' => :string }
 
 	def self.find_by_issue(issue)
 		# Get all comments by issue

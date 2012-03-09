@@ -8,6 +8,7 @@ class Ability
         can :manage, :all
       else
         can :read, Project, :users => {:id => user.id }
+        can :create, :comment 
         cannot :all, Setting
       end
 

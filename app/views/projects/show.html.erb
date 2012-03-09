@@ -1,12 +1,20 @@
 
 
-  <%= content_for(:page_title) do @project.name end %>
+<%= content_for(:page_title) do @project.name end %>
+
 <div id="" class="">
 	<%= link_to "Create a new issue", new_project_issue_path(@project) %>
 </div><!-- / -->
 <% if @project.retainer_hours > 0 %>
 	<div id="retainer-hours" class="">
-		Retainer hours remaining: <%= @project.retainer_hours %>
+
+		<% if @project.retainer_expiration > Time.now.to_date %>
+			Retainer hours remaining: <%= @project.retainer_hours %>
+			<br/>
+			Retainer expiration: <%= distance_of_time_in_words_to_now(@project.retainer_expiration) %>
+		<% else %>
+			Retainer expired <%= time_ago_in_words @project.retainer_expiration %> ago.
+		<% end %>
 	</div><!-- /retainer-hours -->
 <% end %>
 <div id="project-desc" class="inset stroke round">

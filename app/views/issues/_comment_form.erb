@@ -1,0 +1,12 @@
+<%= form_for @comment, :url => project_issue_comments_path(@project, @issue.number) do |f| %> 
+<div id="" class="">
+<h2>New Comment:</h2>
+	<div id="" class="">
+		<%= f.label :body %>
+		<%= f.text_area :body %>	
+	</div><!-- / -->	
+	<%= f.submit %>
+</div><!-- / -->
+
+	
+<% end %> 
