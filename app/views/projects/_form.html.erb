@@ -24,16 +24,10 @@
     <%= f.text_area :description %>
   </div>
   <div id="" class="field">
-    <% User.all.each do |user| %>
-      <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id), :id => user.email %>
-      <%= label_tag 'project[user_ids][]', user.email, :for => user.email %>
-    <% end %>
+        <%= select_tag "project[user_ids]", options_from_collection_for_select(User.all, 'id', 'email', Proc.new { |n| @project.user_ids.include?(n.id)} ), {multiple: true} %>
   </div><!-- / -->
   <div id="" class="">
-    <%  @project.labels.sort.each do |label| %>   
-      <%= check_box_tag "enable_label[]", label.id, label.enabled, :id => label.name %>
-      <%= label_tag 'enable_label[]', label.name, :for=> label.name %>
-    <% end %>
+    <%= select_tag "enable_label[]", options_from_collection_for_select(@project.labels, 'id', 'name', Proc.new { |n| n.enabled == true} ), {multiple: true} %>
   </div><!-- / -->
   <div id="" class="">
     <%= f.label :retainer_hours %>
