@@ -187,8 +187,8 @@ position: relative;
   }
 
 #splash {
-margin-left: 218px;
-margin-top: -227px;
+margin-left: 240px;
+margin-top: -271px;
 width: 300px;
 height: 173px;
 }
@@ -462,7 +462,7 @@ display: inline;
 
   }
 
-  #topic-submit, #comment-submit{
+  #topic-submit, #comment-submit, #sign-in, #sign-up{
 
     input[type="submit"]{
     color: black !important;
@@ -476,7 +476,7 @@ display: inline;
     text-shadow: none;
     font-size: 15px;
     box-shadow: 2px 2px 7px #666;
-    margin-bottom:20px;
+    margin:15px 0 20px 0;
     }
     input[type="submit"]:hover {
       text-decoration:underline;
