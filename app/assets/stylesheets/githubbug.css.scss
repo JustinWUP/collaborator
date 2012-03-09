@@ -182,7 +182,7 @@ position: relative;
   min-height: 400px;
 
   h1 {
-    font-size: 30px;
+    font-size: 25px;
     margin: 20px 0px;
   }
 
@@ -259,8 +259,8 @@ text-decoration: underline;
 .project {
   background: rgba(255, 255, 255, 0.6);
   margin: 10px 5px 10px 0px;
-  padding: 15px;
-  font-size: 25px;
+  padding: 10px;
+  font-size: 20px;
 
   .project-updated, .project-admin {
     font-size: 0.6em;
@@ -370,4 +370,35 @@ padding-bottom: 15px;
 .field_with_errors {
 color: red;
 display: inline;
+}
+
+#retainer-hours {
+  margin-left:20px;
+}
+
+#project-heading, .issues-heading, #retainer-heading{
+  font-weight:bold;
+}
+
+#retainer-heading, #retainer-hours {
+  margin-bottom:7px ;
+}
+
+#new-issue{
+  margin-top: 7px;
+  margin-left: 0px;
+  font-weight:bold;
+}
+
+#project-list-heading{
+  font-size:25px;
+  padding: 15px 0 15px 0;
+}
+
+.form-spacer{
+  margin-bottom:15px;
+  text-transform:capitalize;
+}
+#github_issue_title{
+  width:288px;
 }
