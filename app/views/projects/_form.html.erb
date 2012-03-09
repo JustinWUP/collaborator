@@ -24,12 +24,14 @@
     <%= f.text_area :description %>
   </div>
   <div id="" class="field">
+        Who has access to this project?<br />
         <%= select_tag "project[user_ids]", options_from_collection_for_select(User.all, 'id', 'email', Proc.new { |n| @project.user_ids.include?(n.id)} ), {multiple: true} %>
   </div><!-- / -->
-  <div id="" class="">
+  <div id="" class="label-form">
+    What labels can your customers view?<br />  
     <%= select_tag "enable_label[]", options_from_collection_for_select(@project.labels, 'id', 'name', Proc.new { |n| n.enabled == true} ), {multiple: true} %>
   </div><!-- / -->
-  <div id="" class="">
+  <div id="" class="retainer-form">
     <%= f.label :retainer_hours %>
     <%= f.text_field :retainer_hours %>
   </div><!-- / -->
