@@ -1,13 +1,15 @@
 <%= form_for @issue, url: project_issues_path(@project) do |f| %> 
-	<div id="" class="">
-		<%= f.label :title %>
+	<div id="" class="form-spacer">
+		<%= f.label :"Briefly Describe Your Topic:" %>
+		<br />
 		<%= f.text_field :title %>
 	</div><!-- / -->
-	<div id="" class="">
-		<%= f.label :body %>
+	<div id="" class="form-spacer">
+		<%= f.label :"Tell Us How You Discovered This:" %>
+		<br />
 		<%= f.text_area :body %>
 	</div><!-- / -->
 	<div id="" class="">
-		<%= f.submit %>
+		<%= f.submit :"Submit Topic" %>
 	</div><!-- / -->
 <% end %> 
