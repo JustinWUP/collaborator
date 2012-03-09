@@ -25,11 +25,11 @@
   </div>
   <div id="" class="field">
         Who has access to this project?<br />
-        <%= select_tag "project[user_ids]", options_from_collection_for_select(User.all, 'id', 'email', Proc.new { |n| @project.user_ids.include?(n.id)} ), {multiple: true} %>
+        <%= select_tag "project[user_ids]", options_from_collection_for_select(User.all, 'id', 'email', Proc.new { |user| @project.user_ids.include?(user.id)} ), {multiple: true} %>
   </div><!-- / -->
   <div id="" class="label-form">
     What labels can your customers view?<br />  
-    <%= select_tag "enable_label[]", options_from_collection_for_select(@project.labels, 'id', 'name', Proc.new { |n| n.enabled == true} ), {multiple: true} %>
+    <%= select_tag "enable_label[]", options_from_collection_for_select(@project.labels, 'id', 'name', Proc.new { |label| label.enabled == true} ), {multiple: true} %>
   </div><!-- / -->
   <div id="" class="retainer-form">
     <%= f.label :retainer_hours %>
