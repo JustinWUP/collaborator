@@ -24,18 +24,23 @@
     <%= f.text_area :description %>
   </div>
   <div id="" class="field">
+      Who has access to this project?<br />
     <% User.all.each do |user| %>
-      <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id), :id => user.email %>
-      <%= label_tag 'project[user_ids][]', user.email, :for => user.email %>
+      <div id="user-list"><%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id), :id => user.email %>
+      <%= label_tag 'project[user_ids][]', user.email, :for => user.email %> </div>
     <% end %>
+  
   </div><!-- / -->
-  <div id="" class="">
+  <div id="" class="label-form">
+    What labels can your customers view?<br />  
     <%  @project.labels.sort.each do |label| %>   
       <%= check_box_tag "enable_label[]", label.id, label.enabled, :id => label.name %>
       <%= label_tag 'enable_label[]', label.name, :for=> label.name %>
+    
     <% end %>
+
   </div><!-- / -->
-  <div id="" class="">
+  <div id="" class="retainer-form">
     <%= f.label :retainer_hours %>
     <%= f.text_field :retainer_hours %>
   </div><!-- / -->

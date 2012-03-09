@@ -399,6 +399,20 @@ display: inline;
   margin-bottom:15px;
   text-transform:capitalize;
 }
+
 #github_issue_title{
   width:288px;
+}
+
+#user-list{
+  display:inline-block; 
+  max-width:200px;
+}
+
+.label-form{
+  margin: 15px 0 15px 0;
+}
+
+.retainer-form{
+  margin: 0 0 10px 0;
 }
