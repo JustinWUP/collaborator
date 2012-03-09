@@ -5,8 +5,8 @@
 
 <div id="projects" class="">
 	<% @projects.each do |project| %>
+	<div id="project-list-heading">My Active Projects:</div>
 		<div id="project<%= project.id %>" class="project shadow round stroke inset">
-		    
 		    <div><%= link_to project.name, project %>
 	    	<!-- disabled temporarily
 		    	<% if project.edit_date %>

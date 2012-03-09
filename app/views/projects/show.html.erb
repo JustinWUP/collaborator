@@ -1,21 +1,29 @@
 
 
   <%= content_for(:page_title) do @project.name end %>
-<div id="" class="">
-	<%= link_to "Create a new issue", new_project_issue_path(@project) %>
-</div><!-- / -->
-<% if @project.retainer_hours > 0 %>
-	<div id="retainer-hours" class="">
-		Retainer hours remaining: <%= @project.retainer_hours %>
-	</div><!-- /retainer-hours -->
-<% end %>
+
+
+<div id="project-heading">My Project Goals:</div>
 <div id="project-desc" class="inset stroke round">
 	<%= auto_link(simple_format(@project.description))%>	
 </div><!-- /project-desc -->
   
+  <% if @project.retainer_hours > 0 %>
+	<div id="retainer-heading">
+        My One-on-One Support:<br /> 
+	</div>
+	<div id="retainer-hours" class="">
+		This Month's Support Time: <%= @project.retainer_hours %> Hours
+	</div><!-- /retainer-hours -->
+<% end %>
+
 <div id="issues-list">
 	<%= render "issues" %>
 </div> <!-- /issues-list -->
+
+<div id="new-issue" class="">
+	<%= link_to "Submit a new Topic.", new_project_issue_path(@project) %>
+</div><!-- / -->
 
 <% content_for :admin_links do %>
 	<%= link_to 'Edit', edit_project_path(@project) %>
