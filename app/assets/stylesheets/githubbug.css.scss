@@ -305,6 +305,7 @@ code {
   border: 1px solid #ccc;
   margin: 10px 0px;
 
+
   h2 {
     background: rgba(255,255,255,0.8);
     padding: 4px;
@@ -312,12 +313,12 @@ code {
     border-bottom: 2px solid #ccc;
     border-top: 2px solid #ccc;
     position: relative;
+    font-size:16px;
 
     .comment-date {
       position: absolute;
       right: 5px;
-      bottom: 0px;
-      font-size: 0.5em;
+      bottom: 5px;
       color: #555;
     }
     img {
@@ -462,7 +463,7 @@ display: inline;
 
   }
 
-  #topic-submit, #comment-submit, #sign-in, #sign-up{
+  #topic-submit, #comment-submit, #sign-in, #sign-up, #project-edit-submit{
 
     input[type="submit"]{
     color: black !important;
