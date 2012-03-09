@@ -13,20 +13,20 @@ class Project < ActiveRecord::Base
 	after_initialize :init
 
 	# after_find :auth_octokit
-	# after_find :populate_issues
+	# after_find :populate_topics
 
 	def init
 		self.retainer_hours ||= 0
 		self.retainer_expiration ||= Time.now
 	end
 
-	def issues
+	def topics
 		Github::Issue.find_by_project(self)
 	end
 
-	def find_issue(id)
+	def find_topic(id)
 		raise "Method disabled!"
-		self.issues[id.to_i]
+		self.topics[id.to_i]
 	end
 
 	def get_comments

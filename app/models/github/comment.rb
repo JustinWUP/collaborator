@@ -4,10 +4,10 @@ class Github::Comment < Github::AbstractResource
 
 	self.schema = {'body' => :string }
 
-	def self.find_by_issue(issue)
-		# Get all comments by issue
-		user, repo = issue.project.repo.split('/')
-		id = issue.number
+	def self.find_by_topic(topic)
+		# Get all comments by topic
+		user, repo = topic.project.repo.split('/')
+		id = topic.number
 		opts = {gh_user: user, gh_repo: repo, issue_id: id}
 	 	find(:all, params: opts)
 	end

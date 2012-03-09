@@ -2,7 +2,7 @@
 
 A rails project that consumes and filters GitHub's Issues via v3 API via ActiveResource. Features currently (or soon will) include:
 
-* Filter issues by labels per-project
+* Filter topics by labels per-project
 * Assigning project visibility to users
 * Some other stuff.
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe IssuesController do
+describe TopicsController do
 
 end

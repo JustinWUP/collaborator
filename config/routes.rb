@@ -5,8 +5,8 @@ Githubbug::Application.routes.draw do
     end
 
   resources :projects do
-    # get 'issues/:issue_id', controller: "issues", action: "show", as: "issue"
-    resources :issues do
+    # get 'topics/:topic_id', controller: "topics", action: "show", as: "topic"
+    resources :topics do
       resources :comments
     end
   end

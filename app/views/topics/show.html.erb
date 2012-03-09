@@ -2,14 +2,14 @@
 <% add_nav_link( link_to "#{@project.name}", project_path(@project) )%> 
 
   <%= content_for(:page_title) do @project.name end %>
-  <div id="issue" class="issue">
+  <div id="topic" class="topic">
 	<div> 
-		<h2><%= @issue.title %></h2>
+		<h2><%= @topic.title %></h2>
 	</div>
-	<div id="issue-desc" class="issue-desc">
-		<%= github_render_text @issue.body  %>
-	</div><!-- /issue-desc -->
-</div><!-- /issue -->
+	<div id="topic-desc" class="topic-desc">
+		<%= github_render_text @topic.body  %>
+	</div><!-- /topic-desc -->
+</div><!-- /topic -->
 <div id="comments" class="comments">
 	<% @comments.each do |comment| %>
 		<h2> <%= image_tag(comment.user.avatar_url) %> <%= comment.user.login %> commented: <span class="comment-date"> <%= Time.parse(comment.created_at).strftime("at %m/%d/%Y %I:%M%p") %> </span></h2>
@@ -21,7 +21,7 @@
 </div><!-- /comments -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'View Issue on Github', 'http://www.github.com/' + @project.repo + '/issues/' + @issue.number.to_s , :target => "_blank" %>
+	<%= link_to 'View Issue on Github', 'http://www.github.com/' + @project.repo + '/issues/' + @topic.number.to_s , :target => "_blank" %>
 
 	<% end %>
 

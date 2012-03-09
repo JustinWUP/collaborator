@@ -21,13 +21,13 @@
 	<%# This is where retainer expired could go, if we had a flag for that.. %>
 <% end %>
 
-<div id="issues-list">
-	<%= render "issues" %>
-</div> <!-- /issues-list -->
+<div id="topics-list">
+	<%= render "topics" %>
+</div> <!-- /topics-list -->
 
-<div id="new-issue" class="">
+<div id="new-topic" class="">
 	<h3>Next Steps:</h3> <br>
-	<%= link_to "Submit a new Topic.", new_project_issue_path(@project) %><br><br>
+	<%= link_to "Submit a new Topic.", new_project_topic_path(@project) %><br><br>
 	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank" %><br><br>
 	<h4>or</h4>
 	<h4>Click on a Topic to the left.</h4>

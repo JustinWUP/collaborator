@@ -279,7 +279,7 @@ text-decoration: underline;
   padding-left:  65px;
 }
 
-ul.issue-list {
+ul.topic-list {
   display: inline;
   
   li {
@@ -291,7 +291,7 @@ ul.issue-list {
   }
 }
 
-#project-desc, #issue-desc { 
+#project-desc, #topic-desc { 
   padding-left: 20px;
 }
 
@@ -331,7 +331,7 @@ code {
   }
 }
 
-#issue { 
+#topic { 
   border-left: 5px solid #CCC;
   padding-left: 5px;
 
@@ -377,7 +377,7 @@ display: inline;
   margin-left:20px;
 }
 
-#project-heading, .issues-heading, #retainer-heading{
+#project-heading, .topics-heading, #retainer-heading{
   font-weight:bold;
   font-size:15px;
 }
@@ -386,7 +386,7 @@ display: inline;
   margin-bottom:7px ;
 }
 
-#new-issue{
+#new-topic{
   border: 1px dashed #ccc;
   display: block;
   position: absolute;
@@ -427,7 +427,7 @@ display: inline;
   text-transform:capitalize;
 }
 
-#github_issue_title{
+#github_topic_title{
   width:288px;
 }
 
