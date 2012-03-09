@@ -34,5 +34,7 @@
 </div><!-- / -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit', edit_project_path(@project) %>
+	<%= link_to 'Edit Project Info', edit_project_path(@project) %> | 
+	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank" %>
+	
 <% end %>

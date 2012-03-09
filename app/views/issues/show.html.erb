@@ -20,5 +20,10 @@
 
 </div><!-- /comments -->
 
+<% content_for :admin_links do %>
+	<%= link_to 'View Issue on Github', 'http://www.github.com/' + @project.repo + '/issues/' + @issue.number.to_s , :target => "_blank" %>
+
+	<% end %>
+
 
  
