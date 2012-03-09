@@ -44,6 +44,10 @@
     <%= f.label :retainer_hours %>
     <%= f.text_field :retainer_hours %>
   </div><!-- / -->
+  <div id="" class="">
+    <%= f.label :retainer_expiration %>
+    <%= date_select :project, :retainer_expiration %>
+  </div><!-- / -->
   <div class="actions">
     <%= f.submit %>
   </div>

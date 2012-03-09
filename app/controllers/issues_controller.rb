@@ -6,15 +6,14 @@ class IssuesController <  ApplicationController
 	before_filter :find_issue, except: [:new, :create]
 	before_filter :find_comments, except: [:new, :create]
 
-  # load_and_authorize_resource :project, :through => :current_user
+  load_and_authorize_resource :project, :through => :current_user
 
   def show
-     
+     @comment = Github::Comment.new
   end
 
   def new
     @issue = Github::Issue.new
-
   end
 
   def create
@@ -25,15 +24,16 @@ class IssuesController <  ApplicationController
 
     @issue.title = params[:github_issue][:title]
     @issue.body = params[:github_issue][:body]
+    
     @issue.save
 
-    respond_with(@issue, location: project_issue_path(@project, @isssue.number))
+    respond_with(@issue, location: project_path(@project))
   end
 
   private 
 
   def find_issue
-  	@issue = @project.issues.find(params[:issue_id])	
+  	@issue = @project.issues.find(params[:id])	
     if not @issue then redirect_to @project, alert: "Issue not found" end
   end
 

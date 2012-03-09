@@ -1,9 +1,9 @@
+<%= content_for(:page_title) do @project.name end %>
 
+<div id="project-heading">
+	My Project Goals:
+</div>
 
-  <%= content_for(:page_title) do @project.name end %>
-
-
-<div id="project-heading">My Project Goals:</div>
 <div id="project-desc" class="inset stroke round">
 	<%= auto_link(simple_format(@project.description))%>	
 </div><!-- /project-desc -->

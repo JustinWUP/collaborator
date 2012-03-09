@@ -6,6 +6,7 @@ Setting.new(key: 'robot_login', value: 'login_name',
 	description: 'GitHub login name for authenticated requests').save
 Setting.new(key: 'robot_password', value: 'SUPER_SECRET_PASSWORD', 
 	description: 'Password for GitHub authenticated requests').save
+Setting.new(key: "auto_tag", value: "Client-Created")
 
 Organization.new(name: "Real Decoy", org_id: 872872872 ).save
 
