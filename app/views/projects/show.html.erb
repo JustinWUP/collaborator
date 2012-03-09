@@ -7,14 +7,15 @@
 <div id="project-desc" class="inset stroke round">
 	<%= auto_link(simple_format(@project.description))%>	
 </div><!-- /project-desc -->
-  
+  <% @time = Time.new %>
   <% if @project.retainer_hours > 0 %>
 	<div id="retainer-heading">
         My One-on-One Support:<br /> 
 	</div>
 	<div id="retainer-hours" class="">
 		This Month's Support Time: <%= @project.retainer_hours %> Hours<br/>
-		Time remaining for retainer: <%= distance_of_time_in_words_to_now @project.retainer_expiration %>
+		<!-- Your Support Period Concludes In: <%= distance_of_time_in_words_to_now @project.retainer_expiration %> -->
+		Your Support Period Concludes On: <%= @project.retainer_expiration %>
 	</div><!-- /retainer-hours -->
 <% else %>
 	<%# This is where retainer expired could go, if we had a flag for that.. %>
@@ -25,7 +26,11 @@
 </div> <!-- /issues-list -->
 
 <div id="new-issue" class="">
-	<%= link_to "Submit a new Topic.", new_project_issue_path(@project) %>
+	<h3>Next Steps:</h3> <br>
+	<%= link_to "Submit a new Topic.", new_project_issue_path(@project) %><br><br>
+	<%= link_to "Do Something Else.", "/projects" %><br><br>
+	<h4>or</h4>
+	<h4>Click on a Topic to the left.</h4>
 </div><!-- / -->
 
 <% content_for :admin_links do %>

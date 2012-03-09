@@ -378,6 +378,7 @@ display: inline;
 
 #project-heading, .issues-heading, #retainer-heading{
   font-weight:bold;
+  font-size:15px;
 }
 
 #retainer-heading, #retainer-hours {
@@ -385,22 +386,33 @@ display: inline;
 }
 
 #new-issue{
+  border: 1px dashed #ccc;
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 1100px;
+  min-height:121px;
+  width:200px;
+  text-align:center;
+  padding:20px;
+  background:#ddd;
+
   a {
-    color: black !important;
-    font-weight: bold;
-    background: #78BFF7;
-    width: 200px;
-    text-align: center;
-    padding: 10px;
-    border: 2px solid #666;
-    display: block;
-    position: absolute;
-    top: 35px;
-    left: 800px;
-    border-radius: 8px;
-    text-shadow: none;
-    font-size: 18px;
-    box-shadow: 2px 2px 7px #666;
+  color: black !important;
+  font-weight: bold;
+  background: #78BFF7;
+  width: 180px;
+  text-align: center;
+  padding: 4px;
+  border: 2px solid #666;
+  border-radius: 8px;
+  text-shadow: none;
+  font-size: 15px;
+  box-shadow: 2px 2px 7px #666;
+  margin-bottom:100px;
+  }
+  h4{
+    font-weight:bold;
   }
 }
 
@@ -448,4 +460,25 @@ display: inline;
   }
   .checkbox-scroll.users {
 
+  }
+
+  #topic-submit, #comment-submit{
+
+    input[type="submit"]{
+    color: black !important;
+    font-weight: bold;
+    background: #78BFF7;
+    width: 180px;
+    text-align: center;
+    padding: 4px;
+    border: 2px solid #666;
+    border-radius: 8px;
+    text-shadow: none;
+    font-size: 15px;
+    box-shadow: 2px 2px 7px #666;
+    margin-bottom:20px;
+    }
+    input[type="submit"]:hover {
+      text-decoration:underline;
+     }
   }
