@@ -416,3 +416,22 @@ display: inline;
 .retainer-form{
   margin: 0 0 10px 0;
 }
+
+.checkbox-scroll {
+  width: 250px;
+  overflow: auto;
+  height: 200px;
+  padding: 0px 15px;
+  border: 1px solid 
+  #333;
+
+  .checkbox-group {
+
+  }
+}
+ .checkbox-scroll.tags {
+    height: 150px;
+  }
+  .checkbox-scroll.users {
+
+  }
