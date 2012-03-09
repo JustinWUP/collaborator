@@ -385,9 +385,23 @@ display: inline;
 }
 
 #new-issue{
-  margin-top: 7px;
-  margin-left: 0px;
-  font-weight:bold;
+  a {
+    color: black !important;
+    font-weight: bold;
+    background: #78BFF7;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #666;
+    display: block;
+    position: absolute;
+    top: 35px;
+    left: 800px;
+    border-radius: 8px;
+    text-shadow: none;
+    font-size: 18px;
+    box-shadow: 2px 2px 7px #666;
+  }
 }
 
 #project-list-heading{
