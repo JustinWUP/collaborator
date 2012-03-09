@@ -400,16 +400,16 @@ display: inline;
 
   a {
   color: black !important;
-  font-weight: bold;
+  /*font-weight: bold;*/
   background: #78BFF7;
   width: 180px;
   text-align: center;
   padding: 4px;
-  border: 2px solid #666;
+  border: 1px solid #666;
   border-radius: 8px;
   text-shadow: none;
   font-size: 15px;
-  box-shadow: 2px 2px 7px #666;
+  /*box-shadow: 2px 2px 7px #666;*/
   margin-bottom:100px;
   }
   h4{
@@ -463,20 +463,20 @@ display: inline;
 
   }
 
-  #topic-submit, #comment-submit, #sign-in, #sign-up, #project-edit-submit{
+  #topic-submit, #comment-submit, #sign-in, #sign-up, #project-edit-submit, #organization-submit{
 
     input[type="submit"]{
     color: black !important;
-    font-weight: bold;
+    /*font-weight: bold;*/
     background: #78BFF7;
     width: 180px;
     text-align: center;
     padding: 4px;
-    border: 2px solid #666;
+    border: 1px solid #666;
     border-radius: 8px;
     text-shadow: none;
     font-size: 15px;
-    box-shadow: 2px 2px 7px #666;
+    /*box-shadow: 2px 2px 7px #666;*/
     margin:15px 0 20px 0;
     }
     input[type="submit"]:hover {
