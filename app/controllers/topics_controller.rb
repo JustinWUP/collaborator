@@ -24,9 +24,12 @@ class TopicsController <  ApplicationController
 
     @topic.title = params[:github_issue][:title]
     @topic.body = params[:github_issue][:body]
-    
-    @topic.save
 
+    label = Setting.find_by_key("auto_tag")
+    @topic.labels = [label.value.to_s] if label
+
+    @topic.save
+    
     respond_with(@topic, location: project_path(@project))
   end
 
