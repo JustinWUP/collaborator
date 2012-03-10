@@ -7,7 +7,7 @@
 <div id="project-desc" class="inset stroke round">
 	<%= auto_link(simple_format(@project.description))%>	
 </div><!-- /project-desc -->
-  <% if @project.retainer_hours > 0 && @project.retainer_expiration > Time.now.to_date %>
+  <% if @project.retainer_hours > 0 && @project.retainer_expiration > Time.now.to_date-1 %>
 	<div id="retainer-heading">
         My One-on-One Support:<br /> 
 	</div>
