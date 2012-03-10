@@ -6,7 +6,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <div id="resetpasswordsend"><%= f.submit "Reset My Password", confirm: 'Click OK only if you really want to reset your password. If this was a mistake, press Cancel.' %></div>
 <% end %>
 
 <%= render "links" %>
