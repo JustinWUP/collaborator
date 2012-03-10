@@ -30,6 +30,11 @@
     				</div>
 
 				</div>
+			<% else %>	
+				<div class="project-admin">
+					<div>Project Goals:</div>
+					<%= truncate(project.description, :length => 200, :separator => ' ') %>
+
 			<% end %>
 
 		</div>
