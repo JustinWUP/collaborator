@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
   # Custom stuff
 
   #validate it
-  validates :registration_org_id, :numericality => true
+  validates :registration_org_id, :numericality => true,  :on => :create
 
-  validate :check_org_id
+  validate :check_org_id, :on => :create
 
   def check_org_id
     organization = Organization.find_by_org_id(registration_org_id)
