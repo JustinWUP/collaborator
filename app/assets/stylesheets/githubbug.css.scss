@@ -390,13 +390,14 @@ display: inline;
   border: 1px dashed #ccc;
   display: block;
   position: absolute;
-  top: 100px;
-  left: 1100px;
+  top: 94px;
+  left: 174px;
   min-height:121px;
   width:200px;
   text-align:center;
   padding:20px;
-  background:#ddd;
+  background:#eee;
+  border-right-width:0;
 
   a {
   color: black !important;
