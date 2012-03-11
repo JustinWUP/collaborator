@@ -3,7 +3,11 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-<h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
+  <% if current_user.organization.org_id == 949494 %>
+<h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
+  <% else %>
+  <h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
+  <% end %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
