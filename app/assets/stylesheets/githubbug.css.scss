@@ -464,7 +464,7 @@ display: inline;
 
   }
 
-  #topic-submit, #comment-submit, #sign-in, #sign-up, #project-edit-submit, #organization-submit, #user-edit, #resetpasswordsend, #changemypassword{
+  /*#topic-submit, #comment-submit, #sign-in, #sign-up, #project-edit-submit, #organization-submit, #user-edit, #resetpasswordsend, #changemypassword{*/
 
     input[type="submit"]{
     color: black !important;
@@ -483,5 +483,9 @@ display: inline;
     input[type="submit"]:hover {
       text-decoration:underline;
      }
+  /*}*/
+
+  #orgtable td{
+    padding:0 15px 0 15px;
   }
 
