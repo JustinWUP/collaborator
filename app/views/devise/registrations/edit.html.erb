@@ -3,7 +3,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-  <% if current_user.organization.org_id == 949494 %>
+  <% if current_user.organization.name.include? "Wind Up Pixel" or current_user.organization.name.include? "WUP" %>
 <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
   <% else %>
   <h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
