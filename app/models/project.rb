@@ -57,13 +57,23 @@ class Project < ActiveRecord::Base
 
 	def refresh_labels
 		external_labels = Github::Label.find_by_project(self)
+		all_labels = labels.find(:all)
 
+		# Compare external labels against existing labels, update or create.
    		external_labels.each do |label|
-			if found = labels.find_by_name(label.name) 
+			found = labels.find_by_name(label.name) 
+			if found
 				found.update_attributes({name: label.name, color: label.color})
 			else
 				labels.build({name: label.name, color: label.color}).save
 			end
+	    end
+
+	    # Compare existing labels against external labels to make sure they still exist.
+	    # Destroy if they don't.
+	    all_labels.each do |label|
+	    	found = external_labels.find_by_name(label.name)
+	    	label.destroy unless found
 	    end
 
 	    return labels
