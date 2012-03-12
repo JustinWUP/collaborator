@@ -73,7 +73,12 @@
 
 						<% if content_for?( :admin_links ) && can?( :manage, :all )  %>
 							<div id="admin-links" class="">
-								<span id="admin-links-stub">Admin Links:</span> <%= yield :admin_links %>	
+						
+								<span id="admin-links-stub">Admin Links:</span>
+						
+								 <%= yield :admin_links %>
+								 
+								
 							</div><!-- /admin-links -->
 						<% end %>
 
