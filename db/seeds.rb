@@ -19,7 +19,7 @@ admin.save
 	User.new(email: "user#{x}@example.com", password: 'password', registration_org_id: 872872872 ).save
 end
 
-repos = ['quicksnap/githubbug', 'winduppixel/wup2012', 'winduppixel/Ford-Hotshots']
+repos = ['quicksnap/Issues-Test-Repo', 'quicksnap/githubbug', 'winduppixel/wup2012', 'winduppixel/Ford-Hotshots']
 
 (1..10).each do |x|
 	Project.new(name: "Test Project #{x}", repo: repos[x%4], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
