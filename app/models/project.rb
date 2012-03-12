@@ -25,16 +25,16 @@ class Project < ActiveRecord::Base
 	end
 
 	def find_topic(id)
-		raise "Method disabled!"
+		raise NotImplementedError, "Method disabled!"
 		self.topics[id.to_i]
 	end
 
 	def get_comments
-		raise "Method moved to Issues model"
+		raise NotImplementedError, "Method moved to Issues model"
 	end
 
 	def update_edit_date
-		raise "Method disabled!"
+		raise NotImplementedError, "Method disabled!"
 		# date_updated_on is a poor form of 
 		# caching that uses the DB
 		self.date_updated_on ||= Time.new(0)
