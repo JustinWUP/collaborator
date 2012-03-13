@@ -500,7 +500,11 @@ display: inline;
      }
   /*}*/
 
-  #orgtable td{
+  #orgtable td, #settingstable td{
     padding:0 15px 0 15px;
   }
+
+#settingstable a, #orgtable a{
+  color:indianred;
+}
 
