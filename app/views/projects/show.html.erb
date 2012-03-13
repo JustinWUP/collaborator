@@ -25,14 +25,14 @@
 </div> <!-- /topics-list -->
 
 <% content_for :user_links do %>
-	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %><br><br>
-	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank", :class  => "useractions" %><br><br>
+	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %>
+	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank", :class  => "useractions" %>
 	<h4>or</h4>
 	<h4>Click on a Topic to the right.</h4>
 <% end %><!-- / -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit Project Info', edit_project_path(@project), :class  => "adminactions" %> <br><br>
-	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %><br><br>
+	<%= link_to 'Edit Project Info', edit_project_path(@project), :class  => "adminactions" %>
+	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %>
 	
 <% end %>
