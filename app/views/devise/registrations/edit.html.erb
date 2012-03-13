@@ -6,35 +6,42 @@
   <% if current_user.organization.name.include? "Wind Up Pixel"%>
   <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
   
-      <div id="new-topic" class="">
-      <h3>Next Steps:</h3> <br>
+  
             <% if can? :manage, Setting %>
-                <%= link_to 'Manage System Settings', settings_path, :class  => "adminactions" %><br><br>
+              <% content_for :admin_links do %>
+                  <%= link_to 'Manage System Settings', settings_path, :class  => "adminactions" %><br><br>
+              <% end %>
             <% end %>
             <% if can? :manage, User %>
-                <%= link_to "Manage Other Users", "/", :class  => "adminactions" %><br><br>
+                <% content_for :admin_links do %>
+                  <%= link_to "Manage Other Users", "/", :class  => "adminactions" %><br><br>
+              <% end %>
             <% end %>
             <% if can? :manage, Organization %>    
-                 <%= link_to 'Manage Organizations', organization_path, :class  => "adminactions" %><br><br>
-                 <h4>or</h4><br>
+                <% content_for :admin_links do %>
+                  <%= link_to 'Manage Organizations', organization_path, :class  => "adminactions" %><br><br>
+                   <h4>or</h4><br>
+              <% end %>
             <% end %>
-            <h4>Edit your e-mail address and password to the right.</h4>
-      </div><!-- / -->
+              <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
+   
 
 
   <% elsif current_user.organization.name.include? "WUP" %>
     <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
-  <div id="new-topic" class="">
-        <h3>Next Steps:</h3> <br>
-        <h4>Edit your e-mail address and password to the right.</h4>
+
+         <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
       </div><!-- / -->
   <% else %>
   <h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
-      <div id="new-topic" class="">
-        <h3>Next Steps:</h3> <br>
-        <h4>Edit your e-mail address and password to the right.</h4>
-      </div><!-- / -->
-
+   <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
+      
   <% end %>
 
 
