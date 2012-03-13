@@ -9,13 +9,14 @@
       <div id="new-topic" class="">
       <h3>Next Steps:</h3> <br>
             <% if can? :manage, Setting %>
-                <%= link_to 'Manage System Settings', settings_path %><br><br>
+                <%= link_to 'Manage System Settings', settings_path, :class  => "adminactions" %><br><br>
             <% end %>
             <% if can? :manage, User %>
-                <%= link_to "Manage Other Users", "/" %><br><br>
+                <%= link_to "Manage Other Users", "/", :class  => "adminactions" %><br><br>
             <% end %>
             <% if can? :manage, Organization %>    
-                 <%= link_to 'Manage Organizations', organization_path %><br><br>
+                 <%= link_to 'Manage Organizations', organization_path, :class  => "adminactions" %><br><br>
+                 <h4>or</h4><br>
             <% end %>
             <h4>Edit your e-mail address and password to the right.</h4>
       </div><!-- / -->
