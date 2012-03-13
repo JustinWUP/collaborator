@@ -204,13 +204,21 @@ height: 173px;
   font-size:16px;
   font-weight: bold;
 }
+.main a{
+color: #00aaea;
+}
 
 #main a, #main a:visited, #main a:active {
-  color: #00aaea;
+  
   text-decoration: none;
 }
 #main a:hover {
   text-decoration: underline;
+}
+
+.project-admin span a{
+  color:indianred;
+
 }
 
 #content ul {
@@ -402,7 +410,7 @@ display: inline;
   a {
   color: black !important;
   /*font-weight: bold;*/
-  background: #78BFF7;
+
   width: 180px;
   text-align: center;
   padding: 4px;
@@ -418,6 +426,13 @@ display: inline;
   }
 }
 
+.useractions {
+    background: #78BFF7;
+}
+
+.adminactions {
+  background:indianred;
+}
 #project-list-heading{
   font-size:25px;
   padding: 15px 0 15px 0;

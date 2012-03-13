@@ -24,16 +24,15 @@
 	<%= render "topics" %>
 </div> <!-- /topics-list -->
 
-<div id="new-topic" class="">
-	<h3>Next Steps:</h3> <br>
-	<%= link_to "Submit a new Topic.", new_project_topic_path(@project) %><br><br>
-	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank" %><br><br>
+<% content_for :user_links do %>
+	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %><br><br>
+	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank", :class  => "useractions" %><br><br>
 	<h4>or</h4>
 	<h4>Click on a Topic to the right.</h4>
-</div><!-- / -->
+<% end %><!-- / -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit Project Info', edit_project_path(@project) %> | 
-	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank" %>
+	<%= link_to 'Edit Project Info', edit_project_path(@project), :class  => "adminactions" %> <br><br>
+	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %><br><br>
 	
 <% end %>

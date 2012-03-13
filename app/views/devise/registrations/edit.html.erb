@@ -3,11 +3,50 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-  <% if current_user.organization.org_id == 949494 %>
-<h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
+  <% if current_user.organization.name.include? "Wind Up Pixel"%>
+  <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
+  
+  
+            <% if can? :manage, Setting %>
+              <% content_for :admin_links do %>
+                  <%= link_to 'Manage System Settings', settings_path, :class  => "adminactions" %><br><br>
+              <% end %>
+            <% end %>
+            <% if can? :manage, User %>
+                <% content_for :admin_links do %>
+                  <%= link_to "Manage Other Users", "/", :class  => "adminactions" %><br><br>
+              <% end %>
+            <% end %>
+            <% if can? :manage, Organization %>    
+                <% content_for :admin_links do %>
+                  <%= link_to 'Manage Organizations', organization_path, :class  => "adminactions" %><br><br>
+                   <h4>or</h4><br>
+              <% end %>
+            <% end %>
+              <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
+   
+
+
+  <% elsif current_user.organization.name.include? "WUP" %>
+    <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
+
+         <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
+  
   <% else %>
   <h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
+   <% content_for :user_links do %>
+              <h4>Edit your e-mail address and password to the right.</h4>
+              <% end %>
+      
   <% end %>
+
+
+ 
+   
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 

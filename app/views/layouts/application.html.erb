@@ -50,9 +50,9 @@
 		
 	</header><!-- /header -->
 
-		<section id="main" class="">
+		<section id="main">
 
-			<div id="content">
+			<div id="content"  class="main">
 			<aside id="page-image">
 			<% if content_for? :page_image %>
 				<%= yield :page_image %>
@@ -71,10 +71,23 @@
 							<% end %>
 						</div><!-- /user-nav -->
 
-						<% if content_for?( :admin_links ) && can?( :manage, :all )  %>
-							<div id="admin-links" class="">
-								<span id="admin-links-stub">Admin Links:</span> <%= yield :admin_links %>	
-							</div><!-- /admin-links -->
+						<% if (content_for?( :admin_links) and can?( :manage, :all )) or content_for?( :user_links ) %>
+						<div id="new-topic" class="">
+						<h3>Next Steps:</h3> <br>
+								
+								<% if can?( :manage, :all )  %>
+								<!-- <div id="admin-links" class=""> -->
+						
+								<!-- <span id="admin-links-stub">Admin Links:</span> -->
+						
+								 <%= yield :admin_links %>
+								 
+								
+							<!-- /admin-links -->
+						<% end %>
+								<%= yield :user_links %>
+					
+						</div>
 						<% end %>
 
 					<% end %>
