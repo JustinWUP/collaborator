@@ -394,7 +394,7 @@ display: inline;
   margin-bottom:7px ;
 }
 
-#new-topic{
+#next-steps{
   border: 1px dashed #ccc;
   display: block;
   position: absolute;
@@ -406,6 +406,7 @@ display: inline;
   padding:20px;
   background:#eee;
   border-right-width:0;
+  box-shadow: -5px 0px 5px #ddd inset;
 
   a {
   color: black !important;
