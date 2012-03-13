@@ -19,7 +19,7 @@
             <% end %>
             <% if can? :manage, Organization %>    
                 <% content_for :admin_links do %>
-                  <%= link_to 'Manage Organizations', organization_path, :class  => "adminactions" %>
+                  <%= link_to 'Manage Organizations', organizations_path, :class  => "adminactions" %>
                    <h4>or</h4><br>
               <% end %>
             <% end %>
