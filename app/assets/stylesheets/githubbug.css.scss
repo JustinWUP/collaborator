@@ -204,13 +204,21 @@ height: 173px;
   font-size:16px;
   font-weight: bold;
 }
+.main a{
+color: #00aaea;
+}
 
 #main a, #main a:visited, #main a:active {
-  color: #00aaea;
+  
   text-decoration: none;
 }
 #main a:hover {
   text-decoration: underline;
+}
+
+.project-admin span a{
+  color:indianred;
+
 }
 
 #content ul {
