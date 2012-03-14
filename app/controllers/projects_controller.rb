@@ -110,5 +110,4 @@ class ProjectsController < ApplicationController
   # def delay_update_edit_date
   #   @projects.each { |project| project.delay.update_edit_date }
   # end
-
 end

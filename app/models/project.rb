@@ -8,7 +8,10 @@ class Project < ActiveRecord::Base
 	has_many :users, :through => :assignments
 	has_many :labels
 
-	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 }
+	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 } 
+	validates :name, :presence => true
+	validates :repo, :presence => true
+	validates :url, :presence => true
 
 	after_initialize :init
 
