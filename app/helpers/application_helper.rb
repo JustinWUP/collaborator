@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def page_title
-		content_for?(:page_title) ? content_for(:page_title) : "Project Hub"
+		content_for?(:page_title) ? content_for(:page_title) : "Collaborator"
 	end
 
 	def nav_links_menu
