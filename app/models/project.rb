@@ -11,8 +11,7 @@ class Project < ActiveRecord::Base
 	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 } 
 	validates :name, :presence => true
 	validates :repo, :presence => true
-	validates :url, :presence => true
-
+	validates :url, :presence => true, :format => { :with=>Regexp.new("http:\\/\\/",Regexp::IGNORECASE), :message => "must start with http://"}
 	after_initialize :init
 
 	# after_find :auth_octokit
