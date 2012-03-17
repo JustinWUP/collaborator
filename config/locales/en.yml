@@ -7,3 +7,32 @@ en:
     attributes:
       user:
         registration_org_id: "Organization ID"
+      project:  
+        url: "URL"
+      organization:
+        name: "Name"
+        org_id: "Organization ID"
+    errors:
+      models:
+        project:
+          attributes:
+            name:
+              blank: "must be provided."
+            repo:
+              blank: "must be provided."
+            url:
+              blank: "must be provided."  
+        organization:
+          attributes:
+            name:
+              blank: "must be provided."
+            org_id:
+              blank: "must be provided."
+        user:
+          attributes:
+            email:
+              blank: "must be provided."
+            registration_org_id:
+              not_a_number: "was not recognized."
+            password:
+              blank: "must be provided."  
