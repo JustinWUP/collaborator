@@ -32,9 +32,10 @@ end
 end
 
 repos = ['quicksnap/Issues-Test-Repo', 'quicksnap/githubbug', 'winduppixel/wup2012', 'winduppixel/Ford-Hotshots']
+urls = ['http://clients.winduppixel.com/sites/sciemetric' , 'http://google.com', 'http://wot.com', 'http://test.com']
 
 (1..10).each do |x|
-	Project.new(name: "Test Project #{x}", repo: repos[x%4], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	Project.new(name: "Test Project #{x}", repo: repos[x%4], url: urls[x%4], description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 	quis nostrud exercitation ullamco laboris \n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
