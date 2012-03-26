@@ -1,5 +1,9 @@
 <%= content_for(:page_title) do @project.name end %>
 
+<div id="topics-list">
+	<%= render "topics" %>
+</div> <!-- /topics-list -->
+
 <div id="project-heading">
 	My Project Goals:
 </div>
@@ -19,10 +23,6 @@
 <% else %>
 	<%# This is where retainer expired could go, if we had a flag for that.. %>
 <% end %>
-
-<div id="topics-list">
-	<%= render "topics" %>
-</div> <!-- /topics-list -->
 
 <% content_for :user_links do %>
 	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %>
