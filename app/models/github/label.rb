@@ -1,6 +1,7 @@
 class Github::Label <  Github::AbstractResource
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo'
+	self.schema = { 'name' => :string, 'color' => :string}
 
 	def self.find_by_project(project)
 		user, repo = project.repo.split('/')
@@ -13,7 +14,8 @@ class Github::Label <  Github::AbstractResource
 			self.each do |label|
 				return label if label.name == name 
 			end
-			nil
+			
+			return nil
 		end
 	end
 end

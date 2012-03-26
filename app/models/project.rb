@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
 
 	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 }
 
+	validate :auto_tag_is_functional
+
 	after_initialize :init
 
 	# after_find :auth_octokit
@@ -48,13 +50,6 @@ class Project < ActiveRecord::Base
 		self.save!
 	end
 
-	# def get_labels
-	# 	raise "Method disabled!"
-
-	# 	return labels
-	# end
-
-
 	def refresh_labels
 		external_labels = Github::Label.find_by_project(self)
 		all_labels = labels.find(:all)
@@ -87,5 +82,11 @@ class Project < ActiveRecord::Base
 		end
 
 		all_labels
+	end
+
+	private 
+
+	def auto_tag_is_functional
+
 	end
 end

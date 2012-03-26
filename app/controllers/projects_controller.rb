@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
   before_filter :refresh_labels, only: :edit
   # after_filter :delay_update_edit_date, only: :index
   
-
   load_and_authorize_resource :through => :current_user
 
   respond_to :html, :js
@@ -18,7 +17,6 @@ class ProjectsController < ApplicationController
     end
 
   end
-
 
   # GET /projects/1
   # GET /projects/1.json

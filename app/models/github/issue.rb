@@ -7,6 +7,7 @@ class Github::Issue <  Github::AbstractResource
 
 	# Disable self.all
 	private_class_method :all
+	
 	# Gets all issues for a given project
 	def self.find_by_project(project)
 		user, repo = project.repo.split('/') # hack. should be added to Project model as separate fields
