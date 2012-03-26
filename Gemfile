@@ -10,8 +10,6 @@ gem 'sqlite3'
 
 gem 'devise'
 
-gem 'octokit'
-
 gem 'cancan'
 
 gem 'rails_autolink'
