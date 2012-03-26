@@ -8,10 +8,12 @@ class Project < ActiveRecord::Base
 	has_many :users, :through => :assignments
 	has_many :labels
 
-	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 }
-
 	validate :auto_tag_is_functional
 
+	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 } 
+	validates :name, :presence => true
+	validates :repo, :presence => true
+	validates :url, :presence => true, :format => { :with=>Regexp.new("http:\\/\\/",Regexp::IGNORECASE), :message => "must start with http://"}
 	after_initialize :init
 
 	# after_find :auth_octokit

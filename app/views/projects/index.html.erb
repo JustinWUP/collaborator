@@ -21,11 +21,10 @@
 					
 					<div>Admin Zone:</div> 
 					
-					<span>Repository: <%= project.repo %></span>
-				    
+					<div>Repository: <%= project.repo %></div>
 				    <div>
 					    <span><%= link_to 'Edit', edit_project_path(project) %></span> | 
-					    <span><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
+					    <span><%= link_to 'Delete', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
     				</div>
 
 				</div>

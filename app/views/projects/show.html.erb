@@ -26,7 +26,7 @@
 
 <% content_for :user_links do %>
 	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %>
-	<%= link_to "Check out your site.", "http://www.winduppixel.com",  :target => "_blank", :class  => "useractions" %>
+	<%= link_to "Check out your site.", @project.url,  :target => "_blank", :class  => "useractions" %>
 	<h4>or</h4>
 	<h4>Click on a Topic to the right.</h4>
 <% end %><!-- / -->
