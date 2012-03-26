@@ -9,6 +9,23 @@ class Github::Comment < Github::AbstractResource
 		user, repo = topic.project.repo.split('/')
 		id = topic.number
 		opts = {gh_user: user, gh_repo: repo, issue_id: id}
-	 	find(:all, params: opts)
+	 	comments = find(:all, params: opts)
+	 	filter_comments(comments)
+	end
+
+	private
+
+	def self.filter_comments(comments)
+		regex = /<<ROBOT:([0-9]*).*/
+		
+		comments.each do |comment|
+			match = regex.match(comment.body)
+			user_id = match[1] if match
+			if user_id
+				comment.body[regex] = "" if comment.body[regex] # remove robot text
+				comment.user.login = ::User.find_by_id(user_id).email
+			end
+		end
+		comments
 	end
 end

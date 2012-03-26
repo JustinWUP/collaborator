@@ -25,8 +25,8 @@ class TopicsController <  ApplicationController
     @topic.title = params[:github_issue][:title]
     @topic.body = params[:github_issue][:body]
 
-    label = Setting.find_by_key("auto_tag")
-    @topic.labels = [label.value.to_s] if label
+    label = @project.auto_tag
+    @topic.labels = [label.to_s] if label
 
     @topic.save
     
@@ -42,6 +42,7 @@ class TopicsController <  ApplicationController
 
   def find_comments
   	@comments = Github::Comment.find_by_topic(@topic)
+    
   end
 
    def find_project

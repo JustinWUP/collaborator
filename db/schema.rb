@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314042521) do
+ActiveRecord::Schema.define(:version => 20120326204718) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(:version => 20120314042521) do
     t.string   "name"
     t.string   "repo"
     t.text     "description"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.datetime "edit_date"
     t.datetime "date_updated_on"
     t.decimal  "retainer_hours"
     t.date     "retainer_expiration"
-    t.string   "auto_tag"
+    t.string   "auto_tag",            :default => "Client-Visible"
     t.string   "url"
   end
 

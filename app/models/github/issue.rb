@@ -15,10 +15,13 @@ class Github::Issue <  Github::AbstractResource
 		labels = project.labels.find_all_by_enabled(true) || []
 		return [] if labels.empty?
 
+		# This is where the label filtering happens. GitHub will only return 
+		# issues that match one of the labels in label_string.
 		label_string = labels.reduce([]) {|names, label| names << label.name }.join(',')
-
+		label_string << "," unless label_string.empty?
+		label_string << project.auto_tag unless project.auto_tag.empty?
 		params = {:gh_repo => repo, :gh_user => user, labels: label_string}
-		
+		# IssuesCollection will filter out the auto_tag
 		issues = IssuesCollection.new( self.find(:all, :params => params ), project )
 
 		issues.each do |issue|
@@ -28,6 +31,8 @@ class Github::Issue <  Github::AbstractResource
 		return issues
 	end
 
+	# IssuesCollection is just an array the applies label filters upon creation. 
+	# it is also extended with #find(id)
 	class IssuesCollection < Array
 		def initialize(array, project, filter = true)
 			super(array)
@@ -41,6 +46,8 @@ class Github::Issue <  Github::AbstractResource
 
 		private 
 
+		# This method removes labels from issues that are not enabled to 
+		# be displayed on a given project, as well as auto_tag
 		def filter_disabled_labels_by_project(project)
 			issues = self
 
@@ -57,7 +64,11 @@ class Github::Issue <  Github::AbstractResource
 		    issues.each do |issue| 
 		      	issue.labels.each_with_index do |label,index|
 			        if not label_list.include?(label.name)
+			        	# remove labels disabled in the filter list
 	         	 		issue.labels.delete_at(index) 
+	         	 	elsif project.auto_tag && label.name == project.auto_tag
+	         	 		# remove auto_tag.
+	         	 		issue.labels.delete_at(index)
 			        end
 		    	end
 	      	end
