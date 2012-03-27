@@ -33,7 +33,7 @@ class TopicsController <  ApplicationController
 
     if @topic.save 
     respond_with(@topic, location: project_path(@project))
-    flash[:alert] = "Your topic was successfully created."
+    flash[:notice] = "Your topic was successfully created."
     end 
   end
 
