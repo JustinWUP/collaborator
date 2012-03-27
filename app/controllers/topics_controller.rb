@@ -14,6 +14,7 @@ class TopicsController <  ApplicationController
 
   def new
     @topic = Github::Issue.new
+    
   end
 
   def create
@@ -28,9 +29,12 @@ class TopicsController <  ApplicationController
     label = @project.auto_tag
     @topic.labels = [label.to_s] if label
 
-    @topic.save
-    
+    # @topic.save
+
+    if @topic.save 
     respond_with(@topic, location: project_path(@project))
+    flash[:alert] = "Your topic was successfully created."
+    end 
   end
 
   private 

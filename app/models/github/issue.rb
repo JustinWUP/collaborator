@@ -68,7 +68,8 @@ class Github::Issue <  Github::AbstractResource
 	         	 		issue.labels.delete_at(index) 
 	         	 	elsif project.auto_tag && label.name == project.auto_tag
 	         	 		# remove auto_tag.
-	         	 		issue.labels.delete_at(index)
+	         	 		# issue.labels.delete_at(index)
+	         	 		label.name = "New Topic"
 			        end
 		    	end
 	      	end
