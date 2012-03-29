@@ -5,17 +5,22 @@ gem 'rails', '~> 3.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'pg'
+gem 'pg'
+# sqlite3 for development, pg for heroku. bad idea, yes, I know..
 gem 'sqlite3'
+
+gem 'thin'
 
 gem 'devise'
 
 gem 'cancan'
 
 gem 'rails_autolink'
+
 # gem "delayed_job", '3.0.1',  :git => 'git://github.com/collectiveidea/delayed_job.git'
 # gem 'delayed_job_active_record'
 # gem 'daemons'
+
 gem 'bluecloth'
 
 # Gems used only for assets and not required
