@@ -7,7 +7,9 @@ gem 'rails', '~> 3.2'
 
 gem 'pg'
 # sqlite3 for development, pg for heroku. bad idea, yes, I know..
-gem 'sqlite3'
+group :development, :test do
+	gem 'sqlite3'
+end
 
 gem 'thin'
 
