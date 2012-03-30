@@ -36,6 +36,9 @@ p {
 //  margin: 0 auto -15px; /* Footer fix height 
 */
 
+.boldstuff{
+  font-weight:bold;
+}
 
 #wrap, footer {
   min-width: 1020px;
@@ -192,6 +195,13 @@ margin-left: 240px;
 margin-top: -271px;
 width: 300px;
 height: 173px;
+}
+
+#helper{
+margin-left: 365px;
+width: 300px;
+height: 173px;
+position: absolute;
 }
 
 }
@@ -405,7 +415,7 @@ display: inline;
 #next-steps{
   border: 1px dashed #ccc;
   position: fixed;
-  top: 364px;
+  top: 300px;
   left: 174px;
   min-height:121px;
   width:200px;

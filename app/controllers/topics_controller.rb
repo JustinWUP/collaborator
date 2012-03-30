@@ -24,14 +24,17 @@ class TopicsController <  ApplicationController
     @topic = Github::Issue.new({gh_user: user, gh_repo: repo})
 
     @topic.title = params[:github_issue][:title]
-    @topic.body = params[:github_issue][:body]
-
+    @topic.body = "<<HEADSTART"
+    @topic.body << "\nBrowser/OS: " + request.env["HTTP_USER_AGENT"] 
+    # @topic.body << "\nLast Page Viewed: " + request.env["HTTP_REFERER"] 
+    @topic.body << "\nDescription: " + params[:github_issue][:body]
     label = @project.auto_tag
     @topic.labels = [label.to_s] if label
 
     # @topic.save
 
     if @topic.save 
+     
     respond_with(@topic, location: project_path(@project))
     flash[:notice] = "Your topic was successfully created."
     end 
@@ -41,6 +44,16 @@ class TopicsController <  ApplicationController
 
   def find_topic
   	@topic = @project.topics.find(params[:id])	
+#fuck
+    # regex=Regexp.new("<<HEADSTART".*"Description: ")
+    #   if regex.match(@topic.body)
+    #     @topic.body[regex] = "" if @topic.body[regex] # remove robot text
+    #   end
+    regex = Regexp.new(/<<HEADSTART(.*)Description:/m)
+    if regex.match(@topic.body)
+     @topic.body[regex] = "" if @topic.body[regex]
+    end
+#fuck  
     if not @topic then redirect_to @project, alert: "Topic not found" end
   end
 
