@@ -1,5 +1,6 @@
 <div id="project-topics" class="">
-	<span class="topics-heading">Topics Being Worked On: </span>
+
+		<span class="topics-heading">Topics Being Worked On: </span>
 	<ul>
 		<% @project.topics.each do |topic| %> 
 			<li>
@@ -8,6 +9,6 @@
 					<% topic.labels.each do |label| %> <li style="background-color: <%= "#" + label.color %>" ><%= label.name %> </li><% end %>
 				</ul>
 			</li>
-		<% end %>
+			<% end %>
 	</ul>
 </div><!-- /project-topics -->
