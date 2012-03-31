@@ -12,7 +12,7 @@
 </div><!-- /topic -->
 <div id="comments" class="comments">
 	<% @comments.each do |comment| %>
-		<h2> <%= image_tag(comment.user.avatar_url) %> <%= comment.user.login %> commented: <span class="comment-date"> <%= Time.parse(comment.created_at).strftime("at %m/%d/%Y %I:%M%p") %> </span></h2>
+		<h2> <%= image_tag(comment.user.avatar_url) %> <span class="comment-user"><%= comment.user.login %> commented:</span> <span class="comment-date"> <%= Time.parse(comment.created_at).strftime("at %m/%d/%Y %I:%M%p") %> </span></h2>
 		<div class="comment-body"> <%= github_render_text comment.body %> </div>
 	<% end %>
 

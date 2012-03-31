@@ -44,16 +44,12 @@ class TopicsController <  ApplicationController
 
   def find_topic
   	@topic = @project.topics.find(params[:id])	
-#fuck
-    # regex=Regexp.new("<<HEADSTART".*"Description: ")
-    #   if regex.match(@topic.body)
-    #     @topic.body[regex] = "" if @topic.body[regex] # remove robot text
-    #   end
+
     regex = Regexp.new(/<<HEADSTART(.*)Description:/m)
     if regex.match(@topic.body)
      @topic.body[regex] = "" if @topic.body[regex]
     end
-#fuck  
+
     if not @topic then redirect_to @project, alert: "Topic not found" end
   end
 
