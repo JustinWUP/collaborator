@@ -32,6 +32,7 @@ class TopicsController <  ApplicationController
     @topic = Github::Issue.new({gh_user: user, gh_repo: repo})
     @topic.title = params[:github_issue][:title]
     @topic.body = "<<HEADSTART"
+    @topic.body << "\nTopic Opened By: " + current_user.email
     @topic.body << "\nBrowser/OS: " + request.env["HTTP_USER_AGENT"] 
     @topic.body << "\nLast Page Viewed: " + session['referer']
     @topic.body << "\nDescription: " + params[:github_issue][:body]
