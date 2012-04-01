@@ -20,23 +20,26 @@ class TopicsController <  ApplicationController
   def create
     # ActiveResource does not protect against mass assignment
     # Manually build and assign attributes.
+    
     user, repo = @project.repo.split('/')
     @topic = Github::Issue.new({gh_user: user, gh_repo: repo})
-
     @topic.title = params[:github_issue][:title]
     @topic.body = "<<HEADSTART"
     @topic.body << "\nBrowser/OS: " + request.env["HTTP_USER_AGENT"] 
-    # @topic.body << "\nLast Page Viewed: " + request.env["HTTP_REFERER"] 
+    @topic.body << "\nLast Page Viewed: " + session['referer']
     @topic.body << "\nDescription: " + params[:github_issue][:body]
     label = @project.auto_tag
     @topic.labels = [label.to_s] if label
 
+
     # @topic.save
 
     if @topic.save 
+
      
     respond_with(@topic, location: project_path(@project))
     flash[:notice] = "Your topic was successfully created."
+    
     end 
   end
 

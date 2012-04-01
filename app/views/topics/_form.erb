@@ -1,4 +1,10 @@
 <%= form_for @topic, url: project_topics_path(@project) do |f| %> 
+
+   <% session['referer'] = nil
+    unless session['referer']
+      session['referer'] = request.env["HTTP_REFERER"] || 'none'  
+    end %>
+
 	<div id="" class="form-spacer">
 		<%= f.label :"What's on your mind?" %>
 		<br />
@@ -8,11 +14,13 @@
 		<%= f.label :"Anything else you'd like to tell us?" %>
 		<br />
 		<%= f.text_area :body %>
+		
 	</div><!-- / -->
 	<div id="topic-submit" class="">
 		<%= f.submit :"Submit Topic" %>
 	</div><!-- / -->
-
+	 
+	 <%=session['referer']%>
 <% end %> 
 
 
