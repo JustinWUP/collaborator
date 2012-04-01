@@ -14,5 +14,6 @@ To set up, do the following:
 * `bundle`
 * `rake db:setup` - This will seed the environment per db/seeds.rb
 * `rails s`
-* login as admin@admin.com / password, go to admin/settings and set up username/password.
+* login as admin@admin.com / password 
+* Go to localhost:3000/admin/settings and set up username/password for the robot settings. This allows login to github. (Will add OAuth later..)
 * Tada!
