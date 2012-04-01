@@ -1,8 +1,11 @@
 <%= form_for @topic, url: project_topics_path(@project) do |f| %> 
 
    <% session['referer'] = nil
-    unless session['referer']
-      session['referer'] = request.env["HTTP_REFERER"] || 'none'  
+    unless session['referer'] 
+      session['referer'] = request.env["HTTP_REFERER"] || 'none' 
+    end 
+    if session['referer'].include?('localhost') || session['referer'].include?('winduppixel.com')
+        session['referer']= 'none'
     end %>
 
 	<div id="" class="form-spacer">

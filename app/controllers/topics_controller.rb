@@ -17,11 +17,18 @@ class TopicsController <  ApplicationController
     
   end
 
+  def lastpage
+    unless session['referer']
+      session['referer'] = request.env["HTTP_REFERER"] || 'none'  
+      
+    end 
+  end
+
   def create
     # ActiveResource does not protect against mass assignment
     # Manually build and assign attributes.
-    
     user, repo = @project.repo.split('/')
+    :lastpage
     @topic = Github::Issue.new({gh_user: user, gh_repo: repo})
     @topic.title = params[:github_issue][:title]
     @topic.body = "<<HEADSTART"
@@ -35,11 +42,8 @@ class TopicsController <  ApplicationController
     # @topic.save
 
     if @topic.save 
-
-     
     respond_with(@topic, location: project_path(@project))
     flash[:notice] = "Your topic was successfully created."
-    
     end 
   end
 
