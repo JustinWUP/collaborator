@@ -1,6 +1,8 @@
 <%= form_for @topic, url: project_topics_path(@project) do |f| %> 
 
-   <% session['referer'] = nil
+   <% 
+#this creates a variable containing the page the bug report button was pressed from.
+   session['referer'] = nil
     unless session['referer'] 
       session['referer'] = request.env["HTTP_REFERER"] || 'none' 
     end 
@@ -22,8 +24,6 @@
 	<div id="topic-submit" class="">
 		<%= f.submit :"Submit Topic" %>
 	</div><!-- / -->
-	 
-	 <%=session['referer']%>
 <% end %> 
 
 
