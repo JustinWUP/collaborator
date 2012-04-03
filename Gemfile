@@ -13,16 +13,10 @@ end
 
 gem 'thin'
 
+
 gem 'devise'
-
 gem 'cancan'
-
 gem 'rails_autolink'
-
-# gem "delayed_job", '3.0.1',  :git => 'git://github.com/collectiveidea/delayed_job.git'
-# gem 'delayed_job_active_record'
-# gem 'daemons'
-
 gem 'bluecloth'
 
 # Gems used only for assets and not required
@@ -43,9 +37,18 @@ group :development do
 	gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
-group :development, :test do
+gem 'factory_girl_rails'
+
+group :test do
   gem 'rspec-rails'
+  gem 'cucumber-rails' # loads Capybara
+  gem 'database_cleaner'
 end
+
+gem 'webmock', require: false
+
+gem 'spork-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
