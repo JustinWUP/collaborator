@@ -1,7 +1,7 @@
 class Github::Issue <  Github::AbstractResource
 
 	self.site = 'https://api.github.com/repos/:gh_user/:gh_repo'
-	self.schema = {'title' => :string, 'body' => :string}
+	# self.schema = {'title' => :string, 'body' => :string}
 
 	attr_accessor :project
 
@@ -20,7 +20,9 @@ class Github::Issue <  Github::AbstractResource
 		label_string = labels.reduce([]) {|names, label| names << label.name }.join(',')
 		label_string << "," unless label_string.empty?
 		label_string << project.auto_tag unless project.auto_tag.empty?
-		params = {:gh_repo => repo, :gh_user => user, labels: label_string}
+		# params = {:gh_repo => repo, :gh_user => user, labels: label_string}
+		# GitHub changed label filter from OR to AND, so now we have to filter ourselves
+		params = {:gh_repo => repo, :gh_user => user}
 		# IssuesCollection will filter out the auto_tag
 		issues = IssuesCollection.new( self.find(:all, :params => params ), project )
 
