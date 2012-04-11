@@ -37,7 +37,7 @@ group :development do
 	gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
-gem 'factory_girl_rails'
+# gem 'factory_girl_rails'
 
 group :test do
   gem 'rspec-rails'
