@@ -6,7 +6,7 @@ A rails project that consumes and filters GitHub's Issues via v3 API via ActiveR
 * Assigning project visibility to users
 * Some other stuff.
 
-## Setting up 
+## Setttting up 
 
 
 To set up, do the following:
