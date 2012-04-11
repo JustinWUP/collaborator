@@ -21,19 +21,25 @@ class Github::Comment < Github::AbstractResource
 		comments.each do |comment|
 			match = regex.match(comment.body)
 			user_id = match[1] if match
-			if !::User.find_by_id(user_id)
-				robotonly = /<<ROBOT:([0-9]*).*/
-				deleteduser = comment.body[robotonly]
-				deleteduser=deleteduser.to_s
-				deletedstrip = deleteduser.sub(/<<ROBOT:([0-9]*)/, "")
-				comment.user.login = deletedstrip
-				comment.body[robotonly] = "" if comment.body[robotonly] 			
-			else
-			if user_id
+			robotonly = /<<ROBOT:([0-9]*).*/
+			deleteduser = comment.body[robotonly]
+			deleteduser = deleteduser.to_s
+			deletedstrip = deleteduser.sub(/<<ROBOT:([0-9]*)/, "")
+			if user_id and ::User.find_by_id(user_id)
 				comment.body[regex] = "" if comment.body[regex] # remove robot text
 				comment.user.login = ::User.find_by_id(user_id).email
+			elsif !::User.find_by_id(user_id) and deleteduser!= ""
+				comment.user.login = deletedstrip
+				comment.body[robotonly] = "" if comment.body[robotonly] 
+			# else
+			# 	comment.body[regex] = "" if comment.body[regex] # remove robot text
+			# 	comment.user.login = "User"
 			end
-			end	
+		
+		# 		 if user_id
+		# 		comment.body[regex] = "" if comment.body[regex] # remove robot text
+		# 		comment.user.login = ::User.find_by_id(user_id).email
+		# end
 		end
 		comments
 	end
