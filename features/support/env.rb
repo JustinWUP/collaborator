@@ -9,13 +9,16 @@ require 'webmock/cucumber' # disables all Net requests
 AfterConfiguration do |config|
 	# Webmock testing
 
-	# Returns a single issue {id: 1}
-	issue_json = File.new(File.join(Rails.root, "spec", "network_captures", "issue.json"))
-	WebMock.stub_request(:get, /.*api.github.com\/repos\/.*\/issue\//).to_return(issue_json)
+	# Returns a single issue {id: 1} -- Not used
+	# issue_json = File.new(File.join(Rails.root, "spec", "network_captures", "issue.json"))
+	# WebMock.stub_request(:get, /.*api.github.com\/repos\/.*\/issue\/(.(?!\/comments))*/).to_return(issue_json)
 
 	# Returns JSON array of all issues [{id: 1}, {id: 2}] 
 	issues_json = File.new(File.join(Rails.root, "spec", "network_captures", "issues.json"))
-	WebMock.stub_request(:get, /.*api.github.com\/repos\/.*\/issues/).to_return(issues_json)
+	WebMock.stub_request(:get, /.*api.github.com\/repos\/.*\/.*\/issues[^\/]/).to_return(issues_json)
+
+	comments_json = File.new(File.join(Rails.root, "spec", "network_captures", "comments.json"))
+	WebMock.stub_request(:get, /.*api.github.com\/repos\/.*\/.*\/issues\/[\d]+\/comments/).to_return(comments_json)
 
 	# Required admin settings
 	Setting.new(key: 'robot_login', value: 'login_name', 

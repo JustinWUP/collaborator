@@ -29,6 +29,7 @@ Given /^a topic exists$/ do
   # topic one should exist as WebMock, defined in env.rb
   visit project_topic_path(@project, '1')
   page.has_css?('div#topic').should == true
+  save_and_open_page
 end
 
 Given /^I subscribe to that topic$/ do

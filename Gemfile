@@ -48,6 +48,7 @@ end
 gem 'webmock', require: false
 
 gem 'spork-rails'
+gem 'launchy'
 
 
 # To use ActiveModel has_secure_password

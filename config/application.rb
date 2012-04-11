@@ -69,3 +69,5 @@ module Githubbug
     # config.assets.initialize_on_precompile = false
   end
 end
+
+require 'ar_monkey'
