@@ -24,6 +24,7 @@ class Github::Comment < Github::AbstractResource
 			if !::User.find_by_id(user_id)
 				robotonly = /<<ROBOT:([0-9]*).*/
 				deleteduser = comment.body[robotonly]
+				deleteduser=deleteduser.to_s
 				deletedstrip = deleteduser.sub(/<<ROBOT:([0-9]*)/, "")
 				comment.user.login = deletedstrip
 				comment.body[robotonly] = "" if comment.body[robotonly] 			
