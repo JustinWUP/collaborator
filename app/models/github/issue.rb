@@ -13,7 +13,9 @@ class Github::Issue <  Github::AbstractResource
 		user, repo = project.repo.split('/') # hack. should be added to Project model as separate fields
 		
 		labels = project.labels.find_all_by_enabled(true) || []
-		return [] if labels.empty?
+
+		# Nah let's not do this for now..
+		# return [] if labels.empty?
 
 		# This is where the label filtering happens. GitHub will only return 
 		# issues that match one of the labels in label_string.
