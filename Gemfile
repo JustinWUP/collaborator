@@ -9,6 +9,7 @@ gem 'pg'
 # sqlite3 for development, pg for heroku. bad idea, yes, I know..
 group :development, :test do
 	gem 'sqlite3'
+  gem 'factory_girl_rails'
 end
 
 gem 'thin'
@@ -36,8 +37,6 @@ gem 'jquery-rails'
 group :development do
 	gem 'ruby-debug19', :require => 'ruby-debug'
 end
-
-gem 'factory_girl_rails'
 
 group :test do
   gem 'rspec-rails'
