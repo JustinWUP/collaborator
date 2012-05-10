@@ -45,18 +45,5 @@ Githubbug::Application.configure do
   config.assets.debug = true
 end
 
-ActionMailer::Base.config do
-  config.action_mailer.delivery_method = :smtp
-end
-
-ActionMailer::Base.smtp_settings = {
-  :address  => "mail.winduppixel.com",
-  :port  => 25,
-  :user_name  => "admin@winduppixel.com",
-  :password  => "K8|;;/fv*x=.W^v",
-  :authentication  => :login
-}
-
-
 
 
