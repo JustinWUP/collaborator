@@ -6,6 +6,7 @@ Githubbug::Application.initialize!
 
 ActionMailer::Base.config do
   config.action_mailer.delivery_method = :smtp
+config.action_mailer.raise_delivery_errors = true
 end
 
 ActionMailer::Base.smtp_settings = {
