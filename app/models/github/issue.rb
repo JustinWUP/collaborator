@@ -19,12 +19,16 @@ class Github::Issue <  Github::AbstractResource
 
 		# This is where the label filtering happens. GitHub will only return 
 		# issues that match one of the labels in label_string.
+		# Except that they updated their API and now it only returns issues 
+		# that contain every label in the paramater
 		label_string = labels.reduce([]) {|names, label| names << label.name }.join(',')
 		label_string << "," unless label_string.empty?
 		label_string << project.auto_tag unless project.auto_tag.empty?
+
 		# params = {:gh_repo => repo, :gh_user => user, labels: label_string}
 		# GitHub changed label filter from OR to AND, so now we have to filter ourselves
 		params = {:gh_repo => repo, :gh_user => user}
+		
 		# IssuesCollection will filter out the auto_tag
 		issues = IssuesCollection.new( self.find(:all, :params => params ), project )
 
