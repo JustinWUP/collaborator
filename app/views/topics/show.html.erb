@@ -22,7 +22,7 @@
 </div><!-- /comments -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit Topic Info', project_path(@project) + edit_topic_path(@topic), :class  => "adminactions" %>
+	<%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class  => "adminactions" %>
 <% end %>
 
 

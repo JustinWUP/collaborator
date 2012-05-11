@@ -3,10 +3,15 @@ class TopicsController <  ApplicationController
   
   # before_filter :find_project
  #  # before_filter :find_all_projects
-	before_filter :find_topic, except: [:new, :create]
+	before_filter :find_topic, except: [:index, :new, :create]
 	# before_filter :find_comments, except: [:new, :create]
 
   load_and_authorize_resource :project, :through => :current_user
+
+  def index
+    @project = Project.find(params[:project_id])
+    redirect_to project_path(@project)  
+  end
 
   def show
      # @comment = Github::Comment.new
@@ -52,11 +57,15 @@ class TopicsController <  ApplicationController
 
 
   def edit
-    @project = Project.find(params[:project_id])
-    @topic = Topic.find(params[:id])
-    @topic_save  
-    respond_with(@topic, location: project_topic_path(@project,@topic))
+    # @project = Project.find(params[:project_id])
+    # @topic = Topic.find(params[:id])
+    # @topic_save  
+    # respond_with(@topic, location: project_topic_path(@project,@topic))
+  end
 
+  def update
+    @topic.update_attributes(params[:topic])
+    respond_with @topic, location: project_topics_url
   end
 
 
