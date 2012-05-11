@@ -38,17 +38,17 @@
       <% end %>
   </div>
   </div><!-- / -->
-  <div id="" class="label-form">
+<!--   <div id="" class="label-form">
     <div>What labels can your customers view?<div/>
-    <div class="checkbox-scroll tags">
-      <%  @project.labels.sort.each do |label| %>   
-        <div id="" class="checkbox-group">
-          <%= check_box_tag "enable_label[]", label.id, label.enabled, :id => label.name %>
-          <%= label_tag 'enable_label[]', label.name, :for=> label.name %>
-      </div>
-      <% end %>
-    </div>
-  </div><!-- / -->
+    <div class="checkbox-scroll tags"> -->
+      <% #  @project.labels.sort.each do |label| %>   
+        <!-- <div id="" class="checkbox-group"> -->
+          <%# check_box_tag "enable_label[]", label.id, label.enabled, :id => label.name %>
+          <%# label_tag 'enable_label[]', label.name, :for=> label.name %>
+      <!-- </div> -->
+      <% #end %>
+    <!-- </div> -->
+  <!-- </div> -->
   <div id="" class="">
     <%= f.label :auto_tag %>
     <%= f.text_field :auto_tag %>

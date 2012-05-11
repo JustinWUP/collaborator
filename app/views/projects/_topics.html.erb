@@ -2,7 +2,7 @@
 
 		<span class="topics-heading">Topics Being Worked On: </span>
 	<ul>
-		<% @project.topics.each do |topic| %> 
+		<%= @project.topics.each do |topic| %> 
 			<li>
 				<%= link_to topic.title, project_topic_path(@project, topic) %> 
 				<ul class="topic-list">

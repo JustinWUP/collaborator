@@ -10,6 +10,7 @@ Githubbug::Application.routes.draw do
 
   resources :projects do
     # get 'topics/:topic_id', controller: "topics", action: "show", as: "topic"
+
     resources :topics do
       resources :comments
     end

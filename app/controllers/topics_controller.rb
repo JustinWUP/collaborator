@@ -50,6 +50,16 @@ class TopicsController <  ApplicationController
     # end 
   end
 
+
+  def edit
+    @project = Project.find(params[:project_id])
+    @topic = Topic.find(params[:id])
+    @topic_save  
+    respond_with(@topic, location: project_topic_path(@project,@topic))
+
+  end
+
+
   private 
 
   def find_topic

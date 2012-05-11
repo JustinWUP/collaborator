@@ -9,6 +9,20 @@
 		<%= f.label "Anything else you'd like to tell us?" %>
 		<br />
 		<%= f.text_area :body %>
+
+  <% if can? :manage, Setting %>
+        <div id="" class="form-spacer">
+        	<%= f.label "Hours Required To Complete This?" %>
+        	<br />
+        	<%= f.text_field :hoursreq %>
+        </div>
+        <div id="" class="form-spacer">
+        	<%= f.label "Hours Spent Working on This?" %>
+        	 	<br />
+        	<%= f.text_field :hoursused %>	
+        </div>
+                
+              <% end %>
 		
 	</div><!-- / -->
 	<%= hidden_field_tag "last_page", http_referer_helper %>
