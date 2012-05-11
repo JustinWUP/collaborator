@@ -3,8 +3,11 @@
 <% @amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f %>
 <% @amountcomplete.ceil %>
 <% @overage = @topic.hoursused - @topic.hoursreq %>
-<% if @amountcomplete > 1  && @overage > 0
+<% if @amountcomplete > 1  && @overage > 0  && (@topic.topiccomplete == false)
 	@amountcomplete = 0.9
+
+elsif @topic.topiccomplete == true
+	@amountcomplete=1
 	end %>
 <% @percentcomplete =number_to_percentage(@amountcomplete*100, :precision => 0)	 %>
 
@@ -33,7 +36,7 @@
 <div id="comments" class="comments">
 	<% @topic.comments.each do |comment| %>
 	
-		<h2> [User Gravatar..] <span class="comment-user"><%= comment.user.email %> says:</span> <span class="comment-date"> <%= comment.created_at.strftime("at %m/%d/%Y %I:%M%p") %></span></h2>
+		<h2><span class="comment-user">[User Gravatar..] <%= comment.user.email %> says:</span> <span class="comment-date"> <%= comment.created_at.strftime("at %m/%d/%Y %I:%M%p") %></span></h2>
 		<div class="comment-body"> <%= github_render_text comment.body %> </div>
 	<% end %>
 
