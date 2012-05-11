@@ -1,4 +1,8 @@
 Githubbug::Application.routes.draw do
+  resources :comments
+
+  resources :topics
+
     scope '/admin' do
       resources :settings
       resources :organizations

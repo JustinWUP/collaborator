@@ -1,4 +1,4 @@
-<%= form_for @comment, :url => project_topic_comments_path(@project, @topic.number) do |f| %> 
+<%= form_for([@topic.project, @topic, @comment]) do |f| %> 
 <div id="comment-submit" class="">
 <h2>Reply to this Topic:</h2>
 	<div id="" class="">

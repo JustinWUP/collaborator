@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   
   before_filter :find_project, except: [:index, :new, :create] 
-  before_filter :refresh_labels, only: :edit
+  # before_filter :refresh_labels, only: :edit
   # after_filter :delay_update_edit_date, only: :index
   
   load_and_authorize_resource :through => :current_user
@@ -62,10 +62,10 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       # If all set to zero..
       params[:project][:user_ids] ||= []
-      params[:enable_label] ||= []
+      # params[:enable_label] ||= []
 
       # no validation check needed. Boolean.
-      @project.update_labels(params[:enable_label])
+      # @project.update_labels(params[:enable_label])
 
       if @project.update_attributes(params[:project]) 
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -90,9 +90,7 @@ class ProjectsController < ApplicationController
     #   format.js
     # end
   end
-
   
-
   private
 
   def find_project
@@ -101,9 +99,9 @@ class ProjectsController < ApplicationController
     authorize! :read, @project
   end
 
-  def refresh_labels
-    @labels = @project.refresh_labels
-  end
+  # def refresh_labels
+  #   @labels = @project.refresh_labels
+  # end
 
   # def delay_update_edit_date
   #   @projects.each { |project| project.delay.update_edit_date }

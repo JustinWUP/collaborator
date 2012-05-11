@@ -4,11 +4,11 @@
 	<ul>
 		<% @project.topics.each do |topic| %> 
 			<li>
-				<%= link_to topic.title, project_topic_path(@project.id, topic.number) %> 
+				<%= link_to topic.title, project_topic_path(@project, topic) %> 
 				<ul class="topic-list">
-					<% topic.labels.each do |label| %> <li style="background-color: <%= "#" + label.color %>" ><%= label.name %> </li><% end %>
+			
 				</ul>
 			</li>
-			<% end %>
+		<% end %>
 	</ul>
 </div><!-- /project-topics -->
