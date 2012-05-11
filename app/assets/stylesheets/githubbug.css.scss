@@ -317,6 +317,31 @@ ul.topic-list {
     
   }
 }
+#barholder{
+  margin-left: 20px;
+}
+
+#bar{
+  width: 135px;
+height: 10px;
+position: relative;
+border: 1px #999 solid;
+background-color:#ccc;
+top:4px
+}
+#barfill {
+display: inline-block;
+background-color: #78BFF7;
+position: absolute;
+height: 10px;
+border-right:1px #bbb solid;
+}
+#percenttext{
+  font-weight:bold;
+  margin-top: 20px;
+  margin-left: 10px;
+  position: absolute;
+}
 #project-desc, #topic-desc { 
   padding-left: 20px;
 }

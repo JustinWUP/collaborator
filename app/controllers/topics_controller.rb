@@ -65,7 +65,8 @@ class TopicsController <  ApplicationController
 
   def update
     @topic.update_attributes(params[:topic])
-    respond_with @topic, location: project_topics_url
+    # respond_with @topic, location: project_topics_url
+    respond_with(@topic, location: project_topic_path(@topic.project, @topic))
   end
 
 

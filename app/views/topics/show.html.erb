@@ -1,13 +1,33 @@
 
 <% add_nav_link( link_to "#{@project.name}", project_path(@project) )%> 
+<% @amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f %>
+<% @amountcomplete.ceil %>
+<% @overage = @topic.hoursused - @topic.hoursreq %>
+<% if @amountcomplete > 1  && @overage > 0
+	@amountcomplete = 0.9
+	end %>
+<% @percentcomplete =number_to_percentage(@amountcomplete*100, :precision => 0)	 %>
 
   <%= content_for(:page_title) do @topic.project.name end %>
   <div id="topic" class="topic">
-	<div> 
+	
 		<h2><%= @topic.title %></h2>
 	</div>
+	<% if @amountcomplete > 0.0 %>
+	<div id="barholder">
+		Percentage Complete:
+			<span id="percenttext"><%= @percentcomplete %></span>
+		<div id="bar">
+			<span id="barfill" style="width:<%= @percentcomplete %>;">
+			</span>
+	
+		</div>
+	</div>
+	<% end %>
 	<div id="topic-desc" class="topic-desc">
-		<%= github_render_text @topic.body  %>
+
+	<br>
+	Topic Description: <%= github_render_text @topic.body  %>
 	</div><!-- /topic-desc -->
 </div><!-- /topic -->
 <div id="comments" class="comments">
@@ -23,6 +43,9 @@
 
 <% content_for :admin_links do %>
 	<%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class  => "adminactions" %>
+<% if @overage >0 %>
+		<span class ="field_with_errors"> You are <%= @overage %> hour(s) over estimated time. </span>
+		<%end%>
 <% end %>
 
 
