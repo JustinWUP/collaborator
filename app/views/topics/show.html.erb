@@ -49,6 +49,9 @@ elsif @topic.topiccomplete == true
 <% if @overage >0 %>
 		<span class ="field_with_errors"> You are <%= @overage %> hour(s) over estimated time. </span>
 		<%end%>
+		<% if @overage < 0 && @topic.topiccomplete == true %>
+		<span class="topicsuccess">You completed this task with <%= @overage.abs %> hour(s) left to spare. </span>
+		<%end%>
 <% end %>
 
 
