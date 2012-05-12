@@ -15,12 +15,13 @@ class ProjectsController < ApplicationController
     if can? :manage, Project
       @projects = Project.all
     end
-
+      
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+   
 
   end
 

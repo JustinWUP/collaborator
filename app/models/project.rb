@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
 
 	# Issues model is ActiveResource. Virtual attriburte 
 	# simulates nested resource
-
+	attr_accessible :overage
 	has_many :assignments
 	has_many :users, :through => :assignments
 	has_many :topics

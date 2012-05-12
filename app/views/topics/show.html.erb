@@ -1,20 +1,12 @@
 
 <% add_nav_link( link_to "#{@project.name}", project_path(@project) )%> 
-<% @amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f %>
+<%  %>
 <% #@amountcomplete.ceil %>
-<% @overage = @topic.hoursused - @topic.hoursreq %>
-<% if @amountcomplete > 1  && @overage > 0  && (@topic.topiccomplete == false)
-	@amountcomplete = 0.9
-
-elsif @topic.topiccomplete == true
-	@amountcomplete=1
-	end %>
-<% @percentcomplete =number_to_percentage(@amountcomplete*100, :precision => 0)	 %>
-
+<%  @percentcomplete =number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
   <%# content_for(:page_title) do @topic.project.name end %>
  	<h1><%= @topic.title %></h1>
   <div id="topic" class="topic">
-	<% if @amountcomplete > 0.0 %>
+	<% if @topic.amountcomplete > 0.0 %>
 	<div id="barholder">
 		<span class="boldstuff">Percentage Complete: </span>
 			<span id="percenttext"><%= @percentcomplete %></span>
@@ -46,11 +38,11 @@ elsif @topic.topiccomplete == true
 
 <% content_for :admin_links do %>
 	<%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class  => "adminactions" %>
-<% if @overage >0 %>
-		<span class ="field_with_errors"> You are <%= @overage %> hour(s) over estimated time. </span>
+	<% if @topic.overage > 0 %>
+		<span class ="topicover"> You are <%= @topic.overage %> hour(s) over estimated time. </span>
 		<%end%>
-		<% if @overage < 0 && @topic.topiccomplete == true %>
-		<span class="topicsuccess">You completed this task with <%= @overage.abs %> hour(s) left to spare. </span>
+		<% if @topic.overage < 0 && @topic.topiccomplete == true %>
+		<span class="topicunder">You completed this task with <%= @topic.overage.abs %> hour(s) left to spare. </span>
 		<%end%>
 <% end %>
 

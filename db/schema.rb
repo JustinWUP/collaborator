@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120511222047) do
+ActiveRecord::Schema.define(:version => 20120512193701) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20120511222047) do
     t.date     "retainer_expiration"
     t.string   "auto_tag",            :default => "Client-Visible"
     t.string   "url"
+    t.integer  "overage"
   end
 
   create_table "projects_users", :id => false, :force => true do |t|
@@ -102,12 +103,15 @@ ActiveRecord::Schema.define(:version => 20120511222047) do
   create_table "topics", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "project_id"
     t.integer  "hoursreq"
     t.integer  "hoursused"
     t.boolean  "topiccomplete"
+    t.integer  "overage"
+    t.float    "amountcomplete"
+    t.integer  "percentcomplete"
   end
 
   create_table "users", :force => true do |t|

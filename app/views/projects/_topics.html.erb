@@ -3,9 +3,26 @@
 		<span class="topics-heading">Topics Being Worked On: </span>
 	<ul>
 		<% @project.topics.each do |topic| %> 
-			<li>
+			<li class="topicbox">
 				<%= link_to topic.title, project_topic_path(@project, topic) %> 
 				<ul class="topic-list">
+				<% if (can? :manage, :all) %>
+				<div class="boldstuff indent">
+					Updates</div>
+					<% if topic.overage.to_i > 0 %>
+					<span class="topicover indentagain"> <%= topic.overage %> work hours over. <br>
+					</span>
+					<% end%>
+					<% if topic.overage.to_i <0 %>
+					<span class="topicunder indentagain"> <%= topic.overage.abs %> work hours remaining. <br></span>
+					<% end%>
+					<% if topic.topiccomplete == true %>
+					<span class="indentagain"> Topic complete.<br></span>
+					<% end%>
+					<% if topic.hoursused == 0 %>
+					<span class="indentagain"> Topic not started yet.<br> </span>
+					<% end %>
+				<% end %>
 			
 				</ul>
 			</li>
