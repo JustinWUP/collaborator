@@ -322,7 +322,7 @@ ul.topic-list {
 }
 
 #bar{
-  width: 135px;
+  width: 145px;
 height: 10px;
 position: relative;
 border: 1px #999 solid;
@@ -355,6 +355,7 @@ code {
   // padding: 10px;
   border: 1px solid #ccc;
   margin: 10px 0px;
+  width: 555px;
 
 
   h2 {
@@ -384,6 +385,7 @@ code {
   }
   .comment-body {
     padding: 10px;
+    padding-left:30px;
   }
 }
 

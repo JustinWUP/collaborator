@@ -14,12 +14,12 @@
         <div id="" class="form-spacer">
         	<%= f.label "Hours Required To Complete This?" %>
         	<br />
-        	<%= f.text_field :hoursreq %>
+        	<%= f.text_field :hoursreq, :value => "0" %>
         </div>
         <div id="" class="form-spacer">
         	<%= f.label "Hours Spent Working on This?" %>
         	 	<br />
-        	<%= f.text_field :hoursused %>	
+        	<%= f.text_field :hoursused, :value => "0"  %>	
         </div>
         <div id="" class="form-spacer">
         	<%= f.label "Is this topic complete?" %>

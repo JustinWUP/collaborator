@@ -1,7 +1,7 @@
 
 <% add_nav_link( link_to "#{@project.name}", project_path(@project) )%> 
 <% @amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f %>
-<% @amountcomplete.ceil %>
+<% #@amountcomplete.ceil %>
 <% @overage = @topic.hoursused - @topic.hoursreq %>
 <% if @amountcomplete > 1  && @overage > 0  && (@topic.topiccomplete == false)
 	@amountcomplete = 0.9
@@ -11,14 +11,12 @@ elsif @topic.topiccomplete == true
 	end %>
 <% @percentcomplete =number_to_percentage(@amountcomplete*100, :precision => 0)	 %>
 
-  <%= content_for(:page_title) do @topic.project.name end %>
+  <%# content_for(:page_title) do @topic.project.name end %>
+ 	<h1><%= @topic.title %></h1>
   <div id="topic" class="topic">
-	
-		<h2><%= @topic.title %></h2>
-	</div>
 	<% if @amountcomplete > 0.0 %>
 	<div id="barholder">
-		Percentage Complete:
+		<span class="boldstuff">Percentage Complete: </span>
 			<span id="percenttext"><%= @percentcomplete %></span>
 		<div id="bar">
 			<span id="barfill" style="width:<%= @percentcomplete %>;">
@@ -26,13 +24,15 @@ elsif @topic.topiccomplete == true
 	
 		</div>
 	</div>
-	<% end %>
-	<div id="topic-desc" class="topic-desc">
-
 	<br>
-	Topic Description: <%= github_render_text @topic.body  %>
+	<% end %>
+	
+	<div id="topic-desc" class="topic-desc">
+	<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body  %>
 	</div><!-- /topic-desc -->
+
 </div><!-- /topic -->
+
 <div id="comments" class="comments">
 	<% @topic.comments.each do |comment| %>
 	
