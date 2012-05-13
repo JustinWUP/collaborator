@@ -22,7 +22,7 @@
 					<div>Admin Zone:</div> 
 					
 					<div>Repository: <%= project.repo %></div>
-					<div>HEY <%# Topic.sum(:overage, :conditions => ['project => ?', 1])  %> </div>
+					<!-- <div><%# Topic.sum(:overage, :conditions => ['project => ?', 1])  %> </div> -->
 				    <div>
 					    <span><%= link_to 'Edit', edit_project_path(project) %></span> | 
 					    <span><%= link_to 'Delete', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
