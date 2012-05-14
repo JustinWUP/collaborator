@@ -201,6 +201,7 @@ height: 173px;
 margin-left: 365px;
 width: 300px;
 height: 173px;
+top:35px;
 position: absolute;
 }
 
@@ -309,6 +310,17 @@ ul.topic-list {
     margin:  0px;
   }
 }
+.topicbox {
+  border: 1px #ccc solid;
+  padding:10px;
+}
+.indent {
+  margin-left:20px;
+}
+.indentagain {
+  margin-left:20px;
+}
+
 
 #topics-list{
   padding-bottom:12px;
@@ -343,8 +355,12 @@ border-right:1px #bbb solid;
   position: absolute;
 }
 
-.topicsuccess{
+.topicunder{
   color:forestgreen;
+}
+
+.topicover{
+  color:crimson;
 }
 
 #project-desc, #topic-desc { 

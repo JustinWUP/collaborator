@@ -1,10 +1,10 @@
 class TopicsController <  ApplicationController
-	respond_to :html, :js
+  respond_to :html, :js
   
   # before_filter :find_project
  #  # before_filter :find_all_projects
-	before_filter :find_topic, except: [:index, :new, :create]
-	# before_filter :find_comments, except: [:new, :create]
+  before_filter :find_topic, except: [:index, :new, :create]
+  # before_filter :find_comments, except: [:new, :create]
 
   load_and_authorize_resource :project, :through => :current_user
 
@@ -15,9 +15,24 @@ class TopicsController <  ApplicationController
 
   def show
      # @comment = Github::Comment.new
+    # @topic.overage = @topic.hoursused - @topic.hoursreq 
+@topic.overage = @topic.hoursused - @topic.hoursreq 
+    @topic.save
+    if @topic.hoursused.to_f != 0.0
+    @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
+    @topic.save
+  else
+    @topic.amountcomplete = 0.0
+  end
 
-   @comment = Comment.new
-
+    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+      @topic.amountcomplete = 0.9
+      @topic.save
+    elsif @topic.topiccomplete == true
+      @topic.amountcomplete=1
+      @topic.save
+    end
+    @comment = Comment.new
   end
 
   def new
@@ -61,12 +76,59 @@ class TopicsController <  ApplicationController
     # @topic = Topic.find(params[:id])
     # @topic_save  
     # respond_with(@topic, location: project_topic_path(@project,@topic))
+    @topic.update_attributes(params[:topic])
+    # @topic.overage = @topic.hoursused - @topic.hoursreq 
+    # @topic.save
+    # @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
+    # @topic.save
+
+    @topic.overage = @topic.hoursused - @topic.hoursreq 
+    @topic.save
+    if @topic.hoursused.to_f != 0.0
+    @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
+    @topic.save
+  else
+    @topic.amountcomplete = 0.0
+  end
+
+    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+      @topic.amountcomplete = 0.9
+      @topic.save
+    elsif @topic.topiccomplete == true
+      @topic.amountcomplete=1
+      @topic.save
+    end
+    @comment = Comment.new
+    
   end
 
   def update
     @topic.update_attributes(params[:topic])
     # respond_with @topic, location: project_topics_url
     respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+    #     @topic.overage = @topic.hoursused - @topic.hoursreq 
+    # @topic.save
+    # @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
+    # @topic.save
+
+@topic.overage = @topic.hoursused - @topic.hoursreq 
+    @topic.save
+    if @topic.hoursused.to_f != 0.0
+    @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
+    @topic.save
+  else
+    @topic.amountcomplete = 0.0
+  end
+
+    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+      @topic.amountcomplete = 0.9
+      @topic.save
+    elsif @topic.topiccomplete == true
+      @topic.amountcomplete=1
+      @topic.save
+    end
+    @comment = Comment.new
+
   end
 
 
@@ -80,7 +142,7 @@ class TopicsController <  ApplicationController
 
   end
   # def find_topic
-  # 	@topic = @project.topics.find(params[:id])	
+  #   @topic = @project.topics.find(params[:id])  
 
   #   regex = Regexp.new(/<<HEADSTART(.*)Description:/m)
   #   if regex.match(@topic.body)
@@ -91,7 +153,7 @@ class TopicsController <  ApplicationController
   # end
 
   # def find_comments
-  # 	@comments = Github::Comment.find_by_topic(@topic)
+  #   @comments = Github::Comment.find_by_topic(@topic)
     
   # end
 
