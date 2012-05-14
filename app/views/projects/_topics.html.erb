@@ -1,14 +1,1 @@
-<div id="project-topics" class="">
-
-		<span class="topics-heading">Topics Being Worked On: </span>
-	<ul>
-		<% @project.topics.each do |topic| %> 
-			<li>
-				<%= link_to topic.title, project_topic_path(@project, topic) %> 
-				<ul class="topic-list">
-			
-				</ul>
-			</li>
-		<% end %>
-	</ul>
-</div><!-- /project-topics -->
+ <% raise "Remove this file! Reorganizing partials. Change reference to pass collection to: topics/_topic" %> 

@@ -1,7 +1,9 @@
 	<%= content_for(:page_title) do @project.name end %>
 
 <div id="topics-list">
-	<%= render "topics" %>
+	<ul id="" class="">
+		<%= render(:partial => 'topics/topic', collection: @project.topics, :layout => 'li_layout') %>
+	</ul><!-- / -->
 </div> <!-- /topics-list -->
 
 <div id="project-heading">
