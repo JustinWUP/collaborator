@@ -4,6 +4,8 @@
 	<h4>Manage an existing Project from the right.</h4>
 <% end %>
 <div id="projects" class="">
+
+
 	<div id="project-list-heading">My Active Projects:</div>
 	<% @projects.each do |project| %>
 
@@ -33,7 +35,7 @@
 				<div class="project-admin">
 					<div>Project Goals:</div>
 					<%= truncate(project.description, :length => 200, :separator => ' ') %>
-
+                </div>
 			<% end %>
 
 		</div>
