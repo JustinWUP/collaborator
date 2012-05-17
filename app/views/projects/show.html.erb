@@ -1,8 +1,11 @@
 	<%= content_for(:page_title) do @project.name end %>
 
 <div id="topics-list">
-	<ul id="" class="">
-		<%= render(:partial => 'topics/topic', collection: @project.topics, :layout => 'li_layout') %>
+	<ul id="" class="topics-ul">
+		<% @project.topics.each do |topic| %>
+
+			<%= render partial: topic, layout: 'layouts/li_layout' %>
+		<% end %>
 	</ul><!-- / -->
 </div> <!-- /topics-list -->
 
