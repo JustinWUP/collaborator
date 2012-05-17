@@ -310,7 +310,7 @@ ul.topic-list {
     margin:  0px;
   }
 }
-.topicbox {
+.topics-ul>li {
   border: 1px #ccc solid;
   padding:10px;
 }
@@ -438,11 +438,11 @@ code {
   height: 50px;
 }
 
-#error_explanation h2 {
+#errorExplanation h2 {
 padding: 4px 0 2px 0;
 }
 
-#error_explanation ul {
+#errorExplanation ul {
 color: red;
 padding-bottom: 15px;
 }
