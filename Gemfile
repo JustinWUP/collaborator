@@ -19,6 +19,8 @@ gem 'devise'
 gem 'cancan'
 gem 'rails_autolink'
 gem 'bluecloth' # For MarkDown
+gem 'make_resourceful'
+gem 'dynamic_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,7 +33,6 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-	gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'launchy'
   gem 'steak' # Loads RSpec, Capybara, etc.
 end
