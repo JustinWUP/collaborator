@@ -1,13 +1,12 @@
 class TopicsController <  ApplicationController
   respond_to :html, :js
-  
-  before_filter :find_topic, except: [:index, :new, :create]
+  # load_and_authorize_resource :project, :through => :current_user
+  load_and_authorize_resource :project
+  load_and_authorize_resource :through => :project
+  # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
 
-  load_and_authorize_resource :project, :through => :current_user
-
   def index
-    @project = Project.find(params[:project_id])
     redirect_to project_path(@project)  
   end
 
@@ -108,18 +107,8 @@ class TopicsController <  ApplicationController
 
   private 
 
-  def find_topic
-    @topic = Topic.find(params[:id])
-  end
-
   def find_subscription
-    # TODO: This should be find_or_create_by_type(id, type)
-    @subscription = current_user.subscriptions.where(:subscribable_id => @topic.id, :subscribable_type => 'Topic').first
-    unless @subscription then
-      @subscription = @topic.subscriptions.build
-      @subscription.user = current_user
-      @subscription.save
-    end
+    @subscription = Subscription.find_or_create_by_type(current_user, @topic)
   end
 
 
