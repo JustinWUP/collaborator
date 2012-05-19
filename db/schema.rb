@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512193701) do
+ActiveRecord::Schema.define(:version => 20120518204612) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -98,6 +98,15 @@ ActiveRecord::Schema.define(:version => 20120512193701) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "name"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.integer  "user_id"
+    t.boolean  "enabled",           :default => true
   end
 
   create_table "topics", :force => true do |t|

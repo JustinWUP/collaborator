@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :projects, :through => :assignments
   has_many :topics
   has_many :comments
+  has_many :subscriptions
   belongs_to :organization
   
   # Include default devise modules. Others available are:

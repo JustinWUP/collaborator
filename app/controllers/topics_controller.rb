@@ -2,6 +2,7 @@ class TopicsController <  ApplicationController
   respond_to :html, :js
   
   before_filter :find_topic, except: [:index, :new, :create]
+  before_filter :find_subscription, :only => :show
 
   load_and_authorize_resource :project, :through => :current_user
 
@@ -109,6 +110,16 @@ class TopicsController <  ApplicationController
 
   def find_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def find_subscription
+    # TODO: This should be find_or_create_by_type(id, type)
+    @subscription = current_user.subscriptions.where(:subscribable_id => @topic.id, :subscribable_type => 'Topic').first
+    unless @subscription then
+      @subscription = @topic.subscriptions.build
+      @subscription.user = current_user
+      @subscription.save
+    end
   end
 
 

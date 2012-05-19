@@ -1,0 +1,14 @@
+<h1>Subscriptions</h1>
+<h2>
+  Below are the current subscriptioins you have access to modify:
+</h2><!-- / -->
+
+<div id="" class="">
+  <% if @subscriptions.empty?  %>
+    <b>You have no subscriptions</b>
+  <% else %>
+    <% for subscription in @subscriptions do %>
+      <%= render subscription %>  
+    <% end %>
+  <% end %> 
+</div><!-- / -->

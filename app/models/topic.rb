@@ -3,10 +3,10 @@ class Topic < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   has_many :comments
+  has_many :subscriptions, :as => :subscribable
   validates :hoursreq, :numericality => { :greater_than_or_equal_to => 0 } 
   validates :hoursused, :numericality => { :greater_than_or_equal_to => 0 }
   validates :title, :presence => true
-
 
   after_initialize :init
   def init

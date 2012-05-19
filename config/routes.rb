@@ -1,4 +1,8 @@
 Githubbug::Application.routes.draw do
+  get "subscriptions/index"
+
+  get "subscriptions/edit"
+
   scope '/admin' do
     resources :settings
     resources :organizations
@@ -6,10 +10,14 @@ Githubbug::Application.routes.draw do
   end
 
   resources :projects do
-    # get 'topics/:topic_id', controller: "topics", action: "show", as: "topic"
-
     resources :topics do
       resources :comments
+    end
+  end
+
+  resources :subscriptions do
+    member do
+      get 'toggle'
     end
   end
 

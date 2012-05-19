@@ -1,20 +1,10 @@
 class ProjectsController < ApplicationController
-
+  # Load first.. 
   load_and_authorize_resource
+  # ..then filter  
+  before_filter :filter_index, :only => :index
 
-  make_resourceful do
-    actions :all
-    #before :index do
-    #    if can? :manage, Project
-    #      @projects = Project.all
-    #    end
-    #end
-
+  def filter_index
+    @projects = Project.accessible_by(current_ability)
   end
-
-  # Make_resourceful play nice with cancan...
-  def current_objects
-    @current_objects = Project.accessible_by(current_ability)
-  end
-
 end

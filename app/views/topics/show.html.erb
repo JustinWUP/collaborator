@@ -1,49 +1,55 @@
+<% add_nav_link(link_to "#{@project.name}", project_path(@project)) %>
 
-<% add_nav_link( link_to "#{@project.name}", project_path(@project) )%> 
-<%  %>
-<% #@amountcomplete.ceil %>
-<%  @percentcomplete =number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
-  <%# content_for(:page_title) do @topic.project.name end %>
- 	<h1><%= @topic.title %></h1>
-  <div id="topic" class="topic">
-	<% if @topic.amountcomplete > 0.0 %>
-	<div id="barholder">
-		<span class="boldstuff">Percentage Complete: </span>
-			<span id="percenttext"><%= @percentcomplete %></span>
-		<div id="bar">
-			<span id="barfill" style="width:<%= @percentcomplete %>;">
-			</span>
-	
-		</div>
-	</div>
-	<br>
-	<% end %>
-	
+<% @percentcomplete =number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
+
+<h1><%= @topic.title %></h1>
+
+<div id="" class="subscribe">
+  <%= subscription_link(@subscription, @topic) %>
+</div><!-- / -->
+
+<div id="topic" class="topic">
+  <% if @topic.amountcomplete > 0.0 %>
+      <div id="barholder">
+
+        <span class="boldstuff">Percentage Complete: </span>
+        <span id="percenttext"><%= @percentcomplete %></span>
+
+        <div id="bar">
+          <span id="barfill" style="width:<%= @percentcomplete %>;">
+          </span>
+        </div>
+      </div>
+      <br>
+  <% end %>
+
 	<div id="topic-desc" class="topic-desc">
-	<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body  %>
-	</div><!-- /topic-desc -->
-
+		<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body %>
+	</div>
+	<!-- /topic-desc -->
 </div><!-- /topic -->
 
 <div id="comments" class="comments">
-	<% @topic.comments.each do |comment| %>
-	    <%# TODO: This needs to be a partial %>
-		<h2><span class="comment-user"><%= comment.user.email %> says:</span> <span class="comment-date"> <%= comment.created_at.strftime("at %m/%d/%Y %I:%M%p") %></span></h2>
-		<div class="comment-body"> <%= github_render_text comment.body %> </div>
-	<% end %>
+  <% @topic.comments.each do |comment| %>
+      <%# TODO: This needs to be a partial %>
+      <h2><span class="comment-user"><%= comment.user.email %> says:</span>
+        <span class="comment-date"> <%= comment.created_at.strftime("at %m/%d/%Y %I:%M%p") %></span></h2>
 
-	<%= render 'comments/form', :object => @topic.comments.build %>
+      <div class="comment-body"> <%= github_render_text comment.body %> </div>
+  <% end %>
+
+  <%= render 'comments/form', :object => @topic.comments.build %>
 
 </div><!-- /comments -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class  => "adminactions" %>
-	<% if @topic.overage > 0 %>
-		<span class ="topicover"> You are <%= @topic.overage %> hour(s) over estimated time. </span>
-		<%end%>
-		<% if @topic.overage < 0 && @topic.topiccomplete == true %>
-		<span class="topicunder">You completed this task with <%= @topic.overage.abs %> hour(s) left to spare. </span>
-		<%end%>
+    <%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class => "adminactions" %>
+    <% if @topic.overage > 0 %>
+        <span class="topicover"> You are <%= @topic.overage %> hour(s) over estimated time. </span>
+    <% end %>
+    <% if @topic.overage < 0 && @topic.topiccomplete == true %>
+        <span class="topicunder">You completed this task with <%= @topic.overage.abs %> hour(s) left to spare. </span>
+    <% end %>
 <% end %>
 
 
