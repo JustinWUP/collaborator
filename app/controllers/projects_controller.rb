@@ -7,10 +7,16 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])  
     if @project.save
-      
+      redirect_to(@project)
     else
       render :new
     end
+  end
+
+  def destroy
+    @project.destroy
+    flash[:notice] = 'Project destroyed.'
+    redirect_to :back
   end
 
   private

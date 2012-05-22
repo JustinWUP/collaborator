@@ -3,7 +3,7 @@ class Topic < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   has_many :comments
-  has_many :subscriptions, :as => :subscribable
+  has_many :subscriptions, :as => :subscribable, :dependent => :destroy
   validates :hoursreq, :numericality => { :greater_than_or_equal_to => 0 } 
   validates :hoursused, :numericality => { :greater_than_or_equal_to => 0 }
   validates :title, :presence => true

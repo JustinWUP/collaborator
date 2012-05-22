@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
 		
 		if @comment.save
       flash[:notice] = 'Comment posted'
+
+      notified = @comment.notify_subscribers
+      #
+      # flash[:notice] += '<br/> These people uh.. WEREN\'T notified: (I haven\'t implemented the actual email part yet..)<br/>' + notified.join(', ')
+      # flash[:notice] = flash[:notice].html_safe
     else
       error = I18n.t 'activerecord.errors.template.body'
       error += "<ul>"

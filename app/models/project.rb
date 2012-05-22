@@ -2,8 +2,8 @@ class Project < ActiveRecord::Base
 
 	has_many :assignments
 	has_many :users, :through => :assignments
-	has_many :topics
-  has_many :subscriptions, :as => :subscribable
+	has_many :topics, :dependent => :destroy
+  has_many :subscriptions, :as => :subscribable, :dependent => :destroy
 
 	validates :retainer_hours, :numericality => { :greater_than_or_equal_to => 0 } 
 	validates :name, :presence => true
