@@ -20,10 +20,19 @@ Githubbug::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Deafult mailer for Devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'winduppixel.com' }
 
-  config.action_mailer.delivery_method = :sendmail
-  # config.action_mailer.smtp_settings = { :host => "localhost", :port => 1025 }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address  => "mail.winduppixel.com",
+    # :port  => 25,
+    :port => 587,
+    :user_name  => "admin@winduppixel.com",
+    :password  => "K8|;;/fv*x=.W^v",
+    :authentication  => :login,
+    :openssl_verify_mode => 'none'
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
