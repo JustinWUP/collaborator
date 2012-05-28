@@ -6,4 +6,7 @@ class Comment < ActiveRecord::Base
 
   validates :user, :body, :presence => true
 
+  def parent
+     topic
+  end
 end

@@ -6,7 +6,7 @@
   <body>
     <h1>A <%= @type.downcase %> you are subscribed to has been updated.</h1>
     <p>
-      Click here to go there: <%= link_to "Linky linky", @parent %>
+      Click here to go there: <%= polymorphic_url @parent %>
     </p>
   </body>
 </html>

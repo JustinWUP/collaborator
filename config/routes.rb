@@ -6,7 +6,6 @@ Githubbug::Application.routes.draw do
   scope '/admin' do
     resources :settings
     resources :organizations
-    resources :topics
   end
 
   resources :projects do

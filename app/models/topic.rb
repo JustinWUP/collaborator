@@ -1,6 +1,9 @@
+require 'parent_resource'
 class Topic < ActiveRecord::Base
+
   attr_accessible :body, :title, :hoursreq, :hoursused, :topiccomplete, :overage, :amountcomplete
   belongs_to :project
+  parent_resource :project
   belongs_to :user
   has_many :comments
   has_many :subscriptions, :as => :subscribable, :dependent => :destroy
