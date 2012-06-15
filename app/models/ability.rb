@@ -8,7 +8,7 @@ class Ability
         can :manage, :all
       else
         can :read, Project, :users => {:id => user.id }
-        can :read, Topic
+        can :create, Topic
         can :manage, Subscription, :user_id => user.id
         can :create, :comment 
         cannot :all, Setting
