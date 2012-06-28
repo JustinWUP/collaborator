@@ -9,7 +9,10 @@ gem 'pg'
 # sqlite3 for development, pg for heroku. bad idea, yes, I know..
 group :development, :test do
 	gem 'sqlite3'
-  gem 'factory_girl_rails'
+	
+	# FactoryGirl causing trouble with rake db:migrate on fresh clone.
+	# Will fix later.
+  	# gem 'factory_girl_rails'
 end
 
 gem 'thin'
