@@ -12,6 +12,14 @@ class SubscriptionsController < ApplicationController
       redirect_to :back
   end
 
+
+  def destroy
+    @subscription.destroy
+    flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
+    redirect_to :back
+  end
+
+
   private
 
   def find_subscription

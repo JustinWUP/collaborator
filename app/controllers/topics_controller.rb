@@ -47,6 +47,7 @@ class TopicsController <  ApplicationController
     @topic.save
 
     respond_with @topic, :location => project_path(@topic.project)
+
   end
 
 
