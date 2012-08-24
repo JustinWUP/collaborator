@@ -1,4 +1,4 @@
-Githubbug::Application.routes.draw do
+Collaborator::Application.routes.draw do
   get "subscriptions/index"
 
   get "subscriptions/edit"
