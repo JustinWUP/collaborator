@@ -1,3 +1,23 @@
 <div>
-  <b>ID: <%= subscription.id %></b> Subscripton type: <%= subscription.subscribable_type.to_s.humanize %>, User Email: <%= subscription.user.email.to_s %>
+<!--   <b>ID: <%= subscription.id %></b> Subscripton type: <%= subscription.subscribable_type.to_s.humanize %>, User Email: <%= subscription.user.email.to_s %> -->
+
+	<tr>
+		<td>
+			<%= subscription.subscribable.project.name %>
+		</td>
+		<td>
+<%= subscription.subscribable.title %>
+</td>
+
+<% if (can? :manage, :all) %>    
+      <td>
+      	<%= subscription.user.email.to_s %>
+      </td>
+<% end %>
+
+<td>
+	  <span><%= link_to 'Unsubscribe', subscription, confirm: 'Are you sure?', method: :delete %></span>
+</td>
+		</tr>
+
 </div>

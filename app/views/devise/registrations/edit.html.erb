@@ -20,27 +20,32 @@
             <% if can? :manage, Organization %>    
                 <% content_for :admin_links do %>
                   <%= link_to 'Manage Organizations', organizations_path, :class  => "adminactions" %>
-                   <h4>or</h4>
               <% end %>
             <% end %>
-              <% content_for :user_links do %>
+            <% content_for :admin_links do %>
+              <%= link_to 'Subscription Admin', subscriptions_path, :class => "adminactions" %>
+              <h4>or</h4>
               <h4>Update your e-mail address and password to the right.</h4>
-              <% end %>
+            <% end %>
    
 
 
   <% elsif current_user.organization.name.include? "WUP" %>
     <h3>You're a <%= current_user.organization.name %> team member &mdash; Sup Yo?</h3> <br />
 
-         <% content_for :user_links do %>
-              <h4>Update your e-mail address and password to the right.</h4>
-              <% end %>
+        <% content_for :admin_links do %>
+          <%= link_to 'Subscription Admin', subscriptions_path, :class => "adminactions" %>
+          <h4>or</h4>
+          <h4>Update your e-mail address and password to the right.</h4>
+        <% end %>
   
   <% else %>
   <h3><%= current_user.organization.name %> &mdash; Thanks for being a part of our team.</h3> <br />
-   <% content_for :user_links do %>
-              <h4>Update your e-mail address and password to the right.</h4>
-              <% end %>
+        <% content_for :user_links do %>
+          <%= link_to 'Manage Subscriptions', subscriptions_path, :class => "useractions" %>
+          <h4>or</h4>
+          <h4>Update your e-mail address and password to the right.</h4>
+        <% end %>
       
   <% end %>
 
