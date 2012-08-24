@@ -6,7 +6,7 @@ class Notifier < ActionMailer::Base
     @type = subscription.subscribable_type.to_s.humanize
     @user = subscription.user
 
-    @link = nested_resource_link(@resource)
+    @resource_link = nested_resource_link
     mail(:to => @user.email, :subject => "#{@resource.class.to_s.humanize} has been updated.")
   end
 
@@ -37,7 +37,7 @@ class Notifier < ActionMailer::Base
     }
     resources.reverse!
     
-    polymorphic_url(resources) # "http://www.example.com/projects/1/topics/1/comments/1" 
+    link = polymorphic_url(resources) # "http://www.example.com/projects/1/topics/1/comments/1" 
     
     return link
   end

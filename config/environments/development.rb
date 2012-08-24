@@ -20,18 +20,18 @@ Collaborator::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Deafult mailer for Devise
-  config.action_mailer.default_url_options = { :host => 'winduppixel.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address  => "mail.winduppixel.com",
-    # :port  => 25,
-    :port => 465,
-    :user_name  => "carl.the.cat@winduppixel.com",
-    :password  => "Tacobell1",
-    :authentication  => :login,
-    :openssl_verify_mode => 'none'
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'winduppixel.com',
+    :user_name            => 'mailer@winduppixel.com',
+    :password             => 'K8|;;/fv*x=.W^v',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 
   # Print deprecation notices to the Rails logger
