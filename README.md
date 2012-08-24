@@ -1,13 +1,13 @@
 # GitHubBug
 
-A rails project that consumes and filters GitHub's Issues via v3 API via ActiveResource. Features currently (or soon will) include:
-
-* Filter topics by labels per-project
-* Assigning project visibility to users
-* Some other stuff.
+GitHubBug will soon be renamed Collaborator. It is currently a simple issue tracking system for client-agency collaboration. 
+GHB used to encapsulate the GitHub API, pulling in Issues/Comments via an ActiveResource library. This library can be found 
+on tag "remove_github" and will be  turned into a simple library soon enough. See 
+[this directory](https://github.com/quicksnap/githubbug/tree/remove_github/app/models/github) for the code.
 
 ## Setttting up 
 
+Note: seeds.rb is currently out of date and needs fixing most likely.
 
 To set up, do the following:
 
