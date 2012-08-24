@@ -1,6 +1,6 @@
 require 'http_debug'
 
-Githubbug::Application.configure do
+Collaborator::Application.configure do
   Net::HTTP.enable_debug!
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -22,8 +22,17 @@ Githubbug::Application.configure do
   # Deafult mailer for Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_mailer.delivery_method = :sendmail
-  # config.action_mailer.smtp_settings = { :host => "localhost", :port => 1025 }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'winduppixel.com',
+    :user_name            => 'mailer@winduppixel.com',
+    :password             => 'K8|;;/fv*x=.W^v',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

@@ -1,14 +1,37 @@
-<%= form_for @topic, url: project_topics_path(@project) do |f| %> 
-
+<%= form_for [@project, @topic] do |f| %> 
+    <%= f.error_messages %>
 	<div id="" class="form-spacer">
 		<%= f.label "What's on your mind?" %>
 		<br />
 		<%= f.text_field :title, :size=> "54"%>
+      <%= f.error_message_on(:title) %>
 	</div><!-- / -->
 	<div id="" class="form-spacer">
 		<%= f.label "Anything else you'd like to tell us?" %>
 		<br />
 		<%= f.text_area :body %>
+      <%= f.error_message_on(:body) %>
+
+  <% if can? :manage, Setting %>
+        <div id="" class="form-spacer">
+        	<%= f.label "Hours Required To Complete This?" %>
+        	<br />
+        	<%= f.text_field :hoursreq %>
+          <%= f.error_message_on(:hoursreq) %>
+        </div>
+        <div id="" class="form-spacer">
+        	<%= f.label "Hours Spent Working on This?" %>
+        	 	<br />
+        	<%= f.text_field :hoursused  %>
+          <%= f.error_message_on(:hoursused) %>
+        </div>
+        <div id="" class="form-spacer">
+        	<%= f.label "Is this topic complete?" %>
+        	 	<br />
+        	<%= f.check_box :topiccomplete %>
+          <%= f.error_message_on(:topiccomplete) %>
+        </div>
+              <% end %>
 		
 	</div><!-- / -->
 	<%= hidden_field_tag "last_page", http_referer_helper %>

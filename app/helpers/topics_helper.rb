@@ -9,4 +9,5 @@ module TopicsHelper
 
 	    last_page
 	end
+
 end

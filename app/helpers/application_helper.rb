@@ -22,4 +22,13 @@ NAVMENU
 	def github_render_text(text)
 		auto_link(BlueCloth.new(text).to_html.html_safe)
 	end
+
+  def subscription_link(subscription, object)
+    type = object.class.to_s
+    if subscription.subscribed?
+       return link_to "Unsubscribe to #{type.to_s.humanize.downcase}", toggle_subscription_path(subscription.id), :class => "subscribe"
+    else
+       return link_to "Subscribe to #{type.to_s.humanize}", toggle_subscription_path(subscription.id),  :class => "subscribe"
+    end
+  end
 end

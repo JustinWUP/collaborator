@@ -4,5 +4,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Githubbug::Application.load_tasks
+Collaborator::Application.load_tasks
 

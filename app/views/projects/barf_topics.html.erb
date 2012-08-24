@@ -1,0 +1,51 @@
+<div id="project-topics" class="">
+
+		<span class="topics-heading">Topics Being Worked On: </span>
+	<ul>
+		<% @project.topics.each do |topic| %> 
+			<li class="topicbox">
+				<%= link_to topic.title, project_topic_path(@project, topic) %> 
+				<div class="boldstuff indent">
+					Changes in the last two days</div>
+				<ul class="topic-list">
+				<%if topic.created_at  > 2.day.ago %>
+			<span class="topicunder"> New Topic! <br></span>
+			<% end%>
+			<% @commentcount =0 %>
+			<% topic.comments.each do |comment| %>
+			<% if comment.created_at > 2.day.ago %>
+			<% @commentcount += 1 %>
+			<% end%>
+			<% end %>
+							<%if @commentcount > 0 %>
+				<span class="topicunder indent"><%= @commentcount %> new comments!</span><br>
+				<%end%>
+				<% if (can? :manage, :all) %><br>
+				<span class="boldstuff indent">
+					Progress<br></span>
+						<% if topic.topiccomplete == true %>
+					<span class="topicunder indentagain"> Topic complete.<br></span>
+					<% end%>
+					<% if topic.hoursused == 0 %>
+					<span class="topicover indentagain"> Topic not started yet.<br> </span>
+					<% end %>
+					<% if topic.overage.to_i > 0 %>
+					<span class="topicover indentagain"> <%= topic.overage %> work hours over. <br>
+					</span>
+					<% end%>
+					<% if topic.overage.to_i <0 %>
+					<span class="topicunder indentagain"> <%= topic.overage.abs %> work hours remaining. <br></span>
+					<% end%>
+				<% else %>
+				<% if topic.hoursused > 0.0 %>
+					
+						<%= topic.hoursused %>
+					
+				<% end %>
+			<% end %>
+			
+				</ul>
+			</li>
+		<% end %>
+	</ul>
+</div><!-- /project-topics -->

@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :assignments
   has_many :projects, :through => :assignments
+  has_many :topics
+  has_many :comments
+  has_many :subscriptions
   belongs_to :organization
   
   # Include default devise modules. Others available are:

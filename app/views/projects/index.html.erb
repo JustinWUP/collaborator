@@ -4,6 +4,8 @@
 	<h4>Manage an existing Project from the right.</h4>
 <% end %>
 <div id="projects" class="">
+
+
 	<div id="project-list-heading">My Active Projects:</div>
 	<% @projects.each do |project| %>
 
@@ -22,9 +24,10 @@
 					<div>Admin Zone:</div> 
 					
 					<div>Repository: <%= project.repo %></div>
+					<!-- <div><%# Topic.sum(:overage, :conditions => ['project => ?', 1])  %> </div> -->
 				    <div>
 					    <span><%= link_to 'Edit', edit_project_path(project) %></span> | 
-					    <span><%= link_to 'Delete', project, confirm: 'Are you sure?', method: :delete, remote: true %></span>
+					    <span><%= link_to 'Delete', project, confirm: 'Are you sure?', method: :delete %></span>
     				</div>
 
 				</div>
@@ -32,7 +35,7 @@
 				<div class="project-admin">
 					<div>Project Goals:</div>
 					<%= truncate(project.description, :length => 200, :separator => ' ') %>
-
+                </div>
 			<% end %>
 
 		</div>
