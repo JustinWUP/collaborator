@@ -27,9 +27,9 @@ Collaborator::Application.configure do
   config.action_mailer.smtp_settings = {
     :address  => "mail.winduppixel.com",
     # :port  => 25,
-    :port => 587,
-    :user_name  => "admin@winduppixel.com",
-    :password  => "K8|;;/fv*x=.W^v",
+    :port => 465,
+    :user_name  => "carl.the.cat@winduppixel.com",
+    :password  => "Tacobell1",
     :authentication  => :login,
     :openssl_verify_mode => 'none'
   }

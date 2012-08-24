@@ -17,27 +17,27 @@ class Notifier < ActionMailer::Base
     #
     # Code from StackOverflow:
     #
-    # resource = Comment.first
-    # resource_name = resource.class.to_s.downcase 
-    #
-    # helper = Rails.application.routes.named_routes.helpers.grep(/.*#{resource_name}_path$/).first.to_s.split('_')
-    # built = helper.slice!(-2,2) # Shortest possible valid helper, "comment_path"
-    #
-    # while !(app.respond_to?(built.join("_").to_sym)) 
-    #   built.unshift helper.pop
-    # end
-    #
-    # built.pop # Get rid of "path"
-    # resources = built.reverse.reduce([]) { |memo, name| 
-    #   if name == resource_name
-    #     memo << resource
-    #   else
-    #     memo <<  memo.last.send(name.to_sym) # comment.topic, or topic.project (depends on belongs_to)
-    #   end
-    # }
-    # resources.reverse!
-    #
-    # app.polymorphic_url(resources) # "http://www.example.com/projects/1/topics/1/comments/1" 
+    resource = @resource
+    resource_name = resource.class.to_s.downcase 
+    
+    helper = Rails.application.routes.named_routes.helpers.grep(/.*#{resource_name}_path$/).first.to_s.split('_')
+    built = helper.slice!(-2,2) # Shortest possible valid helper, "comment_path"
+    
+    while !(respond_to?(built.join("_").to_sym)) 
+      built.unshift helper.pop
+    end
+    
+    built.pop # Get rid of "path"
+    resources = built.reverse.reduce([]) { |memo, name| 
+      if name == resource_name
+        memo << resource
+      else
+        memo <<  memo.last.send(name.to_sym) # comment.topic, or topic.project (depends on belongs_to)
+      end
+    }
+    resources.reverse!
+    
+    polymorphic_url(resources) # "http://www.example.com/projects/1/topics/1/comments/1" 
     
     return link
   end
