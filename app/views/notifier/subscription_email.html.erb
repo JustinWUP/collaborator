@@ -10,12 +10,12 @@
      <!-- <h1>A <%= @type.downcase %> you are subscribed to has been updated.</h1> -->
     <h2>The topic "<%= @subjecttitle %>" has a new update.</h2>
     <p>
-      Click <%= link_to "here", @resource_link, :target => "_blank" %> to read the update. 
+      Click the following link to read the update: <%= @resource_link %> 
     </p>
     <br />
     <hr />
-    <p style="font-size:7pt;">You are receiving this email because you have an active project with Wind Up Pixel and you are subscribed to this topic. </p>  
-    <p style="font-size:7pt;">You can adjust your subscriptions in the subscription management page at <%= link_to "http://collaborator.winduppixel.com/subscriptions", "http://localhost:3000/subscriptions", :target => "_blank" %></p>
+    <p style="font-size:8pt;">You are receiving this email because you have an active project with Wind Up Pixel and you are subscribed to this topic. </p>  
+    <p style="font-size:8pt;">You can adjust your subscriptions in the subscription management page at <%= link_to "http://collaborator.winduppixel.com/subscriptions", "http://localhost:3000/subscriptions", :target => "_blank" %></p>
  
   </body>
 </html>
