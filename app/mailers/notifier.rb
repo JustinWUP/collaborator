@@ -1,13 +1,17 @@
 class Notifier < ActionMailer::Base
-  default from: "WUP Notifications <notifications@winduppixel.com>"
-
+  default from: "Wind Up Pixel Collaborator <mailer@winduppixel.com>"
+  include ActionView::Helpers::TextHelper
   def subscription_email(subscription)
+
     @resource = subscription.subscribable_type.classify.constantize.find(subscription.subscribable_id)
     @type = subscription.subscribable_type.to_s.humanize
     @user = subscription.user
 
     @resource_link = nested_resource_link
-    mail(:to => @user.email, :subject => "#{@resource.class.to_s.humanize} has been updated.")
+    @subjecttitle = @resource.title.to_s.humanize
+    @shortsubjecttitle = truncate(@resource.title.to_s.humanize, :length => 20)
+    # mail(:to => @user.email, :subject => "#{@resource.class.to_s.humanize} has been updated.")
+    mail(:to => @user.email, :subject => "New update for #{@shortsubjecttitle}.")
   end
 
   def nested_resource_link
