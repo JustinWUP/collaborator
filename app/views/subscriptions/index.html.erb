@@ -14,8 +14,8 @@
     <b>You have no subscriptions</b>
   <% else %>
         <table id ="orgtable">
-      	<tr class="boldstuff">
-		<td>
+      	<tr class="boldstuff" style="border-bottom:1px #ccc dashed;">
+  	<td>
 			Project Name
 		</td>
 		<td>
@@ -25,6 +25,7 @@
     <td>
       Follower
     </td>
+    <td>Action</td>
   <% end %>
 	</tr>
     <% for subscription in @subscriptions do %>
