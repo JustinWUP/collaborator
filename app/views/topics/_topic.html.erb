@@ -40,10 +40,6 @@
 		<% if topic.overage.to_i <0 %>
 		<span class="topicunder indentagain"> <%= topic.overage.abs %> work hours remaining. <br></span>
 		<% end%>
-
-		<% else %>
-			<% if topic.hoursused > 0.0 %>
-					<%= topic.hoursused %>
-			<% end %>
+			
 		<% end %>
 </ul>

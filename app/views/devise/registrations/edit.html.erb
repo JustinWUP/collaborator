@@ -22,10 +22,16 @@
                   <%= link_to 'Manage Organizations', organizations_path, :class  => "adminactions" %>
               <% end %>
             <% end %>
-            <% content_for :admin_links do %>
-              <%= link_to 'Subscription Admin', subscriptions_path, :class => "adminactions" %>
+            <% if can? :manage, :all %>
+               <% content_for :admin_links do %>
+               <%= link_to 'Manage Subscriptions', subscriptions_path, :class => "adminactions" %>
+               <% end %>
+            <% else %>
+            <% content_for :user_links do %>
+              <%= link_to 'Manage Subscriptions', subscriptions_path, :class => "useractions" %>
               <h4>or</h4>
               <h4>Update your e-mail address and password to the right.</h4>
+            <% end %>
             <% end %>
    
 
