@@ -12,7 +12,7 @@
 		<%= f.text_area :body %>
       <%= f.error_message_on(:body) %>
 
-  <% if can? :manage, Setting %>
+  <% if can? :manage, Topic %>
         <div id="" class="form-spacer">
         	<%= f.label "Hours Required To Complete This?" %>
         	<br />

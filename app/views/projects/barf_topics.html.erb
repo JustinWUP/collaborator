@@ -20,7 +20,7 @@
 							<%if @commentcount > 0 %>
 				<span class="topicunder indent"><%= @commentcount %> new comments!</span><br>
 				<%end%>
-				<% if (can? :manage, :all) %><br>
+				<% if (can? :manage, Project) %><br>
 				<span class="boldstuff indent">
 					Progress<br></span>
 						<% if topic.topiccomplete == true %>

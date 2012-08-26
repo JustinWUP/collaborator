@@ -31,7 +31,10 @@
 
 <% content_for :user_links do %>
 	<%= link_to "Submit a new Topic.", new_project_topic_path(@project), :class  => "useractions" %>
-	<%= link_to "Check out your site.", @project.url,  :target => "_blank", :class  => "useractions" %>
+	<!-- this is ugly as shit -->
+	<%if @project.url != "http://app" %>
+ 	<%= link_to "Check out your site.", @project.url,  :target => "_blank", :class  => "useractions" %>
+ 	<% end %>
 	<h4>or</h4>
 	<h4>Click on a Topic to the right.</h4>
 <% end %><!-- / -->

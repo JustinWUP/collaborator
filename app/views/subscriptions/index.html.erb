@@ -3,7 +3,7 @@
 <h2> 
   The following Topics have been subscribed to:
 </h2>
-<% elsif %>
+<% else %>
 <h2>
   You're currently subscribed to the following Topics:
 </h2><!-- / -->
@@ -21,7 +21,7 @@
 		<td>
 			Topic Name
 		</td>
-  <% if can? :manage, Organization %>  
+  <% if can? :manage, :all %>  
     <td>
       Follower
     </td>

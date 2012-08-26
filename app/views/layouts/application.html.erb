@@ -71,11 +71,11 @@
 							<% end %>
 						</div><!-- /user-nav -->
 
-						<% if (content_for?( :admin_links) and can?( :manage, :all )) or content_for?( :user_links ) %>
+						<% if content_for?( :admin_links) or content_for?( :user_links ) %>
 						<div id="next-steps" class="">
 						<h3>Next Steps:</h3> <br>
-								
-								<% if can?( :manage, :all )  %>
+								<%  #if can?( :manage, :all )  %>
+								<% if current_user.role? :wupteam or current_user.role? :admin %>
 								<!-- <div id="admin-links" class=""> -->
 						
 								<!-- <span id="admin-links-stub">Admin Links:</span> -->
@@ -85,7 +85,9 @@
 								
 							<!-- /admin-links -->
 						<% end %>
+						<% if content_for?( :user_links ) %>
 								<%= yield :user_links %>
+						<% end %>
 					
 						</div>
 						<% end %>
