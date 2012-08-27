@@ -1,25 +1,31 @@
 
 <%= link_to topic.title, project_topic_path(@project, topic) %> 
+<% @commentcount = 0 %>
+<% topic.comments.each do |comment| %>
+	<% if comment.created_at > 2.day.ago %>
+		<% @commentcount += 1 %>
+	<% end %>
+<% end %>
+<% if topic.created_at > 2.day.ago %>
+	<% @topicnew = 1 %>
+<% end %>
 
 
 <ul class="topic-list">
-	<%if topic.created_at  > 2.day.ago %>
-		<% if topic.topiccomplete || topic.hoursused || topic.topiccomplete %>
+	<% if @topicnew or @commentcount >0 %>
+		<% if topic.topiccomplete || topic.hoursused %>
 			<div class="boldstuff indent">
 				Updates
 			</div>
 		<% end %>
-		<span class="topicunder indent"> New Topic! <br></span>
+		<% if @topicnew %>
+			<span class="topicunder indent"> New Topic! <br></span>
+		<% end %>
 	<% end%>
 
-	<% @commentcount = 0 %>
+	
 
-	<% topic.comments.each do |comment| %>
 
-		<% if comment.created_at > 2.day.ago %>
-			<% @commentcount += 1 %>
-		<% end %>
-	<% end %>
 
 	<% if @commentcount > 0 %>
 		<span class="topicunder indent"><%= @commentcount %> new comments!</span><br>

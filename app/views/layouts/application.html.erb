@@ -19,7 +19,6 @@
   	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-
 </head>
 <body>
 <div id="wrap" class="wrap">
@@ -72,24 +71,23 @@
 						</div><!-- /user-nav -->
 
 						<% if content_for?( :admin_links) or content_for?( :user_links ) %>
-						<div id="next-steps" class="">
-						<h3>Next Steps:</h3> <br>
-								<%  #if can?( :manage, :all )  %>
-								<% if current_user.role? :wupteam or current_user.role? :admin %>
-								<!-- <div id="admin-links" class=""> -->
-						
-								<!-- <span id="admin-links-stub">Admin Links:</span> -->
-						
-								 <%= yield :admin_links %>
-								 
-								
-							<!-- /admin-links -->
-						<% end %>
-						<% if content_for?( :user_links ) %>
-								<%= yield :user_links %>
-						<% end %>
-					
-						</div>
+							<div id="next-steps" class="">
+							<h3>Next Steps:</h3> <br>
+									<%  #if can?( :manage, :all )  %>
+									<% if current_user.role? :wupteam or current_user.role? :admin %>
+									<!-- <div id="admin-links" class=""> -->
+							
+									<!-- <span id="admin-links-stub">Admin Links:</span> -->
+							
+									 <%= yield :admin_links %>
+									 
+									
+								<!-- /admin-links -->
+							<% end %>
+							<% if content_for?( :user_links ) %>
+									<%= yield :user_links %>
+							<% end %>
+							</div>
 						<% end %>
 
 					<% end %>
