@@ -5,21 +5,10 @@ class SubscriptionsController < ApplicationController
   before_filter :filter_index, :only => :index
   before_filter :find_subscription, :except => [:index]
 
-  def togglemodify
-    if !@subscription.enabled?
-      @subscription.destroy
-       flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
-      
-       @subscription.save
-    else
-          @subscription.save
-    end
-  end
-
   def toggle
       @subscription.enabled = @subscription.enabled? ? false : true
-      # @subscription.save
-      togglemodify
+      @subscription.save
+
       redirect_to :back
   end
 
@@ -29,6 +18,7 @@ class SubscriptionsController < ApplicationController
     flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
     redirect_to :back
   end
+
 
   private
 
