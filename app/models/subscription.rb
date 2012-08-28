@@ -25,7 +25,9 @@ class Subscription < ActiveRecord::Base
   alias :subscribed? :enabled?
 
   def notify_by_email
-    Notifier.subscription_email(self).deliver
+    if enabled
+      Notifier.subscription_email(self).deliver
+    end
   end
 
 end
