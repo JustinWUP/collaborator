@@ -12,13 +12,11 @@ class SubscriptionsController < ApplicationController
       redirect_to :back
   end
 
-
   def destroy
     @subscription.destroy
     flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
     redirect_to :back
   end
-
 
   private
 
@@ -27,6 +25,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def filter_index
-    @subscriptions = Subscription.accessible_by(current_ability)
+    @subscriptions = Subscription.accessible_by(current_ability).each.select {|obj| obj.enabled == true}
+
+    # HACK: Workaround for Topics without Projects
+    @subscriptions = @subscriptions.reject {|obj| obj.subscribable.project == nil}
   end
 end
