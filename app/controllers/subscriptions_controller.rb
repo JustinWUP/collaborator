@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def filter_index
-    @subscriptions = Subscription.accessible_by(current_ability).each.select {|obj| obj.enabled == true}
+    @subscriptions = Subscription.accessible_by(current_ability).select {|obj| obj.enabled == true}
 
     # HACK: Workaround for Topics without Projects
     @subscriptions = @subscriptions.reject {|obj| obj.subscribable.project == nil}
