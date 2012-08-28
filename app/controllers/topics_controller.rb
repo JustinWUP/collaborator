@@ -11,6 +11,7 @@ class TopicsController <  ApplicationController
   end
 
   def show
+    # TODO: All this business code needs to be moved to Models
     if @topic.hoursused and @topic.hoursreq
       @topic.overage = @topic.hoursused - @topic.hoursreq 
     end
@@ -54,7 +55,7 @@ class TopicsController <  ApplicationController
   def edit
     @topic.update_attributes(params[:topic])
 
-
+    # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
     @topic.save
     
@@ -72,6 +73,7 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete=1
       @topic.save
     end
+
     @comment = Comment.new
     
   end
@@ -85,6 +87,7 @@ class TopicsController <  ApplicationController
     # @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
     # @topic.save
 
+    # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
     @topic.save
 

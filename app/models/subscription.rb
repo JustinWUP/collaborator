@@ -3,6 +3,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :subscribable, :polymorphic => true
 
+  # TODO: Change 'type' to a better name. It's passing an instance, not a pure type.
+  # this method returns a subscription object that is disabled by default. 
   def self.find_or_create_by_type(current_user, type)
     subscription = current_user.subscriptions.where(:subscribable_id => type.id, :subscribable_type => type.class.to_s).first
     unless subscription then
