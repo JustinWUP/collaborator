@@ -1,5 +1,6 @@
 require 'rubygems'
-require 'webmock/rspec' # Disables all Net requests unless mocked
+# Not using WebMock right now..
+# require 'webmock/rspec' # Disables all Net requests unless mocked
 
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

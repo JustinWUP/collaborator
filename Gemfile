@@ -10,9 +10,8 @@ gem 'pg'
 group :development, :test do
 	gem 'sqlite3'
 	
-	# FactoryGirl causing trouble with rake db:migrate on fresh clone.
-	# Will fix later.
-  	# gem 'factory_girl_rails'
+	# TODO: FactoryGirl causing trouble with rake db:migrate on fresh clone.
+	# gem 'factory_girl_rails'
 end
 
 gem 'thin'
@@ -34,13 +33,22 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  # gem 'ruby-debug19', :require => 'ruby-debug'
+  gem "debugger"
 end
 
 group :development, :test do
+  # Edge RSpec
+  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+
   gem 'launchy'
-  gem 'steak' # Loads RSpec, Capybara, etc.
+  # gem 'steak' # Loads RSpec, Capybara, etc.
 end
 
 # Deploy with Capistrano
