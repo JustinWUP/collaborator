@@ -48,7 +48,9 @@ group :development, :test do
   gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 
   gem 'launchy'
-  # gem 'steak' # Loads RSpec, Capybara, etc.
+  gem 'steak' # Loads RSpec, Capybara, etc.
+  gem 'watchr'
+  gem 'spork-rails'
 end
 
 # Deploy with Capistrano
