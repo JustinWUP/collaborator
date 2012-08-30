@@ -11,7 +11,7 @@ group :development, :test do
 	gem 'sqlite3'
 	
 	# TODO: FactoryGirl causing trouble with rake db:migrate on fresh clone.
-	# gem 'factory_girl_rails'
+	gem 'factory_girl_rails'
 end
 
 gem 'thin'
