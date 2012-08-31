@@ -15,7 +15,7 @@
 development:
   adapter: sqlite3
   encoding: unicode
-  database: db/githubbug_development.sqlite3
+  database: db/collaborator_development.sqlite3
   timeout: 5000
   # pool: 5
   # username: blank
@@ -42,7 +42,7 @@ development:
 test: &test
   adapter: sqlite3
   encoding: unicode
-  database: db/githubbug_test.sqlite3
+  database: db/collaborator_test.sqlite3
   pool: 5
   username: blank
   password:
@@ -51,7 +51,7 @@ test: &test
 production:
   adapter: sqlite3
   encoding: unicode
-  database: db/githubbug_production.sqlite3
+  database: db/collaborator_production.sqlite3
   pool: 5
   username: blank
   password:

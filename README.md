@@ -7,13 +7,16 @@ on tag "remove_github" and will be  turned into a simple library soon enough. Se
 
 ## Setttting up 
 
-Note: seeds.rb is currently out of date and needs fixing most likely.
-
 To set up, do the following:
 
 * `bundle`
-* `rake db:setup` - This will seed the environment per db/seeds.rb
+* `rake db:setup` - This will seed the environment per db/seeds.rb and the test DB	
 * `rails s`
 * login as admin@admin.com / password 
 * Go to localhost:3000/admin/settings and set up username/password for the robot settings. This allows login to github. (Will add OAuth later..)
 * Tada!
+
+For development:
+
+* `rake db:test:prepare` - Sets up the test DB
+* `guard` - Starts Spork and guard-rspec, runs all tests, monitors updated test files and runs them
