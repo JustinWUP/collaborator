@@ -17,3 +17,4 @@
 /.idea
 /.idea/*
 bundler_stubs
+.rvmrc

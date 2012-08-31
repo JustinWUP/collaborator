@@ -8,6 +8,6 @@ describe "Projects" do
 
  	it "works with FactoryGirl" do 
  		@org.org_id.should be(1234)
- 		@user.email.should eq("user@example.com")
+ 		@user.email.should eq("user@example.com") 
  	end
 end  
