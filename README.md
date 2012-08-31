@@ -10,7 +10,7 @@ on tag "remove_github" and will be  turned into a simple library soon enough. Se
 To set up, do the following:
 
 * `bundle`
-* `rake db:setup` - This will seed the environment per db/seeds.rb and the test DB	
+* `rake db:setup` - This will seed the environment per db/seeds.rb
 * `rails s`
 * login as admin@admin.com / password 
 * Go to localhost:3000/admin/settings and set up username/password for the robot settings. This allows login to github. (Will add OAuth later..)
