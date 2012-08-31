@@ -37,6 +37,8 @@ gem 'jquery-rails'
 group :development do
   # gem 'ruby-debug19', :require => 'ruby-debug'
   gem "debugger"
+  gem "guard-spork"
+  gem "guard-rspec"
 end
 
 group :development, :test do
@@ -44,6 +46,8 @@ group :development, :test do
   gem 'steak' # Loads RSpec, Capybara, etc.
   gem 'watchr'
   gem 'spork-rails'
+  gem 'database_cleaner'
+
 end
 
 # Deploy with Capistrano
