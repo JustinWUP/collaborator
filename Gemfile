@@ -47,7 +47,7 @@ group :development, :test do
   gem 'watchr'
   gem 'spork-rails'
   gem 'database_cleaner'
-
+  gem 'rb-readline'
 end
 
 # Deploy with Capistrano
