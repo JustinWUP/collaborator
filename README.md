@@ -19,4 +19,4 @@ To set up, do the following:
 For development:
 
 * `rake db:test:prepare` - Sets up the test DB
-* `guard` - Starts Spork and guard-rspec, runs all tests, monitors updated test files and runs them
+* `rake guard` - Starts Spork and guard-rspec, runs all tests, monitors updated test files and runs them

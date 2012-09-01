@@ -48,6 +48,8 @@ group :development, :test do
   gem 'spork-rails'
   gem 'database_cleaner'
   gem 'rb-readline'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
 end
 
 # Deploy with Capistrano

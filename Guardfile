@@ -30,7 +30,10 @@ guard 'rspec', :version => 2, :cli => '--color --format nested --drb' do
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
   
   # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+  # watch(%r{^spec/acceptance/(.+)\.feature$})
+  # watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+
+  # Steak acceptance tests
+  watch(%r{^spec/acceptance/.+_spec\.rb$})
 end
 
