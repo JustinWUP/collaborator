@@ -29,7 +29,7 @@
   <% @topic.comments.each do |comment| %>
       <%# TODO: This needs to be a partial %>
       <h2><span class="comment-user"><%= comment.user.email %> says:</span>
-        <span class="comment-date"> <%= comment.created_at.strftime("at %m/%d/%Y %I:%M%p") %></span></h2>
+        <span class="comment-date"> <%= distance_of_time_in_words_to_now(comment.created_at) + " ago" %></span></h2>
 
       <div class="comment-body"> <%= github_render_text comment.body %> </div>
   <% end %>
