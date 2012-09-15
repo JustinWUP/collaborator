@@ -34,6 +34,9 @@ class TopicsController <  ApplicationController
     @topic.save
 
     @comment = Comment.new
+    WillPaginate.per_page = 5
+    @comment_page = @topic.comments.page(params[:page]).order('created_at DESC')
+
   end
 
   def new

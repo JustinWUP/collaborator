@@ -26,13 +26,22 @@
 </div><!-- /topic -->
 
 <div id="comments" class="comments">
-  <% @topic.comments.each do |comment| %>
+  <% @comment_page.each do |comment| %>
       <%# TODO: This needs to be a partial %>
       <h2><span class="comment-user"><%= comment.user.email %> says:</span>
         <span class="comment-date"> <%= distance_of_time_in_words_to_now(comment.created_at) + " ago" %></span></h2>
 
       <div class="comment-body"> <%= github_render_text comment.body %> </div>
   <% end %>
+  <div class="comment_pagination">
+    <div class="page_info">
+      <%= page_entries_info @comment_page %>
+    </div>
+    <div class="pagelinks">
+    <%= will_paginate @comment_page, :container => false %>
+  </div>
+  </div>
+
 
   <%= render 'comments/form', :object => @topic.comments.build %>
 
