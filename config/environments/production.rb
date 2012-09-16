@@ -62,14 +62,16 @@ Collaborator::Application.configure do
   #   :enable_starttls_auto => true
   # }
 
+config.action_mailer.perform_deliveries = true
+config.action_mailer.default_charset = 'utf-8'
   config.action_mailer.smtp_settings = {
     :address              => "mail.winduppixel.com",
     :port                 => 587,
     :domain               => 'winduppixel.com',
+    :authentication       => :login,
     :user_name            => 'mailer@winduppixel.com',
-    :password             => 'p~#4%(KF3)%t>:~',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true }
+    :password             => 'p~#4%(KF3)%t>:~', 
+     }
   # Enable threaded mode
   # config.threadsafe!
 
