@@ -38,7 +38,7 @@ config.action_mailer.perform_deliveries = true
     :address              => "mail.winduppixel.com",
     :port                 => 587,
     :domain               => 'winduppixel.com',
-    :authentication       => :login,
+    :authentication       => "login",
     :user_name            => 'mailer@winduppixel.com',
     :password             => 'p~#4%(KF3)%t>:~', 
      }
