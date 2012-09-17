@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :subscriptions
   belongs_to :organization
+  default_scope :order => 'email ASC'
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
