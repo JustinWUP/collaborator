@@ -4,6 +4,6 @@ class TopicStatusWhynowork < ActiveRecord::Migration
   end
 
   def down
-		drop_column :topics, :topic_status
+		
   end
 end
