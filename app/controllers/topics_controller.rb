@@ -24,10 +24,10 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete = 0.0
     end
 
-    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
       @topic.amountcomplete = 0.9
      
-    elsif @topic.topiccomplete == true
+    elsif @topic.work_status == 3
       @topic.amountcomplete=1
     end
     
@@ -68,10 +68,10 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete = 0.0
     end
 
-    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
       @topic.amountcomplete = 0.9
       @topic.save
-    elsif @topic.topiccomplete == true
+    elsif @topic.work_status == 3
       @topic.amountcomplete=1
       @topic.save
     end
@@ -100,10 +100,10 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete = 0.0
     end
 
-    if @topic.topiccomplete == false && @topic.amountcomplete > 1  && @topic.overage > 0
+    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
       @topic.amountcomplete = 0.9
       @topic.save
-    elsif @topic.topiccomplete == true
+    elsif @topic.work_status == 3
       @topic.amountcomplete=1
       @topic.save
     end

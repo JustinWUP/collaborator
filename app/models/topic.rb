@@ -1,11 +1,18 @@
 require 'parent_resource'
 class Topic < ActiveRecord::Base
 
-  attr_accessible :body, :title, :hoursreq, :hoursused, :topiccomplete, :overage, :amountcomplete
+  attr_accessible :body, :title, :hoursreq, :hoursused, :overage, :amountcomplete, :work_status
   belongs_to :project
   parent_resource :project
   belongs_to :user
   has_many :comments
+  # scope :active, :conditions => { :topiccomplete => false }
+  # scope :complete, :conditions => { :topiccomplete => true, :awaitingapproval => false }
+  # scope :topic_for_approval, :conditions => {:awaitingapproval => true }
+  scope :active, :conditions => {:work_status => 1}
+   scope :topic_for_approval, :conditions => {:work_status => 2}
+  scope :complete, :conditions => {:work_status => 3}
+
   has_many :subscriptions, :as => :subscribable, :dependent => :destroy
   validates :hoursreq, :numericality => { :greater_than_or_equal_to => 0 } 
   validates :hoursused, :numericality => { :greater_than_or_equal_to => 0 }

@@ -26,6 +26,9 @@
 				<% if (can? :manage, :all) %><br>
 				<span class="boldstuff indent">
 					Progress<br></span>
+						<% if topic.topiccomplete == true %>
+					<span class="topicunder indentagain"> Topic complete.<br></span>
+					<% end%>
 					<% if topic.hoursused == 0 %>
 					<span class="topicover indentagain"> Topic not started yet.<br> </span>
 					<% end %>

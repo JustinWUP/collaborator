@@ -308,11 +308,13 @@ ul.topic-list {
     padding: 0px 3px;
     display: inline-block;
     margin:  0px;
+    list-style-type: none;
   }
 }
 .topics-ul>li {
   border: 1px #ccc solid;
   padding:10px;
+  list-style-type: none;
 }
 .indent {
   margin-left:20px;
@@ -467,7 +469,7 @@ display: inline;
 #next-steps{
   border: 1px dashed #ccc;
   position: fixed;
-  top: 300px;
+  top: 210px;
   left: 174px;
   min-height:121px;
   width:200px;
@@ -700,5 +702,32 @@ display: inline;
     height: 1%; }
   *:first-child + html .comment_pagination {
     overflow: hidden; }
+
+
+.show_hide_complete, .show_hide_awaiting, .show_hide_working {
+    display:inline-block;
+    /*padding-bottom: 10px;*/
+/*      color: black !important;
+    background: #78BFF7;
+    width: 80px;
+    text-align: center;
+    border: 1px solid #666;
+    border-radius: 8px;
+    text-shadow: none;*/
+    font-size: 10px;
+    /*box-shadow: 2px 2px 7px #666;*/
+    margin:10px 0 5px 20px;
+    font-weight: normal;
+    }
+    .show_hide_complete:hover, .show_hide_awaiting:hover, .show_hide_working:hover {
+      text-decoration:underline;
+     }
+
+     #wrapfix {
+      margin-left: 20px;
+      margin-top:10px;
+     }
+
+
 
 

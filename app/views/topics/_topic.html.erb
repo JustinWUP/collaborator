@@ -13,7 +13,7 @@
 
 <ul class="topic-list">
 	<% if @topicnew or @commentcount >0 %>
-		<% if topic.topiccomplete || topic.hoursused %>
+		<% if topic.work_status == 3 || topic.hoursused %>
 			<div class="boldstuff indent">
 				Updates
 			</div>
@@ -38,10 +38,6 @@
 	<% if (can? :manage, :all) %><br>
 		<span class="boldstuff indent">
 		Progress<br></span>
-		<% if topic.topiccomplete == true %>
-			<span class="topicunder indentagain"> Topic complete.<br></span>
-		<% end%>
-
 		<% if topic.hoursused == 0 %>
 		<span class="topicover indentagain"> Topic not started yet.<br> </span>
 		<% end %>

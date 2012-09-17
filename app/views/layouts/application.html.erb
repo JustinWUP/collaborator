@@ -19,6 +19,36 @@
   	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<script type="text/javascript">
+ 
+$(document).ready(function(){
+ 
+        $(".slidingDiv_working").show();
+        $(".show_hide_working").show();
+ 
+    $('.show_hide_working').click(function(){
+    $(".slidingDiv_working").slideToggle();
+    });
+ 
+   $(".slidingDiv_awaiting").show();
+        $(".show_hide_awaiting").show();
+ 
+    $('.show_hide_awaiting').click(function(){
+    $(".slidingDiv_awaiting").slideToggle();
+    });
+
+      $(".slidingDiv_complete").hide();
+        $(".show_hide_complete").show();
+ 
+    $('.show_hide_complete').click(function(){
+    $(".slidingDiv_complete").slideToggle();
+    });
+
+
+});
+ 
+</script>
+
 	
 	<script type="text/javascript">
 	

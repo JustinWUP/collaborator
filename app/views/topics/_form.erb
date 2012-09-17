@@ -24,13 +24,16 @@
         	 	<br />
         	<%= f.text_field :hoursused  %>
           <%= f.error_message_on(:hoursused) %>
-        </div>
+
         <div id="" class="form-spacer">
-        	<%= f.label "Is this topic complete?" %>
-        	 	<br />
-        	<%= f.check_box :topiccomplete %>
-          <%= f.error_message_on(:topiccomplete) %>
-        </div>
+          <%= f.label "What's this topic's status?" %> <br />
+     <%= radio_button(:topic,:work_status, 1) %>
+<%= label_tag(:status_working, "I'm working on this.") %><br />
+<%= radio_button(:topic,:work_status, 2) %>
+<%= label_tag(:status_awaiting, "I'm awaiting client feedback on this.") %><br />
+<%= radio_button(:topic,:work_status, 3) %>
+<%= label_tag(:status_complete, "I'm done with this.") %><br />
+
               <% end %>
 		
 	</div><!-- / -->
