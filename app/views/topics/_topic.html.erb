@@ -14,7 +14,7 @@
 <% #end %>
 
 
-<ul class="topic-list">
+
 	<% if @commentcount > 0 %>
 		<% if topic.work_status == 3 || topic.hoursused %>
 			<div class="boldstuff indent">
@@ -38,7 +38,7 @@
 
 	<% if (can? :manage, :all) %><br>
 		<span class="boldstuff indent">
-		Progress<br></span>
+		Admin Zone<br></span>
 		<% if topic.hoursused == 0 %>
 		<span class="topicover indentagain"> Topic not started yet.<br> </span>
 		<% end %>
@@ -51,6 +51,7 @@
 		<% if topic.overage.to_i <0 %>
 		<span class="topicunder indentagain"> <%= topic.overage.abs %> work hours remaining. <br></span>
 		<% end%>
+			<%= link_to "Edit Topic", project_topic_path(@project, topic) + "/edit", :class => "indent" %>
 			
 		<% end %>
-</ul>
+

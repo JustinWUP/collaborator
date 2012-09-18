@@ -111,6 +111,7 @@ class TopicsController <  ApplicationController
 
   end
 
+
   private 
 
   def find_subscription
