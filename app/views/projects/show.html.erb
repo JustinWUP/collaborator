@@ -24,12 +24,12 @@
 
 
 <div id="topics-list">
-	<ul id="" class="javascript:void(0);">
+	<!-- <ul id="" class="topics-ul"> -->
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.topic_for_approval.exists? %>
 		<div class ="topics-heading">Topics Awaiting Client Feedback:  <a href="javascript:void(0);" class="show_hide_awaiting">Show/Hide</a></div>
 		
-<div class="slidingDiv_awaiting topics-ul">
+	<div class="slidingDiv_awaiting topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.topic_for_approval.each do |topic| %>
@@ -61,7 +61,7 @@
 		<% end %>
 				</div>
 
-	</ul><!-- / -->
+	<!-- </ul> / -->
 
 </div> <!-- /topics-list -->
 
