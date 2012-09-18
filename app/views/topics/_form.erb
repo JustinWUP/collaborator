@@ -11,6 +11,7 @@
 		<br />
 		<%= f.text_area :body %>
       <%= f.error_message_on(:body) %>
+    </div>
 
   <% if can? :manage, Topic %>
         <div id="" class="form-spacer">
@@ -26,17 +27,31 @@
           <%= f.error_message_on(:hoursused) %>
 
         <div id="" class="form-spacer">
-          <%= f.label "What's this topic's status?" %> <br />
+          <%= f.label "Is this being worked on yet?" %> <br />
      <%= radio_button(:topic,:work_status, 1) %>
 <%= label_tag(:status_working, "I'm working on this.") %><br />
 <%= radio_button(:topic,:work_status, 2) %>
 <%= label_tag(:status_awaiting, "I'm awaiting client feedback on this.") %><br />
 <%= radio_button(:topic,:work_status, 3) %>
 <%= label_tag(:status_complete, "I'm done with this.") %><br />
+</div>
+
+        <div id="" class="form-spacer">
+          <%= f.label "How should this topic be categorized?" %> <br />
+     <%= radio_button(:topic,:topic_tag, "New Topic,newtopictag") %>
+<%= label_tag(:taglabel1, "New Topic") %><br />
+<%= radio_button(:topic,:topic_tag, "Bug,bugtag") %>
+<%= label_tag(:taglabel2, "Bug") %><br />
+<%= radio_button(:topic,:topic_tag, "Planned Work,plannedtag") %>
+<%= label_tag(:taglabel3, "Planned Work") %><br />
+<%= radio_button(:topic,:topic_tag, "New Feature,featuretag") %>
+<%= label_tag(:taglabel4, "New Feature") %><br />
+<%= radio_button(:topic,:topic_tag, "Question,questiontag") %>
+<%= label_tag(:taglabel4, "Question") %><br />
+</div>
 
               <% end %>
 		
-	</div><!-- / -->
 	<%= hidden_field_tag "last_page", http_referer_helper %>
 	<div id="topic-submit" class="">
 		<%= f.submit "Submit Topic" %>

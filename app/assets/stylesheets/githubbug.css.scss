@@ -722,12 +722,47 @@ display: inline;
     .show_hide_complete:hover, .show_hide_awaiting:hover, .show_hide_working:hover {
       text-decoration:underline;
      }
+#commenthead{
+background: rgba(255, 255, 255, 0.8);
+cursor: default;
+text-shadow: none;
+font-size: 15px;
+border-bottom: 1px dashed #CCC;
+}
 
-     #wrapfix {
-      margin-left: 20px;
-      margin-top:10px;
-     }
+.taglabel {
+    width: 80px;
+    text-align: center;
+    border: 1px solid #666;
+    border-radius: 8px;
+    text-shadow: none;
+    font-size: 10px;
+    margin:0 0 0 10px;
+    font-weight: normal;
+    padding: 2px;
+}
 
+.newtopictag {
+        background: forestGreen;
+        color:white;
+}
 
+.bugtag {
+  background: purple;
+  color:white;
+}
 
+.questiontag {
+  background:yellow;
+  color:black;
+}
 
+.featuretag {
+  background:aquamarine;
+  color:black;
+}
+
+.plannedtag {
+  background:grey;
+  color:white;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917052356) do
+ActiveRecord::Schema.define(:version => 20120918024742) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -180,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20120917052356) do
   create_table "topics", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.integer  "project_id"
     t.integer  "hoursreq"
     t.integer  "hoursused"
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20120917052356) do
     t.float    "amountcomplete"
     t.integer  "percentcomplete"
     t.integer  "work_status",     :default => 1
+    t.string   "topic_tag",       :default => "New Topic,newtopictag"
   end
 
   create_table "users", :force => true do |t|

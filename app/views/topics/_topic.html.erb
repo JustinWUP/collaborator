@@ -1,26 +1,27 @@
 
 <%= link_to topic.title, project_topic_path(@project, topic) %> 
+<% @topic_split = topic.topic_tag.split(",",2) %>
+<span class="taglabel <%= @topic_split.last %>"><%= @topic_split.first%></span>
+
 <% @commentcount = 0 %>
 <% topic.comments.each do |comment| %>
 	<% if comment.created_at > 2.day.ago %>
 		<% @commentcount += 1 %>
 	<% end %>
 <% end %>
-<% if topic.created_at > 2.day.ago %>
-	<% @topicnew = 1 %>
-<% end %>
+<% #if @topic_split.first == "New Topic" %>
+	<% #@topicnew = 1 %>
+<% #end %>
 
 
 <ul class="topic-list">
-	<% if @topicnew or @commentcount >0 %>
+	<% if @commentcount > 0 %>
 		<% if topic.work_status == 3 || topic.hoursused %>
 			<div class="boldstuff indent">
 				Updates
 			</div>
 		<% end %>
-		<% if @topicnew %>
-			<span class="topicunder indent"> New Topic! <br></span>
-		<% end %>
+
 	<% end%>
 
 	
@@ -36,7 +37,7 @@
 	<% end %>
 
 	<% if (can? :manage, :all) %><br>
-		<span class="boldstuff indent">
+		<% if @commentcount > 0 %> <span class="boldstuff indent"> <% else %><span class="boldstuff"> <% end %>
 		Progress<br></span>
 		<% if topic.hoursused == 0 %>
 		<span class="topicover indentagain"> Topic not started yet.<br> </span>
