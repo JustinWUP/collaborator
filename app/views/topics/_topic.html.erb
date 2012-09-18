@@ -37,7 +37,7 @@
 	<% end %>
 
 	<% if (can? :manage, :all) %><br>
-		<% if @commentcount > 0 %> <span class="boldstuff indent"> <% else %><span class="boldstuff"> <% end %>
+		<span class="boldstuff indent">
 		Progress<br></span>
 		<% if topic.hoursused == 0 %>
 		<span class="topicover indentagain"> Topic not started yet.<br> </span>
