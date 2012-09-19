@@ -1,9 +1,14 @@
 <%= form_for [@project, @topic] do |f| %> 
+<div style="width:300px"><%= f.error_messages %></div>
             <%= f.fields_for :attachments do |a| %>
                <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
                  <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
-				<%if @filename.first == "none" %>
-           	    	<%= a.file_field :attachment %>
+				<%#if @filename.first == "none" %>
+           	    		<% if a.object.new_record? %>
+		
+			<%= a.file_field :attachment %>
+	
+   
                 	<%# @filename.first %><br>
     			<%end%>
     		<% end %>

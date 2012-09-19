@@ -54,18 +54,19 @@ class TopicsController <  ApplicationController
   end
 
 def attach
-  @topic.update_attributes(params[:topic])
-  3.times { @topic.attachments.build }  
+  @topic.update_attributes(params[:attachments])
+  5.times { @topic.attachments.build }
 end
 
 
   def edit
     
     @topic.update_attributes(params[:topic])
- 
+
     # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
     @topic.save
+     5.times { @topic.attachments.build } 
     
     unless @topic.hoursused.to_f == 0.0
       @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
@@ -89,7 +90,14 @@ end
   def update
     @topic.update_attributes(params[:topic])
     # respond_with @topic, location: project_topics_url
-    respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+    if @topic.update_attributes(params[:attachment])
+      flash[:notice] = "Successfully uploaded file."
+      respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+    else
+      render :action => 'attach'
+    end
+        
+
     #     @topic.overage = @topic.hoursused - @topic.hoursreq 
     # @topic.save
     # @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
@@ -147,7 +155,7 @@ end
       dropbox_session.upload params[:file], 'My Uploads'
       render :text => 'Uploaded OK'
     else
-      # display a multipart file field form
+      render 'attach'
     end
   end
 
