@@ -22,10 +22,16 @@
 
 	<div id="topic-desc" class="topic-desc">
 		<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body %>
-    <% if @filename.first != "missing.png" %>
-    <span class="boldstuff">Attached Files:</span><br> <%= link_to @filename.first, @topic.attachment.url, :target => "_blank" %>
-    <%= link_to "Delete",  :controller => :topics, :action => :detach %>
-    <% end  %>
+    <span class="boldstuff">Attached Files:</span><br> <%# link_to @filename.first, @topic.attachment.url, :target => "_blank" %>   <% for attachment in @topic.attachments %>
+     <%   @filenameugly = attachment.attachment.url.to_s.split("/original/",2) %>
+    <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
+    <% if @filename.first != "none" %>
+    <%= link_to @filename.first, attachment.attachment.url, :target => "_blank" %> <br>
+    <%end%>
+    <%# link_to "Delete", attachment.id, :controller => :topics, :action => :detach %>
+   
+    
+    <%end%>
 	</div>
 	<!-- /topic-desc -->
 </div><!-- /topic -->
@@ -54,6 +60,7 @@
 
 <% content_for :user_links do %>
   <%= subscription_link(@subscription, @topic) %>
+  <%= link_to 'Attach Files', attach_project_topic_path(@topic.project, @topic), :class => "useractions" %>
 <% end %>
 
 <% content_for :admin_links do %>

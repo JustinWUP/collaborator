@@ -1,7 +1,9 @@
 <%= form_for [@project, @topic] do |f| %> 
-   <div id="" class="form-spacer">
-<br />
-      <%= f.file_field :attachment %><br>
-      <%= f.submit "Attach File" %>
-    </div>
+            <%= f.fields_for :attachments do |a| %>
+                 <%= a.file_field :attachment %>
+                  <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
+                 <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
+                 <%= @filename.first %><br>
     <% end %>
+    <% end %>
+    <%= link_to "Add another file field",  :controller => :topics, :action => :addmore %>

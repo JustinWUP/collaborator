@@ -32,9 +32,6 @@ class TopicsController <  ApplicationController
     end
     
     @topic.save
-    
-    @filenameugly = @topic.attachment.to_s.split("/original/",2)
-    @filename = @filenameugly.last.to_s.split("?" , 2) 
 
     @comment = Comment.new
     @comment_page = @topic.comments.page(params[:page]).order('created_at DESC').per_page(5)
@@ -43,7 +40,10 @@ class TopicsController <  ApplicationController
 
   def new
     # @topic = Github::Issue.new
+     #@post = Topic.new
+    
     @topic = @project.topics.build
+    5.times { @topic.attachments.build }  
   end
 
   def create
@@ -53,16 +53,15 @@ class TopicsController <  ApplicationController
 
   end
 
-  def detach
-    @topic.attachment = nil
-    @topic.save
-    redirect_to :back,  notice: 'Attachment deleted.'
-  end
+def attach
+  @topic.update_attributes(params[:topic])
+end
 
 
   def edit
+    
     @topic.update_attributes(params[:topic])
-
+ 
     # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
     @topic.save
@@ -81,8 +80,6 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete=1
       @topic.save
     end
-    @filenameugly = @topic.attachment.to_s.split("/original/",2)
-    @filename = @filenameugly.last.to_s.split("?" , 2) 
 
     @comment = Comment.new
     
@@ -119,6 +116,12 @@ class TopicsController <  ApplicationController
 
   end
 
+  def addmore
+     @topic = Topic.find(params[:id])
+      @topic.attachments.build 
+       @topic.save
+      redirect_to :back
+end
 
   private 
 

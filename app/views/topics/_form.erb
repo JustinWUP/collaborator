@@ -14,8 +14,29 @@
     </div>
 
     <div id="" class="form-spacer">
-      <%= f.label "Attach a file or screenshot:" %> <br />
-      <%= f.file_field :attachment %>
+     <%= f.label "Need to attach a file or screenshot?" %>
+    <br />
+
+    
+            <%= f.fields_for :attachments do |a| %>
+                 <%= a.file_field :attachment %>
+                  <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
+                 <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
+                 <%= @filename.first %> <br>
+           
+    <%# @filename.first %>
+          
+              
+               
+           
+<% #end %>
+       <% end %>
+       <%# link_to "Add another upload",  :controller => :topics, :action => :addmore %>
+
+
+
+
+
     </div>
 
   <% if can? :manage, Topic %>

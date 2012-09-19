@@ -17,10 +17,12 @@ class Topic < ActiveRecord::Base
   validates :hoursreq, :numericality => { :greater_than_or_equal_to => 0 } 
   validates :hoursused, :numericality => { :greater_than_or_equal_to => 0 }
   validates :title, :presence => true
-  attr_accessible :attachment
-  has_attached_file :attachment,
-                    :storage => :Dropboxstorage,
-                    :path => "/Collaborator/:attachment/:id/:style/:filename"
+  attr_accessible :attachments_attributes
+  has_many :attachments, :dependent => :destroy
+   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  # has_attached_file :attachment,
+  #                   :storage => :Dropboxstorage,
+  #                   :path => "/Collaborator/:attachment/:id/:style/:filename"
 
   after_initialize :init
   def init

@@ -11,12 +11,14 @@ Collaborator::Application.routes.draw do
   resources :projects do
     resources :topics do
       member do
-      get 'detach'
+      get 'addmore'
+      get 'attach'
     end
         resources :comments
       end
     end
 
+match "/projects/:id/topics/:id/attach" => "topics#attach"
 
   resources :subscriptions do
     member do
