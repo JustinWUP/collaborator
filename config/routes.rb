@@ -10,7 +10,10 @@ Collaborator::Application.routes.draw do
 
   resources :projects do
     resources :topics do
+      member do
+      get 'detach'
       resources :comments
+    end
     end
   end
 
@@ -19,6 +22,8 @@ Collaborator::Application.routes.draw do
       get 'toggle'
     end
   end
+
+    # match ':controller(/:action(/:id))(.:format)'
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}

@@ -13,6 +13,11 @@
       <%= f.error_message_on(:body) %>
     </div>
 
+    <div id="" class="form-spacer">
+      <%= f.label "Attach a file or screenshot:" %> <br />
+      <%= f.file_field :attachment %>
+    </div>
+
   <% if can? :manage, Topic %>
         <div id="" class="form-spacer">
         	<%= f.label "Hours Required To Complete This?" %>
@@ -25,6 +30,7 @@
         	 	<br />
         	<%= f.text_field :hoursused  %>
           <%= f.error_message_on(:hoursused) %>
+        </div>
 
         <div id="" class="form-spacer">
           <%= f.label "Is this being worked on yet?" %> <br />
@@ -51,9 +57,12 @@
 </div>
 
               <% end %>
-		
+
 	<%= hidden_field_tag "last_page", http_referer_helper %>
 	<div id="topic-submit" class="">
 		<%= f.submit "Submit Topic" %>
+
 	</div><!-- / -->
 <% end %> 
+
+

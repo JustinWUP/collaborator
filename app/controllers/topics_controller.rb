@@ -32,6 +32,9 @@ class TopicsController <  ApplicationController
     end
     
     @topic.save
+    
+    @filenameugly = @topic.attachment.to_s.split("/original/",2)
+    @filename = @filenameugly.last.to_s.split("?" , 2) 
 
     @comment = Comment.new
     @comment_page = @topic.comments.page(params[:page]).order('created_at DESC').per_page(5)
@@ -44,13 +47,16 @@ class TopicsController <  ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @topic = @project.topics.build(params[:topic])
-
     @topic.save
-
     respond_with @topic, :location => project_path(@topic.project)
 
+  end
+
+  def detach
+    @topic.attachment = nil
+    @topic.save
+    redirect_to :back,  notice: 'Attachment deleted.'
   end
 
 
@@ -75,6 +81,8 @@ class TopicsController <  ApplicationController
       @topic.amountcomplete=1
       @topic.save
     end
+    @filenameugly = @topic.attachment.to_s.split("/original/",2)
+    @filename = @filenameugly.last.to_s.split("?" , 2) 
 
     @comment = Comment.new
     
@@ -117,6 +125,5 @@ class TopicsController <  ApplicationController
   def find_subscription
     @subscription = Subscription.find_or_create_by_type(current_user, @topic)
   end
-
 
 end

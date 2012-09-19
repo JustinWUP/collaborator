@@ -4,6 +4,7 @@
 
 <h1><%= @topic.title %></h1>
 
+
 <div id="topic" class="topic">
   <% if @topic.amountcomplete > 0.0 %>
       <div id="barholder">
@@ -21,6 +22,10 @@
 
 	<div id="topic-desc" class="topic-desc">
 		<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body %>
+    <% if @filename.first != "missing.png" %>
+    <span class="boldstuff">Attached Files:</span><br> <%= link_to @filename.first, @topic.attachment.url, :target => "_blank" %>
+    <%= link_to "Delete",  :controller => :topics, :action => :detach %>
+    <% end  %>
 	</div>
 	<!-- /topic-desc -->
 </div><!-- /topic -->

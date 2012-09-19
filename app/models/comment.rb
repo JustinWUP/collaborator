@@ -3,7 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   has_many :subscriptions, :as => :subscribable
-
   validates :user, :body, :presence => true
 
   def parent
