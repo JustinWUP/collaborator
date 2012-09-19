@@ -12,10 +12,11 @@ Collaborator::Application.routes.draw do
     resources :topics do
       member do
       get 'detach'
-      resources :comments
     end
+        resources :comments
+      end
     end
-  end
+
 
   resources :subscriptions do
     member do

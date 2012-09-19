@@ -21,7 +21,6 @@ class Topic < ActiveRecord::Base
   has_attached_file :attachment,
                     :storage => :Dropboxstorage,
                     :path => "/Collaborator/:attachment/:id/:style/:filename"
-                    
 
   after_initialize :init
   def init
