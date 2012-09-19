@@ -60,7 +60,10 @@ end
 
 
   def edit
-    
+    if current_user.role? :admin || :wupteam
+    else
+      redirect_to :back
+    end
     @topic.update_attributes(params[:topic])
 
     # TODO: Move business logic to Model
@@ -91,7 +94,6 @@ end
     @topic.update_attributes(params[:topic])
     # respond_with @topic, location: project_topics_url
     if @topic.update_attributes(params[:attachment])
-      flash[:notice] = "Successfully uploaded file."
       respond_with(@topic, location: project_topic_path(@topic.project, @topic))
     else
       render :action => 'attach'
