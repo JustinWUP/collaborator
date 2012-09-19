@@ -55,6 +55,7 @@ class TopicsController <  ApplicationController
 
 def attach
   @topic.update_attributes(params[:topic])
+  3.times { @topic.attachments.build }  
 end
 
 

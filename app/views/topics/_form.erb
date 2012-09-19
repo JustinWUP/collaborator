@@ -17,12 +17,13 @@
      <%= f.label "Need to attach a file or screenshot?" %>
     <br />
 
-    
-            <%= f.fields_for :attachments do |a| %>
-                 <%= a.file_field :attachment %>
-                  <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
+    <%= f.fields_for :attachments do |a| %>
+               <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
                  <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
-                 <%= @filename.first %> <br>
+        <%if @filename.first == "none" %>
+                  <%= a.file_field :attachment %>
+          <%end%>
+        <% end %>
            
     <%# @filename.first %>
           
@@ -31,7 +32,7 @@
            
 <% #end %>
        <% end %>
-       <%# link_to "Add another upload",  :controller => :topics, :action => :addmore %>
+       
 
 
 

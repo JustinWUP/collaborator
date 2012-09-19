@@ -1,10 +1,12 @@
 <%= form_for [@project, @topic] do |f| %> 
             <%= f.fields_for :attachments do |a| %>
-                 <%= a.file_field :attachment %>
-                  <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
+               <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
                  <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
-                 <%= @filename.first %><br>
-    <% end %>
-    <%= f.submit "Upload Files" %>
-    <% end %>
+				<%if @filename.first == "none" %>
+           	    	<%= a.file_field :attachment %>
+                	<%# @filename.first %><br>
+    			<%end%>
+    		<% end %>
+    			<%= f.submit "Upload Files" %>
+<% end %>
     <%= link_to "Add another file field",  :controller => :topics, :action => :addmore %>
