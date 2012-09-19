@@ -1,5 +1,5 @@
 <%= form_for [@project, @topic] do |f| %> 
-    <%= f.error_messages %>
+   <div style="width:300px"><%= f.error_messages %></div>
 	<div id="" class="form-spacer">
 		<%= f.label "What's on your mind?" %>
 		<br />
@@ -12,34 +12,7 @@
 		<%= f.text_area :body %>
       <%= f.error_message_on(:body) %>
     </div>
-
-    <div id="" class="form-spacer">
-     <%= f.label "Need to attach a file or screenshot?" %>
-    <br />
-
-    <%= f.fields_for :attachments do |a| %>
-               <%   @filenameugly = a.object.attachment.url.to_s.split("/original/",2) %>
-                 <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
-        <%if @filename.first == "none" %>
-                  <%= a.file_field :attachment %>
-          <%end%>
-        <% end %>
-           
-    <%# @filename.first %>
-          
-              
-               
-           
-<% #end %>
-       <% end %>
-       
-
-
-
-
-
-    </div>
-
+    
   <% if can? :manage, Topic %>
         <div id="" class="form-spacer">
         	<%= f.label "Hours Required To Complete This?" %>
