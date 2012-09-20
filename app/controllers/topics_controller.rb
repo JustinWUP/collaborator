@@ -60,7 +60,7 @@ end
 
 
   def edit
-    if current_user.role? :admin || :wupteam
+    if current_user.role? :admin
     else
       redirect_to :back
     end

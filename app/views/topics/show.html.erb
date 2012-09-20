@@ -30,7 +30,8 @@
     <%= link_to @filename.first, attachment.attachment.url, :target => "_blank" %> <br>
   
     <%end%>
-    <%# link_to "Delete", attachment.id, :controller => :topics, :action => :detach %>
+    <%= Attachment.find_by_id(:id) %>
+    <%# link_to "Delete", @hey, :controller => :topics, :action => :detach %>
    
     
     <%end%>

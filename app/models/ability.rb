@@ -12,11 +12,14 @@ class Ability
         # can :manage, Subscription, :user_id => {Role.find_by_name("wupteam")}
         can :manage, [Topic, Organization, Comment]
         cannot :all, Setting
+      elsif user.role? :suspended
+        can :read, Project
+        # can :suspended, Project
       else
         can :read, Project, :users => {:id => user.id }
         can :read, Topic
         can :attach, Topic
-                can :update, Topic
+        can :update, Topic
         can :create, [Topic, Comment]
         can :manage, Subscription, :user_id => user.id
         cannot :all, Setting
