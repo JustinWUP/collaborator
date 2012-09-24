@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :repo, :presence => true
 	validates :url, :presence => true, :format => { :with=>Regexp.new("http:\\/\\/",Regexp::IGNORECASE), :message => "must start with http://"}
-
+default_scope :order => 'updated_at DESC'
   after_initialize :init
 	def init
     # TODO: SQL Defaults are better. But these values may not exist after a few revisions
