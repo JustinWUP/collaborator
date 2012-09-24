@@ -1,11 +1,10 @@
-# GitHubBug
+# Collaborator
 
-GitHubBug will soon be renamed Collaborator. It is currently a simple issue tracking system for client-agency collaboration. 
-GHB used to encapsulate the GitHub API, pulling in Issues/Comments via an ActiveResource library. This library can be found 
-on tag "remove_github" and will be  turned into a simple library soon enough. See 
-[this directory](https://github.com/quicksnap/githubbug/tree/remove_github/app/models/github) for the code.
+Collaborator is the Wind Up Pixel project management system for our clients, partners and employees. 
 
-## Setttting up 
+It will probably be the first in a series of enterprise apps we'll develop for our business.
+
+## Setting up 
 
 To set up, do the following:
 
