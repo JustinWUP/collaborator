@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919044517) do
+ActiveRecord::Schema.define(:version => 20120924022538) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -69,36 +69,6 @@ ActiveRecord::Schema.define(:version => 20120919044517) do
     t.boolean  "enabled",    :default => false
   end
 
-  create_table "messages", :force => true do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.boolean  "sender_deleted",    :default => false
-    t.boolean  "recipient_deleted", :default => false
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "read_at"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-  end
-
-  create_table "messaging_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "messaging_users", ["email"], :name => "index_messaging_users_on_email", :unique => true
-  add_index "messaging_users", ["reset_password_token"], :name => "index_messaging_users_on_reset_password_token", :unique => true
-
   create_table "notifications", :force => true do |t|
     t.string   "type"
     t.text     "body"
@@ -148,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20120919044517) do
     t.integer  "receiver_id"
     t.string   "receiver_type"
     t.integer  "notification_id",                                  :null => false
-    t.boolean  "is_read",                       :default => false
+    t.boolean  "read",                          :default => false
     t.boolean  "trashed",                       :default => false
     t.boolean  "deleted",                       :default => false
     t.string   "mailbox_type",    :limit => 25
@@ -211,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20120919044517) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -221,13 +191,14 @@ ActiveRecord::Schema.define(:version => 20120919044517) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.integer  "organization_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "blocked",                :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -44,6 +44,16 @@ class User < ActiveRecord::Base
     end
   end
  
+def active_for_authentication?
+  super && !self.blocked
+end
+
+  def inactive_message
+    errors.add(:email, "Your account has been suspended.")
+   # special_condition_is_valid? ? super : :special_condition_is_not_valid
+
+   end
+
 
   def role?(role)
   	return !!self.roles.find_by_name(role.to_s.camelize.downcase)

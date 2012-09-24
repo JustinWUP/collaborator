@@ -20,9 +20,6 @@ class ProjectsController < ApplicationController
     redirect_to :back
   end
 
-  # def suspended
-  #    redirect_to destroy_user_session_path, method: :delete
-  #  end
 
     def update
     @project = Project.find(params[:id])

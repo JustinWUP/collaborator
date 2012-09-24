@@ -19,7 +19,6 @@ Collaborator::Application.routes.draw do
     end
 
 match "/projects/:id/topics/:id/attach" => "topics#attach"
-# match "/suspended" =>"projects#suspended"
 
   resources :subscriptions do
     member do
