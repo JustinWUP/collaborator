@@ -28,9 +28,8 @@
     <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
     <% if @filename.first != "none" %>
     <%= link_to @filename.first, attachment.attachment.url, :target => "_blank" %> <br>
-  
     <%end%>
-    
+
     <%end%>
 	</div>
 	<!-- /topic-desc -->

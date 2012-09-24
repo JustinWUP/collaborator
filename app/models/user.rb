@@ -50,8 +50,6 @@ end
 
   def inactive_message
     errors.add(:email, "Your account has been suspended.")
-   # special_condition_is_valid? ? super : :special_condition_is_not_valid
-
    end
 
 
