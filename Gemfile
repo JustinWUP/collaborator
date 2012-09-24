@@ -28,6 +28,7 @@ gem "paperclip", "~> 3.0"
 gem 'dropbox'
 gem 'paperclipdropbox'
 gem 'oauth'
+gem 'newrelic_rpm'
 
 
 # Gems used only for assets and not required
