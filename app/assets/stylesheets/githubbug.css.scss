@@ -704,7 +704,7 @@ display: inline;
     overflow: hidden; }
 
 
-.show_hide_complete, .show_hide_awaiting, .show_hide_working {
+.show_hide_complete, .show_hide_awaiting, .show_hide_working, .show_hide_topicreport {
     display:inline-block;
     /*padding-bottom: 10px;*/
 /*      color: black !important;
@@ -719,7 +719,7 @@ display: inline;
     margin:10px 0 5px 20px;
     font-weight: normal;
     }
-    .show_hide_complete:hover, .show_hide_awaiting:hover, .show_hide_working:hover {
+    .show_hide_complete:hover, .show_hide_awaiting:hover, .show_hide_working:hover, .show_hide_topicreport:hover {
       text-decoration:underline;
      }
 #commenthead{

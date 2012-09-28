@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924022538) do
+ActiveRecord::Schema.define(:version => 20120928213259) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -178,6 +178,8 @@ ActiveRecord::Schema.define(:version => 20120924022538) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "report_lastpage",         :default => "None"
+    t.string   "report_environment",      :default => "None"
   end
 
   create_table "users", :force => true do |t|

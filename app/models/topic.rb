@@ -1,7 +1,7 @@
 require 'parent_resource'
 class Topic < ActiveRecord::Base
 
-  attr_accessible :body, :title, :hoursreq, :hoursused, :overage, :amountcomplete, :work_status, :topic_tag
+  attr_accessible :body, :title, :hoursreq, :hoursused, :overage, :amountcomplete, :work_status, :topic_tag, :report_lastpage, :report_environment
   belongs_to :project
   parent_resource :project
   belongs_to :user

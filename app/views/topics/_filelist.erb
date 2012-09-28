@@ -1,0 +1,9 @@
+     <span class="boldstuff">Attached Files:</span><br>
+     <% for attachment in @topic.attachments %>
+     <%   @filenameugly = attachment.attachment.url.to_s.split("/original/",2) %>
+    <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
+    <% if @filename.first != "none" %>
+    <%= link_to @filename.first, attachment.attachment.url, :target => "_blank" %> <br>
+    <%end%>
+
+    <%end%>

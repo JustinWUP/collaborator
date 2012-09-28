@@ -23,8 +23,8 @@
   	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type="text/javascript">
- 
+
+	<script type ="text/javascript">
 $(document).ready(function(){
  
         $(".slidingDiv_working").show();
@@ -48,21 +48,15 @@ $(document).ready(function(){
     $(".slidingDiv_complete").slideToggle();
     });
 
-   		$( document ).ready( function ()
-			{
-				$( '#next-steps' ).scrollFollow({
-					speed: 250,
-					delay: 20,
-   					offset: 80,
-				});
-			}
-		);
- 
 
+          $(".slidingDiv_topicreport").hide();
+        $(".show_hide_topicreport").show();
+ 
+    $('.show_hide_topicreport').click(function(){
+    $(".slidingDiv_topicreport").slideToggle();
+    });
 });
- 
-</script>
-
+	</script>
 	
 	<script type="text/javascript">
 	

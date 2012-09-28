@@ -52,8 +52,6 @@
 </div>
 
               <% end %>
-	<%= hidden_field :topic, :report_lastpage, :value => http_referer_helper.first %>
-  <%= hidden_field :topic, :report_environment, :value => http_referer_helper.last %>
 	<div id="topic-submit" class="">
 		<%= f.submit "Submit Topic" %>
 

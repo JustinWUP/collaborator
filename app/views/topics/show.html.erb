@@ -4,7 +4,6 @@
 
 <h1><%= @topic.title %></h1>
 
-
 <div id="topic" class="topic">
   <% if @topic.amountcomplete > 0.0 %>
       <div id="barholder">
@@ -21,18 +20,16 @@
   <% end %>
 
 	<div id="topic-desc" class="topic-desc">
-		<span class="boldstuff">Topic Description:</span> <%= github_render_text @topic.body %>
-     <span class="boldstuff">Attached Files:</span><br>
-     <% for attachment in @topic.attachments %>
-     <%   @filenameugly = attachment.attachment.url.to_s.split("/original/",2) %>
-    <% @filename = @filenameugly.last.to_s.split("?" , 2) %>
-    <% if @filename.first != "none" %>
-    <%= link_to @filename.first, attachment.attachment.url, :target => "_blank" %> <br>
-    <%end%>
-
-    <%end%>
-	</div>
-	<!-- /topic-desc -->
+		<div class="boldstuff">Topic Description:</div> <%= github_render_text @topic.body %>
+    <% unless @topic.attachments == [] %>
+    <%= render 'filelist' %>
+    <% end %>
+    <% if current_user.role? :admin or :wupteam %>
+      <% unless @topic.report_lastpage == "None" %>
+        <%= render 'errorreport'  %>
+      <% end %>
+  <% end%>
+</div><!-- /topic-desc -->
 </div><!-- /topic -->
 
 <div id="comments" class="comments">
