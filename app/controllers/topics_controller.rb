@@ -49,6 +49,13 @@ class TopicsController <  ApplicationController
   def create
     @topic = @project.topics.build(params[:topic])
     @topic.save
+   
+    @project.user_ids.each do |subscription| 
+      lookup = User.find_by_id(subscription) 
+      addy = lookup.email
+      Notifier.topic_email(addy).deliver unless addy == current_user.email
+    end
+
     respond_with @topic, :location => project_path(@topic.project)
 
   end
@@ -163,6 +170,7 @@ end
   end
 
   private 
+
 
   def find_subscription
     @subscription = Subscription.find_or_create_by_type(current_user, @topic)

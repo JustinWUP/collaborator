@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment posted'
 
       @comment.topic.subscriptions.each do |subscription|
+      	 lookup = User.find_by_id(subscription) 
         subscription.notify_by_email unless subscription.user == current_user
         end
 
