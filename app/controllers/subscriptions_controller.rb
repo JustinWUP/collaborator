@@ -16,6 +16,7 @@ class SubscriptionsController < ApplicationController
   def unsub
       @subscription.enabled = @subscription.enabled? ? false : true
       @subscription.save
+      flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
 
       redirect_to subscriptions_path
   end
