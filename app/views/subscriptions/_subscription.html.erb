@@ -16,10 +16,8 @@
 <% end %>
 
 <td>
-	<% @hey = 'subscriptions/' + subscription.id.to_s + '/unsub' %>
-	<%  %>
-	  <span><%= link_to "Unsubscribe", @hey   %>
-	  	<%# link_to 'Unsubscribe', subscription, confirm: 'Are you sure?', method: :delete %></span>
+	<% @unsub = 'subscriptions/' + subscription.id.to_s + '/unsub' %>
+	  <span><%= link_to "Unsubscribe", @unsub %> </span>
 </td>
 		</tr>
 

@@ -16,8 +16,11 @@ class SubscriptionsController < ApplicationController
   def unsub
       @subscription.enabled = @subscription.enabled? ? false : true
       @subscription.save
-      flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
-
+      if @subscription.user.email.to_s  != current_user.email
+        flash[:notice] = @subscription.user.email.to_s + ' has been unsubscribed from ' + @subscription.subscribable.title
+      else
+        flash[:notice] = 'You have unsubscribed from ' + @subscription.subscribable.title
+      end
       redirect_to subscriptions_path
   end
 
@@ -43,9 +46,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def filter_index
-    @subscriptions = Subscription.accessible_by(current_ability).select {|obj| obj.enabled == true}
+    #@subscriptions = Subscription.accessible_by(current_ability).select {|obj| obj.enabled == true}
 
     # HACK: Workaround for Topics without Projects
-    @subscriptions = @subscriptions.reject {|obj| obj.subscribable.project == nil}
+    #@subscriptions = @subscriptions.reject {|obj| obj.subscribable.project == nil}
   end
 end
