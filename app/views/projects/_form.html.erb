@@ -30,7 +30,7 @@
   <div id="" class="field">
     <div>Who has access to this project?</div>
     <div class="checkbox-scroll">
-      <% User.all.each do |user| %>
+      <% User.notblock.each do |user| %>
         <div id="" class="checkbox-group users">
           <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id), :id => user.email %>
           <%= label_tag 'project[user_ids][]', user.email, :for => user.email %>
