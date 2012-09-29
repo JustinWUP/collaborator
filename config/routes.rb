@@ -23,10 +23,11 @@ match "/projects/:id/topics/:id/attach" => "topics#attach"
   resources :subscriptions do
     member do
       get 'toggle'
+      get 'unsub'
     end
   end
 
-    # match ':controller(/:action(/:id))(.:format)'
+     match ':controller(/:action(/:id))(.:format)'
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}

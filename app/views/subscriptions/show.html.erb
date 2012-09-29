@@ -1,0 +1,40 @@
+<h1>Subscriptions</h1>
+<% if (can? :manage, :all) %> 
+<h2> 
+  The following Topics have been subscribed to:
+</h2>
+<% else %>
+<h2>
+  You're currently subscribed to the following Topics:
+</h2><!-- / -->
+<% end %>
+
+<div id="" class="">
+  <% if @subscriptions.empty?  %>
+    <b>You have no subscriptions</b>
+  <% else %>
+        <table id ="orgtable">
+      	<tr class="boldstuff" style="border-bottom:1px #ccc dashed;">
+  	<td>
+			Project Name
+		</td>
+		<td>
+			Topic Name
+		</td>
+  <% if can? :manage, :all %>  
+    <td>
+      Follower
+    </td>
+  <% end %>
+    <td>
+      Action
+    </td>
+	</tr>
+    <% for subscription in @subscriptions do %>
+
+      <%= render subscription %> 
+
+    <% end %>
+    </table>
+  <% end %> 
+</div><!-- / -->
