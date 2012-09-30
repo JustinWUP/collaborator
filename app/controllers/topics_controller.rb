@@ -49,9 +49,13 @@ class TopicsController <  ApplicationController
   def create
     @topic = @project.topics.build(params[:topic])
     @topic.save
-   
+    hey = @topic.id
+    projectname = @project.name
+    projectid = @project.id
     @project.user_ids.each do |subscription| 
-      Notifier.topic_email(subscription).deliver unless subscription == current_user
+      lookup = User.find_by_id(subscription) 
+      
+      Notifier.topic_email(lookup,hey,projectname,projectid).deliver unless lookup == current_user
     end
 
     respond_with @topic, :location => project_path(@topic.project)

@@ -1,4 +1,3 @@
-
 <%= link_to topic.title, project_topic_path(@project, topic) %> 
 <% @topic_split = topic.topic_tag.split(",",2) %>
 <span class="taglabel <%= @topic_split.last %>"><%= @topic_split.first%></span>

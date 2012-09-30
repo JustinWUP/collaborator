@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
 		@comment.topic = @topic
 		
 		if @comment.save
-      flash[:notice] = 'Comment posted'
+        flash[:notice] = 'Comment posted'
 
-      @comment.topic.subscriptions.each do |subscription|
+       @comment.topic.subscriptions.each do |subscription|
         subscription.notify_by_email unless subscription.user == current_user
         end
 

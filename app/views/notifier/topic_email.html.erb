@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+  	<p>
+  		<img src ="http://www.wupcdn.com/wupassets/wup-mailer.png">
+  	</p>
+    <h2>A new Topic was posted in your project "<%= @subjecttitle %>".</h2>
+    <p>
+      Click the following link to view the Topic: <a href="http://localhost:3000/projects/<%=@projectid%>/topics/<%= @topicid %>"> http://collaborator.winduppixel.com/projects/<%= @projectid %>/topics/<%= @topicid %></a>
+    </p>
+    <br />
+    <hr />
+    <p style="font-size:8pt;">You are receiving this email because you have an active project with Wind Up Pixel. </p>  
+    <p style="font-size:8pt;">Please contact your Wind Up Pixel project manager if you do not wish to receive new Topic emails.</p>
+  <!--   <p style="font-size:8pt;">You can adjust your subscriptions in the subscription management page at <%# link_to "http://collaborator.winduppixel.com/subscriptions", "http://collaborator.winduppixel.com/subscriptions", :target => "_blank" %></p> -->
+ 
+  </body>
+</html>
