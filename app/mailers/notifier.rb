@@ -16,10 +16,9 @@ class Notifier < ActionMailer::Base
 
   def topic_email(subscription)
       @resource = ""
+
       @lookup = User.find_by_id(subscription) 
 
-     
-   
     # @resource_link = nested_resource_link
     @subjecttitle = "hey"
     @shortsubjecttitle = "hey"
