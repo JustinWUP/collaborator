@@ -1,4 +1,6 @@
 module SubscriptionsHelper
+
+
   # def resource_name
   #   :user
   # end

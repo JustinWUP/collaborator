@@ -1,4 +1,19 @@
 <h1>Subscriptions</h1>
+
+<!-- <%# form_for(current_user, :as => :user, :url => registration_path(:user)) do |f| %>
+
+ <div><%# f.label :topicemail, "Want to receive emails when new Topics are posted?" %> <br />
+        <%# radio_button(:user, :topicmail, true) %>
+<%# label_tag(:emailyes, "Yes") %>
+<%# radio_button(:user, :topicmail, false ) %>
+<%# label_tag(:emailno, "No") %><br /></div><br>
+
+  <div><%# f.label :current_password, "Current Password:" %> <i>(We need your current password to confirm your changes)</i><br />
+  <%# f.password_field :current_password %></div>
+
+<%#f.submit %> -->
+<% #end %>
+
 <% if (can? :manage, :all) %> 
 <h2> 
   The following Topics have been subscribed to:
