@@ -2,7 +2,7 @@ class Subscription < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :user
   belongs_to :subscribable, :polymorphic => true
-  default_scope :order => ['subscribable_id DESC'] and ['user_id ASC']
+  default_scope :order => 'user_id ASC'
   # TODO: Change 'type' to a better name. It's passing an instance, not a pure type.
   # this method returns a subscription object that is disabled by default. 
   def self.find_or_create_by_type(current_user, type)
