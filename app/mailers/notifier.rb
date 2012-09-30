@@ -15,7 +15,6 @@ class Notifier < ActionMailer::Base
   end
 
   def topic_email(subscription,topicid,projectname,projectid)
-      @resource = ""
 
       @lookup = User.find_by_id(subscription) 
 
