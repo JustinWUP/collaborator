@@ -23,19 +23,6 @@ NAVMENU
 		auto_link(BlueCloth.new(text).to_html.html_safe)
 	end
 
-
-  # def resource_name
-  #   :user
-  # end
-
-  # def resource
-  #   @resource ||= User.new
-  # end
-
-  # def devise_mapping
-  #   @devise_mapping ||= Devise.mappings[:user]
-  # end
-
   def subscription_link(subscription, object)
     type = object.class.to_s
     if subscription.subscribed?

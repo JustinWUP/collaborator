@@ -1,7 +1,0 @@
-<h2>Would you like to get emails when a new Topic is posted on your projects?</h2>
-<%= form_for(@user, :url => '/users', :html => { :method => :put }) do |f|%>
-
-    <%= f.check_box :topicmail %>
-    <%= f.submit %>
-
-<% end %>
