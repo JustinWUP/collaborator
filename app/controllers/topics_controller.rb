@@ -51,9 +51,7 @@ class TopicsController <  ApplicationController
     @topic.save
    
     @project.user_ids.each do |subscription| 
-      lookup = User.find_by_id(subscription) 
-      addy = lookup.email
-      Notifier.topic_email(addy).deliver unless addy == current_user.email
+      Notifier.topic_email(subscription).deliver unless subscription == current_user
     end
 
     respond_with @topic, :location => project_path(@topic.project)

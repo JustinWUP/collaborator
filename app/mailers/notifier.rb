@@ -14,15 +14,17 @@ class Notifier < ActionMailer::Base
     mail(:to => @user.email, :subject => "New update for #{@shortsubjecttitle}.")
   end
 
-  def topic_email(project)
+  def topic_email(subscription)
       @resource = ""
-        @user = project.user_ids
+      @lookup = User.find_by_id(subscription) 
+
+     
    
-    @resource_link = nested_resource_link
-    @subjecttitle = @resource.title.to_s.humanize
-    @shortsubjecttitle = truncate(@resource.title.to_s.humanize, :length => 20)
+    # @resource_link = nested_resource_link
+    @subjecttitle = "hey"
+    @shortsubjecttitle = "hey"
     # mail(:to => @user.email, :subject => "#{@resource.class.to_s.humanize} has been updated.")
-    mail(:to => @user.email, :subject => "New update for #{@shortsubjecttitle}.")
+    mail(:to => @lookup.email, :subject => "New update for #{@shortsubjecttitle}.")
   end
 
   def nested_resource_link
