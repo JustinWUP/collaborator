@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930190344) do
+ActiveRecord::Schema.define(:version => 20121002224018) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20120930190344) do
     t.string   "auto_tag",            :default => "Client-Visible"
     t.string   "url"
     t.integer  "overage"
+    t.string   "ptype",               :default => "Site"
   end
 
   create_table "projects_users", :id => false, :force => true do |t|

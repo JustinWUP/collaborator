@@ -1,5 +1,5 @@
-class Project < ActiveRecord::Base
-
+class Project < ActiveRecord::Base	
+	attr_accessible :ptype, :name, :repo, :url, :description, :user_ids, :retainer_hours, :retainer_expiration
 	has_many :assignments
 	has_many :users, :through => :assignments
 	has_many :topics, :dependent => :destroy
