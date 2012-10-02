@@ -1,3 +1,5 @@
+<% add_nav_link(link_to truncate("#{@topic.title}", :length => 20), project_topic_path(@project, @topic)) %>
+<% add_nav_link(link_to truncate("#{@project.name}", :length => 20), project_path(@project)) %>
 <div id="helper">
 	<h2>Attaching files to Topics</h2>
 <p>Need to share a file or a screenshot with us? You can attach files or screenshots directly to a topic and share them with the group.</p>

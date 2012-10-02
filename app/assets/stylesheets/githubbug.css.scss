@@ -98,10 +98,12 @@ nav {
 }
 
 #nav-wrap {
-  width: 1020px;
-  position: relative;
-  text-transform: capitalize;
-  text-align: right;
+width: 100%;
+position: relative;
+text-transform: capitalize;
+text-align: right;
+overflow-y: hidden;
+height: 32px;
 }
 
 
@@ -113,9 +115,9 @@ nav {
 
 
 .nav-ul li {
-  font-size: 28px;
+  font-size: 20px;
   display: inline-block;
-  padding: 2px 10px;
+  padding: 8px 10px;
 
 }
 .nav-ul li:hover, .nav-ul .active a {
@@ -228,7 +230,7 @@ color: #00aaea;
   text-decoration: underline;
 }
 
-.project-admin span a{
+.project-admin a, .project-admin span a{
   color:indianred;
 
 }

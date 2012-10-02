@@ -50,7 +50,9 @@
 		<% if topic.overage.to_i <0 %>
 		<span class="topicunder indentagain"> <%= topic.overage.abs %> work hours remaining. <br></span>
 		<% end%>
+		<span class="project-admin">
 			<%= link_to "Edit Topic", project_topic_path(@project, topic) + "/edit", :class => "indent" %>
+		</span>
 			
 		<% end %>
 
