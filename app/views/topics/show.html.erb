@@ -20,12 +20,12 @@
 
 	<div id="topic-desc" class="topic-desc">
 		<div class="boldstuff">Topic Description:</div> <%= github_render_text @topic.body %>
-    <% unless @topic.attachments == [] %>
+    <% unless @topic.attachments == [] #or @topic.attachments==nil %>
     <%= render 'filelist' %>
     <% end %>
     <% if current_user.role? :admin or current_user.role? :wupteam %>
       <% unless @topic.report_lastpage == "None" %>
-        <%= render 'errorreport'  %>
+        <%= render 'bugreport'  %>
       <% end %>
   <% end%>
 </div><!-- /topic-desc -->
@@ -36,7 +36,6 @@
       <%# TODO: This needs to be a partial %>
       <h2><span class="comment-user"><%= comment.user.email %> says:</span>
         <span class="comment-date"> <%= distance_of_time_in_words_to_now(comment.created_at) + " ago" %></span></h2>
-
       <div class="comment-body"> <%= github_render_text comment.body %> </div>
   <% end %>
   <div class="comment_pagination">
