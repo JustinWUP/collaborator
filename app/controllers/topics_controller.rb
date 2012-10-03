@@ -104,6 +104,7 @@ end
     # respond_with @topic, location: project_topics_url
     if @topic.update_attributes(params[:attachment])
       respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+      Attachment.where(:attachment_file_name => nil).delete_all
     else
       render :action => 'attach'
     end
