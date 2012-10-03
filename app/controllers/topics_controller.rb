@@ -43,7 +43,6 @@ class TopicsController <  ApplicationController
      #@post = Topic.new
     
     @topic = @project.topics.build
-    5.times { @topic.attachments.build }  
   end
 
   def create
