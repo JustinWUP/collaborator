@@ -25,7 +25,6 @@
     <%= render 'filelist' %>
     <% end %>
     <% if current_user.role? :admin or current_user.role? :wupteam %>
-        <%= @topic.attachments %>
       <% unless @topic.report_lastpage == "None" %>
         <%= render 'bugreport'  %>
       <% end %>
