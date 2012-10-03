@@ -20,8 +20,7 @@
 
 	<div id="topic-desc" class="topic-desc">
 		<div class="boldstuff">Topic Description:</div> <%= github_render_text @topic.body %>
-    <%= @topic.attachments %>
-    <% unless @topic.attachments.to_s.include? "nil" %>
+    <% unless @topic.attachments == [] or @topic.attachments.to_s.include? "nil" %>
     <%= render 'filelist' %>
     <% end %>
     <% if current_user.role? :admin or current_user.role? :wupteam %>
