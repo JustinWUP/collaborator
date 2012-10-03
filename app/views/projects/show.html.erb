@@ -19,14 +19,13 @@
 <% else %>
 	<%# This is where retainer expired could go, if we had a flag for that.. %>
 <% end %>
-
 <div id="topics-list">
-	<!-- <ul id="" class="topics-ul"> -->
+<div>
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.topic_for_approval.exists? %>
 		<div class ="topics-heading">Topics Awaiting Client Feedback:  <a href="javascript:void(0);" class="show_hide_awaiting">Show/Hide</a></div>
 		
-	<div class="slidingDiv_awaiting topics-ul">
+		<div class="slidingDiv_awaiting topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.topic_for_approval.each do |topic| %>
@@ -35,11 +34,11 @@
 		<% end %>
 		</div>
 
-
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.active.exists? %>
 			<div class="topics-heading">Topics We're Working On:<a href="javascript:void(0);" class="show_hide_working">Show/Hide</a></div>
-				<div class="slidingDiv_working topics-ul">
+		
+		<div class="slidingDiv_working topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.active.each do |topic| %>
@@ -47,21 +46,22 @@
 		<% end %>
 				</div>
 
-		<% @project.topics.take(1).each do |topic| %>
+	<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.complete.exists? %>
-			<div class="topics-heading">Completed Topics:<a href="javascript:void(0);" class="show_hide_complete">Show/Hide</a></div>
-			<div class="slidingDiv_complete topics-ul">
+			<div class="topics-heading">Completed Topics:<a href="javascript:void(0);" class="show_hide_complete">Show/Hide</a>
+			</div>
+
+		<div class="slidingDiv_complete topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.complete.each do |topic| %>
 		<%= render partial: topic, layout: 'layouts/li_layout' %>
 		<% end %>
-				</div>
+		</div>
 
-	<!-- </ul> / -->
 
+</div> 
 </div> <!-- /topics-list -->
-
 
 <% content_for :user_links do %>
 	<%= link_to "Submit a New Topic.", new_project_topic_path(@project), :class  => "useractions" %>
