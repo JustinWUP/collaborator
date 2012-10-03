@@ -20,6 +20,7 @@
 
 	<div id="topic-desc" class="topic-desc">
 		<div class="boldstuff">Topic Description:</div> <%= github_render_text @topic.body %>
+    <%= @topic.attachments %>
     <% unless @topic.attachments.to_s.include? "nil" %>
     <%= render 'filelist' %>
     <% end %>
