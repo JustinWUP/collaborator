@@ -1,0 +1,55 @@
+= PaperclipDropboxStorage
+
+Dropbox storage support for paperclip file attachment plugin.
+
+== Install
+
+=== Rails 3
+
+You can let bundler install Paperclip Dropbox Plugin by adding this line to your application's Gemfile:
+
+  gem 'paperclipdropbox'
+
+And then execute:
+
+  bundle install
+
+Or install it yourself as:
+
+  gem install paperclipdropbox
+
+Then create the paperclipdropbox.yml file and run the authotization rake task
+
+  rake paperclipdropbox:authorize
+
+you'll then be given a url to login to dropbox to authorize this plugin access to your dropbox account.
+
+
+== Usage
+
+In your model:
+
+  class User < ActiveRecord::Base
+    has_attached_file :avatar,
+                      :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                      :storage => :Dropboxstorage,
+                      :path => "/:attachment/:attachment/:id/:style/:filename"
+  end
+
+
+== Optional
+
+Create the file config/paperclipdropbox.yml:
+
+  development:
+    dropbox_key: dropbox_developer_key   <--- This are not required unless you are modding the gem
+    dropbox_secret: dropbox_developer_secret   <--- This are not required unless you are modding the gem
+    path: "/:attachment/:attachment/:id/:style/:filename"
+
+  test:
+    ...
+
+  production:
+    ...
+
+You can add the path option to the config/paperclipdropbox.yml file for ease of use.

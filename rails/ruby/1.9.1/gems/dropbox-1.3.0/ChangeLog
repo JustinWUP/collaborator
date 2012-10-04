@@ -1,0 +1,57 @@
+1.3.0 (2011-07-19)
+
+* NOTE: Removed the ability to automate the OAuth form.
+* Added a method allowing users to manually set the access token and secret (in
+  case you are doing your own OAuth elsewhere).
+* The mode (Dropbox or Sandbox) is now serialized.
+* Fixed a bug that would cause files uploaded into deep paths to fail due to
+  name length limitations.
+* Fixed a bug that would cause abnormal OAuth requests when deserializing an
+  authorized session.
+
+1.2.3 (2011-01-14)
+
+* Now supports caching metadata calls
+* Large uploads can use custom timeouts
+* Fix for updated multipart-post gem
+* SSL upload fix
+
+1.2.2 (2010-11-27)
+
+* Fixed dependency bug.
+
+1.2.1 (2010-11-26)
+
+* Changed authentication host.
+* Upgraded to Jeweler 1.5.
+
+1.2 (2010-10-31)
+
+* Updated thumbnail method for changes in the thumbnail API.
+* Added the ability to upload files from +StringIO+ objects.
+* Added option to customize uploaded file's remote name.
+* Added proxy support for additional actions.
+* Modernized gem: RSpec 2.0 compatible, now uses Bundler, etc.
+
+1.1.2 (2010-10-6)
+
+* Added ability to perform OAuth authorization on behalf of the user.
+* Specs now test authorization against actual Dropbox API server.
+
+1.1.1 (2010-09-22)
+
+* http-proxy support added.
+* Session now persists SSL attribute.
+* Core extensions moved to a namespaced path to prevent conflicts.
+* Minor bug fixes.
+
+1.1.0 (2010-05-27)
+
+* Added thumbnails API method.
+* Changed name of gem from rdropbox to dropbox.
+* Fixed potential dependency issues.
+* Documentation updates.
+
+1.0.0 (2010-05-05)
+
+* Initial release.
