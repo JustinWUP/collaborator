@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Project Name" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :repo %><br />
-    <%= f.text_field :repo %>
+    <%= f.label :repo, "Github Repo (If none exists, enter 'http://none')" %><br />
+    <%= f.text_field :repo, :value => "http://" %>
   </div>
     <div class="field">
-   <%= f.label :url %><br />
+   <%= f.label :url, "Site or App Iteration URL" %><br />
     <%= f.text_field :url %>
   </div>
   <div class="field">
@@ -47,7 +47,7 @@
   </div>
   </div>
   <div id="" class="">
-        <div>Does this customer have a retainer?</div>
+        <div>Is there a retainer on this project?</div>
     <%= f.label :retainer_hours %>
     <%= f.text_field :retainer_hours %>
   </div><!-- / -->
