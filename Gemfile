@@ -30,7 +30,6 @@ gem 'paperclipdropbox'
 gem 'oauth'
 gem 'newrelic_rpm'
 gem "RedCloth", "~> 4.2.9"
-gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 gem "friendly_id", "~> 4.0.1"
 
 # Gems used only for assets and not required

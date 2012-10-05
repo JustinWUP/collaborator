@@ -29,10 +29,6 @@ match "/projects/:id/topics/:id/attach" => "topics#attach"
     end
   end
 
-  resources :wikis do
-    match 'wikis/1'
-  end
-
      match ':controller(/:action(/:id))(.:format)'
 
 
