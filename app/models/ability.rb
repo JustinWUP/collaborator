@@ -10,7 +10,7 @@ class Ability
         can :manage, Project, :users => {:id => user.id}
         can :manage, Subscription, :user_id => user.id
         # can :manage, Subscription, :user_id => {Role.find_by_name("wupteam")}
-        can :manage, [Topic, Organization, Comment]
+        can :manage, [Topic, Organization, Comment, Wiki]
         cannot :all, Setting
       else
         can :read, Project, :users => {:id => user.id }
