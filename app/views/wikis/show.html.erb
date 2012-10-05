@@ -5,6 +5,7 @@
 <p>
   <% @hey= RedCloth.new(@wiki.body).to_html %>
   <%= @hey.html_safe %>
+  <%= render 'articlechanges' %>
 </p>
 
 

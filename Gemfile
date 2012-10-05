@@ -31,6 +31,7 @@ gem 'oauth'
 gem 'newrelic_rpm'
 gem "RedCloth", "~> 4.2.9"
 gem "friendly_id", "~> 4.0.1"
+gem 'auditable'
 
 # Gems used only for assets and not required
 # in production environments by default.

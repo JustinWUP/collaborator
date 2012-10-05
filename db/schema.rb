@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005160007) do
+ActiveRecord::Schema.define(:version => 20121005174146) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(:version => 20121005160007) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.text     "modifications"
+    t.string   "action"
+    t.string   "tag"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "audits", ["action"], :name => "index_audits_on_action"
+  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["tag"], :name => "index_audits_on_tag"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -211,9 +229,10 @@ ActiveRecord::Schema.define(:version => 20121005160007) do
   create_table "wikis", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "slug"
+    t.string   "changetag",  :default => "Article Created."
   end
 
   add_index "wikis", ["slug"], :name => "index_wikis_on_slug", :unique => true

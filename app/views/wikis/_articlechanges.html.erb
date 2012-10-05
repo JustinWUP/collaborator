@@ -1,0 +1,29 @@
+  <% if @wiki.audits.count > 1 %>
+  <strong>Recent Changes</strong>
+  <table id ="orgtable">
+  	<tr class="boldstuff">
+  		<td>
+  		Who edited this?
+  	</td>
+  	<td>
+  		What was changed? </td>
+      <td>
+      When was it updated?</td>
+
+  	</tr>
+	  <% @wiki.audits.reverse.first(10).each do |audit| %>
+    <%if audit.tag %>
+	  <tr>
+	  	<% if audit.user_id %>
+		  	<% hey = User.find_by_id(audit.user_id) %>
+		  <td>	<%= hey.email %> </td>
+	  	<% end %>
+  	<td><%= audit.tag %> </td>
+    <td><%= distance_of_time_in_words_to_now(audit.updated_at) << " ago." %> </td>
+    </tr>
+    
+  	<% end %>
+
+  <% end %>
+  <% end %>
+</table>  

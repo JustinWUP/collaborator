@@ -17,7 +17,6 @@ class WikisController < ApplicationController
   # GET /wikis/1.json
   def show
     @wiki = Wiki.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @wiki }
@@ -60,9 +59,12 @@ class WikisController < ApplicationController
   # PUT /wikis/1.json
   def update
     @wiki = Wiki.find(params[:id])
+    @wiki.update_attributes(:changed_by => current_user)
+      
 
     respond_to do |format|
       if @wiki.update_attributes(params[:wiki])
+        @wiki.audit_tag_with(@wiki.changetag)  
         format.html { redirect_to @wiki, notice: @wiki.title << ' was successfully updated.' }
         format.json { head :no_content }
       else
