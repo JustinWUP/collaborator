@@ -1,6 +1,15 @@
+GIT
+  remote: git://github.com/adamcooper/vestal_versions
+  revision: 6273df533f85014062e346cb1807b0531a809ee2
+  specs:
+    vestal_versions (1.2.2)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
       mail (~> 2.4.4)
@@ -220,6 +229,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth (~> 4.2.9)
   bluecloth
   cancan
   capybara-screenshot
@@ -249,5 +259,6 @@ DEPENDENCIES
   steak
   thin
   uglifier (>= 1.0.3)
+  vestal_versions!
   watchr
   will_paginate (~> 3.0.3)

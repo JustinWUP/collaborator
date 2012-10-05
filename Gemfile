@@ -29,6 +29,8 @@ gem 'dropbox'
 gem 'paperclipdropbox'
 gem 'oauth'
 gem 'newrelic_rpm'
+gem "RedCloth", "~> 4.2.9"
+gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
 
 # Gems used only for assets and not required
 # in production environments by default.

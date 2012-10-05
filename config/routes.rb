@@ -1,4 +1,6 @@
 Collaborator::Application.routes.draw do
+  resources :wikis
+
   get "subscriptions/index"
 
   get "subscriptions/edit"
@@ -25,6 +27,10 @@ match "/projects/:id/topics/:id/attach" => "topics#attach"
       get 'toggle'
       get 'unsub'
     end
+  end
+
+  resources :wikis do
+    match 'wikis/1'
   end
 
      match ':controller(/:action(/:id))(.:format)'

@@ -1,0 +1,42 @@
+<h2>Wind Up Pixel Knowledge Base</h2>
+
+<table>
+<% @wikis.each do |wiki| %>
+  <tr>
+    <!-- <td><h3><%# link_to wiki.title, wiki %></h3></td> -->
+    <td> <%=  RedCloth.new(wiki.body).to_html.html_safe %></td>
+  
+   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> --></tr>
+    <tr>
+  <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
+  </tr>
+
+<% end %>
+</table>
+
+
+<table id ="orgtable">
+<h3>Recent Updates</h3>
+  <tr class="boldstuff" style="border-bottom:1px #ccc dashed;">
+    <td>Article Name</td>
+    <td>Updated</td>
+  </tr>
+<% @allwikis.each do |wiki| %>
+
+    <tr>
+    <td><%= link_to wiki.title, wiki %></td>
+    <td><%= distance_of_time_in_words_to_now(wiki.updated_at) %> ago.</td>
+  
+    <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr>
+    <tr>
+  <td><%# link_to 'Edit', edit_wiki_path(wiki) %></td>
+  </tr>
+
+<% end %>
+</table>
+
+
+<br />
+
+<%= link_to 'New Article', new_wiki_path %>
+
