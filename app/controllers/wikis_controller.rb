@@ -40,6 +40,16 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
   end
 
+
+  def cate
+    @catname = params[:postcategory]
+   @wikicat = Wiki.find_all_by_postcategory(@catname)
+     respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @wiki }
+    end
+  end
+
   # POST /wikis
   # POST /wikis.json
   def create

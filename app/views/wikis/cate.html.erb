@@ -1,0 +1,23 @@
+<table class="wikipost">
+	<% if @wikicat.count >0 %>
+	<h2>Category: <%= @catname %></h2>
+		<p>Here's a list of articles about <span class="boldstuff"><%= @catname %>.</span></p>
+		<% @wikicat.each do |wiki| %>
+			  <tr>
+			  	<%# %>
+			  </tr>
+			  	<tr>
+
+			    <td><%= link_to wiki.title, wiki %></td>
+			    
+			  
+			   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> --></tr>
+			    <tr>
+			  </tr>
+
+			<% end %>
+			<% else  %>
+				<h2>This category doesn't exist.</h2><p>Why don't you create some pages for it?</p><%= link_to 'Create New Article', new_wiki_path %>
+			<% end %>
+			</table>
+		

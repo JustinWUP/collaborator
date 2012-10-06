@@ -1,7 +1,8 @@
 Collaborator::Application.routes.draw do
   resources :apps
 
-  resources :wikis
+  resources :wikis 
+  match 'wikis/cate/:postcategory' => "wikis#cate"
 
   get "subscriptions/index"
 
