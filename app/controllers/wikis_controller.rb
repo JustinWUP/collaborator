@@ -17,10 +17,17 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    #TODO: put in a real categories list page
+    if params[:id] == "cate"
+      redirect_to wikis_path
+      # render 'wikis/catlist'
+    else
     @wiki = Wiki.find(params[:id])
-    respond_to do |format|
+       respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @wiki }
+    end
+ 
     end
   end
 
@@ -42,12 +49,8 @@ class WikisController < ApplicationController
 
 
   def cate
-    @catname = params[:postcategory]
-   @wikicat = Wiki.find_all_by_postcategory(@catname)
-     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @wiki }
-    end
+      @catname = params[:postcategory]
+      @wikicat = Wiki.find_all_by_postcategory(@catname)
   end
 
   # POST /wikis

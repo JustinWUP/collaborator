@@ -1,4 +1,4 @@
-<% if @wiki.postcategory && Wiki.find_all_by_postcategory(@wiki.postcategory).count >1  %>
+<% if @wiki.postcategory != "" && Wiki.find_all_by_postcategory(@wiki.postcategory).count >1  %>
 <div id ="wikicatbox"> <span class="boldstuff">
 	Part of a series of articles on <span style="text-decoration:underline;"><%= link_to @wiki.postcategory, "/wikis/cate/"<<@wiki.postcategory %></span>.<br></span>
 			<% cat = Wiki.find_all_by_postcategory(@wiki.postcategory) %>
