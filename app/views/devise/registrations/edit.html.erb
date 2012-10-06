@@ -35,9 +35,12 @@
       <% content_for :user_links do %>
         <%= link_to 'Manage Subscriptions', subscriptions_path, :class => "useractions" %>
         <h4>or</h4>
-        <h4>Update your e-mail address and password to the right.</h4>
+        <h4>Update your profile to the right.</h4>
       <% end %>
     <% end %>
+  
+  <div><%= f.label :firstname, "Name:" %><br />
+  <%= f.text_field :firstname %></div><br>
 
   <div><%= f.label :email, "Email:" %><br />
   <%= f.email_field :email %></div><br>

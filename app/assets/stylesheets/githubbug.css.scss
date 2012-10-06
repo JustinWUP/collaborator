@@ -36,6 +36,10 @@ p {
 //  margin: 0 auto -15px; /* Footer fix height 
 */
 
+.centered {
+  text-align:center;
+}
+
 .boldstuff{
   font-weight:bold;
 }
@@ -51,7 +55,13 @@ border-left: 2px solid #353535;
 }
 #top-box {
   background-color: #353535;
-  height: 30px;
+  height: 25px;
+  position: fixed;
+  z-index: 9999;
+  margin-top: -43px;
+  width: 100%;
+  box-shadow: 0px 2px 20px #CCC;
+  padding-top: 8px;
 }
 
 #wup-name {
@@ -64,7 +74,7 @@ color: #7B7B7B;
 font-weight: bold;
 font-family: Helvetica, sans-serif;
 margin-bottom: -8px;
-margin-top: -95px;
+margin-top: -57px;
 }
 
 #wup-name a, .web-strategy a{
@@ -106,6 +116,22 @@ overflow-y: hidden;
 height: 32px;
 }
 
+#appslist {
+  padding-left: 21px;
+  display: inline-block;
+
+  ul li{
+    border-left:2px solid #bbb;
+    list-style-type: none;
+    display: inline;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  ul li:first-child{
+    border:none;
+  }
+}
 
 .nav-ul {
   font-family: Helvetica, sans-serif;
@@ -118,7 +144,11 @@ height: 32px;
   font-size: 20px;
   display: inline-block;
   padding: 8px 10px;
-
+  border-left:1px solid #ccc;
+  
+}
+.nav-ul li:first-child{
+  border:none;
 }
 .nav-ul li:hover, .nav-ul .active a {
   color: #00aaea;
@@ -170,6 +200,37 @@ position: relative;
   text-align: center;
 }
 
+.wikipost {
+  width:500px;
+}
+
+#wikicatbox {
+  border: 1px dashed #ccc; 
+  text-align:center;
+  padding:5px;
+}
+
+.catsplit {
+  list-style-type:none;
+  display:inline;
+padding-left:3px;
+  white-space:nowrap;
+  /*border-left: 1px solid #ccc;*/
+}
+
+.catsplit:after{
+  color:#ccc;
+  content: "  | ";
+
+}
+
+
+.catsplit:last-child:after{
+  content:none;
+}
+/*.catsplit:first-child{
+  border:none;
+}*/
 
 #content {
   // width: 445px;
@@ -256,7 +317,8 @@ footer {
 }
 
 footer div {
-  width: 1020px;
+  width: 100%;
+  //width: 1020px;
   padding: 4px 10px 7px;
   // margin: 0px auto;
   text-align: center;
@@ -264,12 +326,14 @@ footer div {
 
 footer .first {
   float: left;
+  margin-left: 2%;
 }
 footer .middle {
-  margin-left: -30px;
+
 }
 footer .last {
   float:right;
+  margin-right: 4%;
 }
 
 
@@ -295,10 +359,14 @@ text-decoration: underline;
   }
 }
 #user-nav {
-  border-bottom: 1px dashed #ccc;
+/*  border-bottom: 1px dashed #ccc;
   text-align: left;
   margin-left:  -65px;
-  padding-left:  65px;
+  padding-left:  65px;*/
+  color:#ccc;
+  float: right;
+  display: inline-block;
+  margin-right:40px;
 }
 
 ul.topic-list {
@@ -434,7 +502,7 @@ code {
 
 .beta {
   position: absolute;
-  top: 100px;
+  top: 109px;
   left: 402px;
   z-index: 900;
   width: 50px;
@@ -529,8 +597,9 @@ display: inline;
      }
 
 #project-list-heading{
-  font-size:25px;
+  font-size:20px;
   padding: 15px 0 15px 0;
+  font-weight:bold;
 }
 
 .form-spacer{
@@ -706,7 +775,7 @@ display: inline;
     overflow: hidden; }
 
 
-.show_hide_complete, .show_hide_awaiting, .show_hide_working, .show_hide_topicreport {
+.show_hide_complete, .show_hide_awaiting, .show_hide_working, .show_hide_topicreport, .show_hide_wikichanges {
     display:inline-block;
     /*padding-bottom: 10px;*/
 /*      color: black !important;

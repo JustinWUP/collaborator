@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :registration_org_id, :topicmail
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :registration_org_id, :topicmail, :firstname
 
   # This is a temporary accessor to validate Org ID against
   attr_accessor :registration_org_id

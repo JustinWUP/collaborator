@@ -1,13 +1,14 @@
 <p>
- <h1> <%= @wiki.title %> </h1>
+ <h2> <%= @wiki.title %> </h2>
 </p>
-
+<div class="wikipost">
 <p>
-  <% @hey= RedCloth.new(@wiki.body).to_html %>
-  <%= @hey.html_safe %>
-  <%= render 'articlechanges' %>
+  <%= wiki_body(@wiki.body) %>
 </p>
+</div>
 
-
+<%# category_list(@wiki.postcategory) %>
 <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
 <%= link_to 'Back', wikis_path %>
+<%= render 'category' %>
+<%= render 'articlechanges' %>

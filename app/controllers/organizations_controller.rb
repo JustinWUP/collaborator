@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
  load_and_authorize_resource
+ before_filter :appname
   
   # GET /Organizations
   # GET /Organizations.json
@@ -82,4 +83,10 @@ class OrganizationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    def appname
+    @appname = "ACCOUNTS"
+  end
+
+
 end

@@ -1,5 +1,7 @@
 class AttachmentsController < ApplicationController
   load_and_authorize_resource :through => :topic
+  before_filter :appname
+
   def authorize
     if params[:oauth_token] then
       dropbox_session = Dropbox::Session.deserialize(session[:dropbox_session])
@@ -26,4 +28,9 @@ class AttachmentsController < ApplicationController
       # display a multipart file field form
     end
   end
+
+  def appname
+    
+  end
+
 end

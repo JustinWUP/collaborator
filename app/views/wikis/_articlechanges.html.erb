@@ -1,5 +1,7 @@
   <% if @wiki.audits.count > 1 %>
-  <strong>Recent Changes</strong>
+  <div class="centered"><span class="boldstuff">Recent Changes</span><a href="javascript:void(0);" class="show_hide_wikichanges">Show/Hide</a></div>
+    
+    <div class="slidingDiv_wikichanges"> 
   <table id ="orgtable">
   	<tr class="boldstuff">
   		<td>
@@ -27,3 +29,4 @@
   <% end %>
   <% end %>
 </table>  
+</div>

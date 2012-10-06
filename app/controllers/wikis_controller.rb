@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  before_filter :appname
    load_and_authorize_resource
   # GET /wikis
   # GET /wikis.json
@@ -85,4 +86,10 @@ class WikisController < ApplicationController
       format.json { head :no_content }
     end
   end
+private 
+  def appname
+    @appname = "KNOWLEDGE"
+  end
+
+
 end

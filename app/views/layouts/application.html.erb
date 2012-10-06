@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 
 <% 
-	unless current_page?(controller: 'projects', action: 'index') 
+	unless current_page?(controller: 'projects', action: 'index') or  params[:controller] == 'wikis'
 		add_nav_link( link_to "Home", projects_path ) 
 	end 	
+
+	unless current_page?(controller: 'wikis', action: 'index') or params[:controller] != 'wikis'
+		add_nav_link( link_to "Home", wikis_path ) 
+	end
+	
 %>
 
 <html>
@@ -55,8 +60,14 @@ $(document).ready(function(){
     $('.show_hide_topicreport').click(function(){
     $(".slidingDiv_topicreport").slideToggle();
     });
-});
 
+          $(".slidingDiv_wikichanges").hide();
+        $(".show_hide_wikichanges").show();
+ 
+    $('.show_hide_wikichanges').click(function(){
+    $(".slidingDiv_wikichanges").slideToggle();
+    });
+});
 
 	</script>
 	
@@ -78,20 +89,43 @@ $(document).ready(function(){
 <div id="wrap" class="wrap">
 	<header id="header" class="">
 		<div id="top-box" class="top-box">
-			
+			<div id="appslist">
+				<% if user_signed_in? and (current_user.role? :admin or current_user.role? :wupteam) %>
+				<ul>
+				<% @appbar.each do |app| %>
+				<li><%= link_to app.title, app.appurl %></li>
+				<% end %> 
+				</ul>
+				<% end %> 
+			</div>
+			<% unless current_page?(action: 'new', controller: 'sessions') %>
+						<div id="user-nav" class="round shadow inset stroke">
+							<% if user_signed_in? %>
+								<% unless current_user.firstname == '' %>
+								Welcome, <%= link_to current_user.firstname, edit_user_registration_path %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								<% else %>
+								Welcome, <%= link_to current_user.email, edit_user_registration_path %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								<% end %>
+							<% else %>
+								<%# Really, this should never appear since we've locked down the app %>
+								<%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+							<% end %>
+						</div><!-- /user-nav -->
+						<% end %>
+
 		</div><!-- /top-box -->
 
 		<div id="wup-name" class="wup-name">
 		<div id="logo">
-<%= link_to image_tag("logo.png", :size => "121x103"), root_path %>
+<%= image_tag("logo.png", :size => "121x103") %>
 
 	</div>
-		<%= link_to "WIND UP PIXEL", root_path %>
+		WIND UP PIXEL
 		</div><!-- /wup-name -->	
 
 		<nav>	
 				<div class="web-strategy">
-			<%= link_to "COLLABORATOR", root_path %>
+			<%= link_to @appname, root_path %>
 		</div>
 			<div id="nav-wrap" class="nav-wrap">
 
@@ -115,15 +149,6 @@ $(document).ready(function(){
 			</aside>
 				<div id="content-wrap">
 					<% unless current_page?(action: 'new', controller: 'sessions') %>
-						<div id="user-nav" class="round shadow inset stroke">
-							<% if user_signed_in? %>
-								Welcome, <%= link_to current_user.email, edit_user_registration_path %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-							<% else %>
-								<%# Really, this should never appear since we've locked down the app %>
-								<%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
-							<% end %>
-						</div><!-- /user-nav -->
-
 						<% if content_for?( :admin_links) or content_for?( :user_links ) %>
 	
 
@@ -155,7 +180,7 @@ $(document).ready(function(){
 					</div><!-- /flash-box -->
 					
 					<% if content_for?( :page_title ) %>
-						<h1><%= yield :page_title %></h1>
+						<h2><%= yield :page_title %></h2>
 					<% end  %>
 					
 					<%= yield %>

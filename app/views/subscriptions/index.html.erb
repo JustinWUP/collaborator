@@ -1,5 +1,5 @@
 <% add_nav_link(link_to "My Profile", edit_user_registration_path(@user)) %>
-<h1>Subscriptions</h1>
+<h2>Subscriptions</h2>
 
 <!-- <%# form_for(current_user, :as => :user, :url => registration_path(:user)) do |f| %>
 
@@ -16,13 +16,13 @@
 <% #end %>
 
 <% if (can? :manage, :all) %> 
-<h2> 
+<h3> 
   The following Topics have been subscribed to:
-</h2>
+</h3><br>
 <% else %>
-<h2>
+<h3>
   You're currently subscribed to the following Topics:
-</h2><!-- / -->
+</h3><br><!-- / -->
 <% end %>
 
 <div id="" class="">

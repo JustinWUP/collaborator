@@ -1,8 +1,8 @@
-class ApplicationController < ActionController::Base
-  
+class ApplicationController < ActionController::Base  
 	protect_from_forgery
 
 	before_filter :authenticate_user!
+	before_filter :appname, :appbar
 
 	check_authorization :unless => :devise_controller?
 
@@ -10,6 +10,25 @@ class ApplicationController < ActionController::Base
 		redirect_to projects_url, :alert => "Access denied."
 	end
 
+  def index
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @whereami }
+    end
+  end
+
+  # GET /apps/1
+  # GET /apps/1.json
+
+
+private 
+  def appbar
+    @appbar = App.all
+  end
+  
+  def appname
+    @appname = "COLLABORATOR"
+  end
 end
 
 

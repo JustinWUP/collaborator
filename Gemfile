@@ -29,7 +29,6 @@ gem 'dropbox'
 gem 'paperclipdropbox'
 gem 'oauth'
 gem 'newrelic_rpm'
-gem "RedCloth", "~> 4.2.9"
 gem "friendly_id", "~> 4.0.1"
 gem 'auditable'
 

@@ -41,6 +41,7 @@ class SubscriptionsController < ApplicationController
 
   private
 
+
   def find_subscription
     @subscription = Subscription.find(params[:id])
   end

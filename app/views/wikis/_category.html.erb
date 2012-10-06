@@ -1,0 +1,12 @@
+<% if @wiki.postcategory && Wiki.find_all_by_postcategory(@wiki.postcategory).count >1  %>
+<div id ="wikicatbox"> <span class="boldstuff">
+	Part of a series of articles on <span style="text-decoration:underline;"><%= @wiki.postcategory %></span>.<br></span>
+			<% hey = Wiki.find_all_by_postcategory(@wiki.postcategory) %>
+			<ul>
+			<% hey.each do |yo| %>
+			
+			<li class="catsplit"><%= link_to yo.title, yo %></li>
+			 <% end %>
+			</ul>
+		<% end %>
+	</div>

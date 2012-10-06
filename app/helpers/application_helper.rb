@@ -15,7 +15,7 @@ NAVMENU
 
 	def add_nav_link(link)
 		content_for :nav_links do 
-		"- <li>#{link}</li>".html_safe 
+		" <li>#{link}</li>".html_safe 
 		end
 	end
 

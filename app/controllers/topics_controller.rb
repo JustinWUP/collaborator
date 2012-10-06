@@ -173,7 +173,6 @@ end
 
   private 
 
-
   def find_subscription
     @subscription = Subscription.find_or_create_by_type(current_user, @topic)
   end
