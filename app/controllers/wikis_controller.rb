@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   # GET /wikis.json
   def index
     # @wikis = Wiki.all
-    @wikis = Wiki.where('title="Home"')
+    @wikis = Wiki.find_all_by_title('Home')
     @allwikis = Wiki.recent.limit(10)
     respond_to do |format|
       format.html # index.html.erb
