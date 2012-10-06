@@ -4,5 +4,5 @@ class Wiki < ActiveRecord::Base
   attr_accessible :body, :title, :changed_by, :changetag, :postcategory
   validates_presence_of :body, :title, :changetag
   audit :body, :title
-  scope :recent, :order => 'updated_at DESC', :conditions => 'title != "Home"'
+  scope :recent, :order => 'updated_at DESC'
 end
