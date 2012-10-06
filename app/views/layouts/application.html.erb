@@ -90,7 +90,7 @@ $(document).ready(function(){
 	<header id="header" class="">
 		<div id="top-box" class="top-box">
 			<div id="appslist">
-				<% if user_signed_in? and (current_user.role? :admin or current_user.role? :wupteam) %>
+				<% if user_signed_in? and (can? :manage, Wiki) %>
 				<ul>
 				<% @appbar.each do |app| %>
 				<li><%= link_to app.title, app.appurl %></li>
