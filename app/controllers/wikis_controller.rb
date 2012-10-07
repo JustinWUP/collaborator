@@ -37,6 +37,7 @@ class WikisController < ApplicationController
           if @parse.include?("~~")
             @newtitle = params[:id].tr("~~","")
           else
+            @newtitle = ""
             @catname = params[:id]
           end
         end
