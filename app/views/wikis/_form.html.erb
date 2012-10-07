@@ -1,6 +1,6 @@
 <%= form_for(@wiki) do |f| %>
   <% if @wiki.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" style="width:350px;">
       <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
 
       <ul>
@@ -17,10 +17,10 @@
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :size => "44x30" %>
   </div>
   <div class="field">
-    <%= f.label :postcategory, "Category" %><br />
+    <%= f.label :postcategory, "What's the article's category (if any)?" %><br />
     <%= f.text_field :postcategory, :value => @catname %>
   </div>
 
