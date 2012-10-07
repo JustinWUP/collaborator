@@ -32,13 +32,14 @@ class WikisController < ApplicationController
   # GET /wikis/new.json
   def new
     @wiki = Wiki.new
-    #    @wow = params[:id]
-    # if @wow 
-    #   if @wow.include?("title")
-    #     @newtitle = params[:id].tr("title","")
-    #   else
-    #     @wikicat = params[:id]
-    #   end
+       @parse = params[:id]
+        if @parse 
+          if @parse.include?("~~")
+            @newtitle = params[:id].tr("~~","")
+          else
+            @catname = params[:id]
+          end
+        end
     @wikicat = params[:id]
     respond_to do |format|
       format.html # new.html.erb
@@ -109,11 +110,11 @@ private
   end
 
   def find_article
-    @wiki = Wiki.find_or_create_by_slug(params[:id])
-    # if @wiki.title == ""
-    #   newtitle = (params[:id])<<"title"
-    #   redirect_to new_wiki_path << "/" << newtitle
-    # end
+    @wiki = Wiki.find(params[:id])
+    if @wiki.title == ""
+      newtitle = "~~" << (params[:id])
+      redirect_to new_wiki_path << "/" << newtitle
+    end
   end
 
 end
