@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
   before_filter :appname
+  before_filter :find_article, :only => [:show]
    load_and_authorize_resource
   # GET /wikis
   # GET /wikis.json
@@ -18,15 +19,11 @@ class WikisController < ApplicationController
   # GET /wikis/1.json
   def show
     #TODO: put in a real categories list page
-    if params[:id] == "cate"
-      redirect_to wikis_path
-      # render 'wikis/catlist'
-    else
-    @wiki = Wiki.find(params[:id])
+   
+   
        respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @wiki }
-    end
  
     end
   end
@@ -35,8 +32,14 @@ class WikisController < ApplicationController
   # GET /wikis/new.json
   def new
     @wiki = Wiki.new
-    @catname = params[:id]
-
+    #    @wow = params[:id]
+    # if @wow 
+    #   if @wow.include?("title")
+    #     @newtitle = params[:id].tr("title","")
+    #   else
+    #     @wikicat = params[:id]
+    #   end
+    @wikicat = params[:id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @wiki }
@@ -105,5 +108,12 @@ private
     @appname = "KNOWLEDGE"
   end
 
+  def find_article
+    @wiki = Wiki.find_or_create_by_slug(params[:id])
+    # if @wiki.title == ""
+    #   newtitle = (params[:id])<<"title"
+    #   redirect_to new_wiki_path << "/" << newtitle
+    # end
+  end
 
 end
