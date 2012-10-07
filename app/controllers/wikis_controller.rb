@@ -2,6 +2,7 @@ class WikisController < ApplicationController
   before_filter :appname
   before_filter :find_article, :only => [:show]
   before_filter :there_is_no_spoon, :only => :new
+  before_filter :revision_finder, :only => [:audit, :revert]
    load_and_authorize_resource
   # GET /wikis
   # GET /wikis.json
@@ -40,7 +41,21 @@ class WikisController < ApplicationController
   # GET /wikis/1/edit
   def edit
     @wiki = Wiki.find(params[:id])
-    @yo = hey
+  end
+
+  def audit
+    @newaudit = @wiki.audits.find(@currentauditid)
+    @oldaudit = @wiki.audits.find(@oldauditid)
+  end
+
+  def revert
+    @oldaudit = @wiki.audits.find_by_id(@oldauditid)
+    @wiki.body = @oldaudit.modifications['body']
+    @reverttag = "Reverted to audit ID " << @oldauditid.to_s
+    @wiki.audit_tag_with(@reverttag)
+    @wiki.update_attributes(:changed_by => current_user)
+    @wiki.save
+    redirect_to wiki_path(params[:id])
   end
 
 
@@ -124,6 +139,12 @@ private
       newtitle = "~~" << (params[:id])
       redirect_to new_wiki_path << "/" << newtitle
     end
+  end
+
+  def revision_finder
+    @wiki = Wiki.find(params[:id])
+    @currentauditid = params[:next]
+    @oldauditid = @currentauditid.to_i - 1
   end
 
 end

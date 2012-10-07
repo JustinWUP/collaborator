@@ -1,0 +1,9 @@
+<h2>Viewing <%= @wiki.title %></h2><h3>Edit number <%= @newaudit.id %> </h3><hr><br>
+
+<div class="boldstuff">What this article looked like after edit <%= @newaudit.id %>:</div>
+<div id="wikicatbox" style="text-align:left; background: #DDD;"><%= @newaudit.modifications['body'] %></div>
+<br>
+<div class="boldstuff">The content of this article at edit number <%=@oldaudit.id %>:</div>
+<div id="wikicatbox" style="text-align:left; background: #DDD;"><%= @oldaudit.modifications['body'] %></div>
+
+<%= link_to "Revert to edit number "<< @oldaudit.id.to_s, :controller => "wikis", :action => "revert"%> | <%= link_to "Go Back", :back %>

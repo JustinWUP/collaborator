@@ -5,7 +5,10 @@
     <div class="slidingDiv_wikichanges"> 
   <table id ="orgtable">
   	<tr class="boldstuff">
-  		<td>
+  	<td>
+      Audit ID Number:
+    </td>
+    	<td>
   		Who edited this?
   	</td>
   	<td>
@@ -17,12 +20,14 @@
 	  <% @wiki.audits.reverse.first(10).each do |audit| %>
     <%if audit.tag %>
 	  <tr>
+      <td><%= link_to audit.id, audit_wiki_path([@wiki, audit.id]) %></td>
 	  	<% if audit.user_id %>
 		  	<% hey = User.find_by_id(audit.user_id) %>
 		  <td>	<%= hey.email %> </td>
 	  	<% end %>
   	<td><%= audit.tag %> </td>
     <td><%= distance_of_time_in_words_to_now(audit.updated_at) << " ago." %> </td>
+    
     </tr>
     
   	<% end %>
