@@ -5,7 +5,7 @@
 <div class="boldstuff">What was changed at edit number <%= @newaudit.id %>:</div>
 <div id="wikicatbox" style="text-align:left; background: #DDD;"><%= @newaudit.tag %></div>
 <br>
-<div class="boldstuff">The content of this article at edit number <%=@oldaudit.id %>:</div>
+<div class="boldstuff">The content of this article at previous edit:</div>
 <div id="wikicatbox" style="text-align:left; background: #DDD;"><%= wiki_body(@oldaudit.modifications['body']) %></div>
 
-<%= link_to "Revert to edit number "<< @oldaudit.id.to_s, :controller => "wikis", :action => "revert"%> | <%= link_to "Go Back", :back %>
+<%= link_to "Revert to previous edit", :controller => "wikis", :action => "revert"%> | <%= link_to "Go Back", :back %>

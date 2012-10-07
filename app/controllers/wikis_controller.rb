@@ -51,7 +51,7 @@ class WikisController < ApplicationController
   def revert
     @oldaudit = @wiki.audits.find_by_id(@oldauditid)
     @wiki.body = @oldaudit.modifications['body']
-    @reverttag = "Reverted to audit ID " << @oldauditid.to_s
+    @reverttag = "Article Reverted"
     @wiki.audit_tag_with(@reverttag)
     @wiki.update_attributes(:changed_by => current_user)
     @wiki.save
