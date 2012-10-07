@@ -110,7 +110,7 @@ private
   end
 
   def find_article
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.find_or_create_by_slug(params[:id])
     if @wiki.title == ""
       newtitle = "~~" << (params[:id])
       redirect_to new_wiki_path << "/" << newtitle
