@@ -35,6 +35,7 @@ class WikisController < ApplicationController
   # GET /wikis/new.json
   def new
     @wiki = Wiki.new
+    @catname = params[:id]
 
     respond_to do |format|
       format.html # new.html.erb

@@ -3,21 +3,20 @@
 	<h2>Category: <%= @catname.humanize.titlecase %></h2>
 		<p>Here's a list of articles about <span class="boldstuff"><%= @catname.humanize.titlecase %>.</span></p>
 		<% @wikicat.each do |wiki| %>
-			  <tr>
-			  	<%# %>
-			  </tr>
+			  
 			  	<tr>
 
 			    <td><%= link_to wiki.title, wiki %></td>
-			    
-			  
-			   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> --></tr>
-			    <tr>
 			  </tr>
 
 			<% end %>
+			<tr>
+				<td><br>
+				<%= link_to 'Create More Articles About ' << @catname.humanize.titlecase, new_wiki_path << "/"<<@catname %>
+				</td>
+			</tr>
 			<% else  %>
-				<h2>The category <%= @catname.humanize.titlecase %> doesn't exist.</h2><p>Why don't you create some pages for it?</p><%= link_to 'Create New Article', new_wiki_path %>
+				<h2>The category <%= @catname.humanize.titlecase %> doesn't exist.</h2><p>Why don't you <%= link_to 'create an article ', new_wiki_path << "/" << @catname %> for this category?</p>
 
 			<% end %>
 			</table>

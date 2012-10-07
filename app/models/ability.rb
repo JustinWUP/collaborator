@@ -6,7 +6,6 @@ class Ability
 
       if user.role? :admin
         can :manage, :all
-        can :appbar, :all
       elsif user.role? :wupteam
         can :manage, Project, :users => {:id => user.id}
         can :manage, Subscription, :user_id => user.id
