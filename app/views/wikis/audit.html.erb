@@ -2,7 +2,7 @@
 <div class="boldstuff">What this article looked like after edit number <%= @newaudit.id %>:</div>
 <div id="wikicatbox" style="text-align:left; background: #DDD;"><%= wiki_body(@newaudit.modifications['body']) %></div>
 <br>
-<div class="boldstuff">What was changed at audit number <%= @newaudit.id %>:</div>
+<div class="boldstuff">What was changed at edit number <%= @newaudit.id %>:</div>
 <div id="wikicatbox" style="text-align:left; background: #DDD;"><%= @newaudit.tag %></div>
 <br>
 <div class="boldstuff">The content of this article at edit number <%=@oldaudit.id %>:</div>
