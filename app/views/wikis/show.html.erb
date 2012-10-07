@@ -3,7 +3,7 @@
 </p>
 <div class="wikipost">
 <p>
-  <%= wiki_body(@wiki.body) %>
+  <%= wiki_body(@wiki.body.gsub('@@','/wikis/').gsub('@','/wikis/cate/'))%>
 </p>
 </div>
 
