@@ -29,8 +29,22 @@
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => "Create Article" %>
   </div>
 <% end %>
 
+<div id ="helper">
+  <h2 class="centered">Tags Quick Reference</h2>
+  <hr style="border:none;border-top:1px dashed #ccc;">
+  <p class="indent"><span class="boldstuff">##</span> Bigish headline</p>
+  <p class="indent"><span class="boldstuff">###</span> Smallish headline</p>
+  <p class="indent"><span class="boldstuff">*text*</span> Italics</p>
+  <p class="indent"><span class="boldstuff">**text**</span> Bold Text</p>
+  <p class="indent"><span class="boldstuff">*</span> Bulleted List</p>
+  <p class="indent"><span class="boldstuff">`text`</span> Code Span</p>
+  <p class="indent"><span class="boldstuff">***</span> Horizontal Rule</p>
+  <p class="indent"><span class="boldstuff">[linktext](URL)</span> Hyperlink</p>
+  <p class="indent"><span class="boldstuff">[linktext](~URL)</span> Hyperlink to a Category</p>
+  <p class="indent"><span class="boldstuff">[linktext](~~URL)</span> Hyperlink to an Article</p>
+</div>
 

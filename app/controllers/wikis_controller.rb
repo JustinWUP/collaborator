@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   before_filter :appname
   before_filter :find_article, :only => [:show]
+  before_filter :there_is_no_spoon, :only => :new
    load_and_authorize_resource
   # GET /wikis
   # GET /wikis.json
@@ -18,10 +19,7 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
-    #TODO: put in a real categories list page
-   
-   
-       respond_to do |format|
+      respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @wiki }
  
@@ -32,17 +30,7 @@ class WikisController < ApplicationController
   # GET /wikis/new.json
   def new
     @wiki = Wiki.new
-       @parse = params[:id]
-        if @parse 
-          if @parse.include?("~~")
-            @parsenext = params[:id].tr("~~","")
-            @newtitle = @parsenext.tr("-"," ").titlecase
-          else
-            @newtitle = ""
-            @catname = params[:id]
-          end
-        end
-    @wikicat = params[:id]
+    # @wikicat = params[:id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @wiki }
@@ -111,8 +99,26 @@ private
     @appname = "KNOWLEDGE"
   end
 
+  def there_is_no_spoon
+     @parse = params[:id]
+        if @parse 
+          if @parse.include?("~~")
+            @parsenext = params[:id].tr("~~","")
+            @newtitle = @parsenext.tr("-"," ").titlecase
+             flash[:notice] = 'The article ' << @newtitle  << " doesn't exist, but you can create it here."
+          else
+            @newtitle = ""
+            @catname = params[:id]
+          end
+        end
+      end
+
   def find_article
     @wiki = Wiki.find_or_create_by_slug(params[:id])
+        #TODO: put in a real categories list page
+    if @wiki.title == "cate"
+      redirect_to wikis_path
+    end
     if @wiki.title == ""
       newtitle = "~~" << (params[:id])
       redirect_to new_wiki_path << "/" << newtitle
