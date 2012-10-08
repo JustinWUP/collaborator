@@ -41,7 +41,7 @@
   <% end %>
   <div class="comment_pagination">
     <div class="page_info">
-      <%= page_entries_info @comment_page, :entry_name => 'item' %>
+      <%= page_entries_info @comment_page, :model => 'comment' %>
     </div>
     <div class="pagelinks">
     <%= will_paginate @comment_page, :container => false %>

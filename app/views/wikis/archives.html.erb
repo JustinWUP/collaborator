@@ -1,6 +1,6 @@
 
 <table class="wikipost" >
-	 <h2>Knowledge Archives</h2>
+	 <h2>Knowledge Article Archives</h2>
 	 <tr class="boldstuff">
 	 	<td>
 	 	Article Title
@@ -12,20 +12,13 @@
 
 <% @wikiarchive.each do |wiki| %>
   <tr>
-    <td><h3><%= link_to wiki.title, wiki %></h3></td><td><%= link_to 'Edit Article', edit_wiki_path(wiki) %></td>
+    <td><%= link_to wiki.title, wiki %></h3></td><td><%= link_to 'Edit Article', edit_wiki_path(wiki) %></td>
 </tr>
-<tr>
-
-    <td> <%# wiki_body(truncate(wiki.body, :length => 50)) %></td>
-   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-  
-  </tr>
-
 <% end %>
 </table>
   <div class="comment_pagination">
     <div class="page_info">
-      <%= page_entries_info @wikiarchive, :entry_name => 'item' %>
+      <%= page_entries_info @wikiarchive, :model => 'article' %>
     </div>
     <div class="pagelinks">
     <%= will_paginate @wikiarchive, :container => false %>

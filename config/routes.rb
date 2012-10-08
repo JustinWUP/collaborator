@@ -10,6 +10,7 @@ Collaborator::Application.routes.draw do
    match 'wikis/:id/:next/audit/' => "wikis#audit"
    match 'wikis/:id/:next/revert/' => "wikis#revert"
    match 'wikis/all/archives' => "wikis#archives"
+   match 'wikis/all/cate' => "wikis#catearchives" 
 
   match 'wikis/cate/:postcategory' => "wikis#cate"
 

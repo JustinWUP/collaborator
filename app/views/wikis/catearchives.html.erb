@@ -1,0 +1,37 @@
+<table class="wikipost" >
+<h2>Knowledge Categories</h2>
+	 <tr class="boldstuff">
+	 	<td>
+	 	Category Title
+	 	</td>
+	 	<td>
+	 		
+	 	</td>
+	 </tr>
+<% @catearchive.each do |slug| %>
+  <tr>
+    <td><%= link_to slug.postcategory, "/wikis/cate/" << slug.postcategory %></td>
+</tr>
+<tr>
+
+    <td> <%# wiki_body(truncate(wiki.body, :length => 50)) %></td>
+   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+  
+  </tr>
+
+<% end %>
+
+</table>
+
+  <div class="comment_pagination">
+    <div class="page_info">
+      <%= page_entries_info @catearchive, :model => 'category' %>
+    </div>
+    <div class="pagelinks">
+    <%= will_paginate @catearchive, :container => false %>
+  </div>
+  </div>
+
+
+
+	 
