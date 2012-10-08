@@ -8,16 +8,10 @@
 	 		
 	 	</td>
 	 </tr>
-<% @catearchive.each do |slug| %>
+<% @catearchive.catealpha.each do |slug| %>
   <tr>
     <td><%= link_to slug.postcategory, "/wikis/cate/" << slug.postcategory %></td>
 </tr>
-<tr>
-
-    <td> <%# wiki_body(truncate(wiki.body, :length => 50)) %></td>
-   <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-  
-  </tr>
 
 <% end %>
 
