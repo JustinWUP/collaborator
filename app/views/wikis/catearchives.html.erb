@@ -10,7 +10,7 @@
 	 </tr>
 <% @catearchive.catealpha.each do |slug| %>
   <tr>
-    <td><%= link_to slug.postcategory, "/wikis/cate/" << slug.postcategory %></td>
+    <td><%= link_to slug.postcategory.humanize.titlecase, "/wikis/cate/" << slug.postcategory %></td>
 </tr>
 
 <% end %>
