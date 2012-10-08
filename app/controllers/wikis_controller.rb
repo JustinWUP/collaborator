@@ -26,7 +26,7 @@ end
 
 def catearchives
   @catepresort = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory!='/wiki'")
-  @catearchive = @catepresort.select("DISTINCT(postcategory)").order("UPPER(wikis.postcategory) ASC")
+  @catearchive = @catepresort.scoped.select("DISTINCT(postcategory)").order("UPPER(wikis.postcategory) ASC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikis }
