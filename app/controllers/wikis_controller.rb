@@ -25,7 +25,8 @@ def archives
 end
 
 def catearchives
-  @catearchive = Wiki.paginate(:page => params[:page], :per_page => 10, :group => "wikis.id, wikis.title, wikis.body, wikis.changetag, wikis.created_at, wikis.updated_at, wikis.slug, wikis.postcategory", :conditions => "wikis.postcategory!='/wiki'", :order => "UPPER(wikis.postcategory) ASC")
+  @uh = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory!='/wiki'", :order => "UPPER(wikis.postcategory) ASC")
+  @catearchive = @uh.select("DISTINCT(postcategory)")  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikis }
