@@ -37,18 +37,38 @@ en:
             password:
               blank: "must be provided."
   will_paginate:
-    previous_label: "&#8592; Previous"
-    next_label: "Next &#8594;"
-    page_gap: "&hellip;"
+    comment:
+      previous_label: "&#8592; Previous"
+      next_label: "Next &#8594;"
+      page_gap: "&hellip;"
+      page_entries_info:
+        single_page:
+          zero:  "No comments here yet!"
+          one:   "Displaying 1 comment."
+          other: "Displaying all %{count} comments."
+        single_page_html:
+          zero:  "No comments here yet!"
+          one:   "Displaying <b>1</b> comment."
+          other: "Displaying <b>all&nbsp;%{count}</b> comments."
+        multi_page: "Displaying comments %{from} - %{to} of %{count} in total."
+        multi_page_html: "Displaying comments <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total."
+    wiki:
+      previous_label: "&#8592; Previous"
+      next_label: "Next &#8594;"
+      page_gap: "&hellip;"
+      page_entries_info:
+        single_page:
+          zero:  "No articles here yet!"
+          one:   "Displaying 1 articles."
+          other: "Displaying all %{count} articles."
+        single_page_html:
+          zero:  "No articles here yet!"
+          one:   "Displaying <b>1</b> articles."
+          other: "Displaying <b>all&nbsp;%{count}</b> articles."
+        multi_page: "Displaying articles %{from} - %{to} of %{count} in total."
+        multi_page_html: "Displaying articles <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total."
     page_entries_info:
-      single_page:
-        zero:  "No comments here yet!"
-        one:   "Displaying 1 comment."
-        other: "Displaying all %{count} comments."
-      single_page_html:
-        zero:  "No comments here yet!"
-        one:   "Displaying <b>1</b> comment."
-        other: "Displaying <b>all&nbsp;%{count}</b> comments."
-
-      multi_page: "Displaying comments %{from} - %{to} of %{count} in total."
-      multi_page_html: "Displaying comments <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total."
+        single_page:
+          zero:  "No comments here yet!"
+        single_page_html:
+          zero:  "No comments here yet!"

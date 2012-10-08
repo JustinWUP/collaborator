@@ -16,6 +16,13 @@ class WikisController < ApplicationController
     end
   end
 
+def archives
+@wikiarchive = Wiki.paginate(:page => params[:page], :per_page => 10, :order => "UPPER(title) ASC")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @wikis }
+    end
+end
 
   # GET /wikis/1
   # GET /wikis/1.json
@@ -131,7 +138,7 @@ private
 
   def find_article
     @wiki = Wiki.find_or_create_by_slug(params[:id])
-        #TODO: put in a real categories list page
+        #TODO: put in a real list of categories page
     if @wiki.title == "cate"
       redirect_to wikis_path
     end

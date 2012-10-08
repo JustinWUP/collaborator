@@ -6,4 +6,5 @@ class Wiki < ActiveRecord::Base
   validates_format_of :postcategory, :with => /^[a-z\d-]+$/,  :allow_blank => true, :message => "can only have lowercase letters with dashes - no spaces."
   audit :body, :title
   scope :recent, :order => 'updated_at DESC'
+  scope :alpha, :order => 'title ASC'
 end
