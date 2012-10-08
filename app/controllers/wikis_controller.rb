@@ -25,7 +25,7 @@ def archives
 end
 
 def catearchives
-  @catearchive = Wiki.paginate(:page => params[:page], :per_page => 10, :group => "wikis.postcategory", :conditions => "postcategory!='/wiki'", :order => "UPPER(postcategory) ASC")
+  @catearchive = Wiki.paginate(:page => params[:page], :per_page => 10, :group => "wikis.postcategory", :conditions => "wikis.postcategory!='/wiki'", :order => "UPPER(postcategory) ASC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikis }
