@@ -5,6 +5,6 @@ class Wiki < ActiveRecord::Base
   validates_presence_of :body, :title, :changetag
   validates_format_of :postcategory, :with => /^[a-z\d-]+$/,  :allow_blank => true, :message => "can only have lowercase letters with dashes - no spaces."
   audit :body, :title
-  scope :recent, :order => 'updated_at DESC', :conditions => ("slug!='home' and slug != 'cate'")
+  scope :recent, :order => 'updated_at DESC', :conditions => ("slug != 'cate'")
   scope :catealpha, :order => 'postcategory ASC'
 end
