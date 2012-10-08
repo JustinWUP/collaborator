@@ -17,7 +17,7 @@ class WikisController < ApplicationController
   end
 
 def archives
-  @wikiarchive = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "slug!='cate'", :order => "UPPER(title) ASC")
+  @wikiarchive = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "slug!='cate'", :order => "UPPER(wikis.title) ASC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikis }
@@ -25,7 +25,7 @@ def archives
 end
 
 def catearchives
-  @catearchive = Wiki.paginate(:page => params[:page], :per_page => 10, :group => "wikis.postcategory", :order => "UPPER(postcategory) ASC")
+  @catearchive = Wiki.paginate(:page => params[:page], :per_page => 10, :group => "wikis.postcategory", :conditions => "wikis.postcategory!='/wiki'", :order => "UPPER(wikis.postcategory) ASC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikis }
