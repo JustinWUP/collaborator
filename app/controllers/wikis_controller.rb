@@ -25,7 +25,7 @@ def archives
 end
 
 def catearchives
-  @catepresort = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory!='/wiki'")
+  @catepresort = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory != ''")
   @catearchive = @catepresort.select("DISTINCT(postcategory)")
     respond_to do |format|
       format.html # index.html.erb
