@@ -1,8 +1,8 @@
-# Collaborator
+# Collaborator 
 
 Collaborator is the Wind Up Pixel project management system for our clients, partners and employees. 
 
-It will probably be the first in a series of enterprise apps we'll develop for our business.
+The project management side was first in a series of enterprise apps we'll develop for our business. The Collaborator app now contains **Knowledge**, which is our private community edited wiki for our employees and subcontractors.  One day, I'll separate Collaborator and Knowledge into separate pieces with oauth.
 
 ## Setting up 
 
@@ -12,7 +12,6 @@ To set up, do the following:
 * `rake db:setup` - This will seed the environment per db/seeds.rb
 * `rails s`
 * login as admin@admin.com / password 
-* Go to localhost:3000/admin/settings and set up username/password for the robot settings. This allows login to github. (Will add OAuth later..)
 * Tada!
 
 For development:

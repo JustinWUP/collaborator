@@ -17,7 +17,7 @@
 
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wind Up Pixel - Collaborator</title>
+  <title>Wind Up Pixel - <%= @appname.titlecase	%></title>
   <%= stylesheet_link_tag "application" %>
   <%# stylesheet_link_tag "screen", :media => "screen" %>
   <%# stylesheet_link_tag "mobile", :media => "only screen and (max-device-width: 550px)" %>
@@ -29,47 +29,6 @@
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script type ="text/javascript">
-$(document).ready(function(){
- 
-        $(".slidingDiv_working").show();
-        $(".show_hide_working").show();
- 
-    $('.show_hide_working').click(function(){
-    $(".slidingDiv_working").slideToggle();
-    });
- 
-   $(".slidingDiv_awaiting").show();
-        $(".show_hide_awaiting").show();
- 
-    $('.show_hide_awaiting').click(function(){
-    $(".slidingDiv_awaiting").slideToggle();
-    });
-
-      $(".slidingDiv_complete").hide();
-        $(".show_hide_complete").show();
- 
-    $('.show_hide_complete').click(function(){
-    $(".slidingDiv_complete").slideToggle();
-    });
-
-
-          $(".slidingDiv_topicreport").hide();
-        $(".show_hide_topicreport").show();
- 
-    $('.show_hide_topicreport').click(function(){
-    $(".slidingDiv_topicreport").slideToggle();
-    });
-
-          $(".slidingDiv_wikichanges").hide();
-        $(".show_hide_wikichanges").show();
- 
-    $('.show_hide_wikichanges').click(function(){
-    $(".slidingDiv_wikichanges").slideToggle();
-    });
-});
-
-	</script>
 	
 	<script type="text/javascript">
 	
