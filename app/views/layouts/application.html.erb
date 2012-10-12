@@ -29,6 +29,48 @@
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+	<script src ="text/javascript">
+	$(document).ready(function(){
+ 
+        $(".slidingDiv_working").show();
+        $(".show_hide_working").show();
+ 
+    $('.show_hide_working').click(function(){
+    $(".slidingDiv_working").slideToggle();
+    });
+ 
+   $(".slidingDiv_awaiting").show();
+        $(".show_hide_awaiting").show();
+ 
+    $('.show_hide_awaiting').click(function(){
+    $(".slidingDiv_awaiting").slideToggle();
+    });
+
+      $(".slidingDiv_complete").hide();
+        $(".show_hide_complete").show();
+ 
+    $('.show_hide_complete').click(function(){
+    $(".slidingDiv_complete").slideToggle();
+    });
+
+
+          $(".slidingDiv_topicreport").hide();
+        $(".show_hide_topicreport").show();
+ 
+    $('.show_hide_topicreport').click(function(){
+    $(".slidingDiv_topicreport").slideToggle();
+    });
+
+          $(".slidingDiv_wikichanges").hide();
+        $(".show_hide_wikichanges").show();
+ 
+    $('.show_hide_wikichanges').click(function(){
+    $(".slidingDiv_wikichanges").slideToggle();
+    });
+});
+
+</script>
+
 	
 	<script type="text/javascript">
 	
@@ -52,7 +94,7 @@
 				<% if user_signed_in? and (current_user.role? :admin or current_user.role? :wupteam) %>
 				<ul>
 				<% @appbar.each do |app| %>
-				<li><%= link_to app.title, app.appurl %></li>
+				<li><%= link_to app.title, app.appurl, class: cp(app.appurl) %></li>
 				<% end %> 
 				</ul>
 				<% end %> 
@@ -61,9 +103,9 @@
 						<div id="user-nav" class="round shadow inset stroke">
 							<% if user_signed_in? %>
 								<% unless current_user.firstname == '' %>
-								Welcome, <%= link_to current_user.firstname, edit_user_registration_path %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								Welcome, <%= link_to current_user.firstname, edit_user_registration_path, class: cp("user")  %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 								<% else %>
-								Welcome, <%= link_to current_user.email, edit_user_registration_path %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								Welcome, <%= link_to current_user.email, edit_user_registration_path, class: cp("user")  %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 								<% end %>
 							<% else %>
 								<%# Really, this should never appear since we've locked down the app %>

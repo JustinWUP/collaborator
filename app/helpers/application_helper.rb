@@ -23,6 +23,17 @@ NAVMENU
 		auto_link(BlueCloth.new(text).to_html.html_safe)
 	end
 
+	def cp(path)
+		if params[:controller] == "topics"
+			@hey = "projects"
+		elsif %w[registrations settings organizations subscriptions].include? params[:controller] 
+			@hey = "user"
+		else
+			@hey = params[:controller]
+		end
+		"current" if @hey.include? path.gsub("/",'')
+	end
+
   def subscription_link(subscription, object)
     type = object.class.to_s
     if subscription.subscribed?

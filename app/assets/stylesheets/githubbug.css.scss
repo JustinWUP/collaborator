@@ -62,6 +62,14 @@ border-left: 2px solid #353535;
   width: 100%;
   box-shadow: 0px 2px 20px #CCC;
   padding-top: 8px;
+
+  a.current {
+    color:#9ECFF0;
+  }
+
+  a.current:hover {
+    color:#00aaea;
+  }
 }
 
 #wup-name {
@@ -131,7 +139,10 @@ height: 32px;
   ul li:first-child{
     border:none;
   }
+
 }
+
+
 
 .nav-ul {
   font-family: Helvetica, sans-serif;
