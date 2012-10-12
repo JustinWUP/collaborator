@@ -99,13 +99,7 @@
 		<section id="main">
 
 			<div id="content"  class="main">
-			<aside id="page-image">
-			<% if content_for? :page_image %>
-				<%= yield :page_image %>
-			<% else %>
-				<%# image_tag 'wup-bot.png' %>
-			<% end %>
-			</aside>
+			
 				<div id="content-wrap">
 					<% unless current_page?(action: 'new', controller: 'sessions') %>
 						<% if content_for?( :admin_links) or content_for?( :user_links ) %>

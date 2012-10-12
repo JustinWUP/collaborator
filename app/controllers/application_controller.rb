@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   # GET /apps/1
   # GET /apps/1.json
 
-
 private 
   def appbar
     @appbar = App.all
