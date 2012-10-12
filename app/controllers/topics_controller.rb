@@ -56,8 +56,9 @@ class TopicsController <  ApplicationController
       
       Notifier.topic_email(lookup,hey,projectname,projectid).deliver unless lookup == current_user or lookup.topicmail == false
     end
-
-    respond_with @topic, :location => project_path(@topic.project)
+    respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+    flash[:notice] = 'Topic Submitted'
+    # respond_with @topic, :location => project_path(@topic.project)
 
   end
 
