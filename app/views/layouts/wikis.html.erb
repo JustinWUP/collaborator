@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<% 
+	unless current_page?(controller: 'projects', action: 'index') or  params[:controller] == 'wikis'
+		add_nav_link( link_to "Home", projects_path ) 
+	end 	
+
+	unless current_page?(controller: 'wikis', action: 'index') or params[:controller] != 'wikis'
+		add_nav_link( link_to "Home", wikis_path ) 
+	end
+	
+%>
+
+<html>
+<head>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wind Up Pixel - <%= @appname.titlecase	%></title>
+  <%= stylesheet_link_tag "application" %>
+  <%# stylesheet_link_tag "screen", :media => "screen" %>
+  <%# stylesheet_link_tag "mobile", :media => "only screen and (max-device-width: 550px)" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="http://www.winduppixel.com/favicon.gif">
+  	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+
+	
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34276488-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
+</head>
+<body>
+	<style type="text/css">
+#content { margin-left:00px;}
+#top-box {
+background-color: #353535;
+height: 25px;
+position: fixed;
+z-index: 9999;
+margin-top: 16px;
+width: 100%;
+box-shadow: 0px 2px 20px #CCC;
+margin-top: -53px;
+}
+
+#wup-name {
+position: relative;
+margin-left: 92px;
+z-index: 2;
+font-size: 38px;
+padding-bottom: 5px;
+color: #7B7B7B;
+font-weight: bold;
+font-family: Helvetica, sans-serif;
+margin-bottom: -8px;
+margin-top: 53px;}
+
+
+nav {
+	height: 5px;
+background-color: #353535;
+color: white;
+margin-top: 20px;
+z-index: 1;
+}
+
+.web-strategy{
+	position: absolute;
+left: -72px;
+background: white;
+height: 24px;
+font-size: 13pt;
+margin-top: -25px;
+padding-left: 170px;
+padding-right: 10px;
+color: #7B7B7B;
+font-weight: bold;
+font-family: Helvetica, sans-serif;
+padding-top: 1px;
+z-index: 0;
+width: 126px;
+line-height: 30px;
+}
+
+#nav-wrap {
+	width: 100%;
+position: relative;
+text-transform: capitalize;
+text-align: right;
+overflow-y: hidden;
+height: 32px;
+/*margin-left: 540px;*/
+}
+
+#content-wrap {
+	width: 550px;
+padding-left: 28%;
+}
+
+.wikipost {
+	width:700px;
+}
+
+#logo {
+	margin-top: -8px;
+margin-left: -86px;
+margin-bottom: -104px;
+width: 121px;
+position: absolute;
+}
+
+#content #helper {
+	margin-left:-25%;
+	width:200px;
+}
+</style>
+<div id="wrap" class="wrap">
+	<header id="header" class="">
+		<div id="top-box" class="top-box">
+			<div id="appslist">
+				<% if user_signed_in? and (current_user.role? :admin or current_user.role? :wupteam) %>
+				<ul>
+				<% @appbar.each do |app| %>
+				<li><%= link_to app.title, app.appurl, class: cp(app.appurl) %></li>
+				<% end %> 
+				</ul>
+				<% end %> 
+			</div>
+			<% unless current_page?(action: 'new', controller: 'sessions') %>
+						<div id="user-nav" class="round shadow inset stroke">
+							<% if user_signed_in? %>
+								<% unless current_user.firstname == '' %>
+								Welcome, <%= link_to current_user.firstname, edit_user_registration_path, class: cp("user")  %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								<% else %>
+								Welcome, <%= link_to current_user.email, edit_user_registration_path, class: cp("user")  %> |  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+								<% end %>
+							<% else %>
+								<%# Really, this should never appear since we've locked down the app %>
+								<%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>
+							<% end %>
+						</div><!-- /user-nav -->
+						<% end %>
+
+		</div><!-- /top-box -->
+
+		<div id="wup-name" class="wup-name">
+		<div id="logo">
+<%= image_tag("logo.png", :size => "80x60") %>
+
+	</div>
+		WIND UP PIXEL
+		</div><!-- /wup-name -->	
+
+		<nav>	
+				<div class="web-strategy">
+			<%= link_to @appname, root_path %>
+		</div>
+			<div id="nav-wrap" class="nav-wrap">
+
+				<%= nav_links_menu %>
+			</div><!-- /nav-wrap -->
+			
+		</nav>
+
+		
+	</header><!-- /header -->
+
+		<section id="main">
+
+			<div id="content"  class="main">
+			
+				<div id="content-wrap">
+					<% unless current_page?(action: 'new', controller: 'sessions') %>
+						<% if content_for?( :admin_links) or content_for?( :user_links ) %>
+	
+
+	<div id="next-steps" class="">
+							<h3>Next Steps:</h3> <br>
+									<%  #if can?( :manage, :all )  %>
+									<% if current_user.role? :wupteam or current_user.role? :admin %>
+									<!-- <div id="admin-links" class=""> -->
+							
+									<!-- <span id="admin-links-stub">Admin Links:</span> -->
+							
+									 <%= yield :admin_links %>
+									 
+									
+								<!-- /admin-links -->
+							<% end %>
+							<% if content_for?( :user_links ) %>
+									<%= yield :user_links %>
+							<% end %>
+							</div>
+						<% end %>
+					<% end %>
+					<div id="flash-box" class="flash-box">
+						<% flash.each do |key, value| %>
+							<div id='<%= key %>' class="flash">
+								<%= value %>
+							</div><!-- /<%= key %> -->
+						<% end %>
+					</div><!-- /flash-box -->
+					
+					<% if content_for?( :page_title ) %>
+						<h2><%= yield :page_title %></h2>
+					<% end  %>
+					
+					<%= yield %>
+				</div>
+			</div>
+			
+	</section><!-- /main -->
+	<div style="clear:both"></div>
+	<footer>
+		<div >
+			<span class="first">WIND UP PIXEL &#169; 2012</span><span class="middle">PH: <a href="tel:+1-312.554.5095">312.554.5095</a></span><span class="last">E: <a href="mailto:contact@winduppixel.com">CONTACT@WINDUPPIXEL.COM</a></span>
+		</div>
+	</footer>
+</div><!-- /wrap -->
+
+</body>
+		
+
+</html>
