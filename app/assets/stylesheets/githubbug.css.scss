@@ -284,6 +284,15 @@ top:35px;
 position: absolute;
 }
 
+#antihelper{
+margin-left: -365px;
+width: 300px;
+height: 173px;
+top:35px;
+position: absolute;
+}
+
+
 }
 #content-wrap {
   width: 550px;
@@ -305,6 +314,10 @@ color: #00aaea;
 }
 #main a:hover {
   text-decoration: underline;
+}
+
+.adminlink a{
+  color:indianred;
 }
 
 .project-admin a, .project-admin span a{
@@ -374,6 +387,8 @@ text-decoration: underline;
     border: 1px solid #ddd;
   }
 }
+
+
 #user-nav {
 /*  border-bottom: 1px dashed #ccc;
   text-align: left;
@@ -684,6 +699,12 @@ display: inline;
 #settingstable a, #orgtable a{
   color:indianred;
 }
+
+
+#orgtable #blue a{
+  color:#00aaea;
+}
+
 
 #comment-submit {
 

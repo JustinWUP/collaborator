@@ -8,7 +8,12 @@
 </div>
 
 <%# category_list(@wiki.postcategory) %>
-<%= link_to 'Edit', edit_wiki_path(@wiki) %> |
-<%= link_to 'Back', wikis_path %>
+
+
+<% content_for :admin_links do %>
+<%= link_to 'Edit This Article', edit_wiki_path(@wiki), :class => "adminactions" %> 
+  <% end %>
+
+<%# link_to 'Back', wikis_path %>
 <%= render 'category' %>
 <%= render 'articlechanges' %>

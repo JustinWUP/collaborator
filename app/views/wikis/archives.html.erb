@@ -12,7 +12,7 @@
 
 <% @wikiarchive.each do |wiki| %>
   <tr>
-    <td><%= link_to wiki.title, wiki %></h3></td><td><%= link_to 'Edit Article', edit_wiki_path(wiki) %></td>
+    <td><%= link_to wiki.title, wiki %></h3></td><td class="adminlink"><%= link_to 'Edit Article', edit_wiki_path(wiki) %></td>
 </tr>
 <% end %>
 </table>

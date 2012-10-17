@@ -6,13 +6,13 @@
   
    <!--  <td><%# link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td> --></tr>
     <tr>
-  <td><br><%= link_to 'Edit Homepage', edit_wiki_path(wiki) %><br><br></td>
+  <td><br></td>
   </tr>
 
 <% end %>
 </table>
 
-<table id="orgtable">
+<table id="orgtable blue">
 <h3>Recent Updates</h3>
   <tr class="boldstuff" style="border-bottom:1px #ccc dashed;">
     <td>Article Name</td>
@@ -35,5 +35,11 @@
 
 <br />
 
-<%= link_to 'New Article', new_wiki_path %>
+<% content_for :admin_links do %>
+
+<%= link_to 'Edit Homepage', edit_wiki_path(@wikis), :class => "adminactions" %>
+<%= link_to 'New Article', new_wiki_path, :class => "adminactions" %>
+  <% end %>
+
+
 

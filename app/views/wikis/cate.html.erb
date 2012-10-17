@@ -12,7 +12,11 @@
 			<% end %>
 			<tr>
 				<td><br>
-				<%= link_to 'Create More Articles About ' << @catname.humanize.titlecase, new_wiki_path << "/"<<@catname %>
+					<% content_for :admin_links do %>
+	<%= link_to 'Add Articles to this Category', new_wiki_path << "/"<<@catname, :class => "adminactions"  %>
+  <% end %>
+
+			
 				</td>
 			</tr>
 			<% else  %>
