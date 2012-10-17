@@ -1,0 +1,147 @@
+have_func: checking for srand()... -------------------- yes
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:53: error: use of undeclared identifier 'srand'
+int t() { void ((*volatile p)()); p = (void ((*)()))srand; return 0; }
+                                                    ^
+1 error generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))srand; return 0; }
+/* end */
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:11: warning: implicit declaration of function 'srand' is invalid in C99 [-Wimplicit-function-declaration]
+int t() { srand(); return 0; }
+          ^
+1 warning generated.
+conftest.c:3:11: warning: implicit declaration of function 'srand' is invalid in C99 [-Wimplicit-function-declaration]
+int t() { srand(); return 0; }
+          ^
+1 warning generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { srand(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for random()... -------------------- yes
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:53: error: use of undeclared identifier 'random'
+int t() { void ((*volatile p)()); p = (void ((*)()))random; return 0; }
+                                                    ^
+1 error generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))random; return 0; }
+/* end */
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:11: warning: implicit declaration of function 'random' is invalid in C99 [-Wimplicit-function-declaration]
+int t() { random(); return 0; }
+          ^
+1 warning generated.
+conftest.c:3:11: warning: implicit declaration of function 'random' is invalid in C99 [-Wimplicit-function-declaration]
+int t() { random(); return 0; }
+          ^
+1 warning generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { random(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for bzero() in string.h,strings.h... -------------------- yes
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+checked program was:
+/* begin */
+1: #include <string.h>
+2: #include <strings.h>
+3: 
+4: /*top*/
+5: int main() { return 0; }
+6: int t() { void ((*volatile p)()); p = (void ((*)()))bzero; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for strcasecmp()... -------------------- yes
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:53: warning: implicitly declaring library function 'strcasecmp' with type 'int (const char *, const char *)'
+int t() { void ((*volatile p)()); p = (void ((*)()))strcasecmp; return 0; }
+                                                    ^
+conftest.c:3:53: note: please include the header <strings.h> or explicitly provide a declaration for 'strcasecmp'
+1 warning generated.
+conftest.c:3:53: warning: implicitly declaring library function 'strcasecmp' with type 'int (const char *, const char *)'
+int t() { void ((*volatile p)()); p = (void ((*)()))strcasecmp; return 0; }
+                                                    ^
+conftest.c:3:53: note: please include the header <strings.h> or explicitly provide a declaration for 'strcasecmp'
+1 warning generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))strcasecmp; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for strncasecmp()... -------------------- yes
+
+"xcrun cc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\" -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I. conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby  -lpthread -ldl -lobjc  "
+conftest.c:3:53: warning: implicitly declaring library function 'strncasecmp' with type 'int (const char *, const char *, unsigned long)'
+int t() { void ((*volatile p)()); p = (void ((*)()))strncasecmp; return 0; }
+                                                    ^
+conftest.c:3:53: note: please include the header <strings.h> or explicitly provide a declaration for 'strncasecmp'
+1 warning generated.
+conftest.c:3:53: warning: implicitly declaring library function 'strncasecmp' with type 'int (const char *, const char *, unsigned long)'
+int t() { void ((*volatile p)()); p = (void ((*)()))strncasecmp; return 0; }
+                                                    ^
+conftest.c:3:53: note: please include the header <strings.h> or explicitly provide a declaration for 'strncasecmp'
+1 warning generated.
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))strncasecmp; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for mkdio.h... -------------------- yes
+
+"xcrun cc -E -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\"   -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I.  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <mkdio.h>
+/* end */
+
+--------------------
+
+have_header: checking for ruby/encoding.h... -------------------- no
+
+"xcrun cc -E -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -DVERSION=\"2.0.9\"   -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -I.  conftest.c -o conftest.i"
+conftest.c:1:10: fatal error: 'ruby/encoding.h' file not found
+#include <ruby/encoding.h>
+         ^
+1 error generated.
+checked program was:
+/* begin */
+1: #include <ruby/encoding.h>
+/* end */
+
+--------------------
+
