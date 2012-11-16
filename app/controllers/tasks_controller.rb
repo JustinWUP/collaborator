@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  before_filter :sumtime, :only => :index
+  after_filter :sumtime, :only => :update
   def index
     @tasks = @topic.tasks.all
 
@@ -38,6 +38,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = @topic.tasks.find(params[:id])
+
   end
 
   # POST /tasks
@@ -92,5 +93,7 @@ class TasksController < ApplicationController
 
     def sumtime
       @topictasktime = @topic.tasks.sum(:time) 
+      @topic.hoursused = @topictasktime
+      @topic.save
     end
 end

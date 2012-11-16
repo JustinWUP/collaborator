@@ -5,7 +5,7 @@ class TopicsController <  ApplicationController
   load_and_authorize_resource :through => :project
   # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
-  before_filter :find_tasks, :only => [:show, :edit]
+  before_filter :find_tasks, :only => :show
 
   def index
     redirect_to project_path(@project)  
@@ -180,7 +180,6 @@ end
 
   def find_tasks
     @tasks = Task.find_all_by_topic_id(@topic)
-    @topictasktime = @topic.tasks.sum(:time) 
   end
 
 end
