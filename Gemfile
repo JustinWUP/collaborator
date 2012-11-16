@@ -31,6 +31,7 @@ gem 'oauth'
 gem 'newrelic_rpm'
 gem "friendly_id", "~> 4.0.1"
 gem 'auditable'
+gem 'd3_rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

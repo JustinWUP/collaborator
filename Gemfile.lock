@@ -53,6 +53,8 @@ GEM
       ffi (~> 1.0.6)
     cocaine (0.3.0)
     columnize (0.3.6)
+    d3_rails (2.10.3)
+      railties (>= 3.1.0)
     daemons (1.1.8)
     database_cleaner (0.7.2)
     debugger (1.2.0)
@@ -229,6 +231,7 @@ DEPENDENCIES
   cancan
   capybara-screenshot
   capybara-webkit
+  d3_rails
   database_cleaner
   debugger
   devise

@@ -1,0 +1,6 @@
+<% if @tasks.count > 0 %>
+  <div class="boldstuff">Task List:</div>
+  <% @tasks.each do |t| %>
+    <%= link_to t.name, topic_task_path(@topic,t) %>
+  <% end %>
+<% end %>

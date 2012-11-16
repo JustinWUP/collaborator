@@ -5,6 +5,7 @@ class TopicsController <  ApplicationController
   load_and_authorize_resource :through => :project
   # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
+  before_filter :find_tasks, :only => :show
 
   def index
     redirect_to project_path(@project)  
@@ -176,6 +177,10 @@ end
 
   def find_subscription
     @subscription = Subscription.find_or_create_by_type(current_user, @topic)
+  end
+
+  def find_tasks
+    @tasks = Task.find_all_by_topic_id(@topic)
   end
 
 end

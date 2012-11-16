@@ -6,11 +6,12 @@ class Topic < ActiveRecord::Base
   parent_resource :project
   belongs_to :user
   has_many :comments
+  has_many :tasks
   # scope :active, :conditions => { :topiccomplete => false }
   # scope :complete, :conditions => { :topiccomplete => true, :awaitingapproval => false }
   # scope :topic_for_approval, :conditions => {:awaitingapproval => true }
   scope :active, :conditions => {:work_status => 1}, :order => 'updated_at DESC'
-   scope :topic_for_approval, :conditions => {:work_status => 2} , :order => 'updated_at DESC'
+  scope :topic_for_approval, :conditions => {:work_status => 2} , :order => 'updated_at DESC'
   scope :complete, :conditions => {:work_status => 3}, :order => 'updated_at DESC'
 
   has_many :subscriptions, :as => :subscribable, :dependent => :destroy

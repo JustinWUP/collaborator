@@ -28,6 +28,7 @@
       <% unless @topic.report_lastpage == "None" %>
         <%= render 'bugreport'  %>
       <% end %>
+        <%= render 'tasklist' %>
   <% end%>
 </div><!-- /topic-desc -->
 </div><!-- /topic -->
@@ -60,6 +61,7 @@
 
 <% content_for :admin_links do %>
     <%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class => "adminactions" %>
+    <%= link_to 'New Task', new_topic_task_path(@topic), :class => "adminactions" %>
     <% if @topic.overage > 0 %>
         <span class="topicover"> You are <%= @topic.overage %> hour(s) over estimated time. </span>
     <% end %>

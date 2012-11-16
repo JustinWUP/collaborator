@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007073357) do
+ActiveRecord::Schema.define(:version => 20121116083517) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121007073357) do
     t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "task_id"
   end
 
   create_table "attachments", :force => true do |t|
@@ -183,6 +184,21 @@ ActiveRecord::Schema.define(:version => 20121007073357) do
     t.datetime "updated_at",                          :null => false
     t.integer  "user_id"
     t.boolean  "enabled",           :default => true
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.decimal  "time"
+    t.text     "description"
+    t.boolean  "active"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "topic_id"
+  end
+
+  create_table "tasks_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "task_id"
   end
 
   create_table "topics", :force => true do |t|

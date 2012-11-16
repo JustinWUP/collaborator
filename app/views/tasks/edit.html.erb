@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Show', topic_task_path(@topic, @task) %> |
+<%= link_to 'Back', topic_tasks_path %>

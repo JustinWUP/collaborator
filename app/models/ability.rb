@@ -20,6 +20,7 @@ class Ability
         can :create, [Topic, Comment]
         can :manage, Subscription, :user_id => user.id
         cannot :all, Setting
+        cannot :all, Wiki
       end
 
   end

@@ -1,5 +1,4 @@
 Collaborator::Application.routes.draw do
-  resources :tasks
 
   resources :apps
 
@@ -26,15 +25,30 @@ Collaborator::Application.routes.draw do
     resources :organizations
   end
 
+  # resources :projects do
+  #   resources :topics do
+  #     member do
+  #       get 'addmore'
+  #       get 'attach'
+  #     end
+  #       resources :comments
+  #     end
+  #   end
+
+
   resources :projects do
     resources :topics do
       member do
-        get 'addmore'
         get 'attach'
       end
-        resources :comments
-      end
+      resources :comments
     end
+  end
+
+  resources :topics do
+    resources :tasks
+  end
+
 
 match "/projects/:id/topics/:id/attach" => "topics#attach"
 

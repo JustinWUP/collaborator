@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
-
   has_and_belongs_to_many :roles
   has_many :assignments
   has_many :projects, :through => :assignments
   has_many :topics
   has_many :comments
+  has_many :tasks, :through => :assignments
   has_many :subscriptions
   belongs_to :organization
   default_scope :order => 'email ASC'
   scope :notblock, :conditions => {:blocked => false}
+  scope :hasrole, lambda{ |role| joins(:roles).where(:roles => {:name => role}) }
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
