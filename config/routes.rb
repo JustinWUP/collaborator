@@ -27,9 +27,9 @@ Collaborator::Application.routes.draw do
   resources :projects do
     resources :topics do
       member do
-      get 'addmore'
-      get 'attach'
-    end
+        get 'addmore'
+        get 'attach'
+      end
         resources :comments
       end
     end
