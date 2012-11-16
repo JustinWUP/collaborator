@@ -1,4 +1,6 @@
 Collaborator::Application.routes.draw do
+  resources :tasks
+
   resources :apps
 
   resources :wikis do
