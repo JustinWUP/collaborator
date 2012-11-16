@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require garlic
 //= require_tree .
 //= require ui.core
 //= require jquery.scrollfollow
