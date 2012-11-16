@@ -23,7 +23,7 @@
         <div id="" class="form-spacer">
         	<%= f.label "Hours Spent Working on This?" %>
         	 	<br />
-        	<%= f.text_field :hoursused  %>
+        	<%= f.text_field :hoursused, :value => @topictasktime   %>
           <%= f.error_message_on(:hoursused) %>
         </div>
 

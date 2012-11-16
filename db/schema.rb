@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116083517) do
+ActiveRecord::Schema.define(:version => 20121116184019) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -207,8 +207,8 @@ ActiveRecord::Schema.define(:version => 20121116083517) do
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
     t.integer  "project_id"
-    t.integer  "hoursreq"
-    t.integer  "hoursused"
+    t.decimal  "hoursreq"
+    t.decimal  "hoursused"
     t.integer  "overage"
     t.float    "amountcomplete"
     t.integer  "percentcomplete"

@@ -17,6 +17,7 @@
     <td><%= task.time %></td>
     <td><%= task.description %></td>
     <td><%= task.active %></td>
+    <!-- rewrite this next ugly line -->
     <td><%= User.find_by_id(task.user_ids).firstname %></td>
     <td><%= link_to 'Show', topic_task_path(@topic, task) %></td>
     <td><%= link_to 'Edit', edit_topic_task_path(@topic, task) %></td>
