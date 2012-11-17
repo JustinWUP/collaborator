@@ -3,6 +3,7 @@
 		var clock = document.getElementById('clock');
 		clockvalue = clock.value;
 		clock.value= '';
+		clock.style.background = '#ddd';
 	});
 	var flagclock = 0; 
 	var flagstop = 0;
@@ -22,8 +23,8 @@
 			updatebutton.disabled = true;
 			updatebutton.style.background = "grey";
 			updatebutton.style.visibility = "visible";
-
 			updatebutton.value = "Currently Timing...";
+			clock.style.background = 'white';
 			}
 		else
 			{

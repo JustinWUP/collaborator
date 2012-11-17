@@ -1,5 +1,5 @@
 <%= form_for([@topic, @task]) do |t| %>
-<%= t.text_field :time, :id => "clock", :readonly=>"" %>
+<%= t.text_field :time, :id => "clock", :readonly=>"", :style =>"text-align: center;"%>
 <input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();", style="background:indianred;">
 <%= t.submit :style => "background:grey; visibility:hidden;", :disabled => true, :id => "update" %>
 <% end %>

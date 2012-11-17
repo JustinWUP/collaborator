@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   load_and_authorize_resource
   before_filter :find_topic
   after_filter :sumtime, :only => [:update, :create, :destroy]
+  after_filter :timeconvert, :only => [:update]
   def index
     @tasks = @topic.tasks.all
 
@@ -21,7 +22,6 @@ class TasksController < ApplicationController
     @minssalt = '.' + @timeeng.last
     @minsraw = (@minssalt.to_d * 0.6) * 100
     @minseng = @minsraw.to_s.split(".",2)
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @task }
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = @topic.tasks.find(params[:id])
-
+    @dipswitch = true
   end
 
   # POST /tasks
@@ -96,17 +96,21 @@ class TasksController < ApplicationController
     end
 
     def sumtime
-      @timesplitters = @task.time.split(":",2)
-      @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
-      @minseng = @mins_raw.to_s.split(".",2)
-      @hours = @timesplitters.first
-      @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
-      @task.time = @formattedtime
-      @task.save
-
       @topictasktime = @topic.tasks.sum(:time) 
       @topic.hoursused = @topictasktime
       @topic.save
+    end
+
+    def timeconvert
+       if @task.time.include? ':'
+        @timesplitters = @task.time.split(":",2)
+        @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
+        @minseng = @mins_raw.to_s.split(".",2)
+        @hours = @timesplitters.first
+        @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
+        @task.time = @formattedtime
+        @task.save
+      end
     end
 
 end

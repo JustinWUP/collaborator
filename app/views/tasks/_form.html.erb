@@ -15,10 +15,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.text_field :time %>
-  </div>
+<%= @task.time%>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
@@ -27,8 +24,6 @@
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </div>
-
-
   <div id="" class="field">
     <div>Who is working on this task?</div>
     <div class="checkbox-scroll">
