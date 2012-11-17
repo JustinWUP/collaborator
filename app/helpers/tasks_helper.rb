@@ -5,7 +5,7 @@ module TasksHelper
 
     def logtime(userid)
     	if userid.include? current_user.id
-    		#make this work with javascript timer
+    		
     		render 'tasks/timer'
     	end
     end

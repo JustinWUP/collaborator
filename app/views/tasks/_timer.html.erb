@@ -1,3 +1,4 @@
+Click "Start Timer" to track time worked on this task.<br><br>
 <%= form_for([@topic, @task]) do |t| %>
 <%= t.text_field :time, :id => "clock", :readonly=>"", :style =>"text-align: center;"%>
 <input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();", style="background:indianred;">

@@ -4,7 +4,30 @@
 		clockvalue = clock.value;
 		clock.value= '';
 		clock.style.background = '#ddd';
-	});
+		// sets a variable if timer saved
+		document.getElementById('update').onclick = function(){
+    	window.btn_clicked = true;
+			};
+
+		// tests if timer is running
+		function hasData() {
+			var someThing = document.getElementById("clock");
+			
+			if (someThing.value != "") {
+				return true;
+			}		
+			
+			return false;
+		}
+
+		// tests if timer was started and if leaving without submitting
+		window.onbeforeunload = function(){
+		    	if(!window.btn_clicked && hasData()) {
+		        	return "You have unsaved time tracked on this task. Don't forget to save!";
+		    	}
+			};
+		});
+
 	var flagclock = 0; 
 	var flagstop = 0;
 	var stoptime = 0;
