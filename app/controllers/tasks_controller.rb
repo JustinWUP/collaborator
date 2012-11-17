@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  after_filter :sumtime, :only => :update
+  after_filter :sumtime, :only => [:update, :create, :destroy]
   def index
     @tasks = @topic.tasks.all
 
@@ -17,6 +17,10 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @task = @topic.tasks.find(params[:id])
+    @timeeng = @task.time.split(".",2)
+    @minssalt = '.' + @timeeng.last
+    @minsraw = (@minssalt.to_d * 0.6) * 100
+    @minseng = @minsraw.to_s.split(".",2)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -92,8 +96,28 @@ class TasksController < ApplicationController
     end
 
     def sumtime
+      @timesplitters = @task.time.split(":",2)
+      @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
+      @minseng = @mins_raw.to_s.split(".",2)
+      @hours = @timesplitters.first
+      @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
+      @task.time = @formattedtime
+      @task.save
+
       @topictasktime = @topic.tasks.sum(:time) 
       @topic.hoursused = @topictasktime
       @topic.save
     end
+
 end
+
+
+
+
+
+
+
+
+
+
+

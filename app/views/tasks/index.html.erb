@@ -1,4 +1,4 @@
-<h1>Listing tasks</h1>
+<h2>Tasks for Topic <%=@topic.title.camelcase%></h2>
 
 <table>
   <tr>
@@ -14,11 +14,10 @@
 <% @tasks.each do |task| %>
   <tr>
     <td><%= task.name %></td>
-    <td><%= task.time %></td>
+    <td><%= task.time.to_d.round(2) %></td>
     <td><%= task.description %></td>
     <td><%= task.active %></td>
-    <!-- rewrite this next ugly line -->
-    <td><%= User.find_by_id(task.user_ids).firstname %></td>
+    <td><%= taskedto(task.user_ids) %></td>
     <td><%= link_to 'Show', topic_task_path(@topic, task) %></td>
     <td><%= link_to 'Edit', edit_topic_task_path(@topic, task) %></td>
     <td><%= link_to 'Destroy', topic_task_path(@topic, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>

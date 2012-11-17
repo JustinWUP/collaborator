@@ -15,3 +15,4 @@
 //= require_tree .
 //= require ui.core
 //= require jquery.scrollfollow
+//= require timer

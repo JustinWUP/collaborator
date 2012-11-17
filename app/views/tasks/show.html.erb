@@ -7,7 +7,7 @@
 
 <p>
   <b>Time:</b>
-  <%= @task.time %>
+  <%= @timeeng.first %> hours and <%= @minseng.first %> minutes 
 </p>
 
 <p>
@@ -20,6 +20,15 @@
   <%= @task.active %>
 </p>
 
+<p>
+  <b>Tasked to:</b>
+  <%= taskedto(@task.user_ids) %>
+</p>
+
+<%= content_for :admin_links do %>
+	<%= logtime(@task.user_ids) %>
+
+<% end %>
 
 <%= link_to 'Edit', edit_topic_task_path(@topic, @task) %> |
 <%= link_to 'Back', topic_tasks_path %>
