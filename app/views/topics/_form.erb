@@ -24,7 +24,8 @@
         	<%= f.label "Hours Spent Working on This?" %>
         	 	<br />
 
-        	<%= f.text_field :hoursused   %>
+        	<%= @topic.hoursused.round(2) %>
+
           <%= f.error_message_on(:hoursused) %>
         </div>
 
