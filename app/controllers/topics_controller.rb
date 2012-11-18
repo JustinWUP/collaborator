@@ -6,7 +6,7 @@ class TopicsController <  ApplicationController
   # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
   before_filter :find_tasks, :only => :show
-  before_filter :sumtime, :only => [:show, :edit]
+  before_filter :sumtime, :only => [:edit, :update, :show]
 
   def index
     redirect_to project_path(@project)  
