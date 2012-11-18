@@ -30,4 +30,10 @@ class Topic < ActiveRecord::Base
     self.hoursreq ||= 0
     self.hoursused ||= 0
   end
+
+  def hoursusedfix
+    self.hoursused ? 0 : !0
+    self.hoursreq = 1000000
+  end
+
 end

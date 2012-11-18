@@ -6,6 +6,7 @@ class TopicsController <  ApplicationController
   # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
   before_filter :find_tasks, :only => :show
+  before_filter :sumtime, :only => [:show, :edit]
 
   def index
     redirect_to project_path(@project)  
@@ -180,6 +181,17 @@ end
 
   def find_tasks
     @tasks = Task.find_all_by_topic_id(@topic)
+  end
+
+  def sumtime
+    @topictasktime = @topic.tasks.sum(:time) 
+    @topic.hoursused = @topictasktime
+    if @topic.hoursused > 0
+      if @topic.hoursreq == 0
+        @topic.hoursreq = 1000000
+      end
+    end
+    @topic.save
   end
 
 end
