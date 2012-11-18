@@ -1,8 +1,9 @@
 //make this, and all controller specific javascript for that matter, load only on the tasks controller
 	$(document).ready(function(){
 		var clock = document.getElementById('clock');
+		var instruct = document.getElementById('instruct');
 		clockvalue = clock.value;
-		clock.value= '';
+		// clock.value = '';
 		clock.style.background = '#ddd';
 		// sets a variable if timer saved
 		document.getElementById('update').onclick = function(){
@@ -41,6 +42,7 @@
 		if(flagclock==0)
 			{
 			startstop.value = 'Stop Timer';
+			instruct.innerHTML = "Click 'Stop Timer' when finished.";
 			flagclock = 1;
 			startTimer();
 			updatebutton.disabled = true;
@@ -52,6 +54,7 @@
 		else
 			{
 			startstop.value = 'Continue Timer';
+			instruct.innerHTML = "'Update Task Time' to save your time or 'Continue Timer' to keep working."
 			flagclock = 0;
 			flagstop = 1;
 			pauseTimer();
