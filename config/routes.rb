@@ -46,8 +46,12 @@ Collaborator::Application.routes.draw do
   end
 
   resources :topics do
-    resources :tasks 
+    resources :tasks do
+      member do
+        get 'charge'
+      end
     end
+  end
 
 match "/projects/:id/topics/:id/attach" => "topics#attach"
 

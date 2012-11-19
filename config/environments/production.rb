@@ -50,6 +50,7 @@ Collaborator::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( timer.js )
   config.assets.precompile += %w( slidingdiv.js )
+  config.assets.precompile += %w( tasks.js )
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false

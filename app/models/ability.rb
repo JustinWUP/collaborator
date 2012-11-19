@@ -1,4 +1,4 @@
-class Ability
+ class Ability
   include CanCan::Ability
 
   def initialize(user)    
@@ -16,6 +16,7 @@ class Ability
         can :update, Task
         cannot :index, Task
         cannot :edit, Task
+        cannot :charge, Task
       else
         can :read, Project, :users => {:id => user.id }
         can :read, Topic

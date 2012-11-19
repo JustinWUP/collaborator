@@ -1,4 +1,3 @@
-//make this, and all controller specific javascript for that matter, load only on the tasks controller
 	$(document).ready(function(){
 		var clock = document.getElementById('clock');
 		var instruct = document.getElementById('instruct');

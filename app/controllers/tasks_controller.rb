@@ -2,10 +2,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   load_and_authorize_resource
+
+  helper_method :englishtime
   before_filter :find_topic
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
-  before_filter :sumtasktime, :only => :show
+  before_filter :sumtasktime, :only => [:show, :charge]
 
   def index
     @tasks = @topic.tasks.all
@@ -92,7 +94,29 @@ class TasksController < ApplicationController
     end
   end
 
+  def charge
+    @topic.project.retainer_hours -= @showsum
+    @topic.project.save 
+    @task.billable = false
+    @task.audit_tag_with('Billed ' + englishtime(@showsum).to_s + ' to retainer.')
+    @task.save
+    redirect_to topic_task_path(@topic), notice: 'This task was charged against the client retainer.'
+  end
+
   private
+
+    def englishtime(time)
+      @timeeng = time.to_s.split(".",2)
+      @minssalt = '.' + @timeeng.last
+      @minsraw = (@minssalt.to_d * 0.6) * 100
+      @minseng = @minsraw.to_s.split(".",2)
+      # TODO: i18n these models.
+      if @timeeng.first != "0" and @timeeng.first != "00"
+        return @timeeng.first + ' hours and ' + @minseng.first + ' minutes'
+      else
+        return @minseng.first + ' minutes'
+      end
+  end
     def find_topic
       @topic = Topic.find(params[:topic_id])
       @project = @topic.project_id

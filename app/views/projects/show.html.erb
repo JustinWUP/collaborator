@@ -14,7 +14,7 @@
         My One-on-One Support:<br /> 
 	</div>
 	<div id="retainer-hours" class="">
-		This Month's Support Time: <%= @project.retainer_hours %> Hours<br/>
+		This Month's Support Time: <%= englishtime(@project.retainer_hours) %> <br/>
 		<!-- Your Support Period Concludes In: <%= distance_of_time_in_words_to_now @project.retainer_expiration %> -->
 		Your Support Period Concludes On: <%= @project.retainer_expiration %>
 	</div><!-- /retainer-hours -->
