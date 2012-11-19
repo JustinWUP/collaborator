@@ -3,8 +3,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  before_filter :sumtime, :only => [:update, :create, :destroy]
+  before_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
+  before_filter :sumtasktime, :only => :show
   before_filter :appname
   def index
     @tasks = @topic.tasks.all
@@ -18,16 +19,6 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = @topic.tasks.find(params[:id])
-      @showsum = 0.0
-      @task.audits.each do |time|
-        @showsum += time.modifications['time'].to_f
-      end
-
-    @timeeng = @showsum.to_s.split(".",2)
-    @minssalt = '.' + @timeeng.last
-    @minsraw = (@minssalt.to_d * 0.6) * 100
-    @minseng = @minsraw.to_s.split(".",2)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,7 +40,6 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = @topic.tasks.find(params[:id])
-    @dipswitch = true
   end
 
   # POST /tasks
@@ -75,6 +65,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
+        @task.audit_tag_with(@task.changetag)  
         @task.time = "0.0"
         @task.save
 
@@ -105,7 +96,7 @@ class TasksController < ApplicationController
       @project = @topic.project_id
     end
 
-    def sumtime
+    def sumalltime
       @timesum = 0.0 
       @topic.tasks.each do |task|
         task.audits.each do |time| 
@@ -116,6 +107,14 @@ class TasksController < ApplicationController
       @topic.hoursused = @timesum
       @topic.save
 
+    end
+
+    def sumtasktime
+      @task = @topic.tasks.find(params[:id])
+      @showsum = 0.0
+      @task.audits.each do |time|
+        @showsum += time.modifications['time'].to_f
+      end
     end
 
     # def timeconvert

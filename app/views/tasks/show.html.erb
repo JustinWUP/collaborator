@@ -2,9 +2,8 @@
 <% add_nav_link(link_to truncate(@topic.project.name, :length => 20), project_path(@topic.project)) %>  
 <h2><%= @task.name %></h2>
 <p>
-  <strong>Time:</strong>
-  <%= @timeeng.first %> hours and <%= @minseng.first %> minutes 
-
+  <strong>Total Time Worked:</strong>
+  <%= englishtime(@showsum) %>
 </p>
 
 <p>
@@ -13,9 +12,15 @@
 </p>
 
 <p>
-  <strong>Active:</strong>
+  <strong>Active?</strong>
   <%= @task.active %>
 </p>
+
+<p>
+  <strong>Billable?</strong>
+  <%= @task.active %>
+</p>
+
 
 <p>
   <strong>Tasked to:</strong>
@@ -26,6 +31,8 @@
 	<%= logtime(@task.user_ids) %>
 
 <% end %>
+
+<%= render 'taskupdates' %>
 
 <%= link_to 'Edit', edit_topic_task_path(@topic, @task) %> |
 <%= link_to 'Back', topic_tasks_path %>

@@ -179,7 +179,11 @@ end
   end
 
   def find_tasks
-    @tasks = Task.find_all_by_topic_id(@topic)
+    unless current_user.role? :admin 
+      @tasks = Task.select {|obj| (obj.topic_id == @topic.id) and (obj.user_ids.include? current_user.id) }
+    else
+      @tasks = Task.find_all_by_topic_id(@topic)
+    end
   end
 
   def sumtime

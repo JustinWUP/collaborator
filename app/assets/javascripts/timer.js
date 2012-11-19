@@ -3,6 +3,8 @@
 		var clock = document.getElementById('clock');
 		var instruct = document.getElementById('instruct');
 		var timesend = document.getElementById('timesend');
+		var changetag = document.getElementById('changetag');
+		var changetagbox = document.getElementById('changetagbox');
 		clock.value = '';
 		clock.style.background = '#ddd';
 		// sets a variable if timer saved
@@ -11,9 +13,9 @@
 			};
 
 		// tests if timer is running
-		function hasData() {
+		function hasData(element) {
 			
-			if (clock.value != "") {
+			if (element != "") {
 				return true;
 			}		
 			
@@ -22,8 +24,12 @@
 
 		// tests if timer was started and if leaving without submitting
 		window.onbeforeunload = function(){
-		    	if(!window.btn_clicked && hasData()) {
+		    	if(!window.btn_clicked && hasData(clock.value)) {
 		        	return "You have unsaved time tracked on this task. Don't forget to save!";
+		    	}
+
+		    	if(window.btn_clicked && !hasData(changetag.value)) {
+		    		return "Please enter a note about what you did on this task."
 		    	}
 
 			};
@@ -63,6 +69,7 @@
 				updatebutton.style.background = "indianred";
 				updatebutton.value ="Update Task Time";
 				timesend.value = decimalTime();
+				changetagbox.style.visibility ="visible";
 				instruct.innerHTML = "'Continue Timer' to keep working or 'Update Task Time' to save your time."
 				}
 			else{
