@@ -6,6 +6,7 @@
 		var changetag = document.getElementById('changetag');
 		var changetagbox = document.getElementById('changetagbox');
 		var nextsteps = document.getElementById('next-steps');
+		clock.value = '';
 		nextsteps.style.height = "190px";
 		clock.style.background = '#ddd';
 		// sets a variable if timer saved
