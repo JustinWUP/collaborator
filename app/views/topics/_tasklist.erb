@@ -1,6 +1,17 @@
 <% if @tasks.count > 0 %>
-  <div class="boldstuff">Task List:</div>
+
+  <div class="boldstuff">Active Tasks:</div>
   <% @tasks.each do |t| %>
-    <strong>&#8226;</strong> <%= link_to t.name, topic_task_path(@topic,t) %>
+    <% if t.active %>
+  	  <strong>&#8226;</strong> <%= link_to t.name, topic_task_path(@topic,t) %>
+
+  	<% end %>
   <% end %>
-<% end %>
+
+   <div class="boldstuff">Finished Tasks:</div>
+  <% @tasks.each do |t| %>
+    <% if !t.active %>
+    <strong>&#8226;</strong> <%= link_to t.name, topic_task_path(@topic,t) %>
+    <% end %>
+  <% end %>
+  <% end %>
