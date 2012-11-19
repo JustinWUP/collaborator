@@ -1,6 +1,5 @@
 <% add_nav_link(link_to truncate("#{@project.name}", :length => 20), project_path(@project)) %>
-<% @percentcomplete =number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
-
+<% @percentcomplete = number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
 <h2><%= @topic.title %></h2>
 
 <div id="topic" class="topic">

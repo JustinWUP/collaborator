@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => :show
-  before_filter :appname
+
   def index
     @tasks = @topic.tasks.all
 
@@ -131,9 +131,6 @@ class TasksController < ApplicationController
       # end
     # end
 
-    def appname
-      @appname = 'TASKER'
-    end
 end
 
 

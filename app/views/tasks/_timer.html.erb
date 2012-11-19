@@ -7,7 +7,7 @@
 <input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();", style="background:indianred;">
 <div id="changetagbox" style ="visibility:hidden;">
 <%= t.label :changetag, "What did you update here?" %><br />
-<%= t.text_field :changetag, :id => "changetag", :value => "" %>
+<%= t.text_area :changetag, :id => "changetag", :value => "", :rows => 2, :cols => 23 %>
   </div>
 <%= t.submit :style => "background:grey; visibility:hidden;", :disabled => true, :id => "update" %>
 <% end %>

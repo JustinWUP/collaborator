@@ -6,7 +6,6 @@ class TopicsController <  ApplicationController
   # before_filter :find_topic, except: [:index, :new, :create]
   before_filter :find_subscription, :only => :show
   before_filter :find_tasks, :only => :show
-  before_filter :sumtime, :only => [:edit, :update, :show]
 
   def index
     redirect_to project_path(@project)  
@@ -19,8 +18,8 @@ class TopicsController <  ApplicationController
     end
    
 
-    unless @topic.hoursused == 0.0
-      @topic.amountcomplete = @topic.hoursused/ @topic.hoursreq
+    unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
+      @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
      
     else
       @topic.amountcomplete = 0.0
@@ -81,7 +80,7 @@ end
     @topic.save
      5.times { @topic.attachments.build } 
     
-    unless @topic.hoursused == 0.0
+    unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
       @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
       @topic.save
     else
@@ -119,7 +118,7 @@ end
     # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
     @topic.save
-    unless @topic.hoursused == 0.0
+    unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
       @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
       @topic.save
     else
@@ -184,16 +183,6 @@ end
     else
       @tasks = Task.find_all_by_topic_id(@topic)
     end
-  end
-
-  def sumtime
-    
-    if @topic.hoursused > 0
-      if @topic.hoursreq == 0
-        @topic.hoursreq = 1000000
-      end
-    end
-    @topic.save
   end
 
 end

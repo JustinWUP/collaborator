@@ -5,7 +5,8 @@
 		var timesend = document.getElementById('timesend');
 		var changetag = document.getElementById('changetag');
 		var changetagbox = document.getElementById('changetagbox');
-		clock.value = '';
+		var nextsteps = document.getElementById('next-steps');
+		nextsteps.style.height = "190px";
 		clock.style.background = '#ddd';
 		// sets a variable if timer saved
 		document.getElementById('update').onclick = function(){
@@ -43,19 +44,26 @@
 	function startstop()
 		{
 		var startstop = document.getElementById('startstopbutton');
-
-		var updatebutton = document.getElementById('update')
+		var nextsteps = document.getElementById('next-steps');
+		var updatebutton = document.getElementById('update');
 		if(flagclock==0)
 			{
 			startstop.value = 'Stop Timer';
 			instruct.innerHTML = "Click 'Stop Timer' when finished.";
 			flagclock = 1;
 			startTimer();
+			
 			updatebutton.disabled = true;
 			updatebutton.style.background = "grey";
 			updatebutton.style.visibility = "visible";
 			updatebutton.value = "Currently Timing...";
 			clock.style.background = 'white';
+			if(clock.value == "0:00"){	
+				nextsteps.style.height = "220px";
+				}
+			else {
+				nextsteps.style.height = "300px";
+				}
 			}
 		else
 			{
@@ -68,6 +76,9 @@
 				updatebutton.disabled = false;
 				updatebutton.style.background = "indianred";
 				updatebutton.value ="Update Task Time";
+				nextsteps.style.height = "300px";
+				nextsteps.style.top = "40px";
+				updatebutton.style.top = "262px";
 				timesend.value = decimalTime();
 				changetagbox.style.visibility ="visible";
 				instruct.innerHTML = "'Continue Timer' to keep working or 'Update Task Time' to save your time."

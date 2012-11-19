@@ -597,6 +597,25 @@ display: inline;
   h4{
     font-weight:bold;
   }
+  #instruct {
+    margin-top:-10px;
+  }
+
+  #clock {
+    /*position: absolute;*/
+    left:60px;
+    margin-top:-340px;
+  }
+
+  #changetagbox {
+    margin-top:-10px;
+  }
+
+  #update {
+    position: absolute;
+    top: 190px;
+    left: 30px;
+  }
 }
 
 .useractions {
