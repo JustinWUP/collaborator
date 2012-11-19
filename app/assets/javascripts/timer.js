@@ -24,7 +24,7 @@
 
 		// tests if timer was started and if leaving without submitting
 		window.onbeforeunload = function(){
-		    	if(!window.btn_clicked && hasData(clock.value)) {
+		    	if(!window.btn_clicked && (hasData(clock.value) && (clock.value != '0:00'))) {
 		        	return "You have unsaved time tracked on this task. Don't forget to save!";
 		    	}
 
