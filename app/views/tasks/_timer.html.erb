@@ -1,6 +1,7 @@
 <div id="instruct">Click "Start Timer" to track time worked on this task.</div><br>
 <%= form_for([@topic, @task]) do |t| %>
-<%= t.text_field :time, :id => "clock", :readonly=>"", :style =>"text-align: center;"%>
+<input id="clock" readonly="" style="text-align: center;">
+<%= t.hidden_field :time, :id => "timesend", :readonly=>"" %>
 <input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();", style="background:indianred;">
 <%= t.submit :style => "background:grey; visibility:hidden;", :disabled => true, :id => "update" %>
 <% end %>

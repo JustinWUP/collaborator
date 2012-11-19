@@ -1,10 +1,10 @@
 <% add_nav_link(link_to truncate(@topic.title, :length => 20), project_topic_path(@topic.project, @topic)) %>
-<% add_nav_link(link_to truncate(@topic.project.name, :length => 20), project_path(@topic.project)) %>
-  
+<% add_nav_link(link_to truncate(@topic.project.name, :length => 20), project_path(@topic.project)) %>  
 <h2><%= @task.name %></h2>
 <p>
   <strong>Time:</strong>
   <%= @timeeng.first %> hours and <%= @minseng.first %> minutes 
+
 </p>
 
 <p>
@@ -26,6 +26,7 @@
 	<%= logtime(@task.user_ids) %>
 
 <% end %>
+
 
 <%= link_to 'Edit', edit_topic_task_path(@topic, @task) %> |
 <%= link_to 'Back', topic_tasks_path %>

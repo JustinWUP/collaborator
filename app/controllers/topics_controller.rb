@@ -184,8 +184,14 @@ end
   end
 
   def sumtime
-    @topictasktime = @topic.tasks.sum(:time) 
-    @topic.hoursused = @topictasktime
+    @timesum = 0.0 
+    @topic.tasks.each do |task|
+      task.audits.each do |time| 
+        time.modifications['time'] 
+        @timesum += time.modifications['time'].to_d 
+      end 
+    end
+    
     if @topic.hoursused > 0
       if @topic.hoursreq == 0
         @topic.hoursreq = 1000000

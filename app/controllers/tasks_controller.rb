@@ -19,10 +19,18 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @task = @topic.tasks.find(params[:id])
-    @timeeng = @task.time.split(".",2)
+
+    @timesum = 0.0 
+    @task.audits.each do |task| 
+      task.modifications['time'] 
+      @timesum += task.modifications['time'].to_d 
+    end 
+
+    @timeeng = @timesum.to_s.split(".",2)
     @minssalt = '.' + @timeeng.last
     @minsraw = (@minssalt.to_d * 0.6) * 100
     @minseng = @minsraw.to_s.split(".",2)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @task }
@@ -66,6 +74,9 @@ class TasksController < ApplicationController
   # PUT /tasks/1.json
   def update
     @task = @topic.tasks.find(params[:id])
+    @task.time = "0.0"
+    @task.save
+
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -103,15 +114,15 @@ class TasksController < ApplicationController
     end
 
     def timeconvert
-       if @task.time.include? ':'
-        @timesplitters = @task.time.split(":",2)
-        @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
-        @minseng = @mins_raw.to_s.split(".",2)
-        @hours = @timesplitters.first
-        @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
-        @task.time = @formattedtime
-        @task.save
-      end
+      #  if @task.time.include? ':'
+      #   @timesplitters = @task.time.split(":",2)
+      #   @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
+      #   @minseng = @mins_raw.to_s.split(".",2)
+      #   @hours = @timesplitters.first
+      #   @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
+      #   @task.time = @formattedtime
+      #   @task.save
+      # end
     end
 
     def appname
