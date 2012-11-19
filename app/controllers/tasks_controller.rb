@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  before_filter :sumtime, :only => [:show, :update, :create, :destroy]
+  before_filter :sumtime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :appname
   def index
@@ -21,7 +21,6 @@ class TasksController < ApplicationController
     @task = @topic.tasks.find(params[:id])
       @showsum = 0.0
       @task.audits.each do |time|
-        time.modifications['time']
         @showsum += time.modifications['time'].to_f
       end
 
