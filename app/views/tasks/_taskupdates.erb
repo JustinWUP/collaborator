@@ -3,6 +3,10 @@
 <!--     <div class="centered"><span class="boldstuff">Recent Changes</span><a href="javascript:void(0);" class="show_hide_wikichanges">Show/Hide</a></div>
     
     <div class="slidingDiv_wikichanges">  -->
+<div class ="boldstuff centered">
+Recent Progress<br>
+</div>
+
   <table id ="orgtable">
   	<tr class="boldstuff">
     	<td>
@@ -14,6 +18,7 @@
       When was this updated?</td>
 
   	</tr>
+     <div style ="max-height:140px; overflow:scroll;"> 
 	  <% @task.audits.reverse.each do |audit| %>
     <%if audit.tag %>
 	  <tr>
@@ -31,5 +36,7 @@
 
   <% end %>
   <% end %>
+  </div>
 </table>  
+
 <!-- </div> -->

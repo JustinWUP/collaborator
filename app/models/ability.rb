@@ -14,6 +14,7 @@ class Ability
         cannot :all, Setting
         can :read, Task
         can :update, Task
+        cannot :index, Task
         cannot :edit, Task
       else
         can :read, Project, :users => {:id => user.id }
