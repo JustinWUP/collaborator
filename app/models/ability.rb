@@ -12,6 +12,9 @@ class Ability
         # can :manage, Subscription, :user_id => {Role.find_by_name("wupteam")}
         can :manage, [Topic, Organization, Comment, Wiki]
         cannot :all, Setting
+        can :read, Task
+        can :update, Task
+        cannot :edit, Task
       else
         can :read, Project, :users => {:id => user.id }
         can :read, Topic
@@ -21,6 +24,7 @@ class Ability
         can :manage, Subscription, :user_id => user.id
         cannot :all, Setting
         cannot :all, Wiki
+        cannot :all, Task
       end
 
   end

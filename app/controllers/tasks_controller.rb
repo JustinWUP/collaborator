@@ -3,8 +3,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  after_filter :sumtime, :only => [:update, :create, :destroy]
-  after_filter :timeconvert, :only => [:update]
+  before_filter :sumtime, :only => [:show, :update, :create, :destroy]
+  # after_filter :timeconvert, :only => [:update]
   before_filter :appname
   def index
     @tasks = @topic.tasks.all
@@ -19,14 +19,13 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @task = @topic.tasks.find(params[:id])
+      @showsum = 0.0
+      @task.audits.each do |time|
+        time.modifications['time']
+        @showsum += time.modifications['time'].to_f
+      end
 
-    @timesum = 0.0 
-    @task.audits.each do |task| 
-      task.modifications['time'] 
-      @timesum += task.modifications['time'].to_d 
-    end 
-
-    @timeeng = @timesum.to_s.split(".",2)
+    @timeeng = @showsum.to_s.split(".",2)
     @minssalt = '.' + @timeeng.last
     @minsraw = (@minssalt.to_d * 0.6) * 100
     @minseng = @minsraw.to_s.split(".",2)
@@ -74,12 +73,12 @@ class TasksController < ApplicationController
   # PUT /tasks/1.json
   def update
     @task = @topic.tasks.find(params[:id])
-    @task.time = "0.0"
-    @task.save
-
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
+        @task.time = "0.0"
+        @task.save
+
         format.html { redirect_to topic_task_path(@topic), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
@@ -108,12 +107,19 @@ class TasksController < ApplicationController
     end
 
     def sumtime
-      @topictasktime = @topic.tasks.sum(:time) 
-      @topic.hoursused = @topictasktime
+      @timesum = 0.0 
+      @topic.tasks.each do |task|
+        task.audits.each do |time| 
+          time.modifications['time'] 
+          @timesum += time.modifications['time'].to_f 
+        end 
+      end
+      @topic.hoursused = @timesum
       @topic.save
+
     end
 
-    def timeconvert
+    # def timeconvert
       #  if @task.time.include? ':'
       #   @timesplitters = @task.time.split(":",2)
       #   @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
@@ -123,7 +129,7 @@ class TasksController < ApplicationController
       #   @task.time = @formattedtime
       #   @task.save
       # end
-    end
+    # end
 
     def appname
       @appname = 'TASKER'

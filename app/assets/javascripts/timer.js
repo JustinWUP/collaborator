@@ -54,14 +54,20 @@
 		else
 			{
 			startstop.value = 'Continue Timer';
-			instruct.innerHTML = "'Update Task Time' to save your time or 'Continue Timer' to keep working."
+			instruct.innerHTML = "'Continue Timer' to keep working."
 			flagclock = 0;
 			flagstop = 1;
 			pauseTimer();
-			updatebutton.disabled = false;
-			updatebutton.style.background = "indianred";
-			updatebutton.value ="Update Task Time";
-			timesend.value = decimalTime();
+			if(clock.value != "0:00")  {
+				updatebutton.disabled = false;
+				updatebutton.style.background = "indianred";
+				updatebutton.value ="Update Task Time";
+				timesend.value = decimalTime();
+				instruct.innerHTML = "'Continue Timer' to keep working or 'Update Task Time' to save your time."
+				}
+			else{
+				updatebutton.value = "No Time Logged."
+				}
 			}
 		}
 

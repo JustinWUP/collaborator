@@ -21,15 +21,6 @@
           <%= f.error_message_on(:hoursreq) %>
         </div>
         <div id="" class="form-spacer">
-        	<%= f.label "Hours Spent Working on This?" %>
-        	 	<br />
-
-        	<%= @topic.hoursused.round(2) %>
-
-          <%= f.error_message_on(:hoursused) %>
-        </div>
-
-        <div id="" class="form-spacer">
           <%= f.label "Is this being worked on yet?" %> <br />
      <%= radio_button(:topic,:work_status, 1) %>
 <%= label_tag(:status_working, "I'm working on this.") %><br />

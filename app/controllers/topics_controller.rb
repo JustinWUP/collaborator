@@ -75,7 +75,6 @@ end
     else
       redirect_to :back
     end
-    @topic.update_attributes(params[:topic])
 
     # TODO: Move business logic to Model
     @topic.overage = @topic.hoursused - @topic.hoursreq 
@@ -184,13 +183,6 @@ end
   end
 
   def sumtime
-    @timesum = 0.0 
-    @topic.tasks.each do |task|
-      task.audits.each do |time| 
-        time.modifications['time'] 
-        @timesum += time.modifications['time'].to_d 
-      end 
-    end
     
     if @topic.hoursused > 0
       if @topic.hoursreq == 0
