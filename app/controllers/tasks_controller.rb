@@ -65,7 +65,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        @task.audit_tag_with(@task.changetag)  
+        if params[:task][:time]
+          @task.audit_tag_with(@task.changetag)
+        end  
         @task.time = "0.0"
         @task.save
 

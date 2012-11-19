@@ -6,7 +6,7 @@
 <div class ="boldstuff centered">
 Recent Progress<br>
 </div>
-
+<!-- <div style ="max-height:1330px; overflow:scroll;"> --> 
   <table id ="orgtable">
   	<tr class="boldstuff">
     	<td>
@@ -18,7 +18,7 @@ Recent Progress<br>
       When was this updated?</td>
 
   	</tr>
-     <div style ="max-height:140px; overflow:scroll;"> 
+
 	  <% @task.audits.reverse.each do |audit| %>
     <%if audit.tag %>
 	  <tr>
@@ -31,12 +31,11 @@ Recent Progress<br>
     <td><%= distance_of_time_in_words_to_now(audit.updated_at) << " ago." %> </td>
     
     </tr>
-    
+    </div>
   	<% end %>
 
   <% end %>
   <% end %>
-  </div>
 </table>  
-
+<!-- </div> -->
 <!-- </div> -->
