@@ -20,11 +20,12 @@
     <%= f.text_area :description %>
   </div>
 
+<% if !@task.wasbilled %>
     <div class="field">
-
       <div class="boldstuff">Billing Status:</div>
       Available Retainer Time: <%= @topic.project.retainer_hours %><br>
       Retainer Expires On: <%= @topic.project.retainer_expiration %><br>
+
           <%= f.label :active %>
     <%= f.check_box :active, :onclick =>"showBill();"  %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.label :billable %>
@@ -32,6 +33,7 @@
     <%= link_to "Charge", charge_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%><br><br>
 
   </div>
+  <% end %>
   <div id="" class="field">
     <div>Who is working on this task?</div>
     <div class="checkbox-scroll">

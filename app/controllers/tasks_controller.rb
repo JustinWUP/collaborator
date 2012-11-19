@@ -95,9 +95,15 @@ class TasksController < ApplicationController
   end
 
   def charge
-    @topic.project.retainer_hours -= @showsum
+    if @topic.project.retainer_hours >= @showsum
+      @topic.project.retainer_hours -= @showsum
+    else
+      @topic.project.retainer_hours = 0
+    end
     @topic.project.save 
-    @task.billable = false
+    @task.billable = true
+    @task.wasbilled = true
+    @task.active = false
     @task.audit_tag_with('Billed ' + englishtime(@showsum).to_s + ' to retainer.')
     @task.save
     redirect_to topic_task_path(@topic), notice: 'This task was charged against the client retainer.'

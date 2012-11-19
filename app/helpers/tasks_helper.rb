@@ -5,8 +5,9 @@ module TasksHelper
 
     def logtime(userid)
     	if userid.include? current_user.id
-    		
-    		render 'tasks/timer'
+    		if !@task.wasbilled and @task.active
+    			render 'tasks/timer'
+    		end
     	end
     end
 
