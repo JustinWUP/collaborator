@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_topic
-  before_filter :sumalltime, :only => [:update, :create, :destroy]
+  after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => :show
   before_filter :appname
