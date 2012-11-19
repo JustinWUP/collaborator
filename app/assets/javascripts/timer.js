@@ -110,7 +110,7 @@ function decimalTime(){
 	clockvalue = clock.value;
 	timearray = clockvalue.split(":");
 	minutes = timearray[1] / 60;
-	hours = timearray[0];
+	hours = timearray[0] / 1;
 	timeeng = hours + minutes;
 	return timeeng;
 }
