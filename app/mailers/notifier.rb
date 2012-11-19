@@ -26,7 +26,6 @@ class Notifier < ActionMailer::Base
     mail(:to => @lookup.email, :subject => "#{@subjecttitle} has a new Topic.")
   end
 
-
   def nested_resource_link
     link = ""
     
