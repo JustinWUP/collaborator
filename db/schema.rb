@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119193601) do
+ActiveRecord::Schema.define(:version => 20121120020406) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -212,9 +212,6 @@ ActiveRecord::Schema.define(:version => 20121119193601) do
     t.integer  "project_id"
     t.decimal  "hoursreq"
     t.decimal  "hoursused"
-    t.integer  "overage"
-    t.float    "amountcomplete"
-    t.integer  "percentcomplete"
     t.integer  "work_status",             :default => 1
     t.string   "topic_tag",               :default => "New Topic,newtopictag"
     t.string   "avatar_file_name"

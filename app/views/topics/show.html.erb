@@ -1,9 +1,8 @@
 <% add_nav_link(link_to truncate("#{@project.name}", :length => 20), project_path(@project)) %>
-<% @percentcomplete = number_to_percentage(@topic.amountcomplete*100, :precision => 0) %>
+<% @percentcomplete = number_to_percentage(@amountcomplete*100, :precision => 0) %>
 <h2><%= @topic.title %></h2>
-
 <div id="topic" class="topic">
-  <% if @topic.amountcomplete > 0.0 %>
+  <% if @amountcomplete > 0.0 %>
       <div id="barholder">
 
         <span class="boldstuff">Percentage Complete: </span>
@@ -61,11 +60,11 @@
 <% content_for :admin_links do %>
     <%= link_to 'Edit Topic Info', edit_project_topic_path(@topic.project, @topic), :class => "adminactions" %>
     <%= link_to 'New Task', new_topic_task_path(@topic), :class => "adminactions" %>
-    <% if @topic.overage > 0 %>
-        <span class="topicover"> You are <%= @topic.overage %> hour(s) over estimated time. </span>
+    <% if @overage > 0 %>
+        <span class="topicover"> This task is over estimated time by <%= englishtime(@overage) %> </span>
     <% end %>
-    <% if @topic.overage < 0 && @topic.work_status == 3 %>
-        <span class="topicunder">You completed this task with <%= @topic.overage.abs %> hour(s) left to spare. </span>
+    <% if @overage < 0 && @topic.work_status == 3 %>
+        <span class="topicunder"> This task was completed with a remaining <%= englishtime(@overage.abs) %> </span>
     <% end %>
 <% end %>
 

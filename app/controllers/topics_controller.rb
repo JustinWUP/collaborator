@@ -14,25 +14,22 @@ class TopicsController <  ApplicationController
   def show
     # TODO: All this business code needs to be moved to Models
     if @topic.hoursused and @topic.hoursreq
-      @topic.overage = @topic.hoursused - @topic.hoursreq 
+      @overage = @topic.hoursused - @topic.hoursreq 
     end
    
-
     unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
-      @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
+      @amountcomplete = @topic.hoursused / @topic.hoursreq
      
     else
-      @topic.amountcomplete = 0.0
+      @amountcomplete = 0.0
     end
 
-    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
-      @topic.amountcomplete = 0.9
+    if @topic.work_status < 3 && @amountcomplete > 1  && @overage > 0
+      @amountcomplete = 0.9
      
     elsif @topic.work_status == 3
-      @topic.amountcomplete=1
+      @amountcomplete=1
     end
-    
-    @topic.save
 
     @comment = Comment.new
     @comment_page = @topic.comments.page(params[:page]).order('created_at DESC').per_page(5)
@@ -75,26 +72,8 @@ end
       redirect_to :back
     end
 
-    # TODO: Move business logic to Model
-    @topic.overage = @topic.hoursused - @topic.hoursreq 
-    @topic.save
      5.times { @topic.attachments.build } 
-    
-    unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
-      @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
-      @topic.save
-    else
-      @topic.amountcomplete = 0.0
-    end
-
-    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
-      @topic.amountcomplete = 0.9
-      @topic.save
-    elsif @topic.work_status == 3
-      @topic.amountcomplete=1
-      @topic.save
-    end
-
+  
     @comment = Comment.new
     
   end
@@ -109,29 +88,6 @@ end
       render :action => 'attach'
     end
         
-
-    #     @topic.overage = @topic.hoursused - @topic.hoursreq 
-    # @topic.save
-    # @topic.amountcomplete = @topic.hoursused.to_f / @topic.hoursreq.to_f
-    # @topic.save
-
-    # TODO: Move business logic to Model
-    @topic.overage = @topic.hoursused - @topic.hoursreq 
-    @topic.save
-    unless @topic.hoursused == 0.0 or @topic.hoursreq == 0
-      @topic.amountcomplete = @topic.hoursused / @topic.hoursreq
-      @topic.save
-    else
-      @topic.amountcomplete = 0.0
-    end
-
-    if @topic.work_status < 3 && @topic.amountcomplete > 1  && @topic.overage > 0
-      @topic.amountcomplete = 0.9
-      @topic.save
-    elsif @topic.work_status == 3
-      @topic.amountcomplete=1
-      @topic.save
-    end
     @comment = Comment.new
 
   end
