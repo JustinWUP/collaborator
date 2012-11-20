@@ -118,10 +118,8 @@ class TasksController < ApplicationController
     taskname = @task.name
     taskid = @task.id
 
-      
-      Notifier.task_review(hey,taskname,taskid).deliver unless lookup == current_user
+    Notifier.task_review(hey,taskname,taskid).deliver #unless lookup == current_user
     
-
     redirect_to topic_task_path (@topic), notice: 'This task has been marked for review.'
   end 
 
@@ -131,10 +129,12 @@ class TasksController < ApplicationController
     hey = @task.topic.id
     taskname = @task.name
     taskid = @task.id
+
     @task.user_ids.each do |subscription| 
       lookup = User.find_by_id(subscription) 
-    Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
+      Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
     end
+    
     redirect_to topic_task_path (@topic), notice: 'Task was approved.'
   end
 
