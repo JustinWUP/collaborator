@@ -14,6 +14,8 @@
         cannot :all, Setting
         can :read, Task
         can :update, Task
+        can :review, Task
+        cannot :approve, Task
         cannot :index, Task
         cannot :edit, Task
         cannot :charge, Task

@@ -12,15 +12,22 @@
   <%= @task.description %>
 </p>
 
-<p>
-  <strong>Active?</strong>
-  <%= @task.active %>
-</p>
+<% if @task.active %>
+  <p> 
+   <strong>Task is active.</strong>
+     <%= link_to "Mark for Review", review_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%>
+  </p>
+<% else %>
+  <p>  
+    <strong>Task is inactive.</strong>
+  <p>
+<% end %>
 
-<p>
-  <strong>Billable?</strong>
-  <%= @task.billable %>
-</p>
+<% if @task.billable %>
+  <p> 
+    <strong>Task is billable.</strong>
+  </p>
+<% end %>
 
 <p>
   <strong>Tasked to:</strong>
@@ -30,6 +37,13 @@
 <%= content_for :admin_links do %>
 	<%= logtime(@task.user_ids) %>
 
+  <% if current_user.role? :admin %>
+  <%if @task.audits.count >1 %>
+    <% if !@task.active && @task.audits[@audit.to_i-2].tag == 'Marked for review.'%>
+    <%= link_to "Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %><br><br>
+    <% end %>
+  <% end %>
+<% end %>
 <% end %>
 
 <%= render 'taskupdates' %>

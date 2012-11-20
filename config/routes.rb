@@ -49,6 +49,8 @@ Collaborator::Application.routes.draw do
     resources :tasks do
       member do
         get 'charge'
+        get 'review'
+        get 'approve'
       end
     end
   end

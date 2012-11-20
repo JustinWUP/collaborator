@@ -109,6 +109,21 @@ class TasksController < ApplicationController
     redirect_to topic_task_path(@topic), notice: 'This task was charged against the client retainer.'
   end
 
+  def review
+    @task.active = false
+    @task.audit_tag_with('Marked for review.')
+    @task.save
+    #create email action
+    redirect_to topic_task_path (@topic), notice: 'This task has been marked for review.'
+  end 
+
+  def approve
+    @task.audit_tag_with('Task approved.')
+    @task.save
+    # create email action
+    redirect_to topic_task_path (@topic), notice: 'Task was approved.'
+  end
+
   private
 
     def englishtime(time)
