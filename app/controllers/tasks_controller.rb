@@ -118,7 +118,7 @@ class TasksController < ApplicationController
     taskname = @task.name
     taskid = @task.id
 
-    Notifier.task_review(hey,taskname,taskid).deliver #unless lookup == current_user
+    Notifier.task_review(hey,taskname,taskid).deliver
     
     redirect_to topic_task_path (@topic), notice: 'This task has been marked for review.'
   end 
