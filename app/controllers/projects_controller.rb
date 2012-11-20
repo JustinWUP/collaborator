@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   before_filter :filter_index, :only => :index
 
+
   def create
     @project = Project.new(params[:project])  
     if @project.save
