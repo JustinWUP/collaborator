@@ -26,6 +26,21 @@ class Notifier < ActionMailer::Base
     mail(:to => @lookup.email, :subject => "#{@subjecttitle} has a new Topic.")
   end
 
+  def task_review(topicid,taskname,taskid)
+    @taskid = taskid
+    @subjecttitle = taskname
+    @topicid = topicid 
+    mail(:to => 'justin@winduppixel.com', :subject => "#{@subjecttitle} has been marked for review.")
+  end
+
+  def task_approve(subscription,topicid,taskname,taskid)
+    @lookup = User.find_by_id(subscription)
+    @taskid = taskid
+    @subjecttitle = taskname
+    @topicid = topicid 
+    mail(:to => @lookup.email, :subject => "#{@subjecttitle} has been approved.")
+  end
+
   def nested_resource_link
     link = ""
     
