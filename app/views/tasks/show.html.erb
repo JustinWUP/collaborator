@@ -11,8 +11,8 @@
   <strong>Description:</strong>
   <%= @task.description %>
 </p>
-
-<% if @task.active %>
+<%= %>
+<% if @task.active and @task.user_ids.include? current_user.id %>
   <p> 
    <strong>Task is active.</strong>
      <%= link_to "Mark for Review", review_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%>
