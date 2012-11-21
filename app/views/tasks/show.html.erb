@@ -12,10 +12,12 @@
   <%= @task.description %>
 </p>
 <%= %>
-<% if @task.active and @task.user_ids.include? current_user.id %>
+<% if @task.active%>
   <p> 
    <strong>Task is active.</strong>
+   <% if @task.user_ids.include? current_user.id %>
      <%= link_to "Mark for Review", review_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%>
+   <% end %>
   </p>
 <% else %>
   <p>  
