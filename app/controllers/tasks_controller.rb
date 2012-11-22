@@ -70,6 +70,9 @@ class TasksController < ApplicationController
         if params[:task][:time]
           @task.audit_tag_with(@task.changetag)
         end  
+        if @task.audits[@audit.to_i-2].tag == 'Marked for review.' && params[:task][:active] == true
+          @task.audit_tag_with('Task test')
+        end 
         @task.time = "0.0"
         @task.save
 
@@ -106,7 +109,10 @@ class TasksController < ApplicationController
     @task.active = false
     @task.audit_tag_with('Billed ' + englishtime(@showsum).to_s + ' to retainer.')
     @task.save
-    redirect_to topic_task_path(@topic), notice: 'This task was charged against the client retainer.'
+    respond_to do |format|
+      flash[:notice] = 'This task was charged against the client retainer.'
+      format.html { redirect_to topic_task_path(@topic) }
+    end
   end
 
   def review
@@ -119,8 +125,10 @@ class TasksController < ApplicationController
     taskid = @task.id
 
     Notifier.task_review(hey,taskname,taskid).deliver
-    
-    redirect_to topic_task_path (@topic), notice: 'This task has been marked for review.'
+    respond_to do |format|
+      flash[:notice] = 'This task has been marked for review.'
+      format.html {redirect_to topic_task_path (@topic)}
+    end
   end 
 
   def approve
@@ -134,8 +142,10 @@ class TasksController < ApplicationController
       lookup = User.find_by_id(subscription) 
       Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
     end
-    
-    redirect_to topic_task_path (@topic), notice: 'Task was approved.'
+    respond_to do |format|
+      flash[:notice] = 'Task was approved.'
+      format.html { redirect_to topic_task_path (@topic)}
+    end
   end
 
   private
@@ -151,7 +161,8 @@ class TasksController < ApplicationController
       else
         return @minseng.first + ' minutes'
       end
-  end
+    end
+
     def find_topic
       @topic = Topic.find(params[:topic_id])
       @project = @topic.project_id
@@ -177,18 +188,6 @@ class TasksController < ApplicationController
         @showsum += time.modifications['time'].to_f
       end
     end
-
-    # def timeconvert
-      #  if @task.time.include? ':'
-      #   @timesplitters = @task.time.split(":",2)
-      #   @mins_raw = (@timesplitters.last.to_d / 100) / 0.6
-      #   @minseng = @mins_raw.to_s.split(".",2)
-      #   @hours = @timesplitters.first
-      #   @formattedtime = @hours.to_s + '.' + (@minseng.last).to_s
-      #   @task.time = @formattedtime
-      #   @task.save
-      # end
-    # end
 
 end
 

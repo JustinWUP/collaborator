@@ -23,4 +23,11 @@ module TasksHelper
 	    	return @minseng.first + ' minutes.'
 	    end
 	end
+
+	def ready_for_review(task)
+		if task.audits[@audit.to_i-2].tag == 'Marked for review.'
+			return true
+		end
+	end
+	
 end

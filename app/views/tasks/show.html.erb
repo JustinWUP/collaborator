@@ -16,7 +16,8 @@
   <p> 
    <strong>Task is active.</strong>
    <% if @task.user_ids.include? current_user.id %>
-     <%= link_to "Mark for Review", review_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%>
+     <!--  Move this to next steps pane? -->
+     <%= link_to "Mark for Review", review_topic_task_path(@topic, @task), :class =>"buttonstyle" %>
    <% end %>
   </p>
 <% else %>
@@ -30,7 +31,6 @@
     <strong>Task is billable.</strong>
   </p>
 <% end %>
-
 <p>
   <strong>Tasked to:</strong>
   <%= taskedto(@task.user_ids) %>
@@ -40,9 +40,10 @@
 	<%= logtime(@task.user_ids) %>
 
   <% if current_user.role? :admin %>
-  <%if @task.audits.count >1 %>
-    <% if !@task.active && @task.audits[@audit.to_i-2].tag == 'Marked for review.'%>
-    <%= link_to "Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %><br><br>
+  <%if @task.audits.count > 1 %>
+    <% if !@task.active && ready_for_review(@task) %>
+    <%= link_to "Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %> 
+    <!-- this could use some sort of Decline action too... -->
     <% end %>
   <% end %>
 <% end %>
