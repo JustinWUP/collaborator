@@ -31,15 +31,17 @@
 	<% end %>
 
 	<% if (can? :manage, :all) %><br>
-
 		<%   if topic.hoursused and topic.hoursreq  %>
 	   		<% @overage = topic.hoursused - topic.hoursreq  %>
 	    <% end %>
   
 		<span class="boldstuff indent">
 		Admin Zone<br></span>
+		<!-- do a tasks overview maybe or on second thought move all this to the new resources dashboard -->
+		<%# topic.tasks.active.count.to_s + ' Active Tasks.' if topic.tasks.active.count > 0 %>
+
 		<% if topic.hoursused == 0 %>
-		<span class="topicover indentagain"> Topic not started yet.<br> </span>
+			<span class="topicover indentagain"> Topic not started yet.<br> </span>
 		<% end %>
 
 		<% if @overage.to_i > 0 %>

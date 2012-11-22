@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :topic
   has_many :users, :through => :assignments
   has_many :assignments
+  scope :active, :conditions => {:active => true}
 
   # change how time saves into the database before making it auditable
   audit :time

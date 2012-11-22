@@ -20,20 +20,20 @@
     <%= f.text_area :description %>
   </div>
 <!-- make this work better on the new task page -->
-<% if !@task.wasbilled %>
-  <div class="field">
-    <div class="boldstuff">Billing Status:</div>
-    Available Retainer Time: <%= englishtime(@topic.project.retainer_hours) %><br>
-    Retainer Expires On: <%= @topic.project.retainer_expiration %><br>
-    <%= f.label :active %>
-    <%= f.check_box :active, :onclick =>"showBill();"  %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.label :billable %>
-    <%= f.check_box :billable, :onclick =>"showBill();" %>
-    <% if params[:action] == "edit" %> 
-      <%= link_to "Charge", charge_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%><br><br>
-    <% end %>
-  </div>
-<% end %>
+  <% if !@task.wasbilled %>
+    <div class="field">
+      <div class="boldstuff">Billing Status:</div>
+      Available Retainer Time: <%= englishtime(@topic.project.retainer_hours) %><br>
+      Retainer Expires On: <%= @topic.project.retainer_expiration %><br>
+      <%= f.label :active %>
+      <%= f.check_box :active, :onclick =>"showBill();"  %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.label :billable %>
+      <%= f.check_box :billable, :onclick =>"showBill();" %>
+      <% if params[:action] == "edit" %> 
+        <%= link_to "Charge", charge_topic_task_path(@topic, @task), :class =>"buttonstyle", :id =>"bill"%><br><br>
+      <% end %>
+    </div>
+  <% end %>
 
   <div id="" class="field">
     <div>Who is working on this task?</div>
