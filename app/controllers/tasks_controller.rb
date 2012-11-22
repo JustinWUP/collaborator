@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   load_and_authorize_resource
 
   helper_method :englishtime
+  helper_method :ready_for_review
   before_filter :find_topic
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
@@ -69,7 +70,8 @@ class TasksController < ApplicationController
       if @task.update_attributes(params[:task])
         if params[:task][:time]
           @task.audit_tag_with(@task.changetag)
-        end  
+        end 
+
         if @task.audits[@audit.to_i-2].tag == 'Marked for review.' && params[:task][:active] == true
           @task.audit_tag_with('Task test')
         end 
@@ -104,11 +106,13 @@ class TasksController < ApplicationController
       @topic.project.retainer_hours = 0
     end
     @topic.project.save 
+
     @task.billable = true
     @task.wasbilled = true
     @task.active = false
     @task.audit_tag_with('Billed ' + englishtime(@showsum).to_s + ' to retainer.')
     @task.save
+
     respond_to do |format|
       flash[:notice] = 'This task was charged against the client retainer.'
       format.html { redirect_to topic_task_path(@topic) }
@@ -116,24 +120,35 @@ class TasksController < ApplicationController
   end
 
   def review
-    @task.active = false
-    @task.audit_tag_with('Marked for review.')
-    @task.save
-    
-    hey = @task.topic.id
-    taskname = @task.name
-    taskid = @task.id
-
-    Notifier.task_review(hey,taskname,taskid).deliver
-    respond_to do |format|
+    if !@task.user_ids == current_user
+      flash[:notice] = 'You cannot mark a task for review which does not belong to you.'
+    else
+      @task.active = false
+      @task.audit_tag_with('Marked for review.')
+      @task.save
       flash[:notice] = 'This task has been marked for review.'
-      format.html {redirect_to topic_task_path (@topic)}
-    end
+      
+      hey = @task.topic.id
+      taskname = @task.name
+      taskid = @task.id
+
+      Notifier.task_review(hey,taskname,taskid).deliver
+      end
+      respond_to do |format|
+        format.html {redirect_to topic_task_path (@topic)}
+      end
+
   end 
 
   def approve
-    @task.audit_tag_with('Task approved.')
-    @task.save
+    if ready_for_review(@task)
+      @task.audit_tag_with('Task approved.')
+      @task.save
+      flash[:notice] = 'Task was approved.'
+    else
+      flash[:notice] = 'Task cannot be approved until it is ready for review.'
+    end
+
     hey = @task.topic.id
     taskname = @task.name
     taskid = @task.id
@@ -143,7 +158,6 @@ class TasksController < ApplicationController
       Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
     end
     respond_to do |format|
-      flash[:notice] = 'Task was approved.'
       format.html { redirect_to topic_task_path (@topic)}
     end
   end
@@ -186,6 +200,14 @@ class TasksController < ApplicationController
       @showsum = 0.0
       @task.audits.each do |time|
         @showsum += time.modifications['time'].to_f
+      end
+    end
+
+    def ready_for_review(task)
+      if task.audits.count>1
+        if task.audits[@audit.to_i-2].tag == 'Marked for review.'
+          return true
+        end
       end
     end
 

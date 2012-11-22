@@ -56,7 +56,7 @@ class TopicsController <  ApplicationController
     end
     respond_with(@topic, location: project_topic_path(@topic.project, @topic))
     flash[:notice] = 'Topic Submitted'
-    # respond_with @topic, :location => project_path(@topic.project)
+    respond_with @topic, :location => project_path(@topic.project)
 
   end
 
@@ -80,7 +80,7 @@ end
 
   def update
     @topic.update_attributes(params[:topic])
-    # respond_with @topic, location: project_topics_url
+    respond_with @topic, location: project_topics_url
     if @topic.update_attributes(params[:attachment])
       respond_with(@topic, location: project_topic_path(@topic.project, @topic))
       Attachment.where(:attachment_file_name => nil).delete_all

@@ -26,10 +26,10 @@ module TasksHelper
 
 	def ready_for_review(task)
 		if task.audits.count>1
-		if task.audits[@audit.to_i-2].tag == 'Marked for review.'
-			return true
+			if task.audits[@audit.to_i-2].tag == 'Marked for review.'
+				return true
+			end
 		end
-	end
 	end
 
 end
