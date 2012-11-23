@@ -145,21 +145,23 @@ class TasksController < ApplicationController
       @task.audit_tag_with('Task approved.')
       @task.save
       flash[:notice] = 'Task was approved.'
+      hey = @task.topic.id
+      taskname = @task.name
+      taskid = @task.id
+
+      @task.user_ids.each do |subscription| 
+        lookup = User.find_by_id(subscription) 
+        Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
+      end
+    
     else
       flash[:notice] = 'Task cannot be approved until it is ready for review.'
     end
 
-    hey = @task.topic.id
-    taskname = @task.name
-    taskid = @task.id
-
-    @task.user_ids.each do |subscription| 
-      lookup = User.find_by_id(subscription) 
-      Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
-    end
     respond_to do |format|
       format.html { redirect_to topic_task_path (@topic)}
     end
+
   end
 
   private
