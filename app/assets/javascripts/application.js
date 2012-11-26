@@ -15,3 +15,4 @@
 //= require ui.core
 //= require jquery.scrollfollow
 //= require nextsteps
+//= require topicsort

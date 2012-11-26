@@ -40,7 +40,7 @@
 	<%= logtime(@task.user_ids) %>
 
   <% if current_user.role? :admin %>
-  <%= link_to 'Edit Task', edit_topic_task_path(@topic, @task), :class =>"adminactions" %>
+  <%= link_to icon('pencil', 2) + ' Edit Task', edit_topic_task_path(@topic, @task), :class =>"adminactions" %>
   <%if @task.audits.count > 1 %>
     <% if !@task.active && ready_for_review(@task) %>
     <%= link_to "Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %> 

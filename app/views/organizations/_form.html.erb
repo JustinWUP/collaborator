@@ -1,7 +1,7 @@
 <%= form_for(@organization) do |f| %>
   <% if @organization.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this company from being saved:</h2>
 
       <ul>
       <% @organization.errors.full_messages.each do |msg| %>
@@ -16,10 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :org_id %><br />
+    <%= f.label :org_id, "Company ID" %><br />
     <%= f.text_field :org_id %>
   </div>
   <div id="organization-submit" class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Company"  %>
   </div>
 <% end %>

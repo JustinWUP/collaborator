@@ -12,7 +12,8 @@
 <% end %>
 </table>
 
-<table id="orgtable blue">
+<div class="wikipost">
+<table id="orgtable blue" class="wikipost">
 <h3>Recent Updates</h3>
   <tr class="boldstuff" style="border-bottom:1px #ccc dashed;">
     <td>Article Name</td>
@@ -33,12 +34,12 @@
 </table>
 
 
-<br />
+</div>
 
 <% content_for :admin_links do %>
 
-<%= link_to 'Edit Homepage', edit_wiki_path(@wikis), :class => "adminactions" %>
-<%= link_to 'New Article', new_wiki_path, :class => "adminactions" %>
+<%= link_to icon('pencil',2) +' Edit Homepage', edit_wiki_path(@wikis), :class => "adminactions" %>
+<%= link_to icon('file',2) + ' New Article', new_wiki_path, :class => "adminactions" %>
   <% end %>
 
 

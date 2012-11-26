@@ -2,6 +2,7 @@
 
 	<%= content_for(:page_title) do @project.name end %>
 
+
 <div id="project-heading">
 	My Project Goals:
 </div>
@@ -23,11 +24,12 @@
 <% end %>
 <div id="topics-list">
 <div>
+	<div id="topics1">
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.topic_for_approval.exists? %>
 		<div class ="topics-heading">Topics Awaiting Client Feedback:  <a href="javascript:void(0);" class="show_hide_awaiting">Show/Hide</a></div>
 		
-		<div class="slidingDiv_awaiting topics-ul">
+		<div id ="list" class="slidingDiv_awaiting topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.topic_for_approval.each do |topic| %>
@@ -35,48 +37,51 @@
 			<%= render partial: topic, layout: 'layouts/li_layout' %>
 		<% end %>
 		</div>
-
+	</div>
+<br><br>
+	<div id="topics2">
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.active.exists? %>
 			<div class="topics-heading">Topics We're Working On:<a href="javascript:void(0);" class="show_hide_working">Show/Hide</a></div>
 		
-		<div class="slidingDiv_working topics-ul">
-		<%end%>
-		<%end%>
-		<% @project.topics.active.each do |topic| %>
-			<%= render partial: topic, layout: 'layouts/li_layout' %>
-		<% end %>
-				</div>
-
+		<div id ="list" class="slidingDiv_working topics-ul">
+			<%end%>
+			<%end%>
+			<% @project.topics.active.each do |topic| %>
+				<%= render partial: topic, layout: 'layouts/li_layout' %>
+			<% end %>
+		</div>
+	</div>
+<br><br>
+	<div id="topics3">
 	<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.complete.exists? %>
 			<div class="topics-heading">Completed Topics:<a href="javascript:void(0);" class="show_hide_complete">Show/Hide</a>
 			</div>
 
-		<div class="slidingDiv_complete topics-ul">
+		<div id ="list" class="slidingDiv_complete topics-ul">
 		<%end%>
 		<%end%>
 		<% @project.topics.complete.each do |topic| %>
 		<%= render partial: topic, layout: 'layouts/li_layout' %>
 		<% end %>
 		</div>
+	</div>
 
 
 </div> 
 </div> <!-- /topics-list -->
 
 <% content_for :user_links do %>
-	<%= link_to "Submit a New Topic.", new_project_topic_path(@project), :class  => "useractions" %>
+	<%= link_to icon('plus', 2) +' New Topic', new_project_topic_path(@project), :class  => "useractions" %>
 	<!-- this is ugly as shit -->
 	<%if @project.url != "http://none" %>
- 	<%= link_to "Check Out Your " + @project.ptype + ".", @project.url,  :target => "_blank", :class  => "useractions" %>
+ 	<%= link_to icon('cloud', 2) +' View ' + @project.ptype, @project.url,  :target => "_blank", :class  => "useractions" %>
  	<% end %>
-	<h4>or</h4>
-	<h4>Click on a Topic to the right.</h4>
 <% end %><!-- / -->
 
 <% content_for :admin_links do %>
-	<%= link_to 'Edit Project Info', edit_project_path(@project), :class  => "adminactions" %>
-	<%= link_to 'View Project on Github', 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %>
+	<%= link_to icon('pencil', 2) +' Edit Project', edit_project_path(@project), :class  => "adminactions" %>
+	<%= link_to icon('github-sign', 2) + " Github Repo", 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %>
 	
 <% end %>

@@ -1,4 +1,12 @@
 ---
+fontawesome-webfont.eot: fontawesome-webfont-5f9bf001d945baa3287193f70ac71c68.eot
+fontawesome-webfont/index.eot: fontawesome-webfont-5f9bf001d945baa3287193f70ac71c68.eot
+fontawesome-webfont.svg: fontawesome-webfont-9c8b49b9721b8663e25842f77bd78bd9.svg
+fontawesome-webfont/index.svg: fontawesome-webfont-9c8b49b9721b8663e25842f77bd78bd9.svg
+fontawesome-webfont.ttf: fontawesome-webfont-6dd366bc6d7701471ccf87bd905088dc.ttf
+fontawesome-webfont/index.ttf: fontawesome-webfont-6dd366bc6d7701471ccf87bd905088dc.ttf
+fontawesome-webfont.woff: fontawesome-webfont-745b5efebbdc00fdd6b2c4dc6b957657.woff
+fontawesome-webfont/index.woff: fontawesome-webfont-745b5efebbdc00fdd6b2c4dc6b957657.woff
 beta.png: beta-c0a49c1dbf09773f9bd03e5ff546d051.png
 beta/index.png: beta-c0a49c1dbf09773f9bd03e5ff546d051.png
 bg.png: bg-8efd3e52005117b010045eb6d922fd7b.png
@@ -7,15 +15,15 @@ logo.png: logo-16491fae57960d67ee013ac2b37b6ccb.png
 logo/index.png: logo-16491fae57960d67ee013ac2b37b6ccb.png
 overlay.png: overlay-d63986055ef1a54e3f3a21ac26037e58.png
 overlay/index.png: overlay-d63986055ef1a54e3f3a21ac26037e58.png
-application.js: application-2754969a9c234d12b774fc78baaa2f90.js
-application/index.js: application-2754969a9c234d12b774fc78baaa2f90.js
+application.js: application-06ec8469d171c7282b969e882302587d.js
+application/index.js: application-06ec8469d171c7282b969e882302587d.js
 slidingdiv.js: slidingdiv-2a2cdc2e6e43a545d9c278548baa3fd1.js
 slidingdiv/index.js: slidingdiv-2a2cdc2e6e43a545d9c278548baa3fd1.js
 tasks.js: tasks-77c4f81d5004da19dd2fc4f6b7de4515.js
 tasks/index.js: tasks-77c4f81d5004da19dd2fc4f6b7de4515.js
-timer.js: timer-92d4f6684d851bf1b7a2133b0ae8fc5c.js
-timer/index.js: timer-92d4f6684d851bf1b7a2133b0ae8fc5c.js
-application.css: application-3aac5754f8a6d3a0396d77f18ae1f75c.css
-application/index.css: application-3aac5754f8a6d3a0396d77f18ae1f75c.css
+timer.js: timer-fe9fc4e7cdf59679ac3375a04e5a938c.js
+timer/index.js: timer-fe9fc4e7cdf59679ac3375a04e5a938c.js
+application.css: application-80cd930d4d602dc6cdd69e9240cb7d85.css
+application/index.css: application-80cd930d4d602dc6cdd69e9240cb7d85.css
 LICENSE.txt: LICENSE-66562b92d40d1bb3f90888483d5911c0.txt
 LICENSE/index.txt: LICENSE-66562b92d40d1bb3f90888483d5911c0.txt

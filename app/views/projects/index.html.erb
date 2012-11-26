@@ -1,18 +1,13 @@
 <% if current_user.role? :admin %>
 	<% content_for :admin_links do %>
-		<%= link_to 'Create a New Project', new_project_path, :class=>"adminactions" %>
-		<h4>or</h4>
+		<%= link_to icon('plus', 2) +' New Project', new_project_path, :class=>"adminactions" %>
 	<% end %>
-<% end %>
-<% content_for :user_links do %>
-	<h4>Manage a Project from the list on the right.</h4>
 <% end %>
 <div id="projects" class="">
 
 
 	<div id="project-list-heading">My Active Projects:</div>
 	<% @projects.each do |project| %>
-
 		<div id="project<%= project.id %>" class="project shadow round stroke inset">
 		    <div><%= link_to project.name, project %>
 	    	<!-- disabled temporarily

@@ -13,12 +13,12 @@
   <% if current_user.role? :admin %>
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :style => "width: 45%" %>
   </div>
   <% end %>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body, :size => "80x30" %>
+    <%= f.text_area :body, :style => "width: 100%" %>
   </div>
   <div class="field">
     <%= f.label :postcategory, "What's the article's category (if any)?" %><br />
@@ -34,19 +34,20 @@
     <%= f.submit :value => "Update Article" %>
   </div>
 <% end %>
-
-<div id ="antihelper" style="margin-top:20px;">
-  <h2 class="centered">Tags Quick Reference</h2>
-  <hr style="border:none;border-top:1px dashed #ccc;">
-  <p class="indent"><span class="boldstuff">##</span> Bigish headline</p>
-  <p class="indent"><span class="boldstuff">###</span> Smallish headline</p>
-  <p class="indent"><span class="boldstuff">*text*</span> Italics</p>
-  <p class="indent"><span class="boldstuff">**text**</span> Bold Text</p>
-  <p class="indent"><span class="boldstuff">*</span> Bulleted List</p>
-  <p class="indent"><span class="boldstuff">`text`</span> Code Span</p>
-  <p class="indent"><span class="boldstuff">***</span> Horizontal Rule</p>
-  <p class="indent"><span class="boldstuff">[linktext](URL)</span> Hyperlink</p>
-  <p class="indent"><span class="boldstuff">[linktext](~URL)</span> Hyperlink to a Category</p>
-  <p class="indent"><span class="boldstuff">[linktext](~~URL)</span> Hyperlink to an Article</p>
-</div>
+<% content_for :admin_links do %>
+  <div id="antihelper" style="font-size:13px;">
+    <h2 class="centered">Wiki Reference</h2>
+    <hr style="border:none;border-top:1px dashed #ccc;">
+    <p class="indent"><span class="boldstuff">##</span> Bigish headline</p>
+    <p class="indent"><span class="boldstuff">###</span> Smallish headline</p>
+    <p class="indent"><span class="boldstuff">*text*</span> Italics</p>
+    <p class="indent"><span class="boldstuff">**text**</span> Bold Text</p>
+    <p class="indent"><span class="boldstuff">*</span> Bulleted List</p>
+    <p class="indent"><span class="boldstuff">`text`</span> Code Span</p>
+    <p class="indent"><span class="boldstuff">***</span> Horizontal Rule</p>
+    <p class="indent"><span class="boldstuff">[linktext](URL)</span> Hyperlink</p>
+    <p class="indent"><span class="boldstuff">[linktext](~URL)</span> Hyperlink to a Category</p>
+    <p class="indent"><span class="boldstuff">[linktext](~~URL)</span> Hyperlink to an Article</p>
+  </div>
+<% end %>
 

@@ -4,7 +4,7 @@ class TopicsController <  ApplicationController
   load_and_authorize_resource :project
   load_and_authorize_resource :through => :project
   # before_filter :find_topic, except: [:index, :new, :create]
-  before_filter :find_subscription, :only => :show
+  before_filter :find_subscription, :only => [:show, :create]
   before_filter :find_tasks, :only => :show
 
   def index
@@ -54,9 +54,12 @@ class TopicsController <  ApplicationController
       
       Notifier.topic_email(lookup,hey,projectname,projectid).deliver unless lookup == current_user or lookup.topicmail == false
     end
-    respond_with(@topic, location: project_topic_path(@topic.project, @topic))
+    @subscription.enabled = @subscription.enabled? ? false : true
+    @subscription.subscribable.project = 1
+    @subscription.save
+    respond_with(@topic, location: project_path(@topic.project))
     flash[:notice] = 'Topic Submitted'
-    respond_with @topic, :location => project_path(@topic.project)
+    
 
   end
 
@@ -80,7 +83,6 @@ class TopicsController <  ApplicationController
 
   def update
     @topic.update_attributes(params[:topic])
-    respond_with @topic, location: project_topics_url
     if @topic.update_attributes(params[:attachment])
       respond_with(@topic, location: project_topic_path(@topic.project, @topic))
       Attachment.where(:attachment_file_name => nil).delete_all

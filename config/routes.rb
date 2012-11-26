@@ -13,7 +13,7 @@ Collaborator::Application.routes.draw do
    match 'wikis/all/archives' => "wikis#archives"
    match 'wikis/all/cate' => "wikis#catearchives" 
 
-  match 'wikis/cate/:postcategory' => "wikis#cate"
+  match 'wikis/cate/:postcategory' => "wikis#cate", :as => "wiki_cate"
 
 
   get "subscriptions/index"

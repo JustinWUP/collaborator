@@ -3,10 +3,10 @@
 		var instruct = document.getElementById('instruct');
 		var timesend = document.getElementById('timesend');
 		var changetag = document.getElementById('changetag');
-		var changetagbox = document.getElementById('changetagbox');
-		var nextsteps = document.getElementById('next-steps');
+		$('#update').hide();
+		$('#changetagbox').hide();
 		clock.value = '';
-		nextsteps.style.height = "190px";
+		// nextsteps.style.height = "190px";
 		clock.style.background = '#ddd';
 		// sets a variable if timer saved
 		document.getElementById('update').onclick = function(){
@@ -44,7 +44,7 @@
 	function startstop()
 		{
 		var startstop = document.getElementById('startstopbutton');
-		var nextsteps = document.getElementById('next-steps');
+		// var nextsteps = document.getElementById('next-steps');
 		var updatebutton = document.getElementById('update');
 		if(flagclock==0)
 			{
@@ -54,15 +54,15 @@
 			startTimer();
 			
 			updatebutton.disabled = true;
-			updatebutton.style.background = "grey";
-			updatebutton.style.visibility = "visible";
+			$('#update').show();
+			// updatebutton.style.visibility = "visible";
 			updatebutton.value = "Currently Timing...";
 			clock.style.background = 'white';
 			if(clock.value == "0:00"){	
-				nextsteps.style.height = "220px";
+				// nextsteps.style.height = "220px";
 				}
 			else {
-				nextsteps.style.height = "300px";
+				// nextsteps.style.height = "300px";
 				}
 			}
 		else
@@ -76,11 +76,11 @@
 				updatebutton.disabled = false;
 				updatebutton.style.background = "indianred";
 				updatebutton.value ="Update Task Time";
-				nextsteps.style.height = "300px";
-				nextsteps.style.top = "40px";
+				// nextsteps.style.height = "300px";
+				// nextsteps.style.top = "40px";
 				updatebutton.style.top = "262px";
 				timesend.value = decimalTime();
-				changetagbox.style.visibility ="visible";
+				$('#changetagbox').show();
 				instruct.innerHTML = "'Continue Timer' to keep working or 'Update Task Time' to save your time."
 				}
 			else{

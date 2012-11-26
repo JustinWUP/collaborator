@@ -1,5 +1,5 @@
 <%= link_to topic.title, project_topic_path(@project, topic) %> 
-<% @topic_split = topic.topic_tag.split(",",2) %>
+<% @topic_split = topic.topic_tag.split(",",2) %><br>
 <span class="taglabel <%= @topic_split.last %>"><%= @topic_split.first%></span>
 
 <% @commentcount = 0 %>
@@ -41,16 +41,16 @@
 		<%# topic.tasks.active.count.to_s + ' Active Tasks.' if topic.tasks.active.count > 0 %>
 
 		<% if topic.hoursused == 0 %>
-			<span class="topicover indentagain"> Topic not started yet.<br> </span>
+			<span class="topicover indentagain"> Topic not started.<br> </span>
 		<% end %>
 
 		<% if @overage.to_i > 0 %>
-		<span class="topicover indentagain"> Time Overage: <%= englishtime(@overage) %> <br>
+		<span class="topicover indentagain"><%= englishtime(@overage) %><br>
 		</span>
 		<% end%>
 
 		<% if @overage.to_i <0 %>
-		<span class="topicunder indentagain"> Remaining Time: <%= englishtime(@overage.abs) %> <br></span>
+		<span class="topicunder indentagain"><%= englishtime(@overage.abs) %> <br></span>
 		<% end%>
 		<span class="project-admin">
 			<%= link_to "Edit Topic", project_topic_path(@project, topic) + "/edit", :class => "indent" %>

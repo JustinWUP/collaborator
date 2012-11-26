@@ -76,38 +76,58 @@
 		</div><!-- /top-box -->
 
 		<div id="wup-name" class="wup-name">
-		<div id="logo">
-<%= image_tag("logo.png", :size => "121x103") %>
-
-	</div>
+	
 		WIND UP PIXEL
 		</div><!-- /wup-name -->	
+			<div id="logo">
+<%= image_tag("logo.png", :size => "55x51") %>
 
-		<nav>	
-				<div class="web-strategy">
+	</div>
+	<div class="web-strategy">
 			<%= link_to @appname, root_path %>
 		</div>
-			<div id="nav-wrap" class="nav-wrap">
+
+		<nav>	
+				
+
 
 				<%= nav_links_menu %>
-			</div><!-- /nav-wrap -->
 			
 		</nav>
 
 		
 	</header><!-- /header -->
 
-		<section id="main">
-
-			<div id="content"  class="main">
-			
-				<div id="content-wrap">
 					<% unless current_page?(action: 'new', controller: 'sessions') %>
 						<% if content_for?( :admin_links) or content_for?( :user_links ) %>
+	<script> 
+$(function(){
+	var slide = 0;
+$("#shower").click(function(){
 	
+	if(slide == 0) {
+    $("#next-steps").animate({marginLeft:'-187px'}, 'slow');   
+    $("#content").animate({marginLeft:'40px', width:'90%', paddingRight:'150px'}, 'slow');   
+    $("#content-wrap").animate({paddingLeft:'80px', width:'100%'}, 'slow');  
+
+
+    $("#button").attr('class',"icon-chevron-right");
+    slide = 1;
+}
+	else {
+		$("#next-steps").animate({marginLeft:'0px'}, 'slow');   
+		$("#content").animate({marginLeft:'225px', paddingRight:'40px', width:'62%'}, 'slow');   
+		 $("#content-wrap").animate({ width:'90%'}, 'slow');  
+		$("#button").attr('class',"icon-chevron-left");
+    slide = 0;
+	}
+});
+});
+</script>
 
 	<div id="next-steps" class="">
-							<h3>Next Steps:</h3> <br>
+		<div><a href="javascript:void();" id="shower" ><i id="button" class="icon-chevron-left"></i></a></div>
+							<h3>Next Steps</h3> <br>
 									<%  #if can?( :manage, :all )  %>
 									<% if current_user.role? :wupteam or current_user.role? :admin %>
 									<!-- <div id="admin-links" class=""> -->
@@ -125,6 +145,13 @@
 							</div>
 						<% end %>
 					<% end %>
+
+		<section id="main">
+
+			<div id="content"  class="main">
+			
+				<div id="content-wrap">
+
 					<div id="flash-box" class="flash-box">
 						<% flash.each do |key, value| %>
 							<div id='<%= key %>' class="flash">
@@ -143,13 +170,8 @@
 			
 	</section><!-- /main -->
 	<div style="clear:both"></div>
-	<footer>
-		<div >
-			<span class="first">WIND UP PIXEL &#169; 2012</span><span class="middle">PH: <a href="tel:+1-312.554.5095">312.554.5095</a></span><span class="last">E: <a href="mailto:contact@winduppixel.com">CONTACT@WINDUPPIXEL.COM</a></span>
-		</div>
-	</footer>
+
 </div><!-- /wrap -->
-<%= image_tag "beta.png", :class => "beta" %>
 </body>
 		
 

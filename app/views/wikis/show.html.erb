@@ -1,3 +1,6 @@
+<%if @wiki.postcategory != '' %>
+<% add_nav_link(link_to truncate(@wiki.postcategory, :length => 20), wiki_cate_path(@wiki.postcategory.to_s)) %>
+<%end %>
 <p>
  <h2> <%= @wiki.title %> </h2>
 </p>
@@ -11,7 +14,7 @@
 
 
 <% content_for :admin_links do %>
-<%= link_to 'Edit This Article', edit_wiki_path(@wiki), :class => "adminactions" %> 
+<%= link_to icon('pencil', 2) +' Edit This Article', edit_wiki_path(@wiki), :class => "adminactions" %> 
   <% end %>
 
 <%# link_to 'Back', wikis_path %>

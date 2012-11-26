@@ -4,10 +4,10 @@
 <%= form_for([@topic, @task]) do |t| %>
 <input id="clock" readonly="" style="text-align: center;">
 <%= t.hidden_field :time, :id => "timesend", :readonly=>"" %>
-<input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();", style="background:indianred;">
-<div id="changetagbox" style ="visibility:hidden;">
+<input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();">
+<div id="changetagbox">
 <%= t.label :changetag, "What did you update here?" %><br />
 <%= t.text_area :changetag, :id => "changetag", :value => "", :rows => 2, :cols => 23 %>
   </div>
-<%= t.submit :style => "background:grey; visibility:hidden;", :disabled => true, :id => "update" %>
+<%= t.submit :disabled => true, :id => "update", :class=>"disable" %>
 <% end %>
