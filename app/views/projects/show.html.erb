@@ -38,10 +38,11 @@
 		<% end %>
 		</div>
 	</div>
-<br><br>
+
 	<div id="topics2">
 		<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.active.exists? %>
+
 			<div class="topics-heading">Topics We're Working On:<a href="javascript:void(0);" class="show_hide_working">Show/Hide</a></div>
 		
 		<div id ="list" class="slidingDiv_working topics-ul">
@@ -52,7 +53,6 @@
 			<% end %>
 		</div>
 	</div>
-<br><br>
 	<div id="topics3">
 	<% @project.topics.take(1).each do |topic| %>
 		<% if @project.topics.complete.exists? %>

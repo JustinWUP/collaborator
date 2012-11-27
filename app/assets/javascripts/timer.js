@@ -38,9 +38,6 @@
 
 	function startstop()
 		{
-		// var startstop = document.getElementById('startstopbutton');
-		// var nextsteps = document.getElementById('next-steps');
-		// var updatebutton = document.getElementById('update');
 		if(flagclock==0)
 			{
 			$("#startstopbutton").val('Stop Timer');

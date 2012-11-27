@@ -54,9 +54,6 @@ class TopicsController <  ApplicationController
       
       Notifier.topic_email(lookup,hey,projectname,projectid).deliver unless lookup == current_user or lookup.topicmail == false
     end
-    @subscription.enabled = @subscription.enabled? ? false : true
-    @subscription.subscribable.project = 1
-    @subscription.save
     respond_with(@topic, location: project_path(@topic.project))
     flash[:notice] = 'Topic Submitted'
     

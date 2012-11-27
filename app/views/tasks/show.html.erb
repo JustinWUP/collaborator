@@ -37,8 +37,6 @@
 </p>
 
 <%= content_for :admin_links do %>
-	<%= logtime(@task.user_ids) %>
-
   <% if current_user.role? :admin %>
   <%= link_to icon('pencil', 2) + ' Edit Task', edit_topic_task_path(@topic, @task), :class =>"adminactions" %>
   <%if @task.audits.count > 1 %>
@@ -48,6 +46,7 @@
     <% end %>
   <% end %>
 <% end %>
+  <%= logtime(@task.user_ids) %>
 <% end %>
 
 <%= render 'taskupdates' %>
