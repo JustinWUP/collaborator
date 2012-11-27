@@ -72,9 +72,9 @@ class TasksController < ApplicationController
           @task.audit_tag_with(@task.changetag)
         end 
 
-        if @task.audits[@audit.to_i-1].tag == 'Marked for review.' && params[:task][:active] == true
-          @task.audit_tag_with('Task test')
-        end 
+        # if @task.audits[@audit.to_i-1].tag == 'Marked for review.' && params[:task][:active] == true
+        #   @task.audit_tag_with('Task test')
+        # end 
         @task.time = "0.0"
         @task.save
 
@@ -124,6 +124,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'You cannot mark a task for review which does not belong to you.'
     else
       @task.active = false
+      @task.changetag = 'topic task ' + (@topic.id.to_f / @task.id.to_f).to_s + ' reviewing'
       @task.audit_tag_with('Marked for review.')
       @task.save
       flash[:notice] = 'This task has been marked for review.'
@@ -142,6 +143,7 @@ class TasksController < ApplicationController
 
   def approve
     if ready_for_review(@task)
+      @task.changetag = 'topic task ' + (@task.id.to_f / @topic.id.to_f).to_s + ' approved'
       @task.audit_tag_with('Task approved.')
       @task.save
       flash[:notice] = 'Task was approved.'
@@ -207,7 +209,7 @@ class TasksController < ApplicationController
 
     def ready_for_review(task)
       if task.audits.count>1
-        if task.audits[@audit.to_i-1].tag == 'Marked for review.'
+        if task.changetag == 'topic task ' + (@topic.id.to_f / @task.id.to_f).to_s + ' reviewing'
           return true
         end
       end
