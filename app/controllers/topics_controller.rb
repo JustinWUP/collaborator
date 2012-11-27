@@ -67,7 +67,7 @@ class TopicsController <  ApplicationController
 
 
   def edit
-    if current_user.role? :admin
+    if current_user.role? :admin or current_user.role? :wupteam
     else
       redirect_to :back
     end

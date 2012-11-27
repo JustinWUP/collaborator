@@ -8,23 +8,13 @@
     	window.btn_clicked = true;
 			};
 
-		// tests if timer is running
-		function hasData(element) {
-			
-			if (element != "") {
-				return true;
-			}		
-			
-			return false;
-		}
-
 		// tests if timer was started and if leaving without submitting
 		window.onbeforeunload = function(){
 		    	if(!window.btn_clicked && seconds) {
 		        	return "You have unsaved time tracked on this task. Don't forget to save!";
 		    	}
 
-		    	if(window.btn_clicked && !hasData($("#changetagbox"))) {
+		    	if(window.btn_clicked && ($("#changetag").val()=="")) {
 		    		return "Please enter a note about what you did on this task."
 		    	}
 

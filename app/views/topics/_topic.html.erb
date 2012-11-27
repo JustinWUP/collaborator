@@ -15,7 +15,7 @@
 
 	<% if @commentcount > 0 %>
 		<% if topic.work_status == 3 || topic.hoursused %>
-			<div class="boldstuff indent">
+			<div class="boldstuff ">
 				Updates
 			</div>
 		<% end %>
@@ -23,9 +23,9 @@
 	<% end%>
 
 	<% if @commentcount > 0 %>
-		<span class="topicunder indent"><%= @commentcount %> new comments!</span><br>
+		<span class="topicunder "><%= @commentcount %> new comments!</span><br>
 	<% elsif @commentcount == 0 && topic.created_at < 2.day.ago %>
-		<div class="boldstuff indent">
+		<div class="boldstuff ">
 				No recent updates.
 			</div>
 	<% end %>
@@ -35,25 +35,25 @@
 	   		<% @overage = topic.hoursused - topic.hoursreq  %>
 	    <% end %>
   
-		<span class="boldstuff indent">
+		<span class="boldstuff ">
 		Admin Zone<br></span>
 		<!-- do a tasks overview maybe or on second thought move all this to the new resources dashboard -->
 		<%# topic.tasks.active.count.to_s + ' Active Tasks.' if topic.tasks.active.count > 0 %>
 
 		<% if topic.hoursused == 0 %>
-			<span class="topicover indentagain"> Topic not started.<br> </span>
+			<span class="topicover "> Topic not started.<br> </span>
 		<% end %>
 
 		<% if @overage.to_i > 0 %>
-		<span class="topicover indentagain"><%= englishtime(@overage) %><br>
+		<span class="topicover"><%= englishtime(@overage) %><br>
 		</span>
 		<% end%>
 
 		<% if @overage.to_i <0 %>
-		<span class="topicunder indentagain"><%= englishtime(@overage.abs) %> <br></span>
+		<span class="topicunder"><%= englishtime(@overage.abs) %> <br></span>
 		<% end%>
 		<span class="project-admin">
-			<%= link_to "Edit Topic", project_topic_path(@project, topic) + "/edit", :class => "indent" %>
+			<%= link_to "Edit Topic", project_topic_path(@project, topic) + "/edit", :class => "" %>
 		</span>
 			
 		<% end %>
