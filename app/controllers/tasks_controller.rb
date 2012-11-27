@@ -72,7 +72,7 @@ class TasksController < ApplicationController
           @task.audit_tag_with(@task.changetag)
         end 
 
-        if @task.audits[@audit.to_i-2].tag == 'Marked for review.' && params[:task][:active] == true
+        if @task.audits[@audit.to_i-1].tag == 'Marked for review.' && params[:task][:active] == true
           @task.audit_tag_with('Task test')
         end 
         @task.time = "0.0"
@@ -207,7 +207,7 @@ class TasksController < ApplicationController
 
     def ready_for_review(task)
       if task.audits.count>1
-        if task.audits[@audit.to_i-2].tag == 'Marked for review.'
+        if task.audits[@audit.to_i-1].tag == 'Marked for review.'
           return true
         end
       end
