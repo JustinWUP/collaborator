@@ -27,11 +27,11 @@
     <% end %>
     <% if current_user.role? :admin %>
       <% content_for :admin_links do %>
-        <%= link_to icon('envelope',2) +'Watch Admin', subscriptions_path, :class => "adminactions" %>
+        <%= link_to icon('envelope',2) +'Watched Topics Admin', subscriptions_path, :class => "adminactions" %>
       <% end %>
     <% else %>
       <% content_for :user_links do %>
-        <%= link_to 'Manage Subscriptions', subscriptions_path, :class => "useractions" %>
+        <%= link_to icon('envelope',2) + 'Manage Watched Topics', subscriptions_path, :class => "useractions" %>
       <% end %>
     <% end %>
   
