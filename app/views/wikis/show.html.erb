@@ -1,5 +1,5 @@
 <%if @wiki.postcategory != '' %>
-<% add_nav_link(link_to truncate(@wiki.postcategory, :length => 20), wiki_cate_path(@wiki.postcategory.to_s)) %>
+<% add_nav_link(link_to truncate(@wiki.postcategory.humanize.titlecase, :length => 20), wiki_cate_path(@wiki.postcategory.to_s)) %>
 <%end %>
 <p>
  <h2> <%= @wiki.title %> </h2>
