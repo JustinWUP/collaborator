@@ -40,7 +40,7 @@
     <div class="checkbox-scroll">
       <% User.hasrole("wupteam").notblock.each do |user| %>
         <div id="" class="checkbox-group users">
-          <%= radio_button_tag "task[user_ids][]", user.id, @task.user_ids.include?(user.id), :id => user.email, :checked => true %>
+          <%= radio_button_tag "task[user_ids][]", user.id, @task.user_ids.include?(user.id), :id => user.email %>
           <%= label_tag 'task[user_ids][]', user.email, :for => user.email %>
         </div><!-- / -->
       <% end %>
