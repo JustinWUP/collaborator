@@ -23,7 +23,7 @@ tasks.js: tasks-77c4f81d5004da19dd2fc4f6b7de4515.js
 tasks/index.js: tasks-77c4f81d5004da19dd2fc4f6b7de4515.js
 timer.js: timer-e65cd0f1b8e039521a3e07f0571fa294.js
 timer/index.js: timer-e65cd0f1b8e039521a3e07f0571fa294.js
-application.css: application-a189a99e2ff3c978c4e557e7753de68f.css
-application/index.css: application-a189a99e2ff3c978c4e557e7753de68f.css
+application.css: application-36ba1753c60757c85e50f83b18872f53.css
+application/index.css: application-36ba1753c60757c85e50f83b18872f53.css
 LICENSE.txt: LICENSE-66562b92d40d1bb3f90888483d5911c0.txt
 LICENSE/index.txt: LICENSE-66562b92d40d1bb3f90888483d5911c0.txt
