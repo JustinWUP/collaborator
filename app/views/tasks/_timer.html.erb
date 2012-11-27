@@ -1,13 +1,12 @@
 <!-- TODO: Style how this form lays out in the next steps pane -->
 <%= javascript_include_tag 'timer' %>
-<div id="instruct">Click 'Start Timer' to track time worked on this task.</div><br>
 <%= form_for([@topic, @task]) do |t| %>
 <input id="clock" readonly="" style="text-align: center;">
 <%= t.hidden_field :time, :id => "timesend", :readonly=>"" %>
 <input id="startstopbutton" type="button" value="Start Timer" onclick="startstop();">
 <div id="changetagbox">
 <%= t.label :changetag, "What did you update here?" %><br />
-<%= t.text_area :changetag, :id => "changetag", :value => "", :rows => 2, :cols => 23 %>
+<%= t.text_area :changetag, :id => "changetag", :value => "", :rows => 2, :cols => 18 %>
   </div>
 <%= t.submit :disabled => true, :id => "update", :class=>"disable" %>
 <% end %>

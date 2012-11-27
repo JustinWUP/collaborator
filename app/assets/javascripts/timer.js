@@ -1,13 +1,8 @@
 	$(document).ready(function(){
-		var clock = document.getElementById('clock');
-		var instruct = document.getElementById('instruct');
-		var timesend = document.getElementById('timesend');
-		var changetag = document.getElementById('changetag');
 		$('#update').hide();
 		$('#changetagbox').hide();
-		clock.value = '';
-		// nextsteps.style.height = "190px";
-		clock.style.background = '#ddd';
+		$("#clock").val('');
+		$("#clock").css('background', '#ddd');
 		// sets a variable if timer saved
 		document.getElementById('update').onclick = function(){
     	window.btn_clicked = true;
@@ -29,7 +24,7 @@
 		        	return "You have unsaved time tracked on this task. Don't forget to save!";
 		    	}
 
-		    	if(window.btn_clicked && !hasData(changetag.value)) {
+		    	if(window.btn_clicked && !hasData($("#changetagbox").val())) {
 		    		return "Please enter a note about what you did on this task."
 		    	}
 
@@ -43,48 +38,36 @@
 
 	function startstop()
 		{
-		var startstop = document.getElementById('startstopbutton');
+		// var startstop = document.getElementById('startstopbutton');
 		// var nextsteps = document.getElementById('next-steps');
-		var updatebutton = document.getElementById('update');
+		// var updatebutton = document.getElementById('update');
 		if(flagclock==0)
 			{
-			startstop.value = 'Stop Timer';
-			instruct.innerHTML = "Click 'Stop Timer' when finished.";
+			$("#startstopbutton").val('Stop Timer');
 			flagclock = 1;
 			startTimer();
 			
-			updatebutton.disabled = true;
+			$("#update").attr('disabled', true);
 			$('#update').show();
-			// updatebutton.style.visibility = "visible";
-			updatebutton.value = "Currently Timing...";
-			clock.style.background = 'white';
-			if(clock.value == "0:00"){	
-				// nextsteps.style.height = "220px";
-				}
-			else {
-				// nextsteps.style.height = "300px";
-				}
+			$('#update').val("Currently Timing...");
+			$('#clock').css('background', 'white');
+
 			}
 		else
 			{
-			startstop.value = 'Continue Timer';
-			instruct.innerHTML = "'Continue Timer' to keep working."
+			$('#startstopbutton').val('Continue Timer');
 			flagclock = 0;
 			flagstop = 1;
 			pauseTimer();
 			if(clock.value != "0:00")  {
-				updatebutton.disabled = false;
-				updatebutton.style.background = "indianred";
-				updatebutton.value ="Update Task Time";
-				// nextsteps.style.height = "300px";
-				// nextsteps.style.top = "40px";
-				updatebutton.style.top = "262px";
-				timesend.value = decimalTime();
+				$("#update").attr('disabled', false);
+				$('#update').addClass("adminactions");
+				$('#update').val("Update Task Time");
+				$('#timesend').val(decimalTime());
 				$('#changetagbox').show();
-				instruct.innerHTML = "'Continue Timer' to keep working or 'Update Task Time' to save your time."
 				}
 			else{
-				updatebutton.value = "No Time Logged."
+				$('#update').val("No Time Logged.");
 				}
 			}
 		}
@@ -107,7 +90,7 @@ function buildTime(t) {
 
 function decimalTime(){
 	
-	clockvalue = clock.value;
+	clockvalue = $("#clock").val();
 	timearray = clockvalue.split(":");
 	minutes = timearray[1] / 60;
 	hours = timearray[0] / 1;
@@ -124,12 +107,12 @@ function startTimer() {
         time.setHours(0);
         time.setSeconds(0); // Sets seconds to 0
         time.setMinutes(0);
-        clock.value = buildTime(time); // buildTime(time) returns 00:00
+        $('#clock').val(buildTime(time)); // buildTime(time) returns 00:00
     }
     // Update seconds, to be executed every second or 1000 miliseconds
     function changeTimer() {
         time.setSeconds(time.getSeconds()+1);
-        clock.value = buildTime(time);
+        $('#clock').val(buildTime(time));
     }
     // Set Interval to every second
     interval = setInterval(changeTimer, 1000);
