@@ -24,7 +24,7 @@
 		        	return "You have unsaved time tracked on this task. Don't forget to save!";
 		    	}
 
-		    	if(window.btn_clicked && !hasData($("#changetagbox").val())) {
+		    	if(window.btn_clicked && !hasData($("#changetagbox"))) {
 		    		return "Please enter a note about what you did on this task."
 		    	}
 
