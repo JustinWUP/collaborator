@@ -41,6 +41,15 @@ class Notifier < ActionMailer::Base
     mail(:to => @lookup.email, :subject => "#{@subjecttitle} has been approved.")
   end
 
+  def task_decline(subscription,topicid,taskname,taskid)
+    @lookup = User.find_by_id(subscription)
+    @taskid = taskid
+    @subjecttitle = taskname
+    @topicid = topicid 
+    mail(:to => @lookup.email, :subject => "#{@subjecttitle} has been declined.")
+  end
+
+
   def nested_resource_link
     link = ""
     

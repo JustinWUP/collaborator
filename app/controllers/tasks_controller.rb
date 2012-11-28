@@ -173,14 +173,14 @@ class TasksController < ApplicationController
       @task.active = true
       @task.save
       flash[:notice] = 'Task was declined.'
-      # hey = @task.topic.id
-      # taskname = @task.name
-      # taskid = @task.id
+      hey = @task.topic.id
+      taskname = @task.name
+      taskid = @task.id
 
-      # @task.user_ids.each do |subscription| 
-      #   lookup = User.find_by_id(subscription) 
-      #   Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
-      # end
+      @task.user_ids.each do |subscription| 
+        lookup = User.find_by_id(subscription) 
+        Notifier.task_decline(lookup,hey,taskname,taskid).deliver unless lookup == current_user
+      end
     
     else
       flash[:notice] = 'Task cannot be declined until it is ready for review.'
