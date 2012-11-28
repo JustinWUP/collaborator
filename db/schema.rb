@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(:version => 20121120020406) do
     t.integer  "user_id"
   end
 
+  create_table "conversations", :force => true do |t|
+    t.string   "subject",    :default => ""
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -90,6 +96,24 @@ ActiveRecord::Schema.define(:version => 20121120020406) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "enabled",    :default => false
   end
+
+  create_table "notifications", :force => true do |t|
+    t.string   "type"
+    t.text     "body"
+    t.string   "subject",              :default => ""
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "conversation_id"
+    t.boolean  "draft",                :default => false
+    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                              :null => false
+    t.integer  "notified_object_id"
+    t.string   "notified_object_type"
+    t.string   "notification_code"
+    t.string   "attachment"
+  end
+
+  add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
@@ -118,6 +142,20 @@ ActiveRecord::Schema.define(:version => 20121120020406) do
     t.integer "user_id"
     t.integer "project_id"
   end
+
+  create_table "receipts", :force => true do |t|
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.integer  "notification_id",                                  :null => false
+    t.boolean  "read",                          :default => false
+    t.boolean  "trashed",                       :default => false
+    t.boolean  "deleted",                       :default => false
+    t.string   "mailbox_type",    :limit => 25
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -176,6 +214,10 @@ ActiveRecord::Schema.define(:version => 20121120020406) do
     t.decimal  "hoursused"
     t.integer  "work_status",             :default => 1
     t.string   "topic_tag",               :default => "New Topic,newtopictag"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -198,6 +240,10 @@ ActiveRecord::Schema.define(:version => 20121120020406) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.integer  "organization_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.boolean  "blocked",                :default => false
     t.boolean  "topicmail",              :default => true
     t.string   "firstname",              :default => ""
