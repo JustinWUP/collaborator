@@ -19,7 +19,7 @@ Recent Progress<br>
 
   	</tr>
 
-	  <% @task.audits.reverse.each do |audit| %>
+	  <% @task.audits.each do |audit| %>
     <%if audit.tag %>
 	  <tr>
 <!-- 	  	<% if audit.user_id %>
