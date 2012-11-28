@@ -5,13 +5,16 @@ class TasksController < ApplicationController
 
   helper_method :englishtime
   helper_method :ready_for_review
-  before_filter :find_topic
+  before_filter :find_topic , :except => [:index]
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => [:show, :charge]
 
   def index
-    @tasks = @topic.tasks.all
+    @projects = Project.accessible_by(current_ability)
+    @tasks = Task.accessible_by(current_ability)
+    @weektask = @tasks.this_week
+    @appname = "RESOURCES "
 
     respond_to do |format|
       format.html # index.html.erb
