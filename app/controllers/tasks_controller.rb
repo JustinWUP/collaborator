@@ -133,7 +133,7 @@ class TasksController < ApplicationController
       taskname = @task.name
       taskid = @task.id
 
-      Notifier.task_review(hey,taskname,taskid).deliver
+      Notifier.task_review(hey,taskname,taskid).deliver unless current_user.email == "justin@winduppixel.com"
       end
       respond_to do |format|
         format.html {redirect_to topic_task_path (@topic)}
