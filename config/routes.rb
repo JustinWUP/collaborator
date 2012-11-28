@@ -51,6 +51,7 @@ Collaborator::Application.routes.draw do
         get 'charge'
         get 'review'
         get 'approve'
+        get 'decline'
       end
     end
   end

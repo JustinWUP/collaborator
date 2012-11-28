@@ -26,7 +26,7 @@ module TasksHelper
 
 	def ready_for_review(task)
 		if task.audits.count>1
-			if task.changetag  == 'topic task ' + (@topic.id.to_f / @task.id.to_f).to_s + ' reviewing'
+			if task.changetag  == 'topic task ' + (@topic.id.to_f / task.id.to_f).to_s + ' reviewing'
 				return true
 			end
 		end

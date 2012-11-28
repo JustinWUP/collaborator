@@ -143,7 +143,7 @@ class TasksController < ApplicationController
 
   def approve
     if ready_for_review(@task)
-      @task.changetag = 'topic task ' + (@task.id.to_f / @topic.id.to_f).to_s + ' approved'
+      @task.changetag = 'Task approved.'
       @task.audit_tag_with('Task approved.')
       @task.save
       flash[:notice] = 'Task was approved.'
@@ -158,6 +158,32 @@ class TasksController < ApplicationController
     
     else
       flash[:notice] = 'Task cannot be approved until it is ready for review.'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to topic_task_path (@topic)}
+    end
+
+  end
+
+    def decline
+    if ready_for_review(@task)
+      @task.changetag = 'Task declined.'
+      @task.audit_tag_with('Task declined.')
+      @task.active = true
+      @task.save
+      flash[:notice] = 'Task was declined.'
+      # hey = @task.topic.id
+      # taskname = @task.name
+      # taskid = @task.id
+
+      # @task.user_ids.each do |subscription| 
+      #   lookup = User.find_by_id(subscription) 
+      #   Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
+      # end
+    
+    else
+      flash[:notice] = 'Task cannot be declined until it is ready for review.'
     end
 
     respond_to do |format|

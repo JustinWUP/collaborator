@@ -41,8 +41,8 @@
   <%= link_to icon('pencil', 2) + ' Edit Task', edit_topic_task_path(@topic, @task), :class =>"adminactions" %>
   <%if @task.audits.count > 1 %>
     <% if !@task.active && ready_for_review(@task) %>
-    <%= link_to icon('check',2) +"Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %> 
-    <!-- this could use some sort of Decline action too... -->
+    <%= link_to icon('check',2) + "Approve", approve_topic_task_path(@topic, @task), :class =>"adminactions" %> 
+    <%= link_to icon('remove', 2) + "Decline", decline_topic_task_path(@topic, @task), :class =>"adminactions" %>
     <% end %>
   <% end %>
 <% end %>
