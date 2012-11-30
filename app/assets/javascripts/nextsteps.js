@@ -14,8 +14,8 @@ $("#shower").click(function(){
     $("#next-steps").animate({marginLeft:'-187px'}, 'slow');   
     $("#content").animate({marginLeft:'40px', width:'90%', paddingRight:'150px'}, 'slow');   
     $("#content-wrap").animate({paddingLeft:'80px', width:'100%'}, 'slow');  
-    $(".topics-ul > li").animate({width:'10%', padding:'0px'}, 'slow');
-    $(".project").animate({width:'19%', display:''}, 'slow');
+    // $(".topics-ul > li").animate({width:'10%', padding:'0px'}, 'slow');
+    // $(".project").animate({width:'19%', display:''}, 'slow');
 
     $("#button").attr('class',"icon-chevron-right");
     slide = 1;
@@ -26,9 +26,9 @@ $("#shower").click(function(){
 		$("#content-wrap").animate({ width:'90%'}, 'slow');  
 		$("#button").attr('class',"icon-chevron-left");
 
-		$(".topics-ul > li").animate({width:'20%'}, 'slow');
+		// $(".topics-ul > li").animate({width:'20%', padding:'5%'}, 'fast');
 
-		$(".project").animate({width:'25%', display:''}, 'slow');
+		// $(".project").animate({width:'25%', display:''}, 'slow');
     slide = 0;
 	}
 });

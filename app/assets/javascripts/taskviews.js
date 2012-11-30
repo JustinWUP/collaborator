@@ -19,7 +19,7 @@
         $("#week").css("background", 'indianred');
   $.ajax({
       url: "/today",
-      cache: true,
+      cache: false,
       success: function(html){
         $("#taskview").html(html);
 
@@ -35,7 +35,7 @@
         $("#week").css("background", 'green');
     $.ajax({
       url: "/week",
-      cache: true,
+      cache: false,
       success: function(html){
         $("#taskview").html(html);
 
