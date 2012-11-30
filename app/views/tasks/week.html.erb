@@ -1,0 +1,31 @@
+<% if @tasks.exists? %>
+<h3>Work Completed This Week:</h3>
+<table id="orgtable" >
+  <tr>
+    <th>
+      Task name
+    </th>
+    <th>
+      Tag
+    </th>
+    <th>
+      Time Used
+    </th>
+  </tr>
+
+<% @tasks.find_each do |task| %>
+<% task.audits.where('DATE(updated_at) >= ?', 7.days.ago).each do |a| %>
+ <% if  a.modifications['time'].to_f > 0.0 %>
+ <tr>
+ <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+ <td><%= a.tag %></td>
+ <td><%= englishtime(a.modifications['time']) %></td>
+
+</tr>
+ <% end %>
+ <% end %> 
+ <% end %>
+</table>
+  <% else %>
+ <h3> No work completed this week.</h3>
+<% end %>

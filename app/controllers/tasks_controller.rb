@@ -5,17 +5,13 @@ class TasksController < ApplicationController
 
   helper_method :englishtime
   helper_method :ready_for_review
-  before_filter :find_topic , :except => [:index]
+  before_filter :find_topic , :except => [:index, :today, :week]
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => [:show, :charge]
 
   def index
-    @projects = Project.accessible_by(current_ability)
     @tasks = Task.accessible_by(current_ability)
-    @weektask = @tasks.this_week
-    @appname = "RESOURCES "
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
@@ -62,6 +58,15 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def today
+     
+     render :layout => false
+  end
+
+def week
+    render :layout => false
   end
 
   # PUT /tasks/1
