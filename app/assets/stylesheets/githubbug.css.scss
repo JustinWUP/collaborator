@@ -555,6 +555,10 @@ display: inline;
   }
 }
 
+.active {
+  background: green !important;
+}
+
 #retainer-heading, #retainer-hours {
   margin-bottom:7px ;
 }

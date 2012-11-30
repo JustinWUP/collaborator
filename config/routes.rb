@@ -57,8 +57,10 @@ Collaborator::Application.routes.draw do
   end
 
   match "/resources" => "tasks#index"
-  match "/today" => "tasks#today", :as => "today_task"
-    match "/week" => "tasks#week", :as => "week_task"
+  match "/task_feeds/today" => "tasks#today", :as => "today_task"
+  match "/task_feeds/week" => "tasks#week", :as => "week_task"
+  match "/task_feeds/active" => "tasks#active"
+
 
 match "/projects/:id/topics/:id/attach" => "topics#attach"
 

@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   helper_method :englishtime
   helper_method :ready_for_review
-  before_filter :find_topic , :except => [:index, :today, :week]
+  before_filter :find_topic , :except => [:index, :today, :week, :active]
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => [:show, :charge]
@@ -66,6 +66,11 @@ class TasksController < ApplicationController
   end
 
 def week
+    render :layout => false
+  end
+
+  def active
+    @active = @tasks.active
     render :layout => false
   end
 
