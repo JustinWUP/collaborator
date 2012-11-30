@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   has_many :users, :through => :assignments
   has_many :assignments
   scope :active, :conditions => {:active => true}
-  scope :today, :conditions => ["DATE(updated_at) = DATE(?)", Time.now]
+  scope :today, :conditions => ["DATE(updated_at) = DATE(?)", Date.today]
   scope :this_week, :conditions => ["DATE(updated_at) >= DATE(?)", 7.days.ago]
   # change how time saves into the database before making it auditable
   audit :time

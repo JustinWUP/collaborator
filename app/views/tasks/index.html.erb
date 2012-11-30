@@ -1,7 +1,9 @@
-<h2>Tasks for Topic <%=@topic.title.camelcase%></h2>
+<h2>Tasks for Topic <%#@topic.title.camelcase%></h2>
 
 <table>
   <tr>
+<!--     <th>Project</th> -->
+    <th>Topic</th>
     <th>Name</th>
     <th>Time</th>
     <th>Description</th>
@@ -10,21 +12,92 @@
     <th></th>
     <th></th>
   </tr>
+<% @projects.each do |p| %>
+  <h2><%= link_to p.name, p %></h2>
+  <% p.topics.active.each do |t| %>
+    <% if t.tasks.active.exists? %>
+      <h3><%= link_to t.title, project_topic_path(t.project, t) %></h3>
+      <% t.tasks.active.accessible_by(current_ability).each do |task| %>
+        <%= task.name %>
+      <% end %>
+    <% end%>
+  <% end %>
+<% end %>
 
-<% @tasks.each do |task| %>
+<% @tasks.active.each do |task| %>
   <tr>
-    <td><%= task.name %></td>
-    <td><%= task.time.to_d.round(2) %></td>
-    <td><%= task.description %></td>
+<!--     <td><%# link_to task.topic.project.name, task.topic.project %> </td> -->
+    <td><%= link_to task.topic.title, project_topic_path(task.topic.project, task.topic) %> </td>
+    <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+    <td><%= englishtime(task.time) %></td>
+    <td><%= task.updated_at %></td>
     <td><%= task.active %></td>
-    <td><%= taskedto(task.user_ids) %></td>
-    <td><%= link_to 'Show', topic_task_path(@topic, task) %></td>
-    <td><%= link_to 'Edit', edit_topic_task_path(@topic, task) %></td>
-    <td><%= link_to 'Destroy', topic_task_path(@topic, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  
+
+    <td><%# taskedto(task.user_ids) %></td>
+    <td><%# link_to 'Destroy', topic_task_path(@topic, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+<% if @weektask.today.exists? %>
+<h3>Work Completed Today:</h3>
+<table id="orgtable" >
+  <tr>
+    <th>
+      Task name
+    </th>
+    <th>
+      Tag
+    </th>
+    <th>
+      Time Used
+    </th>
+  </tr>
 
-<%= link_to 'Create New Task', new_topic_task_path(@topic) %>
+<% @weektask.today.find_each do |task| %>
+<% task.audits.each do |a| %>
+ <% if  a.modifications['time'].to_f > 0.0 %>
+ <tr>
+ <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+ <td><%= a.tag %></td>
+ <td><%= englishtime(a.modifications['time']) %></td>
+
+</tr>
+ <% end %>
+ <% end %> 
+ <% end %>
+</table>
+<br />
+
+<% end %>
+<% if @weektask.exists? %>
+<h3>Work Completed This Week:</h3>
+<table id="orgtable" >
+  <tr>
+    <th>
+      Task name
+    </th>
+    <th>
+      Tag
+    </th>
+    <th>
+      Time Used
+    </th>
+  </tr>
+
+<% @weektask.find_each do |task| %>
+<% task.audits.each do |a| %>
+ <% if  a.modifications['time'].to_f > 0.0 %>
+ <tr>
+ <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+ <td><%= a.tag %></td>
+ <td><%= englishtime(a.modifications['time']) %></td>
+
+</tr>
+ <% end %>
+ <% end %> 
+ <% end %>
+</table>
+<% end %>
