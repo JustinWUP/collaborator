@@ -2,7 +2,6 @@ $(document).ready(function(){
       
   taskView($("#active"), '/task_feeds/active');
 
-
   $("#today").click(function(){
    taskView($("#today"), '/task_feeds/today');
   });
