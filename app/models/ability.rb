@@ -16,11 +16,12 @@
         can :update, Task
         can :review, Task
         cannot :approve, Task
-        can :index, Task, :users => {:id => user.id }
         cannot :edit, Task
         cannot :charge, Task
-        can :today, Task
-        can :week, Task
+        can :active, Resource 
+        can :today, Resource
+        can :week, Resource
+        can :index, Resource
       else
         can :read, Project, :users => {:id => user.id }
         can :read, Topic

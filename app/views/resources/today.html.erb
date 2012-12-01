@@ -1,5 +1,5 @@
-<% if @active.exists? %>
-<h3>Active Tasks:</h3>
+<% if @tasks.today.exists? %>
+<h3>Work Completed Today:</h3>
 <table id="orgtable" >
   <tr>
     <th>
@@ -11,15 +11,24 @@
     <th>
       Time Used
     </th>
+    <% if current_user.role? :admin  %>
+    <th>
+      Who Worked on This?
+    </th>
+<% end %>
   </tr>
 
-<% @active.find_each do |task| %>
-<% task.audits.each do |a| %>
+<% @tasks.find_each do |task| %>
+<% task.audits.where('DATE(updated_at) = ?', Date.today).each do |a| %>
  <% if  a.modifications['time'].to_f > 0.0 %>
  <tr>
  <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
  <td><%= a.tag %></td>
  <td><%= englishtime(a.modifications['time']) %></td>
+ <% if current_user.role? :admin  %>
+    <td><%= User.find_by_id(task.user_ids).email %></td>
+<% end %>
+
 
 </tr>
  <% end %>
@@ -27,5 +36,5 @@
  <% end %>
 </table>
   <% else %>
- <h3> No work completed this week.</h3>
+ <h3> No work completed today.</h3>
 <% end %>

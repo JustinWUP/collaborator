@@ -1,0 +1,41 @@
+<% if @active.exists? %>
+  <h3>Active Tasks:</h3>
+  <table id="orgtable" >
+    <tr>
+      <th>
+        Task name
+      </th>
+      <th>
+        Task Description
+      </th>
+      <th>
+        Time Used
+      </th>
+  <% if current_user.role? :admin  %>
+      <th>
+        Who Worked on This?
+      </th>
+  <% end %>
+    </tr>
+
+  <% @active.find_each do |task| %>
+ 
+    <% @showsum = 0.0 %>
+    <% task.audits.each do |time| %>
+      <% @showsum += time.modifications['time'].to_f %>
+    <% end %>
+
+   <tr>
+   <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+   <td><%= task.description %></td>
+   <td><%= englishtime(@showsum) %></td>
+  <% if current_user.role? :admin  %>
+      <td><%= User.find_by_id(task.user_ids).email %></td>
+  <% end %>
+
+  </tr>
+   <% end %> 
+  </table>
+    <% else %>
+   <h3> No active tasks.</h3>
+  <% end %>

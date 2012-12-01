@@ -5,18 +5,11 @@ class TasksController < ApplicationController
 
   helper_method :englishtime
   helper_method :ready_for_review
-  before_filter :find_topic , :except => [:index, :today, :week, :active]
+  before_filter :find_topic 
   after_filter :sumalltime, :only => [:update, :create, :destroy]
   # after_filter :timeconvert, :only => [:update]
   before_filter :sumtasktime, :only => [:show, :charge]
 
-  def index
-    @tasks = Task.accessible_by(current_ability)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tasks }
-    end
-  end
 
   # GET /tasks/1
   # GET /tasks/1.json
@@ -60,19 +53,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def today
-     
-     render :layout => false
-  end
-
-def week
-    render :layout => false
-  end
-
-  def active
-    @active = @tasks.active
-    render :layout => false
-  end
 
   # PUT /tasks/1
   # PUT /tasks/1.json

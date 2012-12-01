@@ -1,27 +1,21 @@
-  $(document).ready(function(){
+$(document).ready(function(){
       
-    taskView($("#active"), '/task_feeds/active');
+  taskView($("#active"), '/task_feeds/active');
 
 
   $("#today").click(function(){
-
-  taskView($("#today"), '/task_feeds/today');
-
+   taskView($("#today"), '/task_feeds/today');
   });
 
   $("#week").click(function(){
-
-  taskView($("#week"), '/task_feeds/week');
-
+    taskView($("#week"), '/task_feeds/week');
   });
 
 
-$("#active").click(function(){
+  $("#active").click(function(){
+    taskView($("#active"), '/task_feeds/active');
+  });
 
-  taskView($("#active"), '/task_feeds/active');
-      });
-
-      // buttonToggle($("#button"));
 });
 
 
