@@ -48,7 +48,7 @@ NAVMENU
 	end
 
 	def cp(path)
-		if params[:controller] == "topics"
+		if %w[topics tasks].include? params[:controller]
 			@hey = "projects"
 		elsif %w[registrations settings organizations subscriptions].include? params[:controller] 
 			@hey = "user"

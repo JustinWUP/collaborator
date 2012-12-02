@@ -4,13 +4,13 @@ $(document).ready(function(){
   $("#adminfilter").click(function(){
     taskflip = (taskflip == 1) ? 0:1;
     if( taskflip == 1){
-      $("#orgtable tr td:nth-child(4):not(:contains('<%= current_user.email %>'))").each(function(){
+      $("#orgtable tr td:nth-child(5):not(:contains('<%= current_user.email %>'))").each(function(){
       $(this).parent().hide();
     });
     $("#adminfilter").val("Only Your Tasks");
     }
     else {
-      $("#orgtable tr td:nth-child(4):not(:contains('<%= current_user.email %>'))").each(function(){
+      $("#orgtable tr td:nth-child(5):not(:contains('<%= current_user.email %>'))").each(function(){
       $(this).parent().show();
     });
     $("#adminfilter").val("All Tasks");
