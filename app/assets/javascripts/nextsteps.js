@@ -12,8 +12,8 @@ $("#shower").click(function(){
 	
 	if(slide == 0) {
     $("#next-steps").animate({marginLeft:'-187px'}, 'slow');   
-    $("#content").animate({marginLeft:'40px', width:'90%', paddingRight:'150px'}, 'slow');   
-    $("#content-wrap").animate({paddingLeft:'80px', width:'100%'}, 'slow');  
+    $("#content").animate({marginLeft:'40px', width:'90%'}, 'slow');   
+    $("#content-wrap").animate({paddingLeft:'80px', width:'90%'}, 'slow');  
     // $(".topics-ul > li").animate({width:'10%', padding:'0px'}, 'slow');
     // $(".project").animate({width:'19%', display:''}, 'slow');
 
