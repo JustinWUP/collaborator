@@ -9,6 +9,8 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/.DS_Store
+/*/.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
