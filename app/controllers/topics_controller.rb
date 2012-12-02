@@ -86,6 +86,22 @@ class TopicsController <  ApplicationController
     else
       render :action => 'attach'
     end
+
+    if @topic.work_status == 3
+      @topic.tasks.active.each do |t|
+        t.active = false
+        t.audit_tag_with('Task closed because Topic approved by Client.')
+        t.save
+        hey = t.id
+        taskname = t.name
+        taskid = t.id
+
+        t.user_ids.each do |subscription| 
+          lookup = User.find_by_id(subscription) 
+          Notifier.task_approve(lookup,hey,taskname,taskid).deliver unless lookup == current_user
+        end
+      end
+    end
         
     @comment = Comment.new
 
