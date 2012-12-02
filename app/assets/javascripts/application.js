@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require ui.core
 //= require jquery.scrollfollow
+//= require jquery.tablesorter
+//= require jquery.tablesorter.pager
+//= require taskviews
 //= require nextsteps
 //= require topicsort

@@ -1,0 +1,42 @@
+<% if @tasks.this_week.exists? %>
+<%= render "taskflip" %>
+<h3>Work Completed This Week:</h3>
+<table id="orgtable" class="tablesorter">
+  <thead>
+  <tr>
+    <th>
+      Task name
+    </th>
+    <th>
+      Tag
+    </th>
+    <th>
+      Time Used
+    </th>
+    <% if current_user.role? :admin  %>
+    <th>
+      Who Worked on This?
+    </th>
+<% end %>
+  </tr>
+</thead>
+<tbody>
+<% @tasks.find_each do |task| %>
+<% task.audits.where('DATE(updated_at) >= ?', 7.days.ago).each do |a| %>
+ <% if  a.modifications['time'].to_f > 0.0 %>
+ <tr>
+ <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+ <td><%= a.tag %></td>
+ <td><%= englishtime(a.modifications['time']) %></td>
+ <% if current_user.role? :admin  %>
+    <td><%= User.find_by_id(task.user_ids).email %></td>
+<% end %>
+</tr>
+ <% end %>
+ <% end %> 
+ <% end %>
+</tbody>
+</table>
+  <% else %>
+ <h3> No work completed this week.</h3>
+<% end %>

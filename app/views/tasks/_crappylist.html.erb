@@ -1,0 +1,41 @@
+<h2>Tasks for Topic <%#@topic.title.camelcase%></h2>
+
+<table>
+  <tr>
+<!--     <th>Project</th> -->
+    <th>Topic</th>
+    <th>Name</th>
+    <th>Time</th>
+    <th>Description</th>
+    <th>Active</th>
+    <th>Tasked To</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @projects.each do |p| %>
+  <h2><%= link_to p.name, p %></h2>
+  <% p.topics.active.each do |t| %>
+    <% if t.tasks.active.exists? %>
+      <h3><%= link_to t.title, project_topic_path(t.project, t) %></h3>
+      <% t.tasks.active.accessible_by(current_ability).each do |task| %>
+        <%= task.name %>
+      <% end %>
+    <% end%>
+  <% end %>
+<% end %>
+
+<% @tasks.active.each do |task| %>
+  <tr>
+<!--     <td><%# link_to task.topic.project.name, task.topic.project %> </td> -->
+    <td><%= link_to task.topic.title, project_topic_path(task.topic.project, task.topic) %> </td>
+    <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
+    <td><%= englishtime(task.time) %></td>
+    <td><%= task.updated_at %></td>
+    <td><%= task.active %></td>
+  
+
+    <td><%# taskedto(task.user_ids) %></td>
+    <td><%# link_to 'Destroy', topic_task_path(@topic, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
