@@ -3,6 +3,7 @@ class ResourcesController < ApplicationController
   # GET /tasks.json
   load_and_authorize_resource
   before_filter :find_tasks
+  before_filter :appname
 
   def index
     respond_to do |format|
@@ -27,6 +28,10 @@ class ResourcesController < ApplicationController
   private 
   	def find_tasks
   		@tasks = Task.accessible_by(current_ability)
+  	end
+
+  	def appname
+  		@appname = "RESOURCES"
   	end
 
 end

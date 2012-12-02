@@ -43,7 +43,10 @@ function taskView(element, url){
       cache: true,
       success: function(html){
         $("#taskview").html(html);
+        $("#orgtable").tablesorter(); 
 
       }
   });
 }
+
+

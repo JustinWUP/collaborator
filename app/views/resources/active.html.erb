@@ -1,41 +1,45 @@
 <% if @active.exists? %>
+<%= render "taskflip" %>
   <h3>Active Tasks:</h3>
-  <table id="orgtable" >
-    <tr>
+  <table id="orgtable" class="tablesorter" >
+    <thead>
+      <tr>
       <th>
         Task name
       </th>
       <th>
-        Task Description
+        Project Name
       </th>
       <th>
-        Time Used
+        Topic Name
       </th>
   <% if current_user.role? :admin  %>
       <th>
-        Who Worked on This?
+        Whose Task is This?
       </th>
   <% end %>
     </tr>
-
+  </thead>
+<tbody>
   <% @active.find_each do |task| %>
  
-    <% @showsum = 0.0 %>
-    <% task.audits.each do |time| %>
-      <% @showsum += time.modifications['time'].to_f %>
-    <% end %>
-
-   <tr>
+   <tr style ="border-top:1px #ccc dashed;">
    <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
-   <td><%= task.description %></td>
-   <td><%= englishtime(@showsum) %></td>
+   <td><%= link_to task.topic.project.name, project_path(task.topic.project) %></td>
+   <td><%= link_to truncate(task.topic.title, :length => 25), project_topic_path(task.topic.project, task.topic) %></td>
   <% if current_user.role? :admin  %>
       <td><%= User.find_by_id(task.user_ids).email %></td>
   <% end %>
 
   </tr>
+
    <% end %> 
+   </tbody>
   </table>
     <% else %>
    <h3> No active tasks.</h3>
   <% end %>
+
+<script type="text/javascript">
+
+</script>

@@ -1,3 +1,10 @@
+<script type ="text/javascript">
+$(document).ready(function() { 
+  $("#burger").tablesorter(); 
+}); 
+</script>
+
+
 <%if @wiki.postcategory != '' %>
 <% add_nav_link(link_to truncate(@wiki.postcategory.humanize.titlecase, :length => 20), wiki_cate_path(@wiki.postcategory.to_s)) %>
 <%end %>

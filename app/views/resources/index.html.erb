@@ -1,8 +1,15 @@
-<h2 id="init">Welcome to the Tasks Page.</h2>
-<input type="button" id="active" class="buttonstyle active" value="Active" disabled="disabled">
-<input type="button" id="today" class="buttonstyle" value="Today" >
-<input type="button" id="week" class="buttonstyle"  value="Week">
-<br><br>
+<h2 id="init">Your Task Lists</h2>
+<%= content_for :admin_links do %>
+  	<div style="text-align:center;">Viewing:</div><br>
+  <input type="button" id="active" class="buttonstyle active" value="Active" style="width:140px;" disabled="disabled"><br>
+  <input type="button" id="today" class="buttonstyle" value="Done Today"  style="width:140px;"><br>
+  <input type="button" id="week" class="buttonstyle"  value="Done This Week"  style="width:140px;"><br>
+  <% if current_user.role? :admin %>
+  <br>
+  	<input type="button" id="adminfilter" value="All Tasks"   style="width:140px;">
+  <% end %>
+<% end %>
+
 <div id ="taskview">
 
 </div>
