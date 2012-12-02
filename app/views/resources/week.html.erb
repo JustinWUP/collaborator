@@ -22,7 +22,7 @@
 </thead>
 <tbody>
 <% @tasks.find_each do |task| %>
-<% task.audits.where('DATE(updated_at) >= ?', 7.days.ago).each do |a| %>
+<% task.audits.where('DATE(created_at) >= ?', 7.days.ago).each do |a| %>
  <% if  a.modifications['time'].to_f > 0.0 %>
  <tr>
  <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
