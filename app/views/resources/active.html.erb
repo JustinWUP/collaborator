@@ -5,13 +5,16 @@
     <thead>
       <tr>
       <th>
-        Task name
+        Task Name
       </th>
       <th>
         Project Name
       </th>
       <th>
         Topic Name
+      </th>
+      <th>
+        Client Reviewing
       </th>
   <% if current_user.role? :admin  %>
       <th>
@@ -27,6 +30,7 @@
    <td><%= link_to task.name, topic_task_path(task.topic, task) %></td>
    <td><%= link_to task.topic.project.name, project_path(task.topic.project) %></td>
    <td><%= link_to truncate(task.topic.title, :length => 25), project_topic_path(task.topic.project, task.topic) %></td>
+   <td><%= tableicon('exclamation-sign', 'y', 2) if task.topic.work_status == 2%></td>
   <% if current_user.role? :admin  %>
       <td><%= User.find_by_id(task.user_ids).email %></td>
   <% end %>

@@ -14,7 +14,6 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @task }
@@ -63,12 +62,13 @@ class TasksController < ApplicationController
       if @task.update_attributes(params[:task])
         if params[:task][:time]
           @task.audit_tag_with(@task.changetag)
+          @task.time = "0.0"
         end 
 
         # if @task.audits[@audit.to_i-1].tag == 'Marked for review.' && params[:task][:active] == true
         #   @task.audit_tag_with('Task test')
         # end 
-        @task.time = "0.0"
+        # @task.time = "0.0"
         @task.save
 
         format.html { redirect_to topic_task_path(@topic), notice: 'Task was successfully updated.' }

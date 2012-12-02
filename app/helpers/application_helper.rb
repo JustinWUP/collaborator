@@ -13,6 +13,16 @@ module ApplicationHelper
 	    html.html_safe
   	end
 
+  	def tableicon(name, text, size=1)
+	    #icon("camera-retro")
+	    #<i class="icon-camera-retro"></i> 
+	    
+	    html = "<i class='icon-#{name}' "
+	    html += "style='font-size:#{size}em' "
+	    html += "></i><span style='display:none;'>#{text}</span><br>"
+	    html.html_safe
+  	end
+
 
 	def nav_links_menu
 		links = content_for :nav_links
