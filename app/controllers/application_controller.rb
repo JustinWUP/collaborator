@@ -18,7 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    projects_path
+    unless current_user.role? :wupteam
+      projects_path 
+    else
+      resources_path
+    end
   end
 
   # GET /apps/1

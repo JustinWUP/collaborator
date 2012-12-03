@@ -1,23 +1,28 @@
 <h2>Sign up</h2>
-
+Need to create more Collaborator accounts? <br>
+Enter your information below to get started.<br><br>
+<div id="session-form" style="margin-top:0px; margin-left:0px;">
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
     <div><%= f.label :firstname, "Name:" %><br />
   <%= f.text_field :firstname %></div><br>
 
-  <div><%= f.label :email %> <br />
+  <div><%= f.label :email, "Email Address:" %> <br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :registration_org_id %> <br />
+  <div><%= f.label :registration_org_id, "Organization ID:"%> <br />
   <%= f.text_field :registration_org_id %></div>
   
-  <div><%= f.label :password %> <br />
+  <div><%= f.label :password, "Password:" %> <br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation, "Confirm your Password:" %><br />
   <%= f.password_field :password_confirmation %></div>
-
+<br>
   <div id="sign-up"><%= f.submit "Sign up" %></div>
 <% end %>
-
-<%= render "links" %>
+</div><br>
+<div style="margin-left:22px;">
+<%= link_to "Sign In", new_user_session_path, :class =>  "buttonstyle" %><br><br>
+</div>
+<%# render "links" %>

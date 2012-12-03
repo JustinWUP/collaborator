@@ -1,12 +1,22 @@
-<h2>Forgot your password?</h2>
 
+<h2>Forget your password?</h2>
+<div>
+<div style="margin-top:-20px;">Enter your email address below and we'll email you a link to reset your password.</div>
+<br>
+<div id ="session-form" style="margin-top:0px; margin-left:5%;">
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
-
+<br>
   <div id="resetpasswordsend"><%= f.submit "Reset My Password", confirm: 'Click OK only if you really want to reset your password. If this was a mistake, press Cancel.' %></div>
 <% end %>
-
-<%= render "links"  %>
+</div>
+<div style="margin-left:7%; margin-top:20px;">&nbsp;
+<%= link_to "Sign In", new_user_session_path, :class =>  "buttonstyle" %>
+<%= link_to "Sign Up", new_user_registration_path, :class =>  "buttonstyle" %>
+<br><br> 
+</div>
+</div>
+<%# render "links"  %>
