@@ -33,5 +33,7 @@ timer.js: timer-097fdd997f23dc6e95d3afa41c0d6d97.js
 timer/index.js: timer-097fdd997f23dc6e95d3afa41c0d6d97.js
 application.css: application-ccbd37c3584f4e4207aa685917f3439a.css
 application/index.css: application-ccbd37c3584f4e4207aa685917f3439a.css
+devise.css: devise-a8f4db0a1de475324f46688c3524f127.css
+devise/index.css: devise-a8f4db0a1de475324f46688c3524f127.css
 LICENSE.txt: LICENSE-2c94499ee3f18dd8b72c2929fac9c641.txt
 LICENSE/index.txt: LICENSE-2c94499ee3f18dd8b72c2929fac9c641.txt

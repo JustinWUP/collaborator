@@ -51,6 +51,7 @@ Collaborator::Application.configure do
   config.assets.precompile += %w( timer.js )
   config.assets.precompile += %w( slidingdiv.js )
   config.assets.precompile += %w( tasks.js )
+  config.assets.precompile += %w( devise.css )
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = false
