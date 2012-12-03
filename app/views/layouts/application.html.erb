@@ -130,9 +130,11 @@
 
 					<div id="flash-box" class="flash-box">
 						<% flash.each do |key, value| %>
+							<% unless value == "You are already signed in." %>
 							<div id='<%= key %>' class="flash">
 								<%= value %>
 							</div><!-- /<%= key %> -->
+							<% end %>
 						<% end %>
 					</div><!-- /flash-box -->
 					
