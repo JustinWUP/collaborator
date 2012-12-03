@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<% 
+	unless current_page?(controller: 'projects', action: 'index') or  params[:controller] == 'wikis'
+		add_nav_link( link_to "Home", projects_path ) 
+	end 	
+
+	unless current_page?(controller: 'wikis', action: 'index') or params[:controller] != 'wikis'
+		add_nav_link( link_to "Home", wikis_path ) 
+	end
+	
+%>
+
+<html>
+<head>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wind Up Pixel - <%= @appname.titlecase	%></title>
+  <%= stylesheet_link_tag "devise" %>
+  <%= stylesheet_link_tag "font-awesome" %>
+  <%# stylesheet_link_tag "screen", :media => "screen" %>
+  <%# stylesheet_link_tag "mobile", :media => "only screen and (max-device-width: 550px)" %>
+
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="http://www.winduppixel.com/favicon.ico">
+  	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+
+	
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34276488-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
+</head>
+<body style="font-family: Lucida Sans, Lucida Grande, Lucida Sans Unicode, Verdana, sans-serif;">
+<div id="session-wrap" class="wrap">
+	<header id="header" class="">
+		<div id="session-top-box" class="top-box">
+
+		</div><!-- /top-box -->
+
+		<div id="session-wup-name" class="wup-name">
+	
+		WIND UP PIXEL
+		</div><!-- /wup-name -->	
+			<div id="session-logo">
+				<%= image_tag("logo.png") %>
+
+			</div>
+
+		
+	</header><!-- /header -->
+
+		<section id="main">
+			<div id="session-content"  class="main">
+				<div id="session-content-wrap">
+					<div id="flash-box" class="flash-box">
+						<% flash.each do |key, value| %>
+							<div id='<%= key %>' class="flash">
+								<%= value %>
+							</div><!-- /<%= key %> -->
+						<% end %>
+					</div><!-- /flash-box -->
+					
+					<%= yield %>
+				</div>
+			</div>
+			
+	</section><!-- /main -->
+	<div style="clear:both"></div>
+
+</div><!-- /wrap -->
+</body>
+		
+
+</html>

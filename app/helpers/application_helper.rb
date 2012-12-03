@@ -13,6 +13,16 @@ module ApplicationHelper
 	    html.html_safe
   	end
 
+  	def iconinline(name, color, size=1)
+	    #icon("camera-retro")
+	    #<i class="icon-camera-retro"></i> 
+	    
+	    html = "<i class='icon-#{name}' "
+	    html += "style='font-size:#{size}em; color:#{color};' "
+	    html += "></i>"
+	    html.html_safe
+  	end
+
   	def tableicon(name, text, size=1)
 	    #icon("camera-retro")
 	    #<i class="icon-camera-retro"></i> 

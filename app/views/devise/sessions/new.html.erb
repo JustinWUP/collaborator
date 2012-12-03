@@ -1,6 +1,28 @@
-<h2>Sign in</h2>
-
+<div id="session-splash">
+<h2>
+Collaborator
+</h2>
+<h3 style="margin-top:-20px;">
+Stay in the loop on your projects.
+</h3><br>
+<div>
+  <div><%= iconinline('road', '#915C44', 4) %></div>
+  <div class="benefit">Control the direction of your project's design and development.</div>
+</div>
+<br><br>
+<div>
+  <div><%= iconinline('comments-alt', 'indianred', 4) %></div>
+  <div class="benefit">Communicate directly with the people who are actually working for you.</div>
+</div>
+<br><br>
+<div>
+  <div><%= iconinline('time', 'forestgreen', 4) %></div>
+  <div class="benefit">Find out what's being worked on and when it'll be complete.</div>
+</div>
+</div>
+<div id="session-form"><h2>Sign in</h2>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -10,16 +32,9 @@
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
-
-  <div id="sign-in"><%= f.submit "Sign in" %></div>
+  <div id="sign-in"><%= f.submit "Sign in" %>  <%= link_to "Sign Up", new_user_registration_path, :class =>  "buttonstyle" %></div>
 <% end %>
-
-<%= render "links" %>
-
-<div id="splash">
-<h2>
-Learn About Collaborator
-</h2>
-	Wind Up Pixel Collaborator is a place for our clients and partner agencies to get up-to-date information on their active projects and to share information with our developers. 
-	
+<%= link_to '&nbsp;'.html_safe + "Forget Your Password?", new_user_password_path  %>
+<%# render "links" %>
 </div>
+

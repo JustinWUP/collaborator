@@ -8,6 +8,7 @@ require "active_resource/railtie"
 require "sprockets/railtie"
 
 
+
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -19,6 +20,10 @@ end
 
 module Collaborator
   class Application < Rails::Application
+
+    config.to_prepare do
+        Devise::SessionsController.layout proc{ |controller| action_name == 'new' ? "devise"   : "application" }
+    end
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -2,12 +2,15 @@ Collaborator::Application.routes.draw do
 
   resources :apps
 
+
   resources :wikis do
     member do
       get 'audit'
       get 'revert'
     end
   end
+
+
    match 'wikis/:id/:next/audit/' => "wikis#audit"
    match 'wikis/:id/:next/revert/' => "wikis#revert"
    match 'wikis/all/archives' => "wikis#archives"
@@ -76,6 +79,6 @@ match "/projects/:id/topics/:id/attach" => "topics#attach"
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  root to: redirect('/projects')
+  root :to =>  redirect('/users/sign_in')
   
 end

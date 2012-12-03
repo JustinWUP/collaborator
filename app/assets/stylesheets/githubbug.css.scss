@@ -8,7 +8,6 @@ margin: 0;
 }
 
 html, body {
-  height: 100%;
   font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
 }
 
@@ -888,7 +887,7 @@ background: -webkit-gradient(
   .comment_pagination .page_info {
       color: black;
       padding: 0.4em 0.6em;
-      width: 537px;
+      /*width: 537px;*/
       margin-bottom: 0.3em;
       text-align: center; 
       font-size:13px;
