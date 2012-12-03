@@ -2,7 +2,8 @@
 
 Collaborator is a blanket name for the applications we use to run our business. It helps us keep track of active projects and tasks and also acts as a repository for business and development best practices.
 
-The Collaborator app currently contains the following additional services:
+The Collaborator app currently contains the following services:
+* **Collaborator** - Our project management and client communication platform. This is the public face of the business to our clients. Clients can submit bugs, feature requests, questions, etc to us through Collaborator and the site keeps the threads categorized to each project and issue. This is used to manage the active scope of each client's project. 
 * **Knowledge** - Our private community edited wiki for employees and subcontractors. This contains our current business and project management practices, as well as a repository of development tools that others on the team have found useful.  One day, we'll perhaps separate Collaborator and Knowledge into separate pieces with oauth.
 * **Resources** - A time and task tracking dashboard with reporting features that currently include active tasks and completed work for the day and week. I'll be adding some more robust team analytics and task reporting as this is still under very active development.
 
