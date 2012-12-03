@@ -67,13 +67,6 @@
 		<section id="main">
 			<div id="session-content"  class="main">
 				<div id="session-content-wrap">
-					<div id="flash-box" class="flash-box">
-						<% flash.each do |key, value| %>
-							<div id='<%= key %>' class="flash">
-								<%= value %>
-							</div><!-- /<%= key %> -->
-						<% end %>
-					</div><!-- /flash-box -->
 					<%= yield %>
 				</div>
 			</div>

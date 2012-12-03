@@ -25,6 +25,14 @@ Collaborator is a venue for our clients and creative team to work together as pe
 </div>
 </div>
 <div id="session-form"><h2>Sign in</h2>
+            <div id="flash-box" class="flash-box">
+            <% flash.each do |key, value| %>
+              <% @key = 'session-' + key.to_s %>
+              <div id='<%= @key %>' class="session-flash">
+                <%= value %>
+              </div><!-- /<%= key %> -->
+            <% end %>
+          </div><!-- /flash-box -->
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   
   <div><%= f.label :email %><br />

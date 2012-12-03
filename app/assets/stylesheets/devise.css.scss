@@ -6,7 +6,7 @@ a {
 	color: #00AAEA;
 }
 
-.flash {
+.session-flash {
 	border: 1px solid #CCC;
 	padding: 5px;
 	margin: 5px 0px;
@@ -14,10 +14,14 @@ a {
 	background: #DDD;
 	border-radius: 25px;
 }
-#alert {
+
+#session-alert {
 	color: indianRed;
-	margin-left: 41%;
 	text-align: center;
+	position: relative;
+	width: 180px;
+	margin-top: -22px;
+	margin-left:-4px;
 }
 
 #session-top-box{
