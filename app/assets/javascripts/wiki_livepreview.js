@@ -22,24 +22,23 @@ $(document).ready(function(){
     });
       
 	function linkfixer(){
-  	env = ['ghb', 'collaborator', 'localhost']
+ 
     $('.wiki_preview a').each(function(){
-  		
-      if(!this.href.match(env.hash)){
-        this.href=this.href;
-      }
-      else{
-
-      if(this.href.match("~~")){
-      		link = this.href.replace('~~', '');
-    		}
+      if(this.href.match(['localhost' || 'ghb' || 'collaborator'])){
+        if(this.href.match("~~")){
+          link = this.href.replace('~~', '');
+        }
     
-   		else if(this.href.match("~")){
-      		link = this.href.replace('~', 'cate/');
-    		}
+      else if(this.href.match("~")){
+          link = this.href.replace('~', 'cate/');
+        }
 
-    	this.href = link.replace(x, '');
-    }
+      this.href = link.replace(x, '');
+      }
+
+      else {
+        this.href = this.href;
+      }
 
     });
   }
