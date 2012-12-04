@@ -215,6 +215,24 @@ position: relative;
   }
 }
 
+#wiki_body {
+  width: 49%;
+  float: left;
+  height: 497px;
+}
+
+.wiki_preview{
+  width: 48%;
+  float: right;
+  margin-top: 1px;
+  background: #DDD;
+  border: 1px dashed #BBB;
+  height: 500px;
+  overflow: scroll;
+}
+
+
+
 .catsplit {
   list-style-type:none;
   display:inline;

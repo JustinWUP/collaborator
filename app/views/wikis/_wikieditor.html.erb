@@ -17,10 +17,13 @@
   </div>
   <% end %>
   <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :style => "width: 100%" %>
+    <%= f.label :body %> <%= f.label :preview, "Live Preview", :style=>"float:right; margin-right:0px;" %> <br>
+    <div>
+    <%= f.text_area :body %>
+   <div class="wiki_preview"></div>
+ </div>
   </div>
-  <div class="field">
+  <div class="field"><br><br>
     <%= f.label :postcategory, "What's the article's category (if any)?" %><br />
     <%= f.text_field :postcategory %>
   </div>
