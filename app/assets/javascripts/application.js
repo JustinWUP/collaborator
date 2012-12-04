@@ -21,4 +21,3 @@
 //= require topicsort
 //= require standalone-mode
 //= require Markdown.Converter
-//= require wiki_livepreview

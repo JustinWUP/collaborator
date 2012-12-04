@@ -51,6 +51,7 @@ Collaborator::Application.configure do
   config.assets.precompile += %w( timer.js )
   config.assets.precompile += %w( slidingdiv.js )
   config.assets.precompile += %w( tasks.js )
+  config.assets.precompile += %w( wiki_livepreview.js )
   config.assets.precompile += %w( devise.css )
   config.assets.precompile += %w( font-awesome.css )
 
