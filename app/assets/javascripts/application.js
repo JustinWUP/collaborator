@@ -19,3 +19,4 @@
 //= require taskviews
 //= require nextsteps
 //= require topicsort
+//= require standalone-mode
