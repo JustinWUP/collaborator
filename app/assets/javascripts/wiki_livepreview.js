@@ -24,7 +24,7 @@ $(document).ready(function(){
 	function linkfixer(){
  
     $('.wiki_preview a').each(function(){
-      if(this.href.match(['localhost' || 'ghb' || 'collaborator'])){
+      if(this.href.match(['collaborator'])){
         if(this.href.match("~~")){
           link = this.href.replace('~~', '');
         }
