@@ -1,3 +1,4 @@
+<div id="titlemunch" style="display:none;"><%= @wiki.title.parameterize %></div>
 <%= javascript_include_tag 'wiki_livepreview' %>
 <%= form_for @wiki do |f| %>
   <% if @wiki.errors.any? %>
