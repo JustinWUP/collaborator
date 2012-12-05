@@ -23,64 +23,53 @@
 	<%# This is where retainer expired could go, if we had a flag for that.. %>
 <% end %>
 <div id="topics-list">
-<div>
-	<div id="topics1">
-		<% @project.topics.take(1).each do |topic| %>
+	<div>
 		<% if @project.topics.topic_for_approval.exists? %>
-		<div class ="topics-heading">Topics Awaiting Client Feedback:  <a href="javascript:void(0);" class="show_hide_awaiting">Show/Hide</a></div>
-		
-		<div id ="list" class="slidingDiv_awaiting topics-ul">
-		<%end%>
-		<%end%>
-		<% @project.topics.topic_for_approval.each do |topic| %>
-
-			<%= render partial: topic, layout: 'layouts/li_layout' %>
-		<% end %>
-		</div>
-	</div>
-	<div id="topics2">
-		<% @project.topics.take(1).each do |topic| %>
-		<% if @project.topics.active.exists? %>
-
-			<div class="topics-heading">Topics We're Working On:<a href="javascript:void(0);" class="show_hide_working">Show/Hide</a></div>
-		
-		<div id ="list" class="slidingDiv_working topics-ul">
-			<%end%>
-			<%end%>
-			<% @project.topics.active.each do |topic| %>
-				<%= render partial: topic, layout: 'layouts/li_layout' %>
-			<% end %>
-		</div>
-	</div>
-	<div id="topics3">
-	<% @project.topics.take(1).each do |topic| %>
-		<% if @project.topics.complete.exists? %>
-			<div class="topics-heading">Completed Topics:<a href="javascript:void(0);" class="show_hide_complete">Show/Hide</a>
+			<div id="topics1">
+				<div class ="topics-heading">Topics Awaiting Client Feedback:  <a href="javascript:void(0);" class="show_hide_awaiting">Show/Hide</a></div>
+				<div id ="list" class="slidingDiv_awaiting topics-ul">
+			
+				<% @project.topics.topic_for_approval.each do |topic| %>
+					<%= render partial: topic, layout: 'layouts/li_layout' %>
+				<% end %>
+				</div>
 			</div>
-
-		<div id ="list" class="slidingDiv_complete topics-ul">
 		<%end%>
+
+		<% if @project.topics.active.exists? %>
+			<div id="topics2">
+				<div class="topics-heading">Topics We're Working On:<a href="javascript:void(0);" class="show_hide_working">Show/Hide</a></div>
+				<div id ="list" class="slidingDiv_working topics-ul">
+					<% @project.topics.active.each do |topic| %>
+						<%= render partial: topic, layout: 'layouts/li_layout' %>
+					<% end %>
+				</div>
+			</div>
 		<%end%>
-		<% @project.topics.complete.each do |topic| %>
-		<%= render partial: topic, layout: 'layouts/li_layout' %>
-		<% end %>
-		</div>
-	</div>
-
-
-</div> 
+			
+		<% if @project.topics.complete.exists? %>
+			<div id="topics3">
+				<div class="topics-heading">Completed Topics:<a href="javascript:void(0);" class="show_hide_complete">Show/Hide</a>
+				</div>
+				<div id ="list" class="slidingDiv_complete topics-ul">
+				<% @project.topics.complete.each do |topic| %>
+					<%= render partial: topic, layout: 'layouts/li_layout' %>
+				<% end %>
+				</div>
+			</div>
+		<%end%>
+	</div> 
 </div> <!-- /topics-list -->
 
 <% content_for :user_links do %>
 	<%= link_to icon('plus', 2) +' New Topic', new_project_topic_path(@project), :class  => "useractions" %>
 	<!-- this is ugly as shit -->
 	<%if @project.url != "http://none" %>
- 	<%= link_to icon('cloud', 2) +' View ' + @project.ptype, @project.url,  :target => "_blank", :class  => "useractions" %>
+ 		<%= link_to icon('cloud', 2) +' View ' + @project.ptype, @project.url,  :target => "_blank", :class  => "useractions" %>
  	<% end %>
 <% end %><!-- / -->
 
 <% content_for :admin_links do %>
 	<%= link_to icon('pencil', 2) +' Edit Project', edit_project_path(@project), :class  => "adminactions" %>
 	<%= link_to icon('github-sign', 2) + " Github Repo", 'http://www.github.com/' + @project.repo, :target => "_blank", :class  => "adminactions" %>
-	
 <% end %>
