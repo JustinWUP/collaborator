@@ -20,11 +20,18 @@ $(document).ready(function(){
       changed = true;
     	linkfixer();
     });
+
+  function environment(link){
+    if(link.href.match(['collaborator']) || link.href.match(['localhost']) || link.href.match(['ghb'])){
+      return true;
+    }
+  }
+      
       
 	function linkfixer(){
  
     $('.wiki_preview a').each(function(){
-      if(this.href.match(['collaborator'])){
+      if(environment(this)){
         if(this.href.match("~~")){
           link = this.href.replace('~~', '');
         }
