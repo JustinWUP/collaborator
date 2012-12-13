@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
         flash[:notice] = 'Comment posted'
 
        @comment.topic.subscriptions.each do |subscription|
-        subscription.notify_by_email unless subscription.user == current_user
+        subscription.notify_by_email(@topic.id,@topic.project.id) unless subscription.user == current_user
         end
 
       # flash[:notice] += '<br/> These people uh.. WEREN\'T notified: (I haven\'t implemented the actual email part yet..)<br/>' + notified.join(', ')

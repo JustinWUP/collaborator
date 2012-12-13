@@ -1,13 +1,16 @@
 class Notifier < ActionMailer::Base
   default from: "Wind Up Pixel Collaborator <mailer@winduppixel.com>"
   include ActionView::Helpers::TextHelper
-  def subscription_email(subscription)
+  def subscription_email(subscription,topicid,projectid)
 
     @resource = subscription.subscribable_type.classify.constantize.find(subscription.subscribable_id)
     @type = subscription.subscribable_type.to_s.humanize
     @user = subscription.user
 
-    @resource_link = nested_resource_link
+    # @resource_link = nested_resource_link
+    @topicid = topicid
+    @projectid = projectid
+
     @subjecttitle = @resource.title.to_s.humanize
     @shortsubjecttitle = truncate(@resource.title.to_s.humanize, :length => 20)
     # mail(:to => @user.email, :subject => "#{@resource.class.to_s.humanize} has been updated.")
@@ -60,8 +63,8 @@ class Notifier < ActionMailer::Base
     resource = @resource
     resource_name = resource.class.to_s.downcase 
     
-    helper = Rails.application.routes.named_routes.helpers.grep(/.*#{resource_name}_path$/).first.to_s.split('_')
-    built = helper.slice!(-2,2) # Shortest possible valid helper, "comment_path"
+    helper = Rails.application.routes.named_routes.helpers.grep(/.*comment_path$/).first.to_s.split('_')
+    built = helper.slice!(3,2) # Shortest possible valid helper, "comment_path"
     
     while !(respond_to?(built.join("_").to_sym)) 
       built.unshift helper.pop
