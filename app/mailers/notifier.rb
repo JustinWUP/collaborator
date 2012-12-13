@@ -61,7 +61,7 @@ class Notifier < ActionMailer::Base
     resource_name = resource.class.to_s.downcase 
     
     helper = Rails.application.routes.named_routes.helpers.grep(/.*#{resource_name}_path$/).first.to_s.split('_')
-    built = helper.slice!(-2,2) # Shortest possible valid helper, "comment_path"
+    built = helper.slice!(-2,3) # Shortest possible valid helper, "comment_path"
     
     while !(respond_to?(built.join("_").to_sym)) 
       built.unshift helper.pop
