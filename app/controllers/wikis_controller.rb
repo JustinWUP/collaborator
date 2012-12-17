@@ -16,22 +16,22 @@ class WikisController < ApplicationController
     end
   end
 
-def archives
-  @wikiarchive = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "slug!='cate'", :order => "UPPER(wikis.title) ASC")
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @wikis }
-    end
-end
+  def archives
+    @wikiarchive = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "slug!='cate'", :order => "UPPER(wikis.title) ASC")
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @wikis }
+      end
+  end
 
-def catearchives
-  @catepresort = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory != ''")
-  @catearchive = @catepresort.select("DISTINCT(postcategory)")
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @wikis }
-    end
-end
+  def catearchives
+    @catepresort = Wiki.paginate(:page => params[:page], :per_page => 10, :conditions => "wikis.postcategory != ''")
+    @catearchive = @catepresort.select("DISTINCT(postcategory)")
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @wikis }
+      end
+  end
 
   # GET /wikis/1
   # GET /wikis/1.json
