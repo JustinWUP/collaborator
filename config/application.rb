@@ -22,7 +22,8 @@ module Collaborator
   class Application < Rails::Application
 
     config.to_prepare do
-        Devise::SessionsController.layout proc{ |controller| action_name == 'new' ? "devise"   : "application" }
+        Devise::SessionsController.layout proc{ |controller| action_name == 'new' ? "devise" : "application" }
+        Devise::RegistrationsController.layout "application"
     end
     
     # Settings in config/environments/* take precedence over those specified here.

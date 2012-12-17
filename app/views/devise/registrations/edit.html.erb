@@ -12,16 +12,16 @@
   <% end %>
     <% if can? :manage, Setting %>
       <% content_for :admin_links do %>
-          <%= link_to icon('cog',2) + ' System Settings', settings_path, :class  => "adminactions" %>
+        <%= link_to icon('cog',2) + ' System Settings', settings_path, :class  => "adminactions" %>
       <% end %>
     <% end %>
     <% if can? :manage, Role %>
-        <% content_for :admin_links do %>
+      <% content_for :admin_links do %>
           <!-- <%= link_to "Manage Other Users", "/", :class  => "adminactions" %> -->
       <% end %>
     <% end %>
     <% if can? :manage, Organization %>    
-        <% content_for :admin_links do %>
+      <% content_for :admin_links do %>
           <%= link_to icon('group', 2) + ' Companies', organizations_path, :class  => "adminactions" %>
       <% end %>
     <% end %>
